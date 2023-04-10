@@ -1,0 +1,67 @@
+$icofont-font: 'icofont';
+
+@font-face {
+    font-family: $icofont-font;
+    src: url(".//icofont.ttf?287b5cd6b8436c16ebbe634fe210ead7") format("truetype"),
+url(".//icofont.woff?287b5cd6b8436c16ebbe634fe210ead7") format("woff"),
+url(".//icofont.woff2?287b5cd6b8436c16ebbe634fe210ead7") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.icofont {
+    font-family: $icofont-font !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 24px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$icofont-map: (
+    'arrow-simple': '\f101',
+    'arrow': '\f102',
+    'error': '\f103',
+    'heart': '\f104',
+    'location': '\f105',
+    'phone': '\f106',
+    'secure': '\f107',
+    'star': '\f108',
+    'success': '\f109',
+    'time': '\f10a',
+);
+
+.icofont-arrow-simple:before {
+    content: map-get($icofont-map, 'arrow-simple');
+}
+.icofont-arrow:before {
+    content: map-get($icofont-map, 'arrow');
+}
+.icofont-error:before {
+    content: map-get($icofont-map, 'error');
+}
+.icofont-heart:before {
+    content: map-get($icofont-map, 'heart');
+}
+.icofont-location:before {
+    content: map-get($icofont-map, 'location');
+}
+.icofont-phone:before {
+    content: map-get($icofont-map, 'phone');
+}
+.icofont-secure:before {
+    content: map-get($icofont-map, 'secure');
+}
+.icofont-star:before {
+    content: map-get($icofont-map, 'star');
+}
+.icofont-success:before {
+    content: map-get($icofont-map, 'success');
+}
+.icofont-time:before {
+    content: map-get($icofont-map, 'time');
+}

@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'icofont';
+    src: url(".//icofont.ttf?287b5cd6b8436c16ebbe634fe210ead7") format("truetype"),
+url(".//icofont.woff?287b5cd6b8436c16ebbe634fe210ead7") format("woff"),
+url(".//icofont.woff2?287b5cd6b8436c16ebbe634fe210ead7") format("woff2");
+}
+
+i[class^='icofont-']:before, i[class*=' icofont-']:before {
+    font-family: icofont !important;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icofont-arrow-simple:before {
+    content: '\f101';
+}
+.icofont-arrow:before {
+    content: '\f102';
+}
+.icofont-error:before {
+    content: '\f103';
+}
+.icofont-heart:before {
+    content: '\f104';
+}
+.icofont-location:before {
+    content: '\f105';
+}
+.icofont-phone:before {
+    content: '\f106';
+}
+.icofont-secure:before {
+    content: '\f107';
+}
+.icofont-star:before {
+    content: '\f108';
+}
+.icofont-success:before {
+    content: '\f109';
+}
+.icofont-time:before {
+    content: '\f10a';
+}
