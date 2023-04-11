@@ -1,13 +1,10 @@
-// import Image from 'next/image';
+import { NextPage } from 'next';
 
 import { Container } from '@/components/Layout';
 
-export const Home = () => (
-	<Container mt>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque dicta,
-		impedit pariatur omnis possimus neque obcaecati reprehenderit cumque.
-		Iste aspernatur id a beatae ut doloremque expedita quae ipsam voluptatum
-		quo!
+export const Home: NextPage = () => (
+	<Container>
+		<h1>Главная</h1>
 	</Container>
 );
 

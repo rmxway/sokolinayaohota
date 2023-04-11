@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 
-import { Navbar } from '@/components';
+import { HeaderBlock } from '@/components/Header';
 import { defaultTheme, GlobalStyles } from '@/theme';
 
 export const App = ({ Component, pageProps }: AppProps) => (
@@ -19,7 +19,7 @@ export const App = ({ Component, pageProps }: AppProps) => (
 		</Head>
 		<GlobalStyles />
 
-		<Navbar />
+		<HeaderBlock />
 		<Component {...pageProps} />
 	</ThemeProvider>
 );

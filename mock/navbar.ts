@@ -5,19 +5,23 @@ export const navbarItems = [
 	},
 	{
 		title: 'Банкетные залы',
-		url: '/',
+		url: '/halls',
 	},
 	{
 		title: 'Галерея',
-		url: '/',
+		url: '/gallery',
 	},
 	{
 		title: 'Отзывы',
-		url: '/',
+		url: '/reviews',
 	},
 	{
 		title: 'Контакты',
-		url: '/',
+		url: '/contacts',
+	},
+	{
+		title: 'UI',
+		url: '/ui',
 	},
 ];
 

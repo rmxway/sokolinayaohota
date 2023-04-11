@@ -2,17 +2,50 @@ import styled, { css } from 'styled-components';
 
 import { media } from '@/theme';
 
-const Container = styled.div<{ mt?: boolean }>`
+type ContainerType = {
+	mt?: boolean;
+	flex?: boolean;
+	center?: boolean;
+	spaceBetween?: boolean;
+	gap?: number;
+	direction?: 'row' | 'column';
+};
+
+const Container = styled.div<ContainerType>`
 	position: relative;
 	padding: 0 20px;
 	width: 100%;
 	max-width: 100%;
 	margin: 0 auto;
+	gap: ${(props) => props.gap}px;
 
 	${(props) =>
 		props.mt &&
 		css`
 			margin-top: 20px;
+		`}
+
+	${(props) =>
+		props.flex &&
+		css`
+			display: flex;
+		`}
+
+	${(props) =>
+		props.center &&
+		css`
+			align-items: center;
+		`}
+
+	${(props) =>
+		props.spaceBetween &&
+		css`
+			justify-content: space-between;
+		`}
+	${(props) =>
+		props.direction &&
+		css`
+			flex-direction: ${props.direction};
 		`}
 
 	${media.greaterThan('sm')`

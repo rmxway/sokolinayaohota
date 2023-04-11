@@ -9,7 +9,8 @@
 		"fantasticon",
 		"Flexbox",
 		"icofont",
-		"Kaffeesatz"
+		"Kaffeesatz",
+		"svgr"
 	],
 	"ignoreWords": [],
 	"import": []

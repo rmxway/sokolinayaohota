@@ -16,7 +16,6 @@ const base = css`
 		font-family: ${ZenKakuFont.style.fontFamily};
 		font-size: 20px;
 		display: block;
-		padding-top: 70px;
 		line-height: 1.25;
 		padding-bottom: 50px;
 		min-width: 320px;
@@ -34,6 +33,7 @@ const base = css`
 		font-family: ${YanoneKaffeesatzFont.style.fontFamily};
 		font-weight: 600;
 		letter-spacing: 1px;
+		line-height: 1;
 		color: ${(props) => props.theme.colors.brown};
 	}
 

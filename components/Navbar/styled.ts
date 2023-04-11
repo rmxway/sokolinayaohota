@@ -1,27 +1,24 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { YanoneKaffeesatzFont } from '@/pages/fonts';
 import { media } from '@/theme';
 
-const StyledNavbar = styled.div`
-	position: fixed;
-	top: 0;
-	z-index: 100;
-	width: 100%;
-	height: 70px;
-	background-color: ${(props) => props.theme.colors.primary};
-	text-align: center;
+export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
+	margin: 10px 40px 5px;
+	font-family: ${YanoneKaffeesatzFont.style.fontFamily};
+	font-size: 24px;
 `;
 
-const NavbarItem = styled.div`
+export const NavbarItem = styled.div<{ active?: boolean }>`
 	position: relative;
 	display: inline-block;
 	margin-right: 10px;
-	font-size: 1rem;
-	color: #222;
+	color: ${(props) => props.theme.colors.disabled};
 	text-decoration: none;
 	border-bottom: 2px solid transparent;
+	margin: 0 20px;
 
 	a {
 		position: absolute;
@@ -32,13 +29,18 @@ const NavbarItem = styled.div`
 		z-index: 1;
 	}
 
-	${media.greaterThan('xs')`
-            font-size: 20px;
-            margin-right: 20px;
-        `}
+	/* ${media.greaterThan('xs')`
+		font-size: 20px;
+		margin-right: 20px;
+	`} */
+	${(props) =>
+		props.active &&
+		css`
+			color: ${props.theme.colors.brown};
+		`}
 
 	&:hover {
-		color: #444;
+		color: ${(props) => props.theme.colors.brown};
 	}
 
 	&:last-child {
@@ -46,4 +48,4 @@ const NavbarItem = styled.div`
 	}
 `;
 
-export { NavbarItem, StyledNavbar };
+export default NavbarItem;
