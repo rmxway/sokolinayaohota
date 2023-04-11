@@ -59,7 +59,8 @@ export const Banner = styled.div`
 	text-align: center;
 	gap: 40px;
 	flex-wrap: nowrap;
-	min-height: 800px;
+	min-height: 600px;
+	height: 90vh;
 
 	h1,
 	h2 {

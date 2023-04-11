@@ -28,7 +28,10 @@ const defaultTheme: DefaultTheme = {
 	},
 	layout: {
 		containerWidth: '1024px',
-		shadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
+		shadow: {
+			basic: '0px 4px 14px rgba(0, 0, 0, 0.3)',
+			big: '0px 8px 59px rgba(66, 33, 11, 0.31)',
+		},
 	},
 	radius: {
 		borderRadius: '8px',

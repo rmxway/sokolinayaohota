@@ -1,11 +1,16 @@
 import { NextPage } from 'next';
 
-import { Container } from '@/components/Layout';
+import { PresentBanner, WhyAreWe } from '@/pages/main-page';
 
-export const Home: NextPage = () => (
-	<Container>
-		<h1>Главная</h1>
-	</Container>
+export const MainPage: NextPage = () => (
+	<>
+		<PresentBanner />
+		<WhyAreWe />
+		<div>Gallery</div>
+		<div>Questions</div>
+		<div>Order</div>
+		<div>Contacts</div>
+	</>
 );
 
-export default Home;
+export default MainPage;

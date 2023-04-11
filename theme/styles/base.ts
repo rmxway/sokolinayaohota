@@ -19,6 +19,7 @@ const base = css`
 		line-height: 1.25;
 		padding-bottom: 50px;
 		min-width: 320px;
+		color: #222;
 	}
 	code {
 		font-family: 'source-code-pro', 'Menlo', 'Monaco', 'Consolas',
@@ -34,7 +35,6 @@ const base = css`
 		font-weight: 600;
 		letter-spacing: 1px;
 		line-height: 1;
-		color: ${(props) => props.theme.colors.brown};
 	}
 
 	h1 {

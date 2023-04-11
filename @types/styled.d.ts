@@ -27,7 +27,10 @@ interface Colors {
 
 interface Layout {
 	containerWidth: string;
-    shadow: string;
+    shadow: {
+		basic: string;
+		big: string;
+	};
 }
 
 interface Radius {

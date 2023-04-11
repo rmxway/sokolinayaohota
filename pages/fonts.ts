@@ -19,5 +19,5 @@ export const LedgerFont = Ledger({
 
 export const ZenKakuFont = Zen_Kaku_Gothic_Antique({
 	subsets: ['cyrillic'],
-	weight: ['400'],
+	weight: ['300', '400'],
 });
