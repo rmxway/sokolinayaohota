@@ -20,21 +20,18 @@
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,
-		"module": "ESNext",
+		"module": "esnext", // ESNext
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"incremental": true,
+		"incremental": true
 	},
 	"include": [
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"**/*.js",
-		"**/*.jsx",
-		"@types/declarations.d.ts",
-		"@types/styled.d.ts"
+		"@types/declarations.d.ts"
 	],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", ".vscode"]
 }

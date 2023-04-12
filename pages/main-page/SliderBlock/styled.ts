@@ -103,4 +103,38 @@ export const Controllers = styled.div`
 	}
 `;
 
+export const animateTitle = {
+	hidden: {
+		y: -20,
+		opacity: 0,
+	},
+	visible: {
+		y: 0,
+		opacity: 1,
+		transition: {
+			delay: 0.35,
+			duration: 0.1,
+			stiffness: 150,
+			damping: 12,
+			type: 'spring',
+		},
+	},
+};
+
+export const animateText = {
+	hidden: {
+		y: 20,
+		opacity: 0,
+	},
+	visible: {
+		y: 0,
+		opacity: 1,
+		transition: {
+			delay: 0.3,
+			duration: 0.6,
+			type: 'easy',
+		},
+	},
+};
+
 export default Wrapper;

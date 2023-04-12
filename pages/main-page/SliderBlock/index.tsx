@@ -5,19 +5,21 @@ import 'swiper/css/effect-fade';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FC, useState } from 'react';
 import {
-	Controller,
 	EffectFade,
 	Navigation,
 	Pagination,
 	Swiper as TypeSwiper,
+	Thumbs,
 } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { Container, Flexbox, Title } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { mainSlider } from '@/mock/main-slider';
 
 import {
+	animateText,
+	animateTitle,
 	Controllers,
 	Info,
 	SlideContainer,
@@ -25,77 +27,55 @@ import {
 	Wrapper,
 } from './styled';
 
-const animateTitle = {
-	hidden: {
-		y: -20,
-		opacity: 0,
-	},
-	visible: {
-		y: 0,
-		opacity: 1,
-		transition: {
-			delay: 0.35,
-			duration: 0.1,
-			stiffness: 150,
-			damping: 12,
-			type: 'spring',
-		},
-	},
-};
-
-const animateText = {
-	hidden: {
-		y: 20,
-		opacity: 0,
-	},
-	visible: {
-		y: 0,
-		opacity: 1,
-		transition: {
-			delay: 0.3,
-			duration: 0.6,
-			type: 'easy',
-		},
-	},
-};
-
 const SliderBlock: FC = () => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
-	const [slideIndex, setSlideIndex] = useState(0);
+	const [slideIndex, setSlideIndex] = useState<number>(0);
+
+	const mainSwiperConfig: SwiperProps = {
+		speed: 300,
+		spaceBetween: 100,
+		slidesPerView: 1,
+		loop: true,
+		modules: [Thumbs, Pagination, Navigation],
+		thumbs: {
+			swiper: thumbSwiper && !thumbSwiper.destroyed ? thumbSwiper : null,
+		},
+		pagination: {
+			clickable: true,
+			el: '.slider-pagination',
+			renderBullet() {
+				return `<span class="dot swiper-pagination-bullet"></span>`;
+			},
+			type: 'bullets',
+		},
+		navigation: {
+			nextEl: '.btn-next',
+			prevEl: '.btn-prev',
+		},
+		onSlideChange: (swiper) => {
+			setSlideIndex(swiper.realIndex);
+		},
+	};
+
+	const imagesSwiperConfig: SwiperProps = {
+		modules: [Thumbs, EffectFade],
+		speed: 1000,
+		simulateTouch: false,
+		effect: 'fade',
+		spaceBetween: 20,
+		slidesPerView: 1,
+		lazyPreloadPrevNext: 1,
+		onSwiper: (swiper) => {
+			setThumbSwiper(swiper);
+		},
+	};
 
 	return (
 		<Wrapper>
 			<Container>
 				<SlideContainer>
 					<Info>
-						<Swiper
-							speed={300}
-							spaceBetween={100}
-							slidesPerView={1}
-							resizeObserver
-							modules={[Controller, Pagination, Navigation]}
-							controller={{
-								control:
-									thumbSwiper && !thumbSwiper.destroyed
-										? thumbSwiper
-										: null,
-							}}
-							pagination={{
-								clickable: true,
-								el: '.slider-pagination',
-								renderBullet() {
-									return `<span class="dot swiper-pagination-bullet"></span>`;
-								},
-								type: 'bullets',
-							}}
-							navigation={{
-								nextEl: '.btn-next',
-								prevEl: '.btn-prev',
-							}}
-							onSlideChange={(swiper) => {
-								setSlideIndex(swiper.realIndex);
-							}}
-						>
+						<Swiper {...mainSwiperConfig}>
 							{mainSlider.map((slide, index) => (
 								<SwiperSlide key={slide.alt}>
 									<Flexbox
@@ -146,29 +126,14 @@ const SliderBlock: FC = () => {
 						</Swiper>
 					</Info>
 
-					<Swiper
-						modules={[Controller, EffectFade]}
-						speed={500}
-						simulateTouch={false}
-						watchSlidesProgress
-						resizeObserver
-						effect="fade"
-						spaceBetween={20}
-						slidesPerView={1}
-						lazyPreloadPrevNext={2}
-						slidesOffsetAfter={20}
-						slidesOffsetBefore={20}
-						onSwiper={(swiper) => {
-							setThumbSwiper(swiper);
-						}}
-					>
+					<Swiper {...imagesSwiperConfig}>
 						{mainSlider.map((slide) => (
 							<SwiperSlide key={slide.alt}>
 								<SliderImage
 									src={slide.img}
 									alt={slide.alt}
-									width={2000}
-									height={2000}
+									width={1200}
+									height={1200}
 								/>
 							</SwiperSlide>
 						))}
