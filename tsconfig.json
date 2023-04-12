@@ -1,12 +1,20 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./*"],
+			"@/public/*": ["./public/*"],
+			"@/components/*": ["./components/*"],
+			"@/pages/*": ["./pages/*"],
+			"@/theme/*": ["./theme/*"],
+			"@/mock/*": ["./mock/*"]
+		},
 		"target": "ES6",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
 		"outDir": "./build",
-		"rootDir": ".",
 		"removeComments": true,
 		"sourceMap": true,
 		"forceConsistentCasingInFileNames": true,
@@ -18,20 +26,15 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"incremental": true,
-		"paths": {
-			"@/*": ["./*"],
-			"@/public/*": ["./public/*"],
-			"@/components/*": ["./components/*"],
-			"@/pages/*": ["./pages/*"],
-			"@/theme/*": ["./theme/*"],
-			"@/mock/*": ["./mock/*"]
-		}
 	},
 	"include": [
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"@types/declarations.d.ts"
+		"**/*.js",
+		"**/*.jsx",
+		"@types/declarations.d.ts",
+		"@types/styled.d.ts"
 	],
-	"exclude": ["node_modules", ".vscode"]
+	"exclude": ["node_modules"]
 }

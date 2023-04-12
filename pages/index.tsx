@@ -1,9 +1,10 @@
 import { NextPage } from 'next';
 
-import { PresentBanner, WhyAreWe } from '@/pages/main-page';
+import { PresentBanner, SliderBlock, WhyAreWe } from '@/pages/main-page';
 
 export const MainPage: NextPage = () => (
 	<>
+		<SliderBlock />
 		<PresentBanner />
 		<WhyAreWe />
 		<div>Gallery</div>

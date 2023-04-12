@@ -11,6 +11,7 @@ type TitleType = {
 export const Title = styled.div<TitleType>`
 	font-family: ${YanoneKaffeesatzFont.style.fontFamily};
 	font-weight: 600;
+	line-height: 1;
 	font-size: ${(props) => props.size || '72px'};
 	color: ${(props) => props.color !== undefined && theme.colors[props.color]};
 `;

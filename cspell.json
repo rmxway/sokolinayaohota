@@ -10,7 +10,8 @@
 		"Flexbox",
 		"icofont",
 		"Kaffeesatz",
-		"svgr"
+		"svgr",
+		"Swiper"
 	],
 	"ignoreWords": [],
 	"import": []

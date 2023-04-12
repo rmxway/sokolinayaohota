@@ -74,6 +74,7 @@ export const Item = styled.div`
 
 	&:hover {
 		box-shadow: ${theme.layout.shadow.big};
+		z-index: 2;
 	}
 `;
 

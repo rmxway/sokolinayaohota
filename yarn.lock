@@ -6229,6 +6229,7 @@ __metadata:
     sharp: ^0.32.0
     styled-components: ^5.3.9
     styled-media-query: ^2.1.2
+    swiper: ^9.2.0
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -6244,6 +6245,13 @@ __metadata:
   version: 0.6.1
   resolution: "source-map@npm:0.6.1"
   checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
+  languageName: node
+  linkType: hard
+
+"ssr-window@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "ssr-window@npm:4.0.2"
+  checksum: df182600927f4f3225224cf8c02338ea637c9750519505bbfb9a9236741a2a7ec088386fb948bca7b447b8303d9109e7dc7672e3de041c79ac2a0e03665af7d2
   languageName: node
   linkType: hard
 
@@ -6507,6 +6515,15 @@ __metadata:
   version: 2.6.0
   resolution: "svgpath@npm:2.6.0"
   checksum: 57bd2512b41a03a729c2880a6c771bb8ad449a9cea47c1fc43ac5cec70bf81a607591bb916ba16c21c9d87122537bcdf2ac4082dae13559c84c964b8fe868204
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "swiper@npm:9.2.0"
+  dependencies:
+    ssr-window: ^4.0.2
+  checksum: c0152bd2d08e01934583d66730218b8e3eecb124119161454ffbf9ac42a132fb9d32331a700e0688854f77846fa289f54b98e247bda639f0622cc39bc9c499bc
   languageName: node
   linkType: hard
 
