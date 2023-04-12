@@ -24,15 +24,13 @@ export const SlideContainer = styled.div`
 
 export const Info = styled.div`
 	display: flex;
-	flex-direction: column;
-	gap: 32px;
 	width: 400px;
 	flex-shrink: 0;
 
 	p {
 		display: -webkit-box;
 		font-size: 24px;
-		-webkit-line-clamp: 11;
+		-webkit-line-clamp: 9;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
@@ -42,17 +40,17 @@ export const SliderImage = styled(Image)`
 	flex-grow: 1;
 	object-fit: cover;
 	object-position: center;
-	width: 1px;
+	width: 100%;
 	height: 520px;
 	flex-shrink: 1;
 
 	border-radius: ${theme.radius.blockRadius};
-	box-shadow: ${theme.layout.shadow.basic};
+	// box-shadow: ${theme.layout.shadow.basic};
 `;
 
 export const Controllers = styled.div`
 	position: absolute;
-	bottom: 20px;
+	bottom: 10px;
 	left: 0;
 	width: 400px;
 	height: 50px;

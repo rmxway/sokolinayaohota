@@ -2,9 +2,17 @@ import styled from 'styled-components';
 
 interface FlexboxTypes {
 	nowrap?: boolean;
-	justify?: string;
-	align?: string;
-	direction?: string;
+	justify?:
+		| 'flex-start'
+		| 'flex-end'
+		| 'center'
+		| 'baseline'
+		| 'stretch'
+		| 'space-between'
+		| 'space-around'
+		| 'space-evenly';
+	align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+	direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 	gap?: number;
 }
 

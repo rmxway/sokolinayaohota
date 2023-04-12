@@ -1,14 +1,15 @@
+import { motion, MotionProps } from 'framer-motion';
 import styled from 'styled-components';
 
 import { YanoneKaffeesatzFont } from '@/pages/fonts';
 import { defaultTheme as theme } from '@/theme';
 
-type TitleType = {
+interface TitleType extends MotionProps {
 	color?: keyof typeof theme.colors;
 	size?: string;
-};
+}
 
-export const Title = styled.div<TitleType>`
+export const Title = styled(motion.div)<TitleType>`
 	font-family: ${YanoneKaffeesatzFont.style.fontFamily};
 	font-weight: 600;
 	line-height: 1;
