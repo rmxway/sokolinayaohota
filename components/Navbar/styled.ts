@@ -1,13 +1,12 @@
 import styled, { css } from 'styled-components';
 
-import { YanoneKaffeesatzFont } from '@/pages/fonts';
-import { media } from '@/theme';
+import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	margin: 10px 40px 5px;
-	font-family: ${YanoneKaffeesatzFont.style.fontFamily};
+	font-family: ${theme.layout.fonts.header};
 	font-size: 24px;
 `;
 
@@ -19,6 +18,7 @@ export const NavbarItem = styled.div<{ active?: boolean }>`
 	text-decoration: none;
 	border-bottom: 2px solid transparent;
 	margin: 0 20px;
+	transition: all 0.2s;
 
 	a {
 		position: absolute;

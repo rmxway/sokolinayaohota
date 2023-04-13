@@ -27,6 +27,11 @@ const defaultTheme: DefaultTheme = {
 		},
 	},
 	layout: {
+		fonts: {
+			header: 'Yanone Kaffeesatz, serif',
+			old: 'Ledger, serif',
+			body: 'Zen Kaku Gothic Antique, sans-serif',
+		},
 		containerWidth: '1024px',
 		shadow: {
 			basic: '0px 4px 14px rgba(0, 0, 0, 0.3)',

@@ -1963,6 +1963,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/scroll-lock@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@types/scroll-lock@npm:2.1.0"
+  checksum: 01d8c295a3d11158b665255acfe96259d5b28566ae07f26011c47ba2b8eb0211386a9c5f752f82d3bf1d0153d08e8a51f641307cd808b1eda9f26418a62fa2d1
+  languageName: node
+  linkType: hard
+
 "@types/semver@npm:^7.3.12":
   version: 7.3.13
   resolution: "@types/semver@npm:7.3.13"
@@ -6011,6 +6018,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"scroll-lock@npm:^2.1.5":
+  version: 2.1.5
+  resolution: "scroll-lock@npm:2.1.5"
+  checksum: f18e9b93084bde8c8f56f749a49ad5d2b4ca8aadbfcb640c025bb273ca041c465a08b79fa07eb378d3d4d69c95c5fed5d6881f8af0dc3ee03b60ed7012e61b2b
+  languageName: node
+  linkType: hard
+
 "semver@npm:^6.1.1, semver@npm:^6.1.2, semver@npm:^6.3.0":
   version: 6.3.0
   resolution: "semver@npm:6.3.0"
@@ -6203,6 +6217,7 @@ __metadata:
     "@types/node": 18.15.11
     "@types/react": 18.0.34
     "@types/react-dom": 18.0.11
+    "@types/scroll-lock": ^2.1.0
     "@types/styled-components": ^5.1.26
     "@typescript-eslint/eslint-plugin": ^5.58.0
     "@typescript-eslint/parser": ^5.58.0
@@ -6226,6 +6241,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     sass: ^1.61.0
+    scroll-lock: ^2.1.5
     sharp: ^0.32.0
     styled-components: ^5.3.9
     styled-media-query: ^2.1.2

@@ -1,14 +1,5 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["./*"],
-			"@/public/*": ["./public/*"],
-			"@/components/*": ["./components/*"],
-			"@/pages/*": ["./pages/*"],
-			"@/theme/*": ["./theme/*"],
-			"@/mock/*": ["./mock/*"]
-		},
+	"compilerOptions": {		
 		"target": "ES6",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
@@ -25,7 +16,16 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"incremental": true
+		"incremental": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./*"],
+			"@/public/*": ["./public/*"],
+			"@/components/*": ["./components/*"],
+			"@/pages/*": ["./pages/*"],
+			"@/theme/*": ["./theme/*"],
+			"@/mock/*": ["./mock/*"]
+		},
 	},
 	"include": [
 		"next-env.d.ts",

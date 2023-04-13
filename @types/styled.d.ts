@@ -26,6 +26,11 @@ interface Colors {
 }
 
 interface Layout {
+	fonts: {
+		header: string;
+		old: string;
+		body: string;
+	};
 	containerWidth: string;
     shadow: {
 		basic: string;

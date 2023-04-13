@@ -26,13 +26,14 @@ export const Info = styled.div`
 	display: flex;
 	width: 400px;
 	flex-shrink: 0;
+	color: ${theme.colors.brown};
 
 	p {
 		display: -webkit-box;
 		font-size: 24px;
 		-webkit-line-clamp: 9;
 		-webkit-box-orient: vertical;
-		overflow: hidden;
+		overflow: hidden;		
 	}
 `;
 
@@ -45,7 +46,6 @@ export const SliderImage = styled(Image)`
 	flex-shrink: 1;
 
 	border-radius: ${theme.radius.blockRadius};
-	// box-shadow: ${theme.layout.shadow.basic};
 `;
 
 export const Controllers = styled.div`

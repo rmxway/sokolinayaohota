@@ -4,10 +4,14 @@ import icofont from '@/public/assets/fonts/icofont/icofont.json';
 
 type IconType = {
 	icon: keyof typeof icofont;
+	size?: number;
 };
 
-const Icon: FC<IconType> = ({ icon }) => (
-	<i className={`icofont icofont-${icon}`} />
+const Icon: FC<IconType> = ({ icon, size }) => (
+	<i
+		className={`icofont icofont-${icon}`}
+		style={{ pointerEvents: 'none', fontSize: size }}
+	/>
 );
 
 export { Icon };

@@ -92,6 +92,7 @@ const SliderBlock: FC = () => {
 														animate="visible"
 														exit="visible"
 														layout
+														color='brown'
 													>
 														{slide.title}
 													</Title>

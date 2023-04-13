@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { YanoneKaffeesatzFont } from '@/pages/fonts';
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
+import { defaultTheme as theme } from '@/theme';
 
 interface CommonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	w100?: boolean;
@@ -84,7 +84,7 @@ const Button = styled.button<ButtonProps>`
 	justify-content: center;
 	align-items: flex-end;
 	color: ${(props) => props.theme.colors.brown};
-	font-family: ${YanoneKaffeesatzFont.style.fontFamily};
+	font-family: ${theme.layout.fonts.header};
 	font-size: 20px;
 	line-height: 1;
 	font-weight: 400;

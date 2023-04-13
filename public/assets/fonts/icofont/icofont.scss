@@ -2,9 +2,9 @@ $icofont-font: 'icofont';
 
 @font-face {
     font-family: $icofont-font;
-    src: url(".//icofont.ttf?287b5cd6b8436c16ebbe634fe210ead7") format("truetype"),
-url(".//icofont.woff?287b5cd6b8436c16ebbe634fe210ead7") format("woff"),
-url(".//icofont.woff2?287b5cd6b8436c16ebbe634fe210ead7") format("woff2");
+    src: url(".//icofont.ttf?dc0d16ee1daac2a1f9fa3507cba9e213") format("truetype"),
+url(".//icofont.woff?dc0d16ee1daac2a1f9fa3507cba9e213") format("woff"),
+url(".//icofont.woff2?dc0d16ee1daac2a1f9fa3507cba9e213") format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -25,14 +25,15 @@ url(".//icofont.woff2?287b5cd6b8436c16ebbe634fe210ead7") format("woff2");
 $icofont-map: (
     'arrow-simple': '\f101',
     'arrow': '\f102',
-    'error': '\f103',
-    'heart': '\f104',
-    'location': '\f105',
-    'phone': '\f106',
-    'secure': '\f107',
-    'star': '\f108',
-    'success': '\f109',
-    'time': '\f10a',
+    'close': '\f103',
+    'error': '\f104',
+    'heart': '\f105',
+    'location': '\f106',
+    'phone': '\f107',
+    'secure': '\f108',
+    'star': '\f109',
+    'success': '\f10a',
+    'time': '\f10b',
 );
 
 .icofont-arrow-simple:before {
@@ -40,6 +41,9 @@ $icofont-map: (
 }
 .icofont-arrow:before {
     content: map-get($icofont-map, 'arrow');
+}
+.icofont-close:before {
+    content: map-get($icofont-map, 'close');
 }
 .icofont-error:before {
     content: map-get($icofont-map, 'error');

@@ -60,7 +60,7 @@ export const Banner = styled.div`
 	gap: 40px;
 	flex-wrap: nowrap;
 	min-height: 600px;
-	height: 90vh;
+	height: 80vh;
 
 	h1,
 	h2 {

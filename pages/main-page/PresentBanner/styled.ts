@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { LedgerFont } from '@/pages/fonts';
 import { defaultTheme as theme } from '@/theme';
 
 export const Wrapper = styled.div`
@@ -35,7 +34,7 @@ export const Wrapper = styled.div`
 `;
 
 export const MainText = styled.div`
-	font-family: ${LedgerFont.style.fontFamily};
+	font-family: ${theme.layout.fonts.old};
 	font-size: 36px;
 	line-height: 1.3;
 

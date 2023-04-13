@@ -1,12 +1,13 @@
 {
     "arrow-simple": 61697,
     "arrow": 61698,
-    "error": 61699,
-    "heart": 61700,
-    "location": 61701,
-    "phone": 61702,
-    "secure": 61703,
-    "star": 61704,
-    "success": 61705,
-    "time": 61706
+    "close": 61699,
+    "error": 61700,
+    "heart": 61701,
+    "location": 61702,
+    "phone": 61703,
+    "secure": 61704,
+    "star": 61705,
+    "success": 61706,
+    "time": 61707
 }

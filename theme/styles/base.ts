@@ -1,7 +1,5 @@
 import { css } from 'styled-components';
 
-import { YanoneKaffeesatzFont, ZenKakuFont } from '@/pages/fonts';
-
 const base = css`
 	*,
 	*::after,
@@ -13,8 +11,14 @@ const base = css`
 	body {
 		overflow-y: scroll;
 		background-color: #fff;
-		font-family: ${ZenKakuFont.style.fontFamily};
+
+		font-family: 'Zen Kaku Gothic Antique', sans-serif;
+		font-weight: 400;
 		font-size: 20px;
+
+		overflow-y: scroll;
+		overflow-x: hidden;
+
 		display: block;
 		line-height: 1.25;
 		padding-bottom: 50px;
@@ -31,7 +35,7 @@ const base = css`
 	h3,
 	h4,
 	h5 {
-		font-family: ${YanoneKaffeesatzFont.style.fontFamily};
+		font-family: 'Yanone Kaffeesatz', sans-serif;
 		font-weight: 600;
 		letter-spacing: 1px;
 		line-height: 1;

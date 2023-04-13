@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-import { YanoneKaffeesatzFont, ZenKakuFont } from '@/pages/fonts';
 import { defaultTheme as theme } from '@/theme';
 
 export const Wrapper = styled.div`
 	position: relative;
-	min-height: 1000px;
-	height: 100vh;
+	min-height: 900px;
 	display: flex;
 	text-align: center;
 	align-items: center;
@@ -30,7 +28,7 @@ export const Advantages = styled.div`
 `;
 
 export const Item = styled.div`
-	width: calc(50% - 20px);
+	width: calc(25% - 20px);
 	min-height: 200px;
 	background-color: #fff;
 	border-radius: ${theme.radius.blockRadius};
@@ -43,7 +41,7 @@ export const Item = styled.div`
 	transition: all 0.2s;
 
 	& > div {
-		font-family: ${YanoneKaffeesatzFont.style.fontFamily};
+		font-family: ${theme.layout.fonts.header};
 		font-size: 24px;
 		font-weight: 600;
 		letter-spacing: 0.5px;
@@ -53,7 +51,6 @@ export const Item = styled.div`
 
 	& > span {
 		color: ${theme.colors.disabled}bb;
-		font-family: ${ZenKakuFont.style.fontFamily};
 		font-size: 20px;
 		line-height: 24px;
 		font-weight: 400;
