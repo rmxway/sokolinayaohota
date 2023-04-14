@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Icon, Navbar, SVG } from '@/components';
 import { Container, Space } from '@/components/Layout';
-import { Modal } from '@/components/Modal';
+import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
 import { useStore } from '@/hooks';
 import bannerImage from '@/public/assets/img/arka.jpg';
@@ -60,12 +60,10 @@ const HeaderBlock: FC = () => {
 				placeholder="blur"
 				blurDataURL={bannerImage.blurDataURL}
 			/>
-			<Modal
+			<ModalFormOrder
 				show={state.modal === 'order'}
 				onClose={() => dispatch(actionChangeModal(''))}
-			>
-				Modal Order
-			</Modal>
+			/>
 		</Wrapper>
 	);
 };

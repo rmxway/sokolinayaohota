@@ -1,29 +1,30 @@
 import { FC } from 'react';
 
+import { Icon } from '@/components';
 import { Container, Title } from '@/components/Layout';
 import { advantages } from '@/mock/advantages';
 
-import { Advantages, Icon, Item, Wrapper } from './styled';
+import { Advantages, IconWrapper, Item, Wrapper } from './styled';
 
 const WhyAreWe: FC = () => (
 	<Wrapper>
 		<Container flex direction="column" gap={40}>
 			<Title color="disabled">Почему мы?</Title>
 			<Advantages>
-				{advantages.map((item) => (
-					<Item key={item.title}>
-						<Icon>
-							<i className={`icofont icofont-${item.icon}`} />
-						</Icon>
-						<div>{item.title}</div>
+				{advantages.map(({ title, icon, description, list }) => (
+					<Item key={title}>
+						<IconWrapper>
+							<Icon icon={`${icon.toString()}`} size={52} />
+						</IconWrapper>
+						<div>{title}</div>
 						<span>
-							{item.description?.map((desc) => (
+							{description?.map((desc) => (
 								<p key={desc}>{desc}</p>
 							))}
-							{item.list && (
+							{list && (
 								<ul>
-									{item.list.map((list) => (
-										<li key={list}>{list}</li>
+									{list.map((item) => (
+										<li key={item}>{item}</li>
 									))}
 								</ul>
 							)}

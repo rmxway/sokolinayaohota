@@ -87,27 +87,29 @@ const UIPage: NextPage = () => (
 
 		<h4>Формы</h4>
 		<h5>Поле ввода</h5>
-		<InputUI name="test" placeholder="Placeholder" />
-		<InputUI
-			name="test"
-			placeholder="Placeholder"
-			value="Text"
-			icon="phone"
-		/>
-		<InputUI
-			name="test"
-			placeholder="Placeholder"
-			success
-			value="Success"
-			icon="success"
-		/>
-		<InputUI
-			name="test"
-			placeholder="Placeholder"
-			danger
-			value="Danger"
-			icon="error"
-		/>
+		<Flexbox direction='column'>
+			<InputUI name="test" placeholder="Placeholder" disabled />
+			<InputUI
+				name="test"
+				placeholder="Placeholder"
+				value="Text"
+				icon="phone"
+			/>
+			<InputUI
+				name="test"
+				placeholder="Placeholder"
+				success
+				value="Success"
+				icon="success"
+			/>
+			<InputUI
+				name="test"
+				placeholder="Placeholder"
+				danger
+				value="Danger"
+				icon="error"
+			/>
+		</Flexbox>
 
 		<h1>Заголовок H1</h1>
 		<h2>Заголовок H2</h2>

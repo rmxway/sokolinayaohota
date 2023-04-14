@@ -28,22 +28,27 @@ export const ModalWindow = styled(motion.div)`
 	border-radius: 20px;
 	box-shadow: ${theme.layout.shadow.big};
 	cursor: default;
+
+	.modal-header {
+		margin-bottom: 20px;
+	}
 `;
 
 export const CloseButton = styled(motion.button)`
 	position: absolute;
-	top: 12px;
-	right: 12px;
-	height: 40px;
-	width: 40px;
+	top: 8px;
+	right: 8px;
+	height: 32px;
+	width: 32px;
 	border-radius: 40px;
 	background-color: ${theme.colors.gray.$1};
 	color: ${theme.colors.disabled};
 	cursor: pointer;
 	transition: all 0.2s;
+	opacity: 0.8;
 
 	&:hover {
-		opacity: 0.8;
+		opacity: 1;
 	}
 
 	&:active {

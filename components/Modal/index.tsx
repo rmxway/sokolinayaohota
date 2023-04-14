@@ -3,6 +3,7 @@ import React, { createRef, memo, ReactNode, useEffect } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import { Icon } from '@/components';
+import { Title } from '@/components/Layout';
 
 import {
 	animationWindow,
@@ -13,12 +14,13 @@ import {
 } from './styled';
 
 interface ModalProps {
+	header?: string;
 	show: boolean;
 	children: ReactNode;
 	onClose?: () => void;
 }
 
-export const Modal = memo(({ show, onClose, children }: ModalProps) => {
+export const Modal = memo(({ header, show, onClose, children }: ModalProps) => {
 	const wrapperRef = createRef<HTMLDivElement>();
 	const closeRef = createRef<HTMLButtonElement>();
 
@@ -62,8 +64,9 @@ export const Modal = memo(({ show, onClose, children }: ModalProps) => {
 					ref={wrapperRef}
 				>
 					<ModalWindow variants={animationWindow} layout>
+						{header && <Title className='modal-header' size="40px">{header}</Title>}
 						<CloseButton ref={closeRef} onClick={clickCloseButton}>
-							<Icon icon="close" size={12} />
+							<Icon icon="close" size={10} />
 						</CloseButton>
 
 						{children}

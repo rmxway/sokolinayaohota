@@ -1,6 +1,8 @@
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { memo, PropsWithChildren } from 'react';
 
+import { Icon } from '@/components';
+
 import { Button, ButtonProps, itemVar, textVar } from './styled';
 
 /**
@@ -21,9 +23,7 @@ const ButtonUI = memo(
 	}: PropsWithChildren<ButtonProps & { animate?: boolean }>) => {
 		const memoText = String(children).split('');
 		const randIndex = Number(Math.random() * Number(new Date()));
-		const itemIcon = icon ? (
-			<i className={`icofont icofont-${icon}`} />
-		) : null;
+		const itemIcon = icon ? <Icon icon={icon} /> : null;
 
 		return (
 			<Button {...props}>

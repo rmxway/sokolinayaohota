@@ -75,7 +75,7 @@ export const Item = styled.div`
 	}
 `;
 
-export const Icon = styled.div`
+export const IconWrapper = styled.div`
 	width: 120px;
 	height: 120px;
 	display: flex;
@@ -86,7 +86,6 @@ export const Icon = styled.div`
 
 	.icofont {
 		color: ${theme.colors.brown};
-		font-size: 52px;
 	}
 `;
 

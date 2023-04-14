@@ -1,18 +1,20 @@
-import { FC } from 'react';
+import { ElementType } from 'react';
 
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
 
-type IconType = {
-	icon: keyof typeof icofont;
+interface IconType {
+	as?: ElementType;
+	active?: boolean;
+	icon: keyof typeof icofont | string;
 	size?: number;
-};
+	className?: string;
+}
 
-const Icon: FC<IconType> = ({ icon, size }) => (
-	<i
-		className={`icofont icofont-${icon}`}
-		style={{ pointerEvents: 'none', fontSize: size }}
+const Icon = ({ as: Tag = 'i', active, icon, size, className }: IconType) => (
+	<Tag
+		className={`${className} icofont icofont-${icon}`}
+		style={{ pointerEvents: active ? 'all' : 'none', fontSize: size }}
 	/>
 );
-
 export { Icon };
 export default Icon;

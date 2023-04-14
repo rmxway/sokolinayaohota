@@ -8,16 +8,12 @@ const base = css`
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
-	body {
-		overflow-y: scroll;
+	body {		
 		background-color: #fff;
 
 		font-family: 'Zen Kaku Gothic Antique', sans-serif;
 		font-weight: 400;
 		font-size: 20px;
-
-		overflow-y: scroll;
-		overflow-x: hidden;
 
 		display: block;
 		line-height: 1.25;

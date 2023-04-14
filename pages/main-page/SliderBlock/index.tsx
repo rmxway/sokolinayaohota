@@ -13,6 +13,7 @@ import {
 } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
+import { Icon } from '@/components';
 import { Container, Flexbox, Title } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { mainSlider } from '@/mock/main-slider';
@@ -92,7 +93,7 @@ const SliderBlock: FC = () => {
 														animate="visible"
 														exit="visible"
 														layout
-														color='brown'
+														color="brown"
 													>
 														{slide.title}
 													</Title>
@@ -113,8 +114,18 @@ const SliderBlock: FC = () => {
 							<span slot="container-end">
 								<Controllers>
 									<Flexbox>
-										<div className="btn-prev icofont icofont-arrow-simple" />
-										<div className="btn-next icofont icofont-arrow-simple" />
+										<Icon
+											icon="arrow-simple"
+											className="btn-prev"
+											as="div"
+											active
+										/>
+										<Icon
+											icon="arrow-simple"
+											className="btn-next"
+											as="div"
+											active
+										/>
 									</Flexbox>
 									<div>
 										<div className="slider-pagination" />

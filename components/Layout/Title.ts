@@ -8,6 +8,10 @@ interface TitleType extends MotionProps {
 	size?: string;
 }
 
+/**
+ * @param {string} color}
+ * @param {string} size}
+ */
 export const Title = styled(motion.div)<TitleType>`
 	font-family: ${theme.layout.fonts.header};
 	font-weight: 600;
