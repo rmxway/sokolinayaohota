@@ -1,5 +1,3 @@
-import InputMask from 'react-input-mask';
-
 import { Icon } from '@/components';
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
 
@@ -14,6 +12,17 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	maskType?: 'phone';
 	icon?: keyof typeof icofont;
 }
+
+/*
+import InputMask from 'react-input-mask';
+
+const mask = () => {
+	if (maskType === 'phone') {
+		return '(999)9999999';
+	}
+	return '';
+};
+*/
 
 /**
  *
@@ -31,56 +40,47 @@ const InputUI = ({
 	danger,
 	disabled,
 	error,
-	maskType,
+	// maskType,
 	className,
 	value,
 	onChange,
 	onBlur,
 	...props
-}: InputProps) => {
-	const mask = () => {
-		if (maskType === 'phone') {
-			return '(999)9999999';
-		}
-		return '';
-	};
-
-	return (
-		<>
-			<InputWrapper
-				className={className}
-				$disabled={disabled}
-				$success={success}
-				$danger={!!error || danger}
-				htmlFor={name}
+}: InputProps) => (
+	<>
+		<InputWrapper
+			className={className}
+			$disabled={disabled}
+			$success={success}
+			$danger={!!error || danger}
+			htmlFor={name}
+			layout
+		>
+			<input
+				// mask={mask()}
+				value={value}
+				onChange={onChange}
+				onBlur={onBlur}
+				id={name}
+				autoComplete="off"
+				{...props}
+			/>
+			{icon ? <Icon icon={icon} /> : null}
+			<div />
+		</InputWrapper>
+		{error ? (
+			<InputError
+				variants={animateError}
+				initial="start"
+				animate="end"
+				exit="end"
 				layout
 			>
-				<InputMask
-					mask={mask()}
-					value={value}
-					onChange={onChange}
-					onBlur={onBlur}
-					id={name}
-					autoComplete="off"
-					{...props}
-				/>
-				{icon ? <Icon icon={icon} /> : null}
-				<div />
-			</InputWrapper>
-			{error ? (
-				<InputError
-					variants={animateError}
-					initial="start"
-					animate="end"
-					exit="end"
-					layout
-				>
-					{error}
-				</InputError>
-			) : null}
-		</>
-	);
-};
+				{error}
+			</InputError>
+		) : null}
+	</>
+);
 
 export { InputUI };
 export default InputUI;

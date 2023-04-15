@@ -1,3 +1,4 @@
-export * from './Icon';
-export * from './Navbar';
-export * from './SVG';
+export { Icon } from './Icon';
+export { Navbar } from './Navbar';
+export { Question } from './Question';
+export { SVG } from './SVG';

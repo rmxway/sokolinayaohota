@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { createRef, memo, ReactNode, useEffect } from 'react';
+import React, { createRef, ReactNode, useEffect } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import { Icon } from '@/components';
@@ -20,7 +20,7 @@ interface ModalProps {
 	onClose?: () => void;
 }
 
-export const Modal = memo(({ header, show, onClose, children }: ModalProps) => {
+export const Modal = ({ header, show, onClose, children }: ModalProps) => {
 	const wrapperRef = createRef<HTMLDivElement>();
 	const closeRef = createRef<HTMLButtonElement>();
 
@@ -63,8 +63,12 @@ export const Modal = memo(({ header, show, onClose, children }: ModalProps) => {
 					onClick={clickBackdrop}
 					ref={wrapperRef}
 				>
-					<ModalWindow variants={animationWindow} layout>
-						{header && <Title className='modal-header' size="40px">{header}</Title>}
+					<ModalWindow variants={animationWindow}>
+						{header && (
+							<Title className="modal-header" size="40px">
+								{header}
+							</Title>
+						)}
 						<CloseButton ref={closeRef} onClick={clickCloseButton}>
 							<Icon icon="close" size={10} />
 						</CloseButton>
@@ -75,6 +79,6 @@ export const Modal = memo(({ header, show, onClose, children }: ModalProps) => {
 			)}
 		</AnimatePresence>
 	);
-});
+};
 
 export default Modal;

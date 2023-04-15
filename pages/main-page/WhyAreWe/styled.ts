@@ -5,6 +5,7 @@ import { defaultTheme as theme } from '@/theme';
 export const Wrapper = styled.div`
 	position: relative;
 	min-height: 900px;
+	height: 100vh;
 	display: flex;
 	text-align: center;
 	align-items: center;
@@ -13,10 +14,6 @@ export const Wrapper = styled.div`
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-
-	h1 {
-		color: ${theme.colors.disabled};
-	}
 `;
 
 export const Advantages = styled.div`

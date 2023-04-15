@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 interface FlexboxTypes {
@@ -16,7 +17,7 @@ interface FlexboxTypes {
 	gap?: number;
 }
 
-const Flexbox = styled.div<FlexboxTypes>`
+const Flexbox = styled(motion.div)<FlexboxTypes>`
 	display: flex;
 	flex-wrap: ${(props) => (props.nowrap ? 'nowrap' : 'wrap')};
 	justify-content: ${(props) => props.justify};

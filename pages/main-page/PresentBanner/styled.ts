@@ -6,8 +6,7 @@ export const Wrapper = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
-	min-height: 600px;
-	height: 100vh;
+	min-height: 900px;
 	background-image: url('assets/img/wrapper-text.jpg');
 	background-size: cover;
 	background-position: center;

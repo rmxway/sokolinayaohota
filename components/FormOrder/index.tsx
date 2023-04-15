@@ -1,5 +1,4 @@
 import { Formik, FormikValues } from 'formik';
-import { AnimatePresence } from 'framer-motion';
 import { FC } from 'react';
 import * as Yup from 'yup';
 
@@ -11,6 +10,9 @@ import {
 	regexpNumber,
 	regexpWords,
 } from '@/services/regexp';
+import { fadeInOut } from '@/theme/styles/motionAnimations';
+
+import { FinalText } from './styled';
 
 type FormOrderProps = {
 	name?: string;
@@ -51,55 +53,63 @@ export const FormOrder: FC<FormOrderProps> = () => (
 			handleChange,
 			handleSubmit,
 			isValid,
+			isSubmitting,
 		}) => (
-			<form onSubmit={handleSubmit}>
-				<AnimatePresence>
-					<Flexbox direction="column">
-						<InputUI
-							type="text"
-							id="name"
-							name="name"
-							error={
-								touched.name && errors.name ? errors.name : null
-							}
-							placeholder="Имя *"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.name}
-						/>
-						<InputUI
-							type="email"
-							id="email"
-							name="email"
-							error={
-								touched.email && errors.email
-									? errors.email
-									: null
-							}
-							placeholder="Электронная почта *"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.email}
-						/>
-						<InputUI
-							type="text"
-							id="phone"
-							name="phone"
-							error={
-								touched.phone && errors.phone
-									? errors.phone
-									: null
-							}
-							placeholder="Телефон"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.phone}
-						/>
-						<ButtonUI primary type="submit" disabled={!isValid}>
-							Отправить
-						</ButtonUI>
-					</Flexbox>
-				</AnimatePresence>
+			<form onSubmit={handleSubmit} style={{ position: 'relative' }}>
+				<Flexbox
+					direction="column"
+					variants={fadeInOut}
+					animate={isSubmitting ? 'start' : 'end'}
+					key="Flex"
+					layout
+				>
+					<InputUI
+						type="text"
+						id="name"
+						name="name"
+						error={touched.name && errors.name ? errors.name : null}
+						placeholder="Имя *"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.name}
+					/>
+					<InputUI
+						type="email"
+						id="email"
+						name="email"
+						error={
+							touched.email && errors.email ? errors.email : null
+						}
+						placeholder="Электронная почта *"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.email}
+					/>
+					<InputUI
+						type="text"
+						id="phone"
+						name="phone"
+						error={
+							touched.phone && errors.phone ? errors.phone : null
+						}
+						placeholder="Телефон"
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={values.phone}
+					/>
+					<ButtonUI primary type="submit" disabled={!isValid}>
+						Отправить
+					</ButtonUI>
+				</Flexbox>
+
+				<FinalText
+					variants={fadeInOut}
+					animate={isSubmitting ? 'end' : 'start'}
+				>
+					Спасибо!
+					<br />
+					В ближайшее время <br />с вами свяжется наш менеджер.
+				</FinalText>
 			</form>
 		)}
 	</Formik>
