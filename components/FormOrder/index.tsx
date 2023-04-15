@@ -1,39 +1,46 @@
-import { Formik } from 'formik';
+import { Formik, FormikValues } from 'formik';
 import { AnimatePresence } from 'framer-motion';
 import { FC } from 'react';
 import * as Yup from 'yup';
 
 import { Flexbox } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
+import {
+	regexpEmail,
+	regexpFilterNumber,
+	regexpNumber,
+	regexpWords,
+} from '@/services/regexp';
 
 type FormOrderProps = {
 	name?: string;
 };
 
-const regexEmail = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
-const regexWords = /^[а-яА-Яa-zA-Z]/;
-const regexNumber = /^[0-9]+$/;
-
 const validationSchema = Yup.object().shape({
 	name: Yup.string()
-		.matches(regexWords, 'Не используйте цифры')
+		.matches(regexpWords, 'Не используйте цифры')
 		.min(4, 'Очень короткое имя')
 		.max(25, 'Должно быть не больше 25 символов')
 		.required('Обязательно для заполнения'),
 	email: Yup.string()
-		.matches(regexEmail, 'Неправильный email')
+		.matches(regexpEmail, 'Неправильный email')
 		.required('Обязательно для заполнения'),
 	phone: Yup.string()
-		.matches(regexNumber, 'Неправильный номер телефона')
-		.min(10, 'Неправильный номер телефона')
-		.required('Обязательно для заполнения'),
+		.matches(regexpNumber, 'Неправильный номер телефона')
+		.trim(),
 });
+
+const onSubmit = (values: FormikValues) => {
+	const { phone } = values;
+	const data = { ...values, phone: phone.replace(regexpFilterNumber, '') };
+	console.log(data);
+};
 
 export const FormOrder: FC<FormOrderProps> = () => (
 	<Formik
 		initialValues={{ name: '', email: '', phone: '' }}
 		validationSchema={validationSchema}
-		onSubmit={(values) => console.log(values)}
+		onSubmit={onSubmit}
 		validateOnMount
 	>
 		{({
@@ -78,7 +85,6 @@ export const FormOrder: FC<FormOrderProps> = () => (
 							type="text"
 							id="phone"
 							name="phone"
-							maxLength={10}
 							error={
 								touched.phone && errors.phone
 									? errors.phone

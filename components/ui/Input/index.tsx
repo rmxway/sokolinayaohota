@@ -49,8 +49,9 @@ const InputUI = ({
 		<>
 			<InputWrapper
 				className={className}
-				danger={Boolean(error) || danger}
-				{...{ success, disabled }}
+				$disabled={disabled}
+				$success={success}
+				$danger={!!error || danger}
 				htmlFor={name}
 				layout
 			>

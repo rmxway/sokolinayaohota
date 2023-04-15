@@ -67,9 +67,8 @@ const mixinButton = ($background = '#fff', $color = '#fff') => css`
 
 	&:disabled,
 	&:disabled:hover {
-		background: ${(props) =>
-			props.theme.colors.gradients.disabled}!important;
-		color: ${(props) => props.theme.colors.disabled};
+		background: ${theme.colors.gradients.disabled}!important;
+		color: ${theme.colors.disabled};
 		pointer-events: none;
 		cursor: default;
 	}
@@ -78,19 +77,19 @@ const mixinButton = ($background = '#fff', $color = '#fff') => css`
 const Button = styled.button<ButtonProps>`
 	appearance: none;
 	background: none;
-	border-radius: ${(props) => props.theme.radius.borderRadius};
+	border-radius: ${theme.radius.borderRadius};
 	padding: ${(props) => (props.mobile ? '8px 16px 8px' : '16px 16px 13px')};
+	height: ${(props) => (props.mobile ? '40px' : '52px')};
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	color: ${(props) => props.theme.colors.brown};
+	color: ${theme.colors.brown};
 	font-family: ${theme.layout.fonts.header};
 	font-size: 20px;
 	line-height: 1;
 	font-weight: 400;
 	text-transform: uppercase;
 	font-style: normal;
-	height: ${(props) => (props.mobile ? '40px' : '52px')};
 	letter-spacing: 0.02em;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -107,18 +106,14 @@ const Button = styled.button<ButtonProps>`
 	${(props) => {
 		if (props?.primary)
 			return mixinButton(
-				props.theme.colors.gradients.golden,
-				props.theme.colors.brown
+				theme.colors.gradients.golden,
+				theme.colors.brown
 			);
 		if (props?.brown)
-			return mixinButton(
-				props.theme.colors.brown,
-				props.theme.colors.primary
-			);
-		if (props?.success)
-			return mixinButton(props.theme.colors.success, '#fff');
+			return mixinButton(theme.colors.brown, theme.colors.primary);
+		if (props?.success) return mixinButton(theme.colors.success, '#fff');
 		if (props?.danger)
-			return mixinButton(props.theme.colors.gradients.rubin, '#fff');
+			return mixinButton(theme.colors.gradients.rubin, '#fff');
 		return null;
 	}}
 
