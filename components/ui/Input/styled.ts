@@ -30,6 +30,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 		right: 0;
 		bottom: 0;
 		content: '';
+		background-color: #fff;
 		border-radius: ${theme.radius.borderRadius};
 		border: 1px solid #aaa;
 		z-index: 1;

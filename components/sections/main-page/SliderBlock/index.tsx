@@ -28,7 +28,7 @@ import {
 	Wrapper,
 } from './styled';
 
-const SliderBlock: FC = () => {
+export const SliderBlock: FC = () => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
 
@@ -156,5 +156,4 @@ const SliderBlock: FC = () => {
 	);
 };
 
-export { SliderBlock };
 export default SliderBlock;

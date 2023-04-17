@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 import { Icon, Navbar, SVG } from '@/components';
 import { Container, Space } from '@/components/Layout';
-import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
 import { useStore } from '@/hooks';
 import bannerImage from '@/public/assets/img/arka.jpg';
@@ -12,7 +11,7 @@ import { Logo } from './Logo';
 import { Banner, BannerImage, Header, TopPanel, Wrapper } from './styled';
 
 const HeaderBlock: FC = () => {
-	const { state, dispatch } = useStore();
+	const { dispatch } = useStore();
 
 	return (
 		<Wrapper>
@@ -59,10 +58,6 @@ const HeaderBlock: FC = () => {
 				height={bannerImage.height}
 				placeholder="blur"
 				blurDataURL={bannerImage.blurDataURL}
-			/>
-			<ModalFormOrder
-				show={state.modal === 'order'}
-				onClose={() => dispatch(actionChangeModal(''))}
 			/>
 		</Wrapper>
 	);

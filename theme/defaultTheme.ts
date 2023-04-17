@@ -8,6 +8,7 @@ const defaultTheme: DefaultTheme = {
 		danger: '#FF4773',
 		disabled: '#958888',
 		brown: '#42210B',
+		white: '#FFFFFF',
 		gray: {
 			$1: '#ddd',
 			$2: '#ececec',

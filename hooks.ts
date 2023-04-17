@@ -1,17 +1,12 @@
-import { useReducer } from 'react';
+import { useContext } from 'react';
 
-import {
-	DispatchType,
-	initialState,
-	InitialStateType,
-	reducer,
-} from '@/store/reducers';
+import { AppContext, DispatchType, InitialStateType } from '@/store/reducers';
 
 export const useStore = (): {
 	state: InitialStateType;
 	dispatch: DispatchType;
 } => {
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const { state, dispatch } = useContext(AppContext);
 
 	return { state, dispatch };
 };

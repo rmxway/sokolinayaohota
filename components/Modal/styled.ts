@@ -23,7 +23,7 @@ export const ModalWindow = styled(motion.div)`
 	z-index: 1;
 	background-color: #fff;
 	padding: 40px;
-	min-width: 500px;
+	min-width: 400px;
 	min-height: 250px;
 	border-radius: 20px;
 	box-shadow: ${theme.layout.shadow.big};

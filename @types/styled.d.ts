@@ -6,6 +6,7 @@ interface Colors {
     danger: string;
 	disabled: string;
     brown: string;
+	white: string;
 	gray: {
 		$1: string;
 		$2: string;

@@ -6,7 +6,7 @@ import { advantages } from '@/mock/advantages';
 
 import { Advantages, IconWrapper, Item, Wrapper } from './styled';
 
-const WhyAreWe: FC = () => (
+export const WhyAreWe: FC = () => (
 	<Wrapper>
 		<Container flex direction="column" gap={40}>
 			<Title color="disabled">Почему мы?</Title>
@@ -36,5 +36,4 @@ const WhyAreWe: FC = () => (
 	</Wrapper>
 );
 
-export { WhyAreWe };
 export default WhyAreWe;
