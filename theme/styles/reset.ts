@@ -136,6 +136,10 @@ const reset = css`
 		background: none;
         font-family: inherit;
 	}
+	
+	a {
+		text-decoration: none;
+	}
 `;
 
 export { reset };

@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { createRef, ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import { Icon } from '@/components';
@@ -13,16 +13,23 @@ import {
 	ModalWrapper,
 } from './styled';
 
-interface ModalProps {
+export interface ModalProps {
 	header?: string;
 	show: boolean;
-	children: ReactNode;
+	fullscreen?: boolean;
 	onClose?: () => void;
+	children?: ReactNode;
 }
 
-export const Modal = ({ header, show, onClose, children }: ModalProps) => {
-	const wrapperRef = createRef<HTMLDivElement>();
-	const closeRef = createRef<HTMLButtonElement>();
+export const Modal = ({
+	header,
+	show,
+	fullscreen,
+	onClose,
+	children,
+}: ModalProps) => {
+	const wrapperRef = useRef<HTMLDivElement>(null);
+	const closeRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
 		if (show) {
@@ -34,49 +41,43 @@ export const Modal = ({ header, show, onClose, children }: ModalProps) => {
 		};
 	}, [show]);
 
-	const closeFunction = (
-		target: EventTarget,
-		current: HTMLButtonElement | HTMLDivElement | null
-	) => {
-		if (target === current) {
+	const handleClose = (e: React.MouseEvent) => {
+		const { target } = e;
+
+		if (target === wrapperRef.current || target === closeRef.current) {
 			return onClose && onClose();
 		}
 		return null;
 	};
 
-	const clickCloseButton = (e: React.MouseEvent) => {
-		closeFunction(e.target, closeRef.current);
-	};
-
-	const clickBackdrop = (e: React.MouseEvent) => {
-		closeFunction(e.target, wrapperRef.current);
-	};
-
 	return (
-		<AnimatePresence mode="sync">
-			{show && (
+		<AnimatePresence>
+			{show ? (
 				<ModalWrapper
 					variants={animationWrapper}
 					initial="start"
 					animate="end"
 					exit="start"
-					onClick={clickBackdrop}
+					onClick={handleClose}
 					ref={wrapperRef}
 				>
-					<ModalWindow variants={animationWindow}>
+					<ModalWindow
+						variants={animationWindow}
+						$fullscreen={fullscreen}
+					>
 						{header && (
 							<Title className="modal-header" size="40px">
 								{header}
 							</Title>
 						)}
-						<CloseButton ref={closeRef} onClick={clickCloseButton}>
+						<CloseButton ref={closeRef}>
 							<Icon icon="close" size={10} />
 						</CloseButton>
 
 						{children}
 					</ModalWindow>
 				</ModalWrapper>
-			)}
+			) : null}
 		</AnimatePresence>
 	);
 };

@@ -4,22 +4,29 @@ import { defaultTheme as theme } from '@/theme';
 
 export const Wrapper = styled.div`
 	position: relative;
-	min-height: 900px;
-	height: 100vh;
 	display: flex;
 	text-align: center;
 	align-items: center;
 	padding: 80px 0;
-	background-image: url('assets/img/why-we-are.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
+
+	&:before {
+		position: absolute;
+		content: '';
+        top: 0;
+		left: 0;
+		width: 100%;
+		min-height: 950px;
+		background-image: url('assets/img/why-we-are.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
 `;
 
 export const Advantages = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: stretch;
 	gap: 20px;
 `;

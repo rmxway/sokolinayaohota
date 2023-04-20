@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
 export const FormStyled = styled.form<{ $fetching?: boolean }>`
+	position: relative;
 	opacity: 1;
 	max-width: 400px;
 	width: 100%;
@@ -16,7 +17,7 @@ export const FormStyled = styled.form<{ $fetching?: boolean }>`
 
 export const FinalText = styled(motion.div)<{ $valid: boolean }>`
 	position: absolute;
-	bottom: 0;
+	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
@@ -25,7 +26,7 @@ export const FinalText = styled(motion.div)<{ $valid: boolean }>`
 	justify-content: center;
 	text-align: center;
 	padding: 56px 0 80px;
-	z-index: -1;
+	z-index: 0;
 	font-family: ${(props) => props.theme.layout.fonts.header};
 	color: ${(props) =>
 		!props.$valid ? props.theme.colors.success : props.theme.colors.danger};

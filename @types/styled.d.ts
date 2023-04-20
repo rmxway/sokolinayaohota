@@ -36,6 +36,7 @@ interface Layout {
     shadow: {
 		basic: string;
 		big: string;
+		gallery: string;
 	};
 }
 

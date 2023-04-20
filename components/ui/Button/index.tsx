@@ -1,9 +1,8 @@
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { memo, PropsWithChildren } from 'react';
 
 import { Icon } from '@/components';
 
-import { Button, ButtonProps, itemVar, textVar } from './styled';
+import { Button, ButtonProps } from './styled';
 
 /**
  * @prop {boolean} w100 - на всю ширину
@@ -15,43 +14,12 @@ import { Button, ButtonProps, itemVar, textVar } from './styled';
  * @example <ButtonUI mobile icon="phone">Телефон</ButtonUI>
  */
 const ButtonUI = memo(
-	({
-		children,
-		animate = false,
-		icon,
-		...props
-	}: PropsWithChildren<ButtonProps & { animate?: boolean }>) => {
-		const memoText = String(children).split('');
-		const randIndex = Number(Math.random() * Number(new Date()));
+	({ children, icon, ...props }: PropsWithChildren<ButtonProps>) => {
 		const itemIcon = icon ? <Icon icon={icon} /> : null;
 
 		return (
 			<Button {...props}>
-				{animate ? (
-					<AnimatePresence initial={false} mode="wait">
-						<LayoutGroup key={randIndex}>
-							<motion.div
-								layout
-								variants={textVar}
-								initial="hidden"
-								animate="visible"
-								exit="hidden"
-							>
-								{memoText.map((item) => (
-									<motion.span
-										layout
-										variants={itemVar}
-										key={Number(Math.random())}
-									>
-										{item}
-									</motion.span>
-								))}
-							</motion.div>
-						</LayoutGroup>
-					</AnimatePresence>
-				) : (
-					children
-				)}
+				{children}
 				{itemIcon}
 			</Button>
 		);

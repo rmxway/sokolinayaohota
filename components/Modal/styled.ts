@@ -1,5 +1,5 @@
 import { motion, Variants } from 'framer-motion';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
 
@@ -18,7 +18,7 @@ export const ModalWrapper = styled(motion.div)`
 	backdrop-filter: blur(10px);
 `;
 
-export const ModalWindow = styled(motion.div)`
+export const ModalWindow = styled(motion.div)<{ $fullscreen?: boolean }>`
 	position: relative;
 	z-index: 1;
 	background-color: #fff;
@@ -26,12 +26,23 @@ export const ModalWindow = styled(motion.div)`
 	min-width: 400px;
 	min-height: 250px;
 	border-radius: 20px;
+	margin: 0 40px;
 	box-shadow: ${theme.layout.shadow.big};
 	cursor: default;
 
 	.modal-header {
 		margin-bottom: 20px;
 	}
+
+	${props => props.$fullscreen && css`
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		border-radius: 0;
+		display: flex;
+		align-items: flex-start;
+		overflow-y: auto;
+	`}
 `;
 
 export const CloseButton = styled(motion.button)`
@@ -41,7 +52,6 @@ export const CloseButton = styled(motion.button)`
 	height: 32px;
 	width: 32px;
 	border-radius: 40px;
-	background-color: ${theme.colors.gray.$1};
 	color: ${theme.colors.disabled};
 	cursor: pointer;
 	transition: all 0.2s;

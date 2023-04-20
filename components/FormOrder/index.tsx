@@ -1,41 +1,17 @@
 import { Formik, FormikValues } from 'formik';
 import { FC, memo, useState } from 'react';
-import * as Yup from 'yup';
 
 import { Flexbox } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
-import {
-	regexpEmail,
-	regexpFilterNumber,
-	regexpNumber,
-	regexpWords,
-} from '@/services/regexp';
+import { regexpFilterNumber } from '@/services/regexp';
 import { fadeInOut } from '@/theme/styles/motionAnimations';
 
 import { FinalText, FormStyled } from './styled';
+import { validationSchema } from './validationSchema';
 
 type FormOrderProps = {
 	fetchUrl?: string;
 };
-
-const validationSchema = Yup.object().shape({
-	name: Yup.string()
-		.matches(regexpWords, 'Не используйте цифры')
-		.min(4, 'Очень короткое имя')
-		.max(25, 'Должно быть не больше 25 символов')
-		.required('Обязательно для заполнения'),
-	email: Yup.string()
-		.matches(regexpEmail, 'Неправильный email')
-		.required('Обязательно для заполнения'),
-	phone: Yup.string()
-		.matches(regexpNumber, 'Неправильный номер телефона')
-		.trim(),
-});
-
-// temp function
-const sleep = (ms: number) =>
-	// eslint-disable-next-line no-promise-executor-return
-	new Promise((r): NodeJS.Timeout => setTimeout(r, ms));
 
 export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
 	const [error, setError] = useState('');
@@ -50,32 +26,24 @@ export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
 		};
 
 		try {
-			await sleep(1000);
-			console.log(data);
+			await new Promise((r) => {
+				setTimeout(r, 1000);
+			});
+
+			if (fetchUrl) {
+				await fetch(fetchUrl, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(data),
+				});
+			}
 		} catch (e) {
-			console.log(e);
 			setError((e as Error).message);
 		} finally {
 			setIsComplete((prev) => !prev);
 		}
-
-		// try {
-		// 	await sleep(1000);
-
-		// 	const resp = await fetch(fetchUrl, {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		},
-		// 		body: JSON.stringify(data),
-		// 	});
-		// 	// const json = await resp.json();
-		// 	console.log(data);
-		// } catch (e) {
-		// 	setError('Что то пошло не так...');
-		// } finally {
-		// 	setIsComplete((prev) => !prev);
-		// }
 	};
 
 	return (

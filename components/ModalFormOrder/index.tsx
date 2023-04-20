@@ -1,17 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { FormOrder } from '@/components/FormOrder';
-import { Modal } from '@/components/Modal';
+import { Modal, ModalProps } from '@/components/Modal';
 
-type ModalFormOrderProps = {
-	show: boolean;
-	onClose: () => void;
-};
-
-export const ModalFormOrder: React.FC<ModalFormOrderProps> = ({
-	show,
-	onClose,
-}) => (
+export const ModalFormOrder: FC<ModalProps> = ({ show, onClose }) => (
 	<Modal show={show} onClose={onClose} header="Заказать зал">
 		<FormOrder />
 	</Modal>

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { FinalText } from '@/components/FormOrder/styled';
 import { Title } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 
@@ -11,7 +12,6 @@ export const Wrapper = styled.div`
 	background-size: cover;
 	background-position: center;
 	background-color: aquamarine;
-	color: ${theme.colors.primary};
 	text-align: center;
 	padding: 80px 0;
 
@@ -23,6 +23,12 @@ export const Wrapper = styled.div`
 			font-size: 62px;
 			color: ${theme.colors.primary};
 		}
+	}
+
+	${FinalText} {
+		color: ${!FinalText.defaultProps?.$valid
+			? theme.colors.white
+			: theme.colors.danger};
 	}
 `;
 
@@ -42,6 +48,7 @@ export const Discount = styled.div`
 		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		color: ${theme.colors.primary};
 	}
 `;
 

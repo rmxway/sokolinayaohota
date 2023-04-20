@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import {
 	DiscountBlock,
+	GalleryBlock,
 	PresentBanner,
 	Questions,
 	SliderBlock,
@@ -19,7 +20,7 @@ export const MainPage: NextPage = () => {
 			<SliderBlock />
 			<PresentBanner />
 			<WhyAreWe />
-			{/* <div>Gallery</div> */}
+			<GalleryBlock />
 			<Questions />
 			<DiscountBlock />
 			{/* <div>Contacts</div> */}

@@ -14,7 +14,8 @@ interface FlexboxTypes {
 		| 'space-evenly';
 	align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
 	direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-	gap?: number;
+	gap?: number | string;
+	$w100?: boolean;
 }
 
 const Flexbox = styled(motion.div)<FlexboxTypes>`
@@ -24,6 +25,7 @@ const Flexbox = styled(motion.div)<FlexboxTypes>`
 	align-items: ${(props) => props.align};
 	flex-direction: ${(props) => props.direction};
 	gap: ${(props) => props.gap}px;
+	width: ${props => props.$w100? '100%' : 'auto'};
 `;
 
 export { Flexbox };

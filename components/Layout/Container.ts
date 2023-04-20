@@ -6,6 +6,7 @@ type ContainerType = {
 	mt?: boolean;
 	flex?: boolean;
 	center?: boolean;
+	noPadding?: boolean;
 	spaceBetween?: boolean;
 	gap?: number;
 	direction?: 'row' | 'column';
@@ -13,7 +14,7 @@ type ContainerType = {
 
 const Container = styled.div<ContainerType>`
 	position: relative;
-	padding: 0 20px;
+	padding: 0 ${(props) => (props.noPadding ? '0' : '20px')};
 	width: 100%;
 	max-width: 100%;
 	margin: 0 auto;
@@ -29,6 +30,7 @@ const Container = styled.div<ContainerType>`
 		props.flex &&
 		css`
 			display: flex;
+			justify-content: center;
 		`}
 
 	${(props) =>
