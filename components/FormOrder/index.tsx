@@ -1,5 +1,5 @@
 import { Formik, FormikValues } from 'formik';
-import { FC, memo, useState } from 'react';
+import { FC, useState } from 'react';
 
 import { Flexbox } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
@@ -11,9 +11,10 @@ import { validationSchema } from './validationSchema';
 
 type FormOrderProps = {
 	fetchUrl?: string;
+	name: string;
 };
 
-export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
+export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 	const [error, setError] = useState('');
 	const [isComplete, setIsComplete] = useState(false);
 
@@ -63,7 +64,11 @@ export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
 				isValid,
 				isSubmitting,
 			}) => (
-				<FormStyled onSubmit={handleSubmit} $fetching={isSubmitting}>
+				<FormStyled
+					onSubmit={handleSubmit}
+					$fetching={isSubmitting}
+					name={name}
+				>
 					<Flexbox
 						direction="column"
 						variants={fadeInOut}
@@ -87,6 +92,7 @@ export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
 							type="email"
 							id="email"
 							name="email"
+							icon="mail"
 							error={
 								touched.email && errors.email
 									? errors.email
@@ -101,6 +107,7 @@ export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
 							type="text"
 							id="phone"
 							name="phone"
+							icon="phone"
 							error={
 								touched.phone && errors.phone
 									? errors.phone
@@ -111,7 +118,7 @@ export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
 							onBlur={handleBlur}
 							value={values.phone}
 						/>
-						<ButtonUI primary type="submit" disabled={!isValid}>
+						<ButtonUI danger type="submit" disabled={!isValid}>
 							Отправить
 						</ButtonUI>
 					</Flexbox>
@@ -134,6 +141,6 @@ export const FormOrder: FC<FormOrderProps> = memo(({ fetchUrl }) => {
 			)}
 		</Formik>
 	);
-});
+};
 
 export default FormOrder;

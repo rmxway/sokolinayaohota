@@ -21,6 +21,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 
 	.icofont {
 		color: ${theme.colors.gray.$6};
+		z-index: 2;
 	}
 
 	& > div {
@@ -91,6 +92,7 @@ export const InputError = styled(motion.div)`
 	color: ${theme.colors.danger};
 	font-size: 12px;
 	margin: -15px 0 15px;
+	text-align: left
 `;
 
 export const animateError: Variants = {

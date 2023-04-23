@@ -14,7 +14,7 @@ const HeaderBlock: FC = () => {
 	const { dispatch } = useStore();
 
 	return (
-		<Wrapper>
+		<Wrapper id="header">
 			<TopPanel>
 				<Container flex center gap={8}>
 					<Icon icon="location" />

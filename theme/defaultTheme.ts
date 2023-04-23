@@ -36,8 +36,8 @@ const defaultTheme: DefaultTheme = {
 		containerWidth: '1024px',
 		shadow: {
 			basic: '0px 4px 14px rgba(0, 0, 0, 0.3)',
-			big: '0px 8px 59px rgba(66, 33, 11, 0.31)',
-			gallery: '0px 23px 28px -13px rgba(66, 33, 11, 0.5)',
+			big: '0px 8px 59px rgba(0, 0, 0, 0.31)',
+			gallery: '0px 23px 28px -13px rgba(0, 0, 0, 0.5)',
 		},
 	},
 	radius: {

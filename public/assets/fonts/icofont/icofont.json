@@ -5,9 +5,10 @@
     "error": 61700,
     "heart": 61701,
     "location": 61702,
-    "phone": 61703,
-    "secure": 61704,
-    "star": 61705,
-    "success": 61706,
-    "time": 61707
+    "mail": 61703,
+    "phone": 61704,
+    "secure": 61705,
+    "star": 61706,
+    "success": 61707,
+    "time": 61708
 }

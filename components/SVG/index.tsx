@@ -1,18 +1,24 @@
-// import Image from 'next/image';
-import { FC, memo } from 'react';
+import { FC } from 'react';
 
 import BarDecor from '@/public/assets/svg/bardecor-line.svg';
 import BarDecor2 from '@/public/assets/svg/bardecor-line-2.svg';
 import LogoDecor from '@/public/assets/svg/logo-decor.svg';
 import { defaultTheme } from '@/theme';
 
-type SVGType = {
+interface SVGType {
 	name: 'BarDecor' | 'BarDecor2' | 'LogoDecor';
 	color?: 'white' | 'golden';
 	width?: string;
-};
+	inverse?: boolean;
+}
 
-const SVG: FC<SVGType> = memo(({ name, color, width }) => {
+export const SVG: FC<SVGType> = ({
+	name,
+	color,
+	width,
+	inverse,
+	...propsComponent
+}) => {
 	const codeColor = () => {
 		switch (color) {
 			case 'white':
@@ -27,6 +33,8 @@ const SVG: FC<SVGType> = memo(({ name, color, width }) => {
 	const props = {
 		fill: codeColor(),
 		width,
+		style: { transform: `rotate(${inverse ? '180deg' : '0deg'})` },
+		...propsComponent,
 	};
 
 	switch (name) {
@@ -39,7 +47,6 @@ const SVG: FC<SVGType> = memo(({ name, color, width }) => {
 		default:
 			return null;
 	}
-});
+};
 
-export { SVG };
 export default SVG;

@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'icofont';
-    src: url(".//icofont.ttf?dc0d16ee1daac2a1f9fa3507cba9e213") format("truetype"),
-url(".//icofont.woff?dc0d16ee1daac2a1f9fa3507cba9e213") format("woff"),
-url(".//icofont.woff2?dc0d16ee1daac2a1f9fa3507cba9e213") format("woff2");
+    src: url(".//icofont.ttf?673a4c157932de19f81ec5267846867b") format("truetype"),
+url(".//icofont.woff?673a4c157932de19f81ec5267846867b") format("woff"),
+url(".//icofont.woff2?673a4c157932de19f81ec5267846867b") format("woff2");
 }
 
 i[class^='icofont-']:before, i[class*=' icofont-']:before {
@@ -35,18 +35,21 @@ i[class^='icofont-']:before, i[class*=' icofont-']:before {
 .icofont-location:before {
     content: '\f106';
 }
-.icofont-phone:before {
+.icofont-mail:before {
     content: '\f107';
 }
-.icofont-secure:before {
+.icofont-phone:before {
     content: '\f108';
 }
-.icofont-star:before {
+.icofont-secure:before {
     content: '\f109';
 }
-.icofont-success:before {
+.icofont-star:before {
     content: '\f10a';
 }
-.icofont-time:before {
+.icofont-success:before {
     content: '\f10b';
+}
+.icofont-time:before {
+    content: '\f10c';
 }

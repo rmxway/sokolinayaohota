@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+import { defaultTheme as theme } from '@/theme';
+
 export const Wrapper = styled.div`
 	position: relative;
 	display: block;
@@ -12,7 +14,7 @@ export const TopPanel = styled.div`
 	height: 50px;
 	display: flex;
 	align-items: center;
-	color: ${(props) => props.theme.colors.brown};
+	color: ${theme.colors.brown};
 	background-color: rgba(255, 255, 255, 0.75);
 	font-weight: medium;
 	font-size: 18px;
@@ -51,6 +53,19 @@ export const BannerImage = styled(Image)`
 	z-index: -1;
 `;
 
+export const LogoText = styled.div`
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	color: ${theme.colors.brown};
+	font-family: ${theme.layout.fonts.old};
+	font-size: 20px;
+
+	& > span {
+		font-family: ${theme.layout.fonts.header};
+	}
+`;
+
 export const Banner = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -73,7 +88,7 @@ export const Banner = styled.div`
 
 	h2 {
 		font-size: 72px;
-		color: ${(props) => props.theme.colors.primary};
+		color: ${theme.colors.primary};
 	}
 `;
 

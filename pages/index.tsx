@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import {
+	ContactsBlock,
 	DiscountBlock,
 	GalleryBlock,
 	PresentBanner,
@@ -21,9 +22,9 @@ export const MainPage: NextPage = () => {
 			<PresentBanner />
 			<WhyAreWe />
 			<GalleryBlock />
-			<Questions />
 			<DiscountBlock />
-			{/* <div>Contacts</div> */}
+			<Questions />
+			<ContactsBlock />
 			<ModalFormOrder
 				show={state.modal === 'order'}
 				onClose={() => dispatch(actionChangeModal(''))}

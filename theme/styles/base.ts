@@ -7,8 +7,18 @@ const base = css`
 		box-sizing: border-box;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		scroll-snap-align: inherit;
+		scroll-snap-type: mandatory;
+		scroll-behavior: smooth;
 	}
-	body {		
+
+	[data-scroll-lock-locked] {
+		position: fixed;
+		height: 100vh;
+		left: 0;
+		right: 15px;
+	}
+	body {
 		background-color: #fff;
 
 		font-family: 'Zen Kaku Gothic Antique', sans-serif;
@@ -17,7 +27,6 @@ const base = css`
 
 		display: block;
 		line-height: 1.25;
-		padding-bottom: 50px;
 		min-width: 320px;
 		color: #222;
 	}

@@ -2,9 +2,9 @@ $icofont-font: 'icofont';
 
 @font-face {
     font-family: $icofont-font;
-    src: url(".//icofont.ttf?dc0d16ee1daac2a1f9fa3507cba9e213") format("truetype"),
-url(".//icofont.woff?dc0d16ee1daac2a1f9fa3507cba9e213") format("woff"),
-url(".//icofont.woff2?dc0d16ee1daac2a1f9fa3507cba9e213") format("woff2");
+    src: url(".//icofont.ttf?673a4c157932de19f81ec5267846867b") format("truetype"),
+url(".//icofont.woff?673a4c157932de19f81ec5267846867b") format("woff"),
+url(".//icofont.woff2?673a4c157932de19f81ec5267846867b") format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -29,11 +29,12 @@ $icofont-map: (
     'error': '\f104',
     'heart': '\f105',
     'location': '\f106',
-    'phone': '\f107',
-    'secure': '\f108',
-    'star': '\f109',
-    'success': '\f10a',
-    'time': '\f10b',
+    'mail': '\f107',
+    'phone': '\f108',
+    'secure': '\f109',
+    'star': '\f10a',
+    'success': '\f10b',
+    'time': '\f10c',
 );
 
 .icofont-arrow-simple:before {
@@ -53,6 +54,9 @@ $icofont-map: (
 }
 .icofont-location:before {
     content: map-get($icofont-map, 'location');
+}
+.icofont-mail:before {
+    content: map-get($icofont-map, 'mail');
 }
 .icofont-phone:before {
     content: map-get($icofont-map, 'phone');
