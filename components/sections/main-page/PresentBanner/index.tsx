@@ -30,7 +30,7 @@ export const PresentBanner: FC = () => {
 					</p>
 					<p>Принимаем заказы на все залы!</p>
 				</div>
-				<SVG name="BarDecor" color="golden" width="280px" />
+				<SVG name="BarDecor" color="golden" width="20%" />
 				<ButtonUI
 					danger
 					icon="arrow"

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FinalText } from '@/components/FormOrder/styled';
 import { Title } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
+import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -16,6 +17,8 @@ export const Wrapper = styled.div`
 	padding: 80px 0;
 
 	${Title} {
+		font-size: 64px;
+
 		span {
 			display: block;
 			margin-top: 20px;
@@ -24,6 +27,17 @@ export const Wrapper = styled.div`
 			color: ${theme.colors.primary};
 		}
 	}
+
+	${media.lessThan('md')`
+		${Title} {
+			font-size: 52px;	
+
+			span {
+				font-size: 48px;
+				letter-spacing: 0.5px;
+			}
+		}
+	`}
 
 	${FinalText} {
 		color: ${!FinalText.defaultProps?.$valid
@@ -50,6 +64,10 @@ export const Discount = styled.div`
 		-webkit-text-fill-color: transparent;
 		color: ${theme.colors.primary};
 	}
+
+	${media.lessThan('md')`
+		transform: scale(.8);
+	`}
 `;
 
 export default Wrapper;

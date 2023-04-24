@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
+import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -12,7 +13,7 @@ export const Wrapper = styled.div`
 	&:before {
 		position: absolute;
 		content: '';
-        top: 0;
+		top: 0;
 		left: 0;
 		width: 100%;
 		min-height: 950px;
@@ -42,7 +43,7 @@ export const Item = styled.div`
 	align-items: center;
 	flex-direction: column;
 	gap: 20px;
-	transition: all 0.2s;
+	transition: box-shadow 0.2s;
 
 	& > div {
 		font-family: ${theme.layout.fonts.header};
@@ -77,6 +78,14 @@ export const Item = styled.div`
 		box-shadow: ${theme.layout.shadow.big};
 		z-index: 2;
 	}
+
+	${media.lessThan('lg')`
+		width: calc(50% - 12px);
+	`}
+
+	${media.lessThan('xs')`
+		width: calc(100%);
+	`}
 `;
 
 export const IconWrapper = styled.div`

@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 interface FlexboxTypes {
-	$nowrap?: boolean;
+	$noWrap?: boolean;
+	$noShrink?: boolean;
 	justify?:
 		| 'flex-start'
 		| 'flex-end'
@@ -20,7 +21,8 @@ interface FlexboxTypes {
 
 const Flexbox = styled(motion.div)<FlexboxTypes>`
 	display: flex;
-	flex-wrap: ${(props) => (props.$nowrap ? 'nowrap' : 'wrap')};
+	flex-wrap: ${(props) => (props.$noWrap ? 'nowrap' : 'wrap')};
+	flex-shrink: ${(props) => (props.$noShrink ? 0 : 1)};
 	justify-content: ${(props) => props.justify};
 	align-items: ${(props) => props.align};
 	flex-direction: ${(props) => props.direction};

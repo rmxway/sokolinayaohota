@@ -1,14 +1,13 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
 
-export const Answer = styled.div<{ $open?: boolean }>`
+export const Answer = styled(motion.div)`
 	position: relative;
 	font-size: 20px;
 	color: ${theme.colors.disabled};
-	max-height: 0;
 	overflow: hidden;
-	transition: all 0.3s;
 `;
 
 export const PlusMinus = styled.div`
@@ -34,7 +33,7 @@ export const PlusMinus = styled.div`
 	}
 `;
 
-export const Wrapper = styled.label`
+export const Wrapper = styled(motion.label)`
 	position: relative;
 	padding: 20px;
 	background-color: #fff;
@@ -44,7 +43,7 @@ export const Wrapper = styled.label`
 	gap: 20px;
 	cursor: pointer;
 	margin-bottom: 20px;
-	transition: 0.2s;
+	transition: box-shadow 0.2s;
 
 	.title {
 		text-transform: uppercase;
@@ -57,11 +56,6 @@ export const Wrapper = styled.label`
 	}
 	input {
 		display: none;
-	}
-
-	input:checked + div ${Answer} {
-		max-height: 350px;
-		padding: 12px 0;
 	}
 
 	input:checked + div ${PlusMinus} {

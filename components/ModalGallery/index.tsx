@@ -41,7 +41,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	const thumbsSwiperConfig: SwiperProps = {
 		modules: [Thumbs],
 		spaceBetween: 12,
-		slidesPerView: 8,
+		slidesPerView: 7,
 		lazyPreloadPrevNext: 1,
 		onSwiper: (swiper) => {
 			setThumbSwiper(swiper);

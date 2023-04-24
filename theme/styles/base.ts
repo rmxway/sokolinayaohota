@@ -1,19 +1,23 @@
 import { css } from 'styled-components';
 
+import { media } from '@/theme/media';
+
 const base = css`
+	html {
+		scroll-snap-align: inherit;
+		scroll-snap-type: mandatory;
+		scroll-behavior: smooth;
+	}
+
 	*,
 	*::after,
 	*::before {
 		box-sizing: border-box;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		scroll-snap-align: inherit;
-		scroll-snap-type: mandatory;
-		scroll-behavior: smooth;
 	}
 
 	[data-scroll-lock-locked] {
-		position: fixed;
 		height: 100vh;
 		left: 0;
 		right: 15px;
@@ -27,8 +31,12 @@ const base = css`
 
 		display: block;
 		line-height: 1.25;
-		min-width: 320px;
+		min-width: 400px;
 		color: #222;
+
+		${media.lessThan('md')`
+			font-size: 16px;
+		`}
 	}
 	code {
 		font-family: 'source-code-pro', 'Menlo', 'Monaco', 'Consolas',

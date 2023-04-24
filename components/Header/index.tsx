@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Icon, Navbar, SVG } from '@/components';
-import { Container, Space } from '@/components/Layout';
+import { Container, Flexbox, Title } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { useStore } from '@/hooks';
 import bannerImage from '@/public/assets/img/arka.jpg';
@@ -16,39 +16,43 @@ const HeaderBlock: FC = () => {
 	return (
 		<Wrapper id="header">
 			<TopPanel>
-				<Container flex center gap={8}>
-					<Icon icon="location" />
-					<span>
-						проезд Сокольнического круга, д.11 (справа от
-						центрального входа в парк Сокольники)
-					</span>
-					<Space />
-					<Icon icon="phone" />
-					<span>+7 (499) 268-68-34</span>
+				<Container flex gap={8} spaceBetween center>
+					<Flexbox gap={8} align="center" $noWrap>
+						<Icon icon="location" />
+						<div>
+							проезд Сокольнического круга, д.11 (справа от
+							центрального входа в парк Сокольники)
+						</div>
+					</Flexbox>
+					<Flexbox gap={8} align="center" $noWrap $noShrink>
+						<Icon icon="phone" />
+						<div>+7 (499) 268-68-34</div>
+					</Flexbox>
 				</Container>
 			</TopPanel>
 			<Header>
 				<Container flex center spaceBetween>
 					<Logo />
-					<Space />
-					<Navbar />
-					<ButtonUI
-						danger
-						mobile
-						onClick={() => dispatch(actionChangeModal('order'))}
-					>
-						Заказать
-					</ButtonUI>
+					<Flexbox align="center" justify="space-between" $w100>
+						<Navbar />
+						<ButtonUI
+							danger
+							mobile
+							onClick={() => dispatch(actionChangeModal('order'))}
+						>
+							Заказать
+						</ButtonUI>
+					</Flexbox>
 				</Container>
 			</Header>
 			<Banner>
 				<Container flex gap={40} direction="column" center>
-					<h1>
+					<Title>
 						Роскошные банкетные залы <br />
 						для проведения вашего мероприятия
-					</h1>
-					<h2>в самом зеленом парке Москвы</h2>
-					<SVG name="BarDecor2" color="white" width="532px" />
+					</Title>
+					<Title color="primary">в самом зеленом парке Москвы</Title>
+					<SVG name="BarDecor2" color="white" width="50%" />
 				</Container>
 			</Banner>
 			<BannerImage

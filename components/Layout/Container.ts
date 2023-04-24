@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { media } from '@/theme';
+import { media } from '@/theme/media';
 
 type ContainerType = {
 	mt?: boolean;
@@ -16,7 +16,7 @@ const Container = styled.div<ContainerType>`
 	position: relative;
 	padding: 0 ${(props) => (props.noPadding ? '0' : '20px')};
 	width: 100%;
-	max-width: 100%;
+	max-width: 1360px;
 	margin: 0 auto;
 	gap: ${(props) => props.gap}px;
 
@@ -50,16 +50,16 @@ const Container = styled.div<ContainerType>`
 			flex-direction: ${props.direction};
 		`}
 
-	${media.greaterThan('sm')`
-		max-width: 768px;
+	${media.lessThan('xl')`
+		max-width: 1200px;
 	`}
 
-	${media.greaterThan('md')`
-		max-width: 1024px;
+	${media.lessThan('lg')`
+		max-width: 1000px;
 	`}
 
-	${media.greaterThan('lg')`
-		max-width: 1280px;
+	${media.lessThan('md')`
+		max-width: 750px;
 	`}
 `;
 

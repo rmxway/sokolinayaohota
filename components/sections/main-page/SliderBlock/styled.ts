@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
+import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -20,6 +21,14 @@ export const SlideContainer = styled.div`
 	margin: 20px 0;
 	max-width: 100%;
 	margin-right: 30px;
+
+	${media.lessThan('lg')`
+		gap: 40px;
+	`}
+
+	${media.lessThan('md')`
+		flex-wrap: wrap;
+	`}
 `;
 
 export const Info = styled.div`
@@ -33,8 +42,22 @@ export const Info = styled.div`
 		font-size: 24px;
 		-webkit-line-clamp: 9;
 		-webkit-box-orient: vertical;
-		overflow: hidden;		
+		overflow: hidden;
 	}
+
+	${media.lessThan('lg')`
+		width: 350px;
+	`}
+
+	${media.lessThan('md')`
+		width: 100%;
+		height: 340px;
+
+		p {
+			-webkit-line-clamp: 7;
+			font-size: 20px;
+		}
+	`}
 `;
 
 export const SliderImage = styled(Image)`
@@ -58,6 +81,14 @@ export const Controllers = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	z-index: 2;
+
+	${media.lessThan('lg')`
+		width: 350px;
+	`}
+
+	${media.lessThan('md')`
+		width: 100%;
+	`}
 
 	.btn-next,
 	.btn-prev {

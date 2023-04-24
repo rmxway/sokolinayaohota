@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
+import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -30,6 +31,12 @@ export const Wrapper = styled.div`
 		background-color: ${theme.colors.brown};
 		opacity: 0.83;
 	}
+
+	${media.lessThan('md')`
+		& > div {
+			font-size: 20px;
+		}
+	`}
 `;
 
 export const MainText = styled.div`
@@ -40,6 +47,14 @@ export const MainText = styled.div`
 	div {
 		font-size: 48px;
 	}
+
+	${media.lessThan('md')`
+		font-size: 24px;
+
+		div {
+			font-size: 32px;
+		}
+	`}
 `;
 
 export default Wrapper;

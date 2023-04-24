@@ -90,6 +90,7 @@ const reset = css`
 		padding: 0;
 		border: 0;
 		font-size: 100%;
+		text-align: inherit;
 		vertical-align: baseline;
 	}
 	/* HTML5 display-role reset for older browsers */

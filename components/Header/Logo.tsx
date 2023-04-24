@@ -12,7 +12,7 @@ type LogoTypeProps = {
 };
 
 const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
-	<Link href={href} scroll={false}>
+	<Link href={href} scroll={false} style={{flexShrink: 0}}>
 		<Flexbox align="center" gap={12}>
 			<Image
 				src={logo.src}

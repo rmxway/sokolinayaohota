@@ -32,8 +32,7 @@ export const SVG: FC<SVGType> = ({
 
 	const props = {
 		fill: codeColor(),
-		width,
-		style: { transform: `rotate(${inverse ? '180deg' : '0deg'})` },
+		style: { maxWidth: width, transform: `rotate(${inverse ? '180deg' : '0deg'})` },
 		...propsComponent,
 	};
 

@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+import { Container, Flexbox } from '@/components/Layout';
+import { Button } from '@/components/ui/Button/styled';
 import { defaultTheme as theme } from '@/theme';
+import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -11,18 +14,33 @@ export const Wrapper = styled.div`
 `;
 
 export const TopPanel = styled.div`
-	height: 50px;
-	display: flex;
-	align-items: center;
 	color: ${theme.colors.brown};
 	background-color: rgba(255, 255, 255, 0.75);
-	font-weight: medium;
+	font-weight: 500;
 	font-size: 18px;
 	line-height: 1;
+	padding: 12px 0;
 
-	span {
-		height: 24px;
+	${Container} {
+		height: 100%;
 	}
+
+	${Flexbox} {
+		flex-direction: row;
+		justify-content: flex-start;
+		text-align: inherit;
+	}
+
+	${media.lessThan('sm')`
+		height: auto;
+		padding: 20px 0;
+
+		${Container} {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 20px;
+		}
+	`}
 `;
 
 export const Header = styled.header`
@@ -40,6 +58,15 @@ export const Header = styled.header`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+
+	${media.lessThan('md')`
+		height: auto;
+		padding: 20px 0;
+
+		${Button} {
+			display: none;
+		}
+	`}
 `;
 
 export const BannerImage = styled(Image)`

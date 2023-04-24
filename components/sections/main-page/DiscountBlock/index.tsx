@@ -7,7 +7,7 @@ export const DiscountBlock = () => (
 	<Wrapper>
 		<Container flex direction="column" gap={65} center>
 			<Flexbox align="center" direction="column" gap={20}>
-				<Title size="64px" color="white">
+				<Title color="white">
 					Оставьте заявку
 					<br />
 					прямо сейчас и получите

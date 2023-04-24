@@ -82,7 +82,6 @@ export const SliderBlock: FC = () => {
 									<Flexbox
 										direction="column"
 										gap={32}
-										style={{ width: 400 }}
 									>
 										<AnimatePresence>
 											{slideIndex === index && (

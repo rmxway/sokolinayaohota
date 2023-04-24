@@ -1,23 +1,52 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import { navbarItems } from '@/mock/navbar';
 
-import { NavbarItem, Wrapper } from './styled';
+import { BurgerButton, NavbarItem, NavContainer, Wrapper } from './styled';
 
 export const Navbar: FC = () => {
 	const router = useRouter();
+	const [show, setShow] = useState(false);
+	const containerRef = useRef(null);
+
+	useEffect(() => {
+		if (show) {
+			disablePageScroll();
+		}
+
+		return () => {
+			enablePageScroll();
+		};
+	}, [show]);
+
+	const toggleNavbar = (e: React.MouseEvent) => {
+		if (e.target !== containerRef.current) setShow((prev) => !prev);
+	};
 
 	return (
-		<Wrapper>
-			{navbarItems.map((item) => (
-				<NavbarItem key={item.title} active={router.asPath === item.url}>
-					<Link href={item.url} />
-					{item.title}
-				</NavbarItem>
-			))}
-		</Wrapper>
+		<>
+			<BurgerButton onClick={toggleNavbar}>
+				<span />
+				<span />
+				<span />
+			</BurgerButton>
+			<Wrapper $open={show} onClick={toggleNavbar}>
+				<NavContainer ref={containerRef}>
+					{navbarItems.map((item) => (
+						<NavbarItem
+							key={item.title}
+							active={router.asPath === item.url}
+						>
+							<Link href={item.url} />
+							{item.title}
+						</NavbarItem>
+					))}
+				</NavContainer>
+			</Wrapper>
+		</>
 	);
 };
 
