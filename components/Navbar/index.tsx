@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { FC, useEffect, useRef, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
+import { SVG } from '@/components/SVG';
 import { navbarItems } from '@/mock/navbar';
 
 import { BurgerButton, NavbarItem, NavContainer, Wrapper } from './styled';
@@ -28,10 +29,10 @@ export const Navbar: FC = () => {
 
 	return (
 		<>
-			<BurgerButton onClick={toggleNavbar}>
-				<span />
-				<span />
-				<span />
+			<BurgerButton onClick={toggleNavbar} $open={show}>
+				<span className="first-line" />
+				<span className="second-line" />
+				<span className="third-line" />
 			</BurgerButton>
 			<Wrapper $open={show} onClick={toggleNavbar}>
 				<NavContainer ref={containerRef}>
@@ -44,6 +45,7 @@ export const Navbar: FC = () => {
 							{item.title}
 						</NavbarItem>
 					))}
+					<SVG name="LogoDecor" width="250px" color="brown" />
 				</NavContainer>
 			</Wrapper>
 		</>

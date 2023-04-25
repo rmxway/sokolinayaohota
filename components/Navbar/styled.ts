@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
-export const BurgerButton = styled.button`
+export const BurgerButton = styled.button<{ $open: boolean }>`
 	position: relative;
 	display: none;
 	width: 40px;
@@ -12,13 +12,40 @@ export const BurgerButton = styled.button`
 	margin-left: auto;
 	order: 2;
 	flex-shrink: 0;
+	cursor: pointer;
 
 	span {
+		position: relative;
+		top: 0;
 		width: 100%;
 		height: 2px;
 		border-radius: 10px;
 		background-color: ${theme.colors.brown};
+		transition: all 0.25s ease-in-out;
+		transform-origin: 50%;
+		margin: 0 auto;
 	}
+
+	${(props) =>
+		props.$open &&
+		css`
+			.first-line {
+				top: 10px;
+				transform: rotate(45deg);
+				width: 110%;
+			}
+
+			.second-line {
+				opacity: 0;
+				width: 0;
+			}
+
+			.third-line {
+				top: -10px;
+				transform: rotate(-45deg);
+				width: 110%;
+			}
+		`}
 
 	${media.lessThan('md')`
 		display: flex;
@@ -31,13 +58,18 @@ export const NavContainer = styled.div`
 	display: flex;
 	align-items: center;
 	margin: 10px 40px 5px 0;
-	transition: left 0.2s;
+	transition: right 0.2s;
+	cursor: default;
+
+	svg {
+		display: none;
+	}
 
 	${media.lessThan('md')`
 		position: fixed;		
 		top: 0;
-		right: 0;
-		left: 100%;
+		left: 0;
+		right: 100%;
 		bottom: 0;		
 		flex-direction: column;
 		gap: 20px;
@@ -46,12 +78,20 @@ export const NavContainer = styled.div`
 		padding: 40px;
 		box-shadow: ${theme.layout.shadow.big};			
 		z-index: 10;
+
+		svg { 
+			display: block; 
+			margin-top: auto; 
+			margin-bottom: auto; 
+			opacity: .5;
+		}
 	`}
 `;
 
 export const Wrapper = styled.div<{ $open: boolean }>`
 	margin-left: auto;
 	transition: opacity 0s;
+	cursor: pointer;
 
 	${media.lessThan('md')`
 		position: fixed;
@@ -68,12 +108,12 @@ export const Wrapper = styled.div<{ $open: boolean }>`
 	${(props) => {
 		if (props.$open) {
 			return media.lessThan('md')`				
-				opacity: 1;				
+				opacity: 1;
 				transition: opacity 0.2s;
 				pointer-events: all;
 
 				${NavContainer} {
-					left: 120px;				
+					right: 100px;				
 				}
 			`;
 		}

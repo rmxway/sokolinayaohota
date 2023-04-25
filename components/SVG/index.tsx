@@ -3,11 +3,11 @@ import { FC } from 'react';
 import BarDecor from '@/public/assets/svg/bardecor-line.svg';
 import BarDecor2 from '@/public/assets/svg/bardecor-line-2.svg';
 import LogoDecor from '@/public/assets/svg/logo-decor.svg';
-import { defaultTheme } from '@/theme';
+import { defaultTheme as theme } from '@/theme';
 
 interface SVGType {
 	name: 'BarDecor' | 'BarDecor2' | 'LogoDecor';
-	color?: 'white' | 'golden';
+	color?: keyof typeof theme.colors;
 	width?: string;
 	inverse?: boolean;
 }
@@ -19,20 +19,12 @@ export const SVG: FC<SVGType> = ({
 	inverse,
 	...propsComponent
 }) => {
-	const codeColor = () => {
-		switch (color) {
-			case 'white':
-				return '#fff';
-			case 'golden':
-				return defaultTheme.colors.primary;
-			default:
-				return '#444';
-		}
-	};
-
 	const props = {
-		fill: codeColor(),
-		style: { maxWidth: width, transform: `rotate(${inverse ? '180deg' : '0deg'})` },
+		fill: theme.colors[color || 'gray'],
+		style: {
+			maxWidth: width,
+			transform: `rotate(${inverse ? '180deg' : '0deg'})`,
+		},
 		...propsComponent,
 	};
 

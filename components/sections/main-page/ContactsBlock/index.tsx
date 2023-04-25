@@ -8,7 +8,7 @@ import { Copyright, InfoBlock, Map, Wrapper } from './styled';
 export const ContactsBlock = () => (
 	<Wrapper>
 		<Container flex gap={40} direction="column" center>
-			<SVG name="BarDecor" color="golden" width="160px" inverse />
+			<SVG name="BarDecor" color="primary" width="160px" inverse />
 			<Title color="primary">Как с нами связаться ?</Title>
 			<Flexbox justify="space-between" $w100 gap={32}>
 				<InfoBlock>

@@ -20,7 +20,7 @@ const base = css`
 	[data-scroll-lock-locked] {
 		height: 100vh;
 		left: 0;
-		right: 15px;
+		// right: 15px;		
 	}
 	body {
 		background-color: #fff;
