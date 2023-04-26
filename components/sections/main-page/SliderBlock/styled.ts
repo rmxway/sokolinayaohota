@@ -28,6 +28,7 @@ export const SlideContainer = styled.div`
 
 	${media.lessThan('md')`
 		flex-wrap: wrap;
+		margin-right: 0;
 	`}
 `;
 

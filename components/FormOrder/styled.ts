@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 export const FormStyled = styled.form<{ $fetching?: boolean }>`
 	position: relative;
 	opacity: 1;
-	max-width: 400px;
 	width: 100%;
 
 	${(props) =>

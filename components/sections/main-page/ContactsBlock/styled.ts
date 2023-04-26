@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { LogoText } from '@/components/Header/styled';
 import { defaultTheme as theme } from '@/theme';
+import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -44,11 +45,21 @@ export const InfoBlock = styled.div`
 		font-weight: 400;
 		line-height: 1.5;
 	}
+
+	${media.lessThan('sm')`
+		& > span {
+			font-size: 20px
+		};
+	`}
 `;
 
 export const Copyright = styled.div`
 	font-size: 24px;
 	color: ${theme.colors.disabled};
+
+	${media.lessThan('sm')`
+		font-size: 16px;
+	`}
 `;
 
 export const Map = styled(Image)`

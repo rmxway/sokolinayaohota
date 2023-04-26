@@ -18,7 +18,9 @@ export const DiscountBlock = () => (
 					<div>-10%</div>
 				</Discount>
 			</Flexbox>
-			<FormOrder name="discount-form" />
+			<div style={{ maxWidth: 400, width: '100%' }}>
+				<FormOrder name="discount-form" />
+			</div>
 		</Container>
 	</Wrapper>
 );

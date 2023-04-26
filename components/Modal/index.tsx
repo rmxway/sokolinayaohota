@@ -51,7 +51,7 @@ export const Modal = ({
 	};
 
 	return (
-		<AnimatePresence>
+		<AnimatePresence mode="sync">
 			{show ? (
 				<ModalWrapper
 					variants={animationWrapper}

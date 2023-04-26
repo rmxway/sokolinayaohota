@@ -31,7 +31,7 @@ const base = css`
 
 		display: block;
 		line-height: 1.25;
-		min-width: 400px;
+		min-width: 320px;
 		color: #222;
 
 		${media.lessThan('md')`
