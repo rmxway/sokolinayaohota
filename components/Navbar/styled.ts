@@ -1,17 +1,33 @@
+import { motion, Variants } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
+export const DesktopNav = styled.div`
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	margin: 10px 40px 5px 0;
+	transition: right 2s;
+	cursor: default;
+
+	${media.lessThan('md')`
+		display: none;
+	`}
+`;
+
 export const BurgerButton = styled.button<{ $open: boolean }>`
 	position: relative;
 	display: none;
-	width: 40px;
-	height: 24px;
-	margin-left: 16px;
+	width: 28px;
+	height: 28px;
 	margin-left: auto;
 	order: 2;
-	flex-shrink: 0;
+	grid-template-columns: 1fr;
+	padding: 0;
+	grid-auto-flow: row;
+	align-items: space-between;
 	cursor: pointer;
 
 	span {
@@ -19,6 +35,7 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		top: 0;
 		width: 100%;
 		height: 2px;
+		flex-shrink: 0;
 		border-radius: 10px;
 		background-color: ${theme.colors.brown};
 		transition: all 0.25s ease-in-out;
@@ -48,79 +65,67 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		`}
 
 	${media.lessThan('md')`
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
+		display: grid;
 	`}
 `;
 
-export const NavContainer = styled.div`
+export const MobileNav = styled(motion.div)`
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: calc(100% - 90px);
+
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-	margin: 10px 40px 5px 0;
-	transition: right 0.2s;
-	cursor: default;
+
+	background-image: ${theme.colors.gradients.golden};
+	box-shadow: ${theme.layout.shadow.big};
+	margin: 0;
+	padding: 40px;
+	z-index: 10;
 
 	svg {
-		display: none;
-	}
-
-	${media.lessThan('md')`
-		position: fixed;		
-		top: 0;
-		left: 0;
-		right: 100%;
-		bottom: 0;		
-		flex-direction: column;
-		gap: 20px;
-		background-image: ${theme.colors.gradients.golden};
-		margin: 0;
-		padding: 40px;
-		box-shadow: ${theme.layout.shadow.big};			
-		z-index: 10;
-
-		svg { 
-			display: block; 
-			margin-top: auto; 
-			margin-bottom: auto; 
-			opacity: .5;
-		}
-	`}
-`;
-
-export const Wrapper = styled.div<{ $open: boolean }>`
-	margin-left: auto;
-	transition: opacity 0s;
-	cursor: pointer;
-
-	${media.lessThan('md')`
-		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		background-color: #00000099;
-		z-index: 10;
-		opacity: 0;
+		display: block;
+		margin-top: auto;
+		margin-bottom: auto;
 		pointer-events: none;
-	`}
-
-	${(props) => {
-		if (props.$open) {
-			return media.lessThan('md')`				
-				opacity: 1;
-				transition: opacity 0.2s;
-				pointer-events: all;
-
-				${NavContainer} {
-					right: 100px;				
-				}
-			`;
-		}
-
-		return null;
-	}}
+		opacity: 0.5;
+	}
 `;
+
+export const mobileNavVariant: Variants = {
+	start: {
+		left: '-100%',
+	},
+	end: {
+		left: 0,
+		transition: { type: 'tween', ease: 'easeInOut', delay: 0.2 },
+	},
+};
+
+export const Wrapper = styled(motion.div)`
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: #00000099;
+	backdrop-filter: blur(3px);
+	pointer-events: none;
+	z-index: 10;
+	opacity: 0;
+	cursor: pointer;
+`;
+
+export const wrapperVariant: Variants = {
+	start: { opacity: 0 },
+	end: {
+		opacity: 1,
+		pointerEvents: 'all',
+	},
+};
 
 export const NavbarItem = styled.div<{ active?: boolean }>`
 	position: relative;
@@ -149,6 +154,7 @@ export const NavbarItem = styled.div<{ active?: boolean }>`
 
 	${media.lessThan('md')`
 		font-size: 32px;
+		margin-bottom: 28px;
 	`}
 
 	${(props) =>

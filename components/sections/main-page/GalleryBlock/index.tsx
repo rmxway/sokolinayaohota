@@ -18,7 +18,7 @@ export const GalleryBlock = () => {
 	};
 	return (
 		<Wrapper>
-			<Container flex gap={40} direction="column" center>
+			<Container grid gap={40} direction="row" center>
 				<Title color="disabled">Галерея</Title>
 
 				<Grid>

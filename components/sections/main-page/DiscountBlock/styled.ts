@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { FinalText } from '@/components/FormOrder/styled';
+import { FinalText, FormStyled } from '@/components/FormOrder/styled';
 import { Title } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
@@ -28,6 +28,16 @@ export const Wrapper = styled.div`
 		}
 	}
 
+	${FormStyled} {
+		max-width: 400px;
+	}
+
+	${FinalText} {
+		color: ${!FinalText.defaultProps?.$valid
+			? theme.colors.white
+			: theme.colors.danger};
+	}
+
 	${media.lessThan('md')`
 		${Title} {
 			font-size: 52px;	
@@ -39,11 +49,11 @@ export const Wrapper = styled.div`
 		}
 	`}
 
-	${FinalText} {
-		color: ${!FinalText.defaultProps?.$valid
-			? theme.colors.white
-			: theme.colors.danger};
-	}
+	${media.lessThan('md')`
+		${FormStyled} {
+			max-width: 320px;
+		}
+	`}
 `;
 
 export const Discount = styled.div`
@@ -58,10 +68,6 @@ export const Discount = styled.div`
 	& > div {
 		font-size: 64px;
 		font-family: ${theme.layout.fonts.header};
-		background-image: ${theme.colors.gradients.golden};
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 		color: ${theme.colors.primary};
 	}
 

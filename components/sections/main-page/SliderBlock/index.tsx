@@ -14,7 +14,7 @@ import {
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { Icon } from '@/components';
-import { Container, Flexbox, Title } from '@/components/Layout';
+import { Container, Flexbox, Grid, Title } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { mainSlider } from '@/mock/main-slider';
 
@@ -61,7 +61,7 @@ export const SliderBlock: FC = () => {
 	const imagesSwiperConfig: SwiperProps = {
 		modules: [Thumbs, EffectFade],
 		speed: 1000,
-		simulateTouch: false,
+		allowTouchMove: false,
 		effect: 'fade',
 		spaceBetween: 20,
 		slidesPerView: 1,
@@ -79,10 +79,7 @@ export const SliderBlock: FC = () => {
 						<Swiper {...mainSwiperConfig}>
 							{mainSlider.map((slide, index) => (
 								<SwiperSlide key={slide.alt}>
-									<Flexbox
-										direction="column"
-										gap={32}
-									>
+									<Grid direction="row" gap={32}>
 										<AnimatePresence>
 											{slideIndex === index && (
 												<>
@@ -107,7 +104,7 @@ export const SliderBlock: FC = () => {
 												</>
 											)}
 										</AnimatePresence>
-									</Flexbox>
+									</Grid>
 								</SwiperSlide>
 							))}
 							<span slot="container-end">
@@ -136,7 +133,6 @@ export const SliderBlock: FC = () => {
 							</span>
 						</Swiper>
 					</Info>
-
 					<Swiper {...imagesSwiperConfig}>
 						{mainSlider.map((slide) => (
 							<SwiperSlide key={slide.alt}>

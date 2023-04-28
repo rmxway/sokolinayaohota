@@ -32,8 +32,8 @@ export const Modal = ({
 	const closeRef = useRef<HTMLButtonElement>(null);
 
 	useEffect(() => {
-		if (show) {
-			disablePageScroll();
+		if (show && wrapperRef.current) {
+			disablePageScroll(wrapperRef.current);
 		}
 
 		return () => {
@@ -51,7 +51,7 @@ export const Modal = ({
 	};
 
 	return (
-		<AnimatePresence>
+		<AnimatePresence mode="sync">
 			{show ? (
 				<ModalWrapper
 					variants={animationWrapper}

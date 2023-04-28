@@ -20,6 +20,10 @@ export const Title = styled(motion.div)<TitleType>`
 	font-size: ${(props) => props.size || '72px'};
 	color: ${(props) => props.color !== undefined && theme.colors[props.color]};
 
+	span {
+		display: inline-block;
+	}
+
 	${(props) => media.lessThan('md')`
 			font-size: ${props.size || '52px'};
 		`}

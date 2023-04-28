@@ -5,7 +5,7 @@ import { Discount, Wrapper } from './styled';
 
 export const DiscountBlock = () => (
 	<Wrapper>
-		<Container flex direction="column" gap={65} center>
+		<Container grid direction="row" gap={65} center>
 			<Flexbox align="center" direction="column" gap={20}>
 				<Title color="white">
 					Оставьте заявку

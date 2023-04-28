@@ -118,7 +118,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 							onBlur={handleBlur}
 							value={values.phone}
 						/>
-						<ButtonUI danger type="submit" disabled={!isValid}>
+						<ButtonUI danger type="submit" disabled={!isValid} w100>
 							Отправить
 						</ButtonUI>
 					</Flexbox>

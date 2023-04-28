@@ -15,6 +15,8 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	height: 52px;
 	margin-bottom: 20px;
 	display: inline-flex;
+	width: 100%;
+	max-width: 100%;
 	align-items: center;
 	font-size: 16px;
 	cursor: text;
@@ -38,8 +40,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	}
 
 	input {
-		flex-grow: 1;
-		padding-right: 8px;
+		width: 100%;
 		color: inherit;
 		font-size: 16px;
 		background: none;
@@ -92,7 +93,7 @@ export const InputError = styled(motion.div)`
 	color: ${theme.colors.danger};
 	font-size: 12px;
 	margin: -15px 0 15px;
-	text-align: left
+	text-align: left;
 `;
 
 export const animateError: Variants = {

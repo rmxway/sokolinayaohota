@@ -5,7 +5,7 @@ import { Modal, ModalProps } from '@/components/Modal';
 
 export const ModalFormOrder: FC<ModalProps> = ({ show, onClose }) => (
 	<Modal show={show} onClose={onClose} header="Заказать зал">
-		<FormOrder name="order-form"/>
+		<FormOrder name="order-form" />
 	</Modal>
 );
 

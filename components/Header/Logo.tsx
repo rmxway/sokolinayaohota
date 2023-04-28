@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { Flexbox } from '@/components/Layout';
+import { Grid } from '@/components/Layout';
 import logo from '@/public/assets/img/logo.png';
 
 import { LogoText } from './styled';
@@ -12,8 +12,8 @@ type LogoTypeProps = {
 };
 
 const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
-	<Link href={href} scroll={false} style={{flexShrink: 0}}>
-		<Flexbox align="center" gap={12}>
+	<Link href={href} scroll={false}>
+		<Grid align="center" gap={12}>
 			<Image
 				src={logo.src}
 				blurDataURL={logo.blurDataURL}
@@ -25,7 +25,7 @@ const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
 				Соколиная охота
 				<span>Банкетный зал</span>
 			</LogoText>
-		</Flexbox>
+		</Grid>
 	</Link>
 );
 

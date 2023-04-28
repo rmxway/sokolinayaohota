@@ -7,6 +7,7 @@ import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { Modal } from '@/components/Modal';
 import { SliderImage } from '@/components/sections/main-page/SliderBlock/styled';
 import { mainPageGallery } from '@/mock/gallery';
+import { jsBreakpoints } from '@/theme/media';
 
 import { Slider, Thumbnails, Wrapper } from './styled';
 
@@ -41,8 +42,16 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	const thumbsSwiperConfig: SwiperProps = {
 		modules: [Thumbs],
 		spaceBetween: 12,
-		slidesPerView: 7,
+		slidesPerView: 4,
 		lazyPreloadPrevNext: 1,
+		breakpoints: {
+			[jsBreakpoints.xs]: {
+				slidesPerView: 4,
+			},
+			[jsBreakpoints.md]: {
+				slidesPerView: 7,
+			},
+		},
 		onSwiper: (swiper) => {
 			setThumbSwiper(swiper);
 		},

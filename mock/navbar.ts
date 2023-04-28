@@ -19,10 +19,6 @@ export const navbarItems = [
 		title: 'Контакты',
 		url: '/contacts',
 	},
-	{
-		title: 'UI',
-		url: '/ui',
-	},
 ];
 
 export default navbarItems;
