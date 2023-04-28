@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { Grid } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -22,26 +23,29 @@ export const Wrapper = styled.div`
 		background-repeat: no-repeat;
 		background-position: center;
 	}
-`;
 
-export const Advantages = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: stretch;
-	gap: 20px;
+	${media.lessThan('md')`
+		${Grid} {
+			grid-auto-flow: row;
+			grid-template-columns: 1fr 1fr;
+		}
+	`}
+
+	${media.lessThan('xs')`
+		${Grid} {			
+			grid-template-columns: 1fr;
+		}
+	`}
 `;
 
 export const Item = styled.div`
-	width: calc(25% - 20px);
 	min-height: 200px;
 	background-color: #fff;
 	border-radius: ${theme.radius.blockRadius};
 	border: 1px solid ${theme.colors.gray.$3};
 	padding: 40px 24px;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+	display: grid;
+	justify-items: center;
 	gap: 20px;
 	transition: box-shadow 0.2s;
 
@@ -78,14 +82,6 @@ export const Item = styled.div`
 		box-shadow: ${theme.layout.shadow.big};
 		z-index: 2;
 	}
-
-	${media.lessThan('lg')`
-		width: calc(50% - 12px);
-	`}
-
-	${media.lessThan('xs')`
-		width: calc(100%);
-	`}
 `;
 
 export const IconWrapper = styled.div`

@@ -14,11 +14,10 @@ export const Wrapper = styled.div`
 `;
 
 export const TopPanel = styled.div`
-	color: ${theme.colors.brown};
 	background-color: rgba(255, 255, 255, 0.75);
 	font-weight: 500;
 	font-size: 18px;
-	line-height: 1;
+	line-height: 1.2;
 	padding: 12px 0;
 
 	${Container} {
@@ -31,13 +30,19 @@ export const TopPanel = styled.div`
 		text-align: inherit;
 	}
 
+	a,
+	& {
+		color: ${theme.colors.brown};
+	}
+
 	${media.lessThan('sm')`
 		height: auto;
 		padding: 20px 0;
 
 		${Container} {
-			align-items: flex-start;
-			flex-direction: column;
+			align-items: start;
+			grid-auto-flow: row;
+			justify-items: start;
 			gap: 20px;
 		}
 	`}

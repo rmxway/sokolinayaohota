@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
+import { Container } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -12,31 +13,26 @@ export const Wrapper = styled.div`
 	h1 {
 		color: ${theme.colors.disabled};
 	}
-`;
 
-export const SlideContainer = styled.div`
-	display: flex;
-	flex-wrap: nowrap;
-	gap: 80px;
-	margin: 20px 0;
-	max-width: 100%;
-	margin-right: 30px;
+	${media.lessThan('sm')`
+		padding: 0;
+		padding-top: 40px;
 
-	${media.lessThan('lg')`
-		gap: 40px;
-	`}
-
-	${media.lessThan('md')`
-		flex-wrap: wrap;
-		margin-right: 0;
+		${Container} {
+			padding: 0;
+		}
 	`}
 `;
 
 export const Info = styled.div`
 	display: flex;
-	width: 400px;
-	flex-shrink: 0;
+	width: 100%;
 	color: ${theme.colors.brown};
+	overflow: hidden;
+
+	.swiper {
+		width: 100%;
+	}
 
 	p {
 		display: -webkit-box;
@@ -46,30 +42,59 @@ export const Info = styled.div`
 		overflow: hidden;
 	}
 
-	${media.lessThan('lg')`
-		width: 350px;
-	`}
-
 	${media.lessThan('md')`
-		width: 100%;
-		height: 340px;
-
 		p {
-			-webkit-line-clamp: 7;
+			-webkit-line-clamp: 5;
 			font-size: 20px;
 		}
+	`}
+
+	${media.lessThan('sm')`
+		padding: 20px;
 	`}
 `;
 
 export const SliderImage = styled(Image)`
-	flex-grow: 1;
 	object-fit: cover;
 	object-position: center;
 	width: 100%;
 	height: 520px;
-	flex-shrink: 1;
-
 	border-radius: ${theme.radius.blockRadius};
+
+	${media.lessThan('sm')`
+		height: 100%;
+		min-height: 400px;
+	`}
+`;
+
+export const SlideContainer = styled.div`
+	display: grid;
+	grid-template-columns: 400px 1fr;
+	margin: 20px 0;
+	width: 100%;
+	gap: 80px;
+
+	${media.lessThan('lg')`
+		grid-template-columns: 350px 1fr;
+		gap: 40px;
+	`}
+
+	${media.lessThan('md')`
+		grid-auto-flow: column;
+		grid-template-columns: 1fr;
+		grid-template-rows: 350px 1fr;
+		margin: 0;
+	`}
+
+	${media.lessThan('sm')`
+		${SliderImage} {
+			border-radius: 0;
+		}
+	`}
+
+	.swiper {
+		width: 100%;
+	}
 `;
 
 export const Controllers = styled.div`

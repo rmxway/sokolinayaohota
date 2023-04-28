@@ -3,6 +3,7 @@ import { desaturate } from 'polished';
 import styled from 'styled-components';
 
 import { LogoText } from '@/components/Header/styled';
+import { Grid } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -24,13 +25,30 @@ export const Wrapper = styled.div`
 	${LogoText} {
 		color: ${theme.colors.primary};
 	}
+
+	${media.lessThan('md')`
+		${Grid} {			
+			grid-template-column: 1fr 1fr;
+			grid-template-rows: auto auto;			
+		}
+	`}
+
+	${media.lessThan('sm')`
+		${Grid} {			
+			grid-auto-flow: row;
+			grid-template-column: 1fr;			
+		}
+	`}
 `;
 
 export const InfoBlock = styled.div`
 	text-align: left;
+	margin: 12px;
 
 	& > div {
-		display: flex;
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: 24px 1fr;
 		gap: 12px;
 		align-items: center;
 		color: #fff;
@@ -39,15 +57,17 @@ export const InfoBlock = styled.div`
 		margin-bottom: 8px;
 	}
 
-	& > span {
+	& > span,
+	a {
 		color: ${theme.colors.primary};
 		font-size: 24px;
 		font-weight: 400;
 		line-height: 1.5;
+		display: block;
 	}
 
 	${media.lessThan('sm')`
-		& > span {
+		& > span, a {
 			font-size: 20px
 		};
 	`}

@@ -6,7 +6,15 @@ import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import { SVG } from '@/components/SVG';
 import { navbarItems } from '@/mock/navbar';
 
-import { BurgerButton, NavbarItem, NavContainer, Wrapper } from './styled';
+import {
+	BurgerButton,
+	DesktopNav,
+	MobileNav,
+	mobileNavVariant,
+	NavbarItem,
+	Wrapper,
+	wrapperVariant,
+} from './styled';
 
 export const Navbar: FC = () => {
 	const router = useRouter();
@@ -34,8 +42,27 @@ export const Navbar: FC = () => {
 				<span className="second-line" />
 				<span className="third-line" />
 			</BurgerButton>
-			<Wrapper $open={show} onClick={toggleNavbar}>
-				<NavContainer ref={containerRef}>
+			<DesktopNav>
+				{navbarItems.map((item) => (
+					<NavbarItem
+						key={item.title}
+						active={router.asPath === item.url}
+					>
+						<Link href={item.url} />
+						{item.title}
+					</NavbarItem>
+				))}
+			</DesktopNav>
+			<Wrapper
+				variants={wrapperVariant}
+				animate={show ? 'end' : 'start'}
+				onClick={toggleNavbar}
+			>
+				<MobileNav
+					ref={containerRef}
+					variants={mobileNavVariant}
+					animate={show ? 'end' : 'start'}
+				>
 					{navbarItems.map((item) => (
 						<NavbarItem
 							key={item.title}
@@ -46,7 +73,7 @@ export const Navbar: FC = () => {
 						</NavbarItem>
 					))}
 					<SVG name="LogoDecor" width="250px" color="brown" />
-				</NavContainer>
+				</MobileNav>
 			</Wrapper>
 		</>
 	);

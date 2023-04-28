@@ -23,11 +23,11 @@ const Flexbox = styled(motion.div)<FlexboxTypes>`
 	display: flex;
 	flex-wrap: ${(props) => (props.$noWrap ? 'nowrap' : 'wrap')};
 	flex-shrink: ${(props) => (props.$noShrink ? 0 : 1)};
-	justify-content: ${(props) => props.justify};
-	align-items: ${(props) => props.align};
-	flex-direction: ${(props) => props.direction};
-	gap: ${(props) => props.gap}px;
-	width: ${props => props.$w100? '100%' : 'auto'};
+	justify-content: ${(props) => props.justify || 'start'};
+	align-items: ${(props) => props.align || 'start'};
+	flex-direction: ${(props) => props.direction || 'row'};
+	gap: ${(props) => props.gap || 0}px;
+	width: ${(props) => (props.$w100 ? '100%' : 'auto')};
 `;
 
 export { Flexbox };

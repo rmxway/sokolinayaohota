@@ -15,8 +15,15 @@ export const ModalWrapper = styled(motion.div)`
 	justify-content: center;
 	align-items: flex-start;
 	z-index: 100;
+	padding: 20px;
+	touch-action: pan-y;
 	cursor: pointer;
-	backdrop-filter: blur(10px);
+	overflow-y: auto;
+	backdrop-filter: blur(8px);
+
+	${media.lessThan('xs')`
+		padding: 0;
+	`}
 `;
 
 export const ModalWindow = styled(motion.div)<{ $fullscreen?: boolean }>`
@@ -26,6 +33,7 @@ export const ModalWindow = styled(motion.div)<{ $fullscreen?: boolean }>`
 	padding: 40px;
 	width: auto;
 	margin: auto;
+	min-width: 400px;
 	max-width: 100%;
 	min-height: 250px;
 	border-radius: 20px;
@@ -46,11 +54,15 @@ export const ModalWindow = styled(motion.div)<{ $fullscreen?: boolean }>`
 			display: flex;
 			align-items: flex-start;
 			justify-content: center;
-			overflow-y: auto;
 		`}
 
-	${media.lessThan('sm')`
-		padding: 40px 28px;
+	${media.lessThan('xs')`
+		min-width: auto;
+		width: 100%;
+		min-height: 100%;
+		margin: 0;
+		padding: 52px 20px;
+		border-radius: 0;
 	`}
 `;
 

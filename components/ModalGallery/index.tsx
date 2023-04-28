@@ -50,7 +50,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 			},
 			[jsBreakpoints.md]: {
 				slidesPerView: 7,
-			},			
+			},
 		},
 		onSwiper: (swiper) => {
 			setThumbSwiper(swiper);

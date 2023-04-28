@@ -4,7 +4,7 @@ import { media } from '@/theme/media';
 
 type ContainerType = {
 	mt?: boolean;
-	flex?: boolean;
+	grid?: boolean;
 	center?: boolean;
 	noPadding?: boolean;
 	spaceBetween?: boolean;
@@ -18,7 +18,14 @@ const Container = styled.div<ContainerType>`
 	width: 100%;
 	max-width: 1360px;
 	margin: 0 auto;
-	gap: ${(props) => props.gap}px;
+	grid-auto-flow: ${(props) => props.direction || 'column'};
+	justify-items: center;
+
+	${(props) =>
+		props.gap &&
+		css`
+			gap: ${props.gap}px;
+		`}
 
 	${(props) =>
 		props.mt &&
@@ -27,10 +34,9 @@ const Container = styled.div<ContainerType>`
 		`}
 
 	${(props) =>
-		props.flex &&
+		props.grid &&
 		css`
-			display: flex;
-			justify-content: center;
+			display: grid;			
 		`}
 
 	${(props) =>
@@ -43,11 +49,6 @@ const Container = styled.div<ContainerType>`
 		props.spaceBetween &&
 		css`
 			justify-content: space-between;
-		`}
-	${(props) =>
-		props.direction &&
-		css`
-			flex-direction: ${props.direction};
 		`}
 
 	${media.lessThan('xl')`

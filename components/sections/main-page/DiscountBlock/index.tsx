@@ -5,7 +5,7 @@ import { Discount, Wrapper } from './styled';
 
 export const DiscountBlock = () => (
 	<Wrapper>
-		<Container flex direction="column" gap={65} center>
+		<Container grid direction="row" gap={65} center>
 			<Flexbox align="center" direction="column" gap={20}>
 				<Title color="white">
 					Оставьте заявку
@@ -18,9 +18,7 @@ export const DiscountBlock = () => (
 					<div>-10%</div>
 				</Discount>
 			</Flexbox>
-			<div style={{ maxWidth: 400, width: '100%' }}>
-				<FormOrder name="discount-form" />
-			</div>
+			<FormOrder name="discount-form" />
 		</Container>
 	</Wrapper>
 );

@@ -1,16 +1,16 @@
 import { FC } from 'react';
 
 import { Icon } from '@/components';
-import { Container, Title } from '@/components/Layout';
+import { Container, Grid, Title } from '@/components/Layout';
 import { advantages } from '@/mock/advantages';
 
-import { Advantages, IconWrapper, Item, Wrapper } from './styled';
+import { IconWrapper, Item, Wrapper } from './styled';
 
 export const WhyAreWe: FC = () => (
 	<Wrapper>
-		<Container flex direction="column" gap={40}>
+		<Container grid direction="row" gap={40}>
 			<Title color="disabled">Почему мы?</Title>
-			<Advantages>
+			<Grid gap={20} $w100 justify="center" align="stretch">
 				{advantages.map(({ title, icon, description, list }) => (
 					<Item key={title}>
 						<IconWrapper>
@@ -31,7 +31,7 @@ export const WhyAreWe: FC = () => (
 						</span>
 					</Item>
 				))}
-			</Advantages>
+			</Grid>
 		</Container>
 	</Wrapper>
 );
