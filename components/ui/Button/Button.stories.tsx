@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ButtonUI } from '@/components/ui';
+import { ButtonUI } from '@/components/ui/Button';
 
 const meta: Meta<typeof ButtonUI> = {
 	title: 'Button',
@@ -10,6 +10,7 @@ const meta: Meta<typeof ButtonUI> = {
 		w100: false,
 		mobile: false,
 		inactive: false,
+		margins: false,
 	},
 	tags: ['autodocs'],
 };
@@ -50,6 +51,22 @@ export const ButtonIcon: Story = {
 	args: {
 		primary: true,
 		icon: 'heart',
-		children: 'Кнопка с иконкой',
+		children: 'Button with icon',
+	},
+};
+
+export const Disable: Story = {
+	args: {
+		primary: true,
+		children: 'Click to order',
+		disabled: true,
+	},
+};
+
+export const Mobile: Story = {
+	args: {
+		primary: true,
+		mobile: true,
+		children: 'Click to order',
 	},
 };

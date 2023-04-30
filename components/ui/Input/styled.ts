@@ -37,6 +37,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 		border-radius: ${theme.radius.borderRadius};
 		border: 1px solid #aaa;
 		z-index: 1;
+		transition: border-color box-shadow 0.2s;
 	}
 
 	input {
@@ -47,8 +48,9 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 		z-index: 2;
 	}
 
-	input:focus + div {
-		border-color: ${theme.colors.gray.$8};
+	& > input:focus ~ div {
+		border-color: ${theme.colors.gray.$6};
+		box-shadow: 0px 2px 10px rgba(74, 74, 74, 0.25);
 		outline: none;
 	}
 
@@ -59,10 +61,13 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 			.icofont {
 				color: ${theme.colors.success};
 			}
-			&input:focus > div,
-			& > div {
+			& > div,
+			& > input:focus ~ div {
 				border-color: ${theme.colors.success};
-				box-shadow: 0px 2px 12px rgba(51, 255, 0, 0.25);
+			}
+
+			& > input:focus ~ div {
+				box-shadow: 0px 2px 12px rgba(36, 164, 4, 0.45);
 			}
 		`}
 
@@ -73,9 +78,12 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 			.icofont {
 				color: ${theme.colors.danger};
 			}
-			& > input:focus > div,
-			& > div {
+			& > div,
+			& > input:focus ~ div {
 				border-color: ${theme.colors.danger};
+			}
+
+			& > input:focus ~ div {
 				box-shadow: 0px 2px 9px rgba(255, 104, 104, 0.5);
 			}
 		`}
@@ -83,9 +91,15 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	${(props) =>
 		props.$disabled &&
 		css`
-			pointer-events: none;
-			background-color: ${props.theme.colors.gray.$2};
-			opacity: 0.8;
+			&,
+			& > div {
+				pointer-events: none;
+				opacity: 0.6;
+			}
+
+			& > div {
+				background-color: ${props.theme.colors.gray.$3};
+			}
 		`}
 `;
 

@@ -9,11 +9,10 @@
 		"lint": "next lint",
 		"pretty": "npx prettier --write ./src",
 		"icofont": "fantasticon -n icofont -p icofont --normalize",
-		"storybook": "storybook dev -p 6006",
+		"storybook": "storybook dev -p 4006",
 		"build-storybook": "storybook build"
 	},
 	"dependencies": {
-		"@types/next": "^9.0.0",
 		"@types/node": "18.15.11",
 		"@types/react": "18.0.34",
 		"@types/react-dom": "18.0.11",

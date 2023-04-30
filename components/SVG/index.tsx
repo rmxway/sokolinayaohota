@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import BarDecor from '@/public/assets/svg/bardecor-line.svg';
 import BarDecor2 from '@/public/assets/svg/bardecor-line-2.svg';
 import LogoDecor from '@/public/assets/svg/logo-decor.svg';
@@ -12,15 +10,15 @@ interface SVGType {
 	inverse?: boolean;
 }
 
-export const SVG: FC<SVGType> = ({
+export const SVG = ({
 	name,
 	color,
 	width,
 	inverse,
 	...propsComponent
-}) => {
+}: SVGType) => {
 	const props = {
-		fill: theme.colors[color || 'gray'],
+		fill: theme.colors[color || 'disabled'],
 		style: {
 			maxWidth: width,
 			transform: `rotate(${inverse ? '180deg' : '0deg'})`,
@@ -36,7 +34,7 @@ export const SVG: FC<SVGType> = ({
 		case 'LogoDecor':
 			return <LogoDecor {...props} />;
 		default:
-			return null;
+			return <div>Nothing</div>;
 	}
 };
 

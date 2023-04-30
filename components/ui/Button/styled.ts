@@ -9,12 +9,13 @@ interface CommonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	margins?: boolean;
 	mobile?: boolean;
 	icon?: keyof typeof icofont;
-}
-
-export interface Props extends CommonProps {
+	/** Style */
 	primary?: boolean;
+	/** Style */
 	brown?: boolean;
+	/** Style */
 	danger?: boolean;
+	/** Style */
 	success?: boolean;
 }
 

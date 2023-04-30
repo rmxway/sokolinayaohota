@@ -4,12 +4,13 @@ import icofont from '@/public/assets/fonts/icofont/icofont.json';
 import { animateError, InputError, InputWrapper } from './styled';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+	/** Uniq name for field */
 	name: string;
 	success?: boolean;
 	danger?: boolean;
 	disabled?: boolean;
 	error?: string | null;
-	maskType?: 'phone';
+	// maskType?: 'phone';
 	icon?: keyof typeof icofont;
 }
 
