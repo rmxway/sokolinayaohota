@@ -10,7 +10,9 @@
 		"pretty": "npx prettier --write ./src",
 		"icofont": "fantasticon -n icofont -p icofont --normalize",
 		"storybook": "storybook dev -p 4006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"create-image": "bash ./docker/create-image.sh",
+		"start-docker": "bash ./docker/start-docker.sh"
 	},
 	"dependencies": {
 		"@types/node": "18.15.11",
