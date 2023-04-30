@@ -1,36 +1,38 @@
+# Docker команды
+
+### Создание образа проекта
+```bash
+yarn create-image
+```
+
+### Запустить образ на сервере
+```bash
+yarn start-docker
+```
+
 # Scripts проекта
 
 ### Запуск дев разработки (локальный сервер) 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 ### Сборка проекта
 ```bash
-npm run build
-# or
 yarn build
 ```
 ### Запуск сборки на локальном сервере
 ```bash
-npm run start
-# or
 yarn start
 ```
 
 ### Проверка скриптов(JS) через ESLint
 ```bash
-npm run lint
-# or
 yarn lint
 ```
 
 ### Сборка шрифта иконок Icofont
 ```bash
-npm run icofont
-# or
 yarn icofont
 ```
 
