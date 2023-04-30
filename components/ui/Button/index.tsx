@@ -1,5 +1,3 @@
-import { memo, PropsWithChildren } from 'react';
-
 import { Icon } from '@/components';
 
 import { Button, ButtonProps } from './styled';
@@ -13,18 +11,16 @@ import { Button, ButtonProps } from './styled';
 
  * @example <ButtonUI mobile icon="phone">Телефон</ButtonUI>
  */
-const ButtonUI = memo(
-	({ children, icon, ...props }: PropsWithChildren<ButtonProps>) => {
-		const itemIcon = icon ? <Icon icon={icon} /> : null;
+const ButtonUI = ({ children, icon, ...props }: ButtonProps) => {
+	const itemIcon = icon ? <Icon icon={icon} /> : null;
 
-		return (
-			<Button {...props}>
-				{children}
-				{itemIcon}
-			</Button>
-		);
-	}
-);
+	return (
+		<Button {...props}>
+			{children}
+			{itemIcon}
+		</Button>
+	);
+};
 
 ButtonUI.displayName = 'ButtonUI';
 

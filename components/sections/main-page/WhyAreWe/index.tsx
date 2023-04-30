@@ -10,7 +10,7 @@ export const WhyAreWe: FC = () => (
 	<Wrapper>
 		<Container grid direction="row" gap={40}>
 			<Title color="disabled">Почему мы?</Title>
-			<Grid gap={20} $w100 justify="center" align="stretch">
+			<Grid gap={20} $w100 justify="center">
 				{advantages.map(({ title, icon, description, list }) => (
 					<Item key={title}>
 						<IconWrapper>

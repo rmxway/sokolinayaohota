@@ -18,13 +18,19 @@ export const Wrapper = styled.div`
 		left: 0;
 		width: 100%;
 		min-height: 950px;
+		height: 100%;
 		background-image: url('assets/img/why-we-are.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
 	}
 
-	${media.lessThan('md')`
+	${Grid} {
+		align-items: stretch;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	${media.lessThan('lg')`
 		${Grid} {
 			grid-auto-flow: row;
 			grid-template-columns: 1fr 1fr;
@@ -46,13 +52,16 @@ export const Item = styled.div`
 	padding: 40px 24px;
 	display: grid;
 	justify-items: center;
-	gap: 20px;
+	grid-auto-rows: max-content;
+	gap: 32px;
 	transition: box-shadow 0.2s;
 
-	& > div {
+	& > div:not([class]) {
 		font-family: ${theme.layout.fonts.header};
 		font-size: 24px;
 		font-weight: 600;
+		height: max-content;
+		line-height: 1;
 		letter-spacing: 0.5px;
 		text-transform: uppercase;
 		color: ${theme.colors.brown};

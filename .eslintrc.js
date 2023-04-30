@@ -14,6 +14,7 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:react-hooks/recommended',
 		'next/core-web-vitals',
+		'plugin:storybook/recommended',
 	],
 	plugins: [
 		'@typescript-eslint',
@@ -53,8 +54,8 @@ module.exports = {
 		'import/no-extraneous-dependencies': [
 			'off',
 			{
-                devDependencies: true,
-            },
+				devDependencies: true,
+			},
 		],
 		'@typescript-eslint/no-shadow': 'error',
 		'unused-imports/no-unused-imports': 'error',
@@ -76,8 +77,12 @@ module.exports = {
 				tsx: 'never',
 			},
 		],
-
-		'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+		'react/jsx-filename-extension': [
+			1,
+			{
+				extensions: ['.tsx'],
+			},
+		],
 		'react/function-component-definition': [
 			'error',
 			{
@@ -85,7 +90,6 @@ module.exports = {
 				unnamedComponents: 'arrow-function',
 			},
 		],
-
 		'react/jsx-props-no-spreading': 'off',
 		'react/require-default-props': 'off',
 	},

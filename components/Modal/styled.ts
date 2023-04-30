@@ -56,6 +56,10 @@ export const ModalWindow = styled(motion.div)<{ $fullscreen?: boolean }>`
 			justify-content: center;
 		`}
 
+	${media.lessThan('md')`
+		margin-top: 0;
+	`}
+
 	${media.lessThan('xs')`
 		min-width: auto;
 		width: 100%;
