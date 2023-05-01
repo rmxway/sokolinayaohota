@@ -1,4 +1,13 @@
-export const advantages = [
+import icomoon from '@/public/assets/fonts/icofont/icofont.json';
+
+type AdvTypes = {
+	icon: keyof typeof icomoon;
+	title: string;
+	description?: string[];
+	list?: string[];
+};
+
+export const advantages: AdvTypes[] = [
 	{
 		icon: 'heart',
 		title: `4 зала вместительностью от 30 до 800 человек`,
