@@ -14,7 +14,7 @@ export const WhyAreWe: FC = () => (
 				{advantages.map(({ title, icon, description, list }) => (
 					<Item key={title}>
 						<IconWrapper>
-							<Icon icon={`${icon.toString()}`} size={52} />
+							<Icon icon={icon} size={52} />
 						</IconWrapper>
 						<div>{title}</div>
 						<span>
