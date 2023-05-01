@@ -2,12 +2,12 @@
 
 ### Создание образа проекта
 ```bash
-yarn create-image
+bash ./docker/create-image.sh
 ```
 
 ### Запустить образ на сервере
 ```bash
-yarn start-docker
+bash ./docker/start-docker.sh
 ```
 
 # Scripts проекта
