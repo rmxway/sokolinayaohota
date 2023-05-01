@@ -1,6 +1,6 @@
 # Naively Simple Node Dockerfile
 
-FROM node
+FROM node:20.0.0
 
 RUN mkdir -p /app/ && chown -R node:node /app
 

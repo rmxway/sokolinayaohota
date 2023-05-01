@@ -11,6 +11,7 @@ const config: StorybookConfig = {
 	staticDirs: ['../public'],
 	typescript: {
 		check: true,
+		reactDocgen: 'react-docgen-typescript',
 	},
 	framework: {
 		name: '@storybook/nextjs',
