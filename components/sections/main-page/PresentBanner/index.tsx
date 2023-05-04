@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { SVG } from '@/components';
+import { SvgIcon } from '@/components';
 import { Container } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { useStore } from '@/hooks';
@@ -30,7 +30,7 @@ export const PresentBanner: FC = () => {
 					</p>
 					<p>Принимаем заказы на все залы!</p>
 				</div>
-				<SVG name="BarDecor" color="primary" width="150px" />
+				<SvgIcon name="BarDecor" color="primary" width="150px" />
 				<ButtonUI
 					danger
 					icon="arrow"

@@ -1,4 +1,4 @@
-import { Icon, SVG } from '@/components';
+import { Icon, SvgIcon } from '@/components';
 import { Logo } from '@/components/Header/Logo';
 import { Container, Grid, Title } from '@/components/Layout';
 import map from '@/public/assets/img/map.jpg';
@@ -8,7 +8,7 @@ import { Copyright, InfoBlock, Map, Wrapper } from './styled';
 export const ContactsBlock = () => (
 	<Wrapper>
 		<Container grid gap={40} direction="row" center>
-			<SVG name="BarDecor" color="primary" width="150px" inverse />
+			<SvgIcon name="BarDecor" color="primary" width="150px" inverse />
 			<Title color="primary">
 				Как с нами <span>связаться ?</span>
 			</Title>

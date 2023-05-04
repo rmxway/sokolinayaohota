@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Icon, Navbar, SVG } from '@/components';
+import { Icon, Navbar, SvgIcon } from '@/components';
 import { Container, Grid, Title } from '@/components/Layout';
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
@@ -58,7 +58,7 @@ const HeaderBlock: FC = () => {
 						<Title color="primary">
 							в самом зеленом парке Москвы
 						</Title>
-						<SVG name="BarDecor2" color="white" width="450px" />
+						<SvgIcon name="BarDecor2" color="white" width="450px" />
 					</Container>
 				</Banner>
 				<BannerImage
