@@ -8,7 +8,7 @@ COPY --chown=node:node . .
 
 USER node
 
-RUN yarn install --frozen-lockfile
+RUN yarn install --immutable
 
 RUN npx next telemetry disable
 
