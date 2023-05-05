@@ -1,5 +1,7 @@
+import { ImageBackground } from '@/components';
 import { FormOrder } from '@/components/FormOrder';
 import { Container, Flexbox, Title } from '@/components/Layout';
+import imageBack from '@/public/assets/img/discount.jpg';
 
 import { Discount, Wrapper } from './styled';
 
@@ -20,6 +22,7 @@ export const DiscountBlock = () => (
 			</Flexbox>
 			<FormOrder name="discount-form" />
 		</Container>
+		<ImageBackground image={imageBack} quality={50} />
 	</Wrapper>
 );
 export default DiscountBlock;

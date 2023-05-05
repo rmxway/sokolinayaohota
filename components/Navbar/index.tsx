@@ -37,7 +37,11 @@ export const Navbar: FC = () => {
 
 	return (
 		<>
-			<BurgerButton onClick={toggleNavbar} $open={show}>
+			<BurgerButton
+				onClick={toggleNavbar}
+				$open={show}
+				aria-label="burger button"
+			>
 				<span className="first-line" />
 				<span className="second-line" />
 				<span className="third-line" />
@@ -48,7 +52,7 @@ export const Navbar: FC = () => {
 						key={item.title}
 						active={router.asPath === item.url}
 					>
-						<Link href={item.url} />
+						<Link href={item.url} aria-label={item.title} />
 						{item.title}
 					</NavbarItem>
 				))}

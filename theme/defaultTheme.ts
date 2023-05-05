@@ -1,5 +1,11 @@
 import { DefaultTheme } from 'styled-components';
 
+import {
+	LedgerFont,
+	YanoneKaffeesatzFont,
+	ZenKakuFont,
+} from '@/services/fonts';
+
 const defaultTheme: DefaultTheme = {
 	name: 'default',
 	colors: {
@@ -29,9 +35,9 @@ const defaultTheme: DefaultTheme = {
 	},
 	layout: {
 		fonts: {
-			header: 'Yanone Kaffeesatz, serif',
-			old: 'Ledger, serif',
-			body: 'Zen Kaku Gothic Antique, sans-serif',
+			header: `${YanoneKaffeesatzFont.style.fontFamily}, serif`,
+			old: `${LedgerFont.style.fontFamily}, serif`,
+			body: `${ZenKakuFont.style.fontFamily}, sans-serif`,
 		},
 		containerWidth: '1024px',
 		shadow: {

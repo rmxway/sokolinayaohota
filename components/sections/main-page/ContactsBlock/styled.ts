@@ -3,7 +3,6 @@ import { desaturate } from 'polished';
 import styled from 'styled-components';
 
 import { LogoText } from '@/components/Header/styled';
-import { Grid } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -27,14 +26,14 @@ export const Wrapper = styled.div`
 	}
 
 	${media.lessThan('md')`
-		${Grid} {			
+		.info-grid {			
 			grid-template-column: 1fr 1fr;
 			grid-template-rows: auto auto;			
 		}
 	`}
 
 	${media.lessThan('sm')`
-		${Grid} {			
+		.info-grid {			
 			grid-auto-flow: row;
 			grid-template-column: 1fr;			
 		}
@@ -83,8 +82,8 @@ export const Copyright = styled.div`
 `;
 
 export const Map = styled(Image)`
-	width: 100%;
-	height: 500px;
+	max-width: 100%;
+	height: auto;
 	object-fit: cover;
 	object-position: center;
 	margin: 20px 0;

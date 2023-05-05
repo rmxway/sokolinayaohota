@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
-import { SvgIcon } from '@/components';
+import { ImageBackground, SvgIcon } from '@/components';
 import { Container } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { useStore } from '@/hooks';
+import imageBack from '@/public/assets/img/wrapper-text.jpg';
 import { actionChangeModal } from '@/store/actions';
 
 import { MainText, Wrapper } from './styled';
@@ -39,6 +40,7 @@ export const PresentBanner: FC = () => {
 					Заказать зал
 				</ButtonUI>
 			</Container>
+			<ImageBackground image={imageBack} quality={5} />
 		</Wrapper>
 	);
 };

@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 
+import { YanoneKaffeesatzFont, ZenKakuFont } from '@/services/fonts';
 import { media } from '@/theme/media';
 
 const base = css`
@@ -19,20 +20,17 @@ const base = css`
 
 	[data-scroll-lock-locked] {
 		height: 100vh;
-		left: 0;
-		// right: 15px;		
 	}
 	body {
 		background-color: #fff;
-
-		font-family: 'Zen Kaku Gothic Antique', sans-serif;
-		font-weight: 400;
+		${ZenKakuFont.style}
 		font-size: 20px;
 
 		display: block;
 		line-height: 1.25;
 		min-width: 320px;
 		color: #222;
+		overflow-y: scroll;
 
 		${media.lessThan('md')`
 			font-size: 16px;
@@ -48,8 +46,7 @@ const base = css`
 	h3,
 	h4,
 	h5 {
-		font-family: 'Yanone Kaffeesatz', sans-serif;
-		font-weight: 600;
+		${YanoneKaffeesatzFont.style}
 		letter-spacing: 1px;
 		line-height: 1;
 	}

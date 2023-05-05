@@ -1,8 +1,9 @@
 import { FC } from 'react';
 
-import { Icon } from '@/components';
+import { Icon, ImageBackground } from '@/components';
 import { Container, Grid, Title } from '@/components/Layout';
 import { advantages } from '@/mock/advantages';
+import imageBack from '@/public/assets/img/why-we-are.jpg';
 
 import { IconWrapper, Item, Wrapper } from './styled';
 
@@ -33,6 +34,7 @@ export const WhyAreWe: FC = () => (
 				))}
 			</Grid>
 		</Container>
+		<ImageBackground image={imageBack} quality={80} />
 	</Wrapper>
 );
 

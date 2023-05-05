@@ -67,5 +67,6 @@
 		"react-input-mask": "next",
 		"storybook": "^7.0.8",
 		"storybook-svgr-react-component": "^1.0.1"
-	}
+	},
+	"packageManager": "yarn@3.5.1"
 }

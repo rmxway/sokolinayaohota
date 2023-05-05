@@ -7,10 +7,6 @@ export const Wrapper = styled.div`
 	align-items: center;
 	height: auto;
 	padding: 80px 0;
-	background-image: url('assets/img/questions.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
 
 	&:before {
 		content: '';
