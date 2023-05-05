@@ -1,6 +1,7 @@
+import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-import { Icon, Navbar, SVG } from '@/components';
+import { Icon, Navbar, SvgIcon } from '@/components';
 import { Container, Grid, Title } from '@/components/Layout';
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
@@ -13,6 +14,7 @@ import { Banner, BannerImage, Header, TopPanel, Wrapper } from './styled';
 
 const HeaderBlock: FC = () => {
 	const { state, dispatch } = useStore();
+	const router = useRouter();
 
 	return (
 		<>
@@ -49,25 +51,34 @@ const HeaderBlock: FC = () => {
 						</Grid>
 					</Container>
 				</Header>
-				<Banner>
-					<Container grid gap={40} direction="row" center>
-						<Title>
-							Роскошные банкетные залы <br />
-							для проведения вашего мероприятия
-						</Title>
-						<Title color="primary">
-							в самом зеленом парке Москвы
-						</Title>
-						<SVG name="BarDecor2" color="white" width="450px" />
-					</Container>
-				</Banner>
+
+				{router.asPath === '/' && (
+					<Banner>
+						<Container grid gap={40} direction="row" center>
+							<Title>
+								Роскошные банкетные залы <br />
+								для проведения вашего мероприятия
+							</Title>
+							<Title color="primary">
+								в самом зеленом парке Москвы
+							</Title>
+							<SvgIcon
+								name="BarDecor2"
+								color="white"
+								width="450px"
+							/>
+						</Container>
+					</Banner>
+				)}
 				<BannerImage
 					src={bannerImage.src}
 					alt="banner-image"
 					width={bannerImage.width}
 					height={bannerImage.height}
+					quality={router.asPath === '/' ? 20 : 1}
 					placeholder="blur"
 					blurDataURL={bannerImage.blurDataURL}
+					priority={router.asPath === '/'}
 				/>
 			</Wrapper>
 			<ModalFormOrder

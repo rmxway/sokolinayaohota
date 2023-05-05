@@ -1,7 +1,3 @@
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
-
 import { AnimatePresence, motion } from 'framer-motion';
 import { FC, useState } from 'react';
 import {
@@ -65,7 +61,6 @@ export const SliderBlock: FC = () => {
 		effect: 'fade',
 		spaceBetween: 20,
 		slidesPerView: 1,
-		lazyPreloadPrevNext: 1,
 		onSwiper: (swiper) => {
 			setThumbSwiper(swiper);
 		},
@@ -139,8 +134,11 @@ export const SliderBlock: FC = () => {
 								<SliderImage
 									src={slide.img}
 									alt={slide.alt}
-									width={1200}
-									height={1200}
+									width={1000}
+									height={1000}
+									sizes="(max-width: 768px) 100vw
+										(max-width: 1200px) 50vw"
+									quality={70}
 								/>
 							</SwiperSlide>
 						))}

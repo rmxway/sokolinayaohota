@@ -65,8 +65,10 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 						{mainPageGallery.map((image) => (
 							<SwiperSlide key={image.id}>
 								<SliderImage
-									width={1500}
-									height={1500}
+									width={1440}
+									height={1440}
+									priority
+									quality={60}
 									src={image.url}
 									alt={`image${image.id}`}
 								/>
@@ -79,8 +81,10 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 						{mainPageGallery.map((image) => (
 							<SwiperSlide key={image.id}>
 								<SliderImage
-									width={1500}
-									height={1500}
+									width={200}
+									height={200}
+									priority
+									quality={50}
 									src={image.url}
 									alt={`image${image.id}`}
 								/>

@@ -1,4 +1,4 @@
-import { Icon, SVG } from '@/components';
+import { Icon, SvgIcon } from '@/components';
 import { Logo } from '@/components/Header/Logo';
 import { Container, Grid, Title } from '@/components/Layout';
 import map from '@/public/assets/img/map.jpg';
@@ -8,11 +8,11 @@ import { Copyright, InfoBlock, Map, Wrapper } from './styled';
 export const ContactsBlock = () => (
 	<Wrapper>
 		<Container grid gap={40} direction="row" center>
-			<SVG name="BarDecor" color="primary" width="150px" inverse />
+			<SvgIcon name="BarDecor" color="primary" width="150px" inverse />
 			<Title color="primary">
 				Как с нами <span>связаться ?</span>
 			</Title>
-			<Grid justify="space-between" $w100 gap={20}>
+			<Grid justify="space-between" className="info-grid" $w100 gap={20}>
 				<InfoBlock>
 					<div>
 						<Icon icon="mail" /> E-mail:
@@ -38,7 +38,15 @@ export const ContactsBlock = () => (
 					<span>пр-д Сокольнического круга, д. 11</span>
 				</InfoBlock>
 			</Grid>
-			<Map src={map.src} width={1500} height={1500} alt="map" />
+			<Map
+				src={map.src}
+				placeholder="blur"
+				blurDataURL={map.blurDataURL}
+				width={1320}
+				height={500}
+				quality={50}
+				alt="map"
+			/>
 			<Logo href="/#header" />
 			<Copyright>sokolinayaohota.ru ® 2023</Copyright>
 		</Container>

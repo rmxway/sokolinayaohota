@@ -27,8 +27,9 @@ export const GalleryBlock = () => {
 							key={image.id}
 							$big={idx === 0}
 							src={image.url}
-							width={600}
-							height={600}
+							width={400}
+							height={400}
+							quality={20}
 							alt={`image${image.id}`}
 							onClick={() => handleShowImageInModal(image.id)}
 						/>

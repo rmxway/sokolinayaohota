@@ -8,18 +8,12 @@ export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	min-height: 900px;
-	background-image: url('assets/img/wrapper-text.jpg');
+
 	background-size: cover;
 	background-position: center;
-	background-color: aquamarine;
 	color: ${theme.colors.primary};
 	text-align: center;
 	padding: 80px 0;
-
-	& > div {
-		font-size: 24px;
-		line-height: 1.75;
-	}
 
 	&:before {
 		position: absolute;
@@ -30,6 +24,11 @@ export const Wrapper = styled.div`
 		height: 100%;
 		background-color: ${theme.colors.brown};
 		opacity: 0.83;
+	}
+
+	& > div {
+		font-size: 24px;
+		line-height: 1.75;
 	}
 
 	${media.lessThan('md')`

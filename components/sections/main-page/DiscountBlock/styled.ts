@@ -9,10 +9,6 @@ export const Wrapper = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
-	background-image: url('assets/img/discount.jpg');
-	background-size: cover;
-	background-position: center;
-	background-color: aquamarine;
 	text-align: center;
 	padding: 80px 0;
 

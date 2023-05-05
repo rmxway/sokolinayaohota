@@ -1,4 +1,4 @@
-FROM node:20.0.0
+FROM node:20-alpine
 
 RUN mkdir -p /app/ && chown -R node:node /app
 
@@ -8,7 +8,7 @@ COPY --chown=node:node . .
 
 USER node
 
-RUN yarn install
+RUN yarn install --immutable
 
 RUN npx next telemetry disable
 

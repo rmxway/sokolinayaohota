@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { FC, useEffect, useRef, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
-import { SVG } from '@/components/SVG';
+import { SvgIcon } from '@/components/SvgIcon';
 import { navbarItems } from '@/mock/navbar';
 
 import {
@@ -37,7 +37,11 @@ export const Navbar: FC = () => {
 
 	return (
 		<>
-			<BurgerButton onClick={toggleNavbar} $open={show}>
+			<BurgerButton
+				onClick={toggleNavbar}
+				$open={show}
+				aria-label="burger button"
+			>
 				<span className="first-line" />
 				<span className="second-line" />
 				<span className="third-line" />
@@ -48,7 +52,7 @@ export const Navbar: FC = () => {
 						key={item.title}
 						active={router.asPath === item.url}
 					>
-						<Link href={item.url} />
+						<Link href={item.url} aria-label={item.title} />
 						{item.title}
 					</NavbarItem>
 				))}
@@ -72,7 +76,7 @@ export const Navbar: FC = () => {
 							{item.title}
 						</NavbarItem>
 					))}
-					<SVG name="LogoDecor" width="250px" color="brown" />
+					<SvgIcon name="LogoDecor" width="250px" color="brown" />
 				</MobileNav>
 			</Wrapper>
 		</>

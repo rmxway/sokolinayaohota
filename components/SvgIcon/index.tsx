@@ -1,22 +1,25 @@
+import { FC } from 'react';
+
 import BarDecor from '@/public/assets/svg/bardecor-line.svg';
 import BarDecor2 from '@/public/assets/svg/bardecor-line-2.svg';
 import LogoDecor from '@/public/assets/svg/logo-decor.svg';
 import { defaultTheme as theme } from '@/theme';
 
 interface SVGType {
+	/** Select Icon */
 	name: 'BarDecor' | 'BarDecor2' | 'LogoDecor';
 	color?: keyof typeof theme.colors;
 	width?: string;
 	inverse?: boolean;
 }
 
-export const SVG = ({
+export const SvgIcon: FC<SVGType> = ({
 	name,
 	color,
 	width,
 	inverse,
 	...propsComponent
-}: SVGType) => {
+}) => {
 	const props = {
 		fill: theme.colors[color || 'disabled'],
 		style: {
@@ -38,4 +41,4 @@ export const SVG = ({
 	}
 };
 
-export default SVG;
+export default SvgIcon;

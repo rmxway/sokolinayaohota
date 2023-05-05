@@ -19,6 +19,7 @@ export const TopPanel = styled.div`
 	font-size: 18px;
 	line-height: 1.2;
 	padding: 12px 0;
+	z-index: 1;
 
 	${Container} {
 		height: 100%;
@@ -63,6 +64,7 @@ export const Header = styled.header`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	z-index: 1;
 
 	${media.lessThan('md')`
 		height: auto;
@@ -82,7 +84,8 @@ export const BannerImage = styled(Image)`
 	height: 100%;
 	object-fit: cover;
 	object-position: bottom;
-	z-index: -1;
+	z-index: 0;
+	filter: blur(2px);
 `;
 
 export const LogoText = styled.div`
@@ -108,6 +111,7 @@ export const Banner = styled.div`
 	flex-wrap: nowrap;
 	min-height: 600px;
 	height: 80vh;
+	z-index: 1;
 
 	h1,
 	h2 {

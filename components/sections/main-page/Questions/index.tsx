@@ -1,8 +1,9 @@
 import { FC } from 'react';
 
-import { Question } from '@/components';
+import { ImageBackground, Question } from '@/components';
 import { Container, Flexbox, Title } from '@/components/Layout';
 import { questions } from '@/mock/questions';
+import imageBack from '@/public/assets/img/questions.jpg';
 
 import { Wrapper } from './styled';
 
@@ -24,6 +25,7 @@ export const Questions: FC = () => (
 				))}
 			</Flexbox>
 		</Container>
+		<ImageBackground image={imageBack} quality={20} />
 	</Wrapper>
 );
 

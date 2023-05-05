@@ -11,20 +11,6 @@ export const Wrapper = styled.div`
 	align-items: center;
 	padding: 80px 0;
 
-	&:before {
-		position: absolute;
-		content: '';
-		top: 0;
-		left: 0;
-		width: 100%;
-		min-height: 950px;
-		height: 100%;
-		background-image: url('assets/img/why-we-are.jpg');
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-	}
-
 	${Grid} {
 		align-items: stretch;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
