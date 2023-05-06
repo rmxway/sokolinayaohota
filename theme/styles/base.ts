@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
 import { YanoneKaffeesatzFont, ZenKakuFont } from '@/services/fonts';
-import { media } from '@/theme/media';
 
 const base = css`
 	html {
@@ -24,17 +23,13 @@ const base = css`
 	body {
 		background-color: #fff;
 		${ZenKakuFont.style}
-		font-size: 20px;
+		font-size: 1rem;
 
 		display: block;
 		line-height: 1.25;
 		min-width: 320px;
 		color: #222;
 		overflow-y: scroll;
-
-		${media.lessThan('md')`
-			font-size: 16px;
-		`}
 	}
 	code {
 		font-family: 'source-code-pro', 'Menlo', 'Monaco', 'Consolas',

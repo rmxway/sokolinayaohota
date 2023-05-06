@@ -1,5 +1,3 @@
-import 'swiper/css';
-
 import { FC, useState } from 'react';
 import { Navigation, Swiper as TypeSwiper, Thumbs } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
@@ -9,6 +7,7 @@ import { SliderImage } from '@/components/sections/main-page/SliderBlock/styled'
 import { mainPageGallery } from '@/mock/gallery';
 import { jsBreakpoints } from '@/theme/media';
 
+import { Controls } from './Controls';
 import { Slider, Thumbnails, Wrapper } from './styled';
 
 interface ModalGalleryProps {
@@ -29,18 +28,14 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 		spaceBetween: 12,
 		slidesPerView: 1,
 		initialSlide: currentId - 1,
-		modules: [Thumbs, Navigation],
+		modules: [Thumbs],
 		thumbs: {
 			swiper: thumbSwiper && !thumbSwiper.destroyed ? thumbSwiper : null,
-		},
-		navigation: {
-			nextEl: '.btn-next',
-			prevEl: '.btn-prev',
 		},
 	};
 
 	const thumbsSwiperConfig: SwiperProps = {
-		modules: [Thumbs],
+		modules: [Thumbs, Navigation],
 		spaceBetween: 12,
 		slidesPerView: 4,
 		lazyPreloadPrevNext: 1,
@@ -51,6 +46,13 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 			[jsBreakpoints.md]: {
 				slidesPerView: 7,
 			},
+		},
+		navigation: {
+			nextEl: '.btn-next',
+			prevEl: '.btn-prev',
+		},
+		onInit: (swiper) => {
+			swiper.navigation.update();
 		},
 		onSwiper: (swiper) => {
 			setThumbSwiper(swiper);
@@ -90,6 +92,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 								/>
 							</SwiperSlide>
 						))}
+						<Controls />
 					</Swiper>
 				</Thumbnails>
 			</Wrapper>

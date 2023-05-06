@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import { Container, Flexbox } from '@/components/Layout';
 import { Button } from '@/components/ui/Button/styled';
-import { defaultTheme as theme } from '@/theme';
-import { media } from '@/theme/media';
+import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -16,7 +15,7 @@ export const Wrapper = styled.div`
 export const TopPanel = styled.div`
 	background-color: rgba(255, 255, 255, 0.75);
 	font-weight: 500;
-	font-size: 18px;
+	font-size: 1.125rem;
 	line-height: 1.2;
 	padding: 12px 0;
 	z-index: 1;
@@ -38,20 +37,21 @@ export const TopPanel = styled.div`
 
 	${media.lessThan('sm')`
 		height: auto;
-		padding: 20px 0;
+		padding: 16px 0;
+		font-size: 1rem;
 
 		${Container} {
 			align-items: start;
 			grid-auto-flow: row;
 			justify-items: start;
-			gap: 20px;
+			gap: 16px;
 		}
 	`}
 `;
 
 export const Header = styled.header`
 	position: relative;
-	height: 100px;
+	padding: 12px 0;
 	background: linear-gradient(
 		180deg,
 		rgba(255, 255, 255, 0.99) 0%,
@@ -64,12 +64,9 @@ export const Header = styled.header`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	z-index: 1;
+	z-index: 2;
 
 	${media.lessThan('md')`
-		height: auto;
-		padding: 20px 0;
-
 		${Button} {
 			display: none;
 		}
@@ -88,19 +85,6 @@ export const BannerImage = styled(Image)`
 	filter: blur(2px);
 `;
 
-export const LogoText = styled.div`
-	display: flex;
-	flex-direction: column;
-	text-align: left;
-	color: ${theme.colors.brown};
-	font-family: ${theme.layout.fonts.old};
-	font-size: 20px;
-
-	& > span {
-		font-family: ${theme.layout.fonts.header};
-	}
-`;
-
 export const Banner = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -112,6 +96,11 @@ export const Banner = styled.div`
 	min-height: 600px;
 	height: 80vh;
 	z-index: 1;
+	padding: 40px 0;
+
+	${media.lessThan('md')`
+		height: auto;
+	`}
 
 	h1,
 	h2 {

@@ -40,18 +40,18 @@ export const Wrapper = styled.div`
 
 export const MainText = styled.div`
 	font-family: ${theme.layout.fonts.old};
-	font-size: 36px;
+	font-size: 2.25rem;
 	line-height: 1.3;
 
 	div {
-		font-size: 48px;
+		font-size: 3rem;
 	}
 
 	${media.lessThan('md')`
-		font-size: 24px;
+		font-size: 1.5rem;
 
 		div {
-			font-size: 32px;
+			font-size: 2rem;
 		}
 	`}
 `;

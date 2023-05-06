@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 	display: flex;
 	text-align: center;
 	align-items: center;
-	padding: 80px 0;
+	padding-top: 80px;
 
 	${Grid} {
 		align-items: stretch;

@@ -23,11 +23,7 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 	width: 28px;
 	height: 28px;
 	margin-left: auto;
-	order: 2;
-	grid-template-columns: 1fr;
 	padding: 0;
-	grid-auto-flow: row;
-	align-items: space-between;
 	cursor: pointer;
 
 	span {
@@ -35,12 +31,11 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		top: 0;
 		width: 100%;
 		height: 2px;
-		flex-shrink: 0;
 		border-radius: 10px;
 		background-color: ${theme.colors.brown};
 		transition: all 0.25s ease-in-out;
 		transform-origin: 50%;
-		margin: 0 auto;
+		margin: auto;
 	}
 
 	${(props) =>
@@ -84,7 +79,7 @@ export const MobileNav = styled(motion.div)`
 	box-shadow: ${theme.layout.shadow.big};
 	margin: 0;
 	padding: 40px;
-	z-index: 10;
+	z-index: 20;
 
 	svg {
 		display: block;

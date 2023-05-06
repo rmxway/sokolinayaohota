@@ -86,11 +86,14 @@ export const SlideContainer = styled.div`
 	${media.lessThan('md')`
 		grid-auto-flow: column;
 		grid-template-columns: 1fr;
-		grid-template-rows: 350px 1fr;
+		grid-template-rows: 300px 1fr;
 		margin: 0;
+		gap: 20px;
 	`}
 
 	${media.lessThan('sm')`
+		grid-template-rows: 350px 1fr;
+
 		${SliderImage} {
 			border-radius: 0;
 		}

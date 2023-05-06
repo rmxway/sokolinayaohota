@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
-import { defaultTheme as theme } from '@/theme';
+import { defaultTheme as theme, media } from '@/theme';
 
 interface CommonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	w100?: boolean;
@@ -75,24 +75,40 @@ const mixinButton = ($background = '#fff', $color = '#fff') => css`
 	}
 `;
 
+const propsMobile = css`
+	padding: 8px 16px;
+	height: 40px;
+	font-size: 1.125rem;
+
+	.icofont {
+		font-size: 1rem;
+	}
+`;
+
 const Button = styled.button<ButtonProps>`
 	appearance: none;
 	background: none;
 	border-radius: ${theme.radius.borderRadius};
-	padding: ${(props) => (props.mobile ? '8px 16px 8px' : '16px 16px 13px')};
-	height: ${(props) => (props.mobile ? '40px' : '52px')};
+
+	padding: 16px 16px 13px;
+	height: 52px;
+
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 	color: ${theme.colors.brown};
 	font-family: ${theme.layout.fonts.header};
-	font-size: 20px;
+	font-size: 1.25rem;
 	line-height: 1;
 	font-weight: 400;
 	text-transform: uppercase;
 	font-style: normal;
 	letter-spacing: 0.02em;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+	span {
+		margin-top: 3px;
+	}
 
 	${(props) =>
 		props.margins &&
@@ -135,6 +151,9 @@ const Button = styled.button<ButtonProps>`
 		margin-left: 8px;
 		line-height: 24px;
 	}
+
+	${(props) => props.mobile && propsMobile}
+	${media.lessThan('md')`${propsMobile}`}
 `;
 
 const textVar = {

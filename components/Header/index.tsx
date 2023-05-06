@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-import { Icon, Navbar, SvgIcon } from '@/components';
+import { Icon, SvgIcon } from '@/components';
 import { Container, Grid, Title } from '@/components/Layout';
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
@@ -10,6 +10,7 @@ import bannerImage from '@/public/assets/img/arka.jpg';
 import { actionChangeModal } from '@/store/actions';
 
 import { Logo } from './Logo';
+import { Navbar } from './Navbar';
 import { Banner, BannerImage, Header, TopPanel, Wrapper } from './styled';
 
 const HeaderBlock: FC = () => {
