@@ -1,12 +1,8 @@
 import { NextPage } from 'next';
 
-import { Container } from '@/components/Layout';
+import { ContactsBlock } from '@/components/sections/main-page';
 
-const ContactsPage: NextPage = () => (
-	<Container>
-		<h1>Контакты</h1>
-	</Container>
-);
+const ContactsPage: NextPage = () => <ContactsBlock />;
 
 export { ContactsPage };
 export default ContactsPage;
