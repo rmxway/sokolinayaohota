@@ -30,6 +30,7 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 	span {
 		position: relative;
 		top: 0;
+		display: block;
 		width: 100%;
 		height: 2px;
 		border-radius: 10px;

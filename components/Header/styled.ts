@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 	display: block;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 `;
 
 export const TopPanel = styled.div`
