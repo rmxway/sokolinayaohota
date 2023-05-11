@@ -27,7 +27,7 @@ const base = css`
 
 		display: block;
 		line-height: 1.25;
-		min-width: 320px;
+		min-width: 360px;
 		color: #222;
 		overflow-y: scroll;
 	}
@@ -47,27 +47,27 @@ const base = css`
 	}
 
 	h1 {
-		font-size: 4.5rem;
+		font-size: 3rem;
 		margin: 20px 0;
 	}
 
 	h2 {
-		font-size: 3.5rem;
+		font-size: 2.5rem;
 		margin: 15px 0;
 	}
 
 	h3 {
-		font-size: 2.5rem;
+		font-size: 2rem;
 		margin: 10px 0;
 	}
 
 	h4 {
-		font-size: 2rem;
+		font-size: 1.5rem;
 		margin: 8px 0;
 	}
 
 	h5 {
-		font-size: 1.5rem;
+		font-size: 1rem;
 		margin: 4px 0;
 	}
 

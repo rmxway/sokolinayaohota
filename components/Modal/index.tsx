@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { ReactNode, useEffect, useRef } from 'react';
+import React, { FC, ReactNode, useEffect, useRef } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import { Icon } from '@/components';
@@ -17,17 +17,19 @@ export interface ModalProps {
 	header?: string;
 	show: boolean;
 	fullscreen?: boolean;
+	gallery?: boolean;
 	onClose?: () => void;
 	children?: ReactNode;
 }
 
-export const Modal = ({
+export const Modal: FC<ModalProps> = ({
 	header,
 	show,
 	fullscreen,
+	gallery,
 	onClose,
 	children,
-}: ModalProps) => {
+}) => {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -52,7 +54,7 @@ export const Modal = ({
 
 	return (
 		<AnimatePresence>
-			{show ? (
+			{show && (
 				<ModalWrapper
 					variants={animationWrapper}
 					initial="start"
@@ -64,6 +66,7 @@ export const Modal = ({
 					<ModalWindow
 						variants={animationWindow}
 						$fullscreen={fullscreen}
+						$gallery={gallery}
 					>
 						{header && (
 							<Title className="modal-header" size="40px">
@@ -77,7 +80,7 @@ export const Modal = ({
 						{children}
 					</ModalWindow>
 				</ModalWrapper>
-			) : null}
+			)}
 		</AnimatePresence>
 	);
 };

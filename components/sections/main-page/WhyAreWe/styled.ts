@@ -16,6 +16,11 @@ export const Wrapper = styled.div`
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 
+	img {
+		min-height: 900px;
+		object-position: center;
+	}
+
 	${media.lessThan('lg')`
 		${Grid} {
 			grid-auto-flow: row;
@@ -23,8 +28,18 @@ export const Wrapper = styled.div`
 		}
 	`}
 
+	${media.lessThan('md')`
+		img {
+			min-height: 100%;
+		}
+
+		${Grid} {
+			gap: 12px
+		}
+	`}
+
 	${media.lessThan('xs')`
-		${Grid} {			
+		${Grid} {
 			grid-template-columns: 1fr;
 		}
 	`}
@@ -44,7 +59,7 @@ export const Item = styled.div`
 
 	& > div:not([class]) {
 		font-family: ${theme.layout.fonts.header};
-		font-size: 24px;
+		font-size: 1.5rem;
 		font-weight: 600;
 		height: max-content;
 		line-height: 1;
@@ -55,8 +70,8 @@ export const Item = styled.div`
 
 	& > span {
 		color: ${theme.colors.disabled}bb;
-		font-size: 20px;
-		line-height: 24px;
+		font-size: 1.125rem;
+		line-height: 1.2;
 		font-weight: 400;
 		text-align: left;
 
@@ -77,6 +92,14 @@ export const Item = styled.div`
 		box-shadow: ${theme.layout.shadow.big};
 		z-index: 2;
 	}
+
+	${media.lessThan('md')`
+		gap: 20px;
+		
+		& > span {
+			font-size: 1rem;
+		}
+	`}
 `;
 
 export const IconWrapper = styled.div`
@@ -90,7 +113,18 @@ export const IconWrapper = styled.div`
 
 	.icofont {
 		color: ${theme.colors.brown};
+		font-size: 2.75rem;
 	}
+
+	${media.lessThan('md')`
+		width: 100px;
+		height: 100px;
+
+		.icofont {
+			color: ${theme.colors.brown};
+			font-size: 2rem;
+		}
+	`}
 `;
 
 export default Wrapper;

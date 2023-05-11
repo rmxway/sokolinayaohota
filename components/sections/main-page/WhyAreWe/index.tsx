@@ -1,9 +1,10 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
-import { Icon, ImageBackground } from '@/components';
+import { Icon } from '@/components';
+import imageStyle from '@/components/ImageBackground/styles.module.scss';
 import { Container, Grid, Title } from '@/components/Layout';
 import { advantages } from '@/mock/advantages';
-import imageBack from '@/public/assets/img/why-we-are.jpg';
 
 import { IconWrapper, Item, Wrapper } from './styled';
 
@@ -15,7 +16,7 @@ export const WhyAreWe: FC = () => (
 				{advantages.map(({ title, icon, description, list }) => (
 					<Item key={title}>
 						<IconWrapper>
-							<Icon icon={icon} size={52} />
+							<Icon icon={icon} />
 						</IconWrapper>
 						<div>{title}</div>
 						<span>
@@ -34,7 +35,8 @@ export const WhyAreWe: FC = () => (
 				))}
 			</Grid>
 		</Container>
-		<ImageBackground image={imageBack} quality={80} />
+
+		<Image src="/assets/img/why-we-are.svg" className={imageStyle.imageBackground} alt="image" width={1200} height={1200}  />
 	</Wrapper>
 );
 

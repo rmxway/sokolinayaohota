@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useRef, useState } from 'react';
@@ -12,6 +13,7 @@ import {
 	MobileNav,
 	mobileNavVariant,
 	NavbarItem,
+	navbarItemVariant,
 	Wrapper,
 	wrapperVariant,
 } from './styled';
@@ -50,7 +52,7 @@ export const Navbar: FC = () => {
 				{navbarItems.map((item) => (
 					<NavbarItem
 						key={item.title}
-						active={router.asPath === item.url}
+						$active={router.asPath === item.url}
 					>
 						<Link href={item.url} aria-label={item.title} />
 						{item.title}
@@ -62,22 +64,33 @@ export const Navbar: FC = () => {
 				animate={show ? 'end' : 'start'}
 				onClick={toggleNavbar}
 			>
-				<MobileNav
-					ref={containerRef}
-					variants={mobileNavVariant}
-					animate={show ? 'end' : 'start'}
-				>
-					{navbarItems.map((item) => (
-						<NavbarItem
-							key={item.title}
-							active={router.asPath === item.url}
+				<AnimatePresence>
+					{show && (
+						<MobileNav
+							ref={containerRef}
+							variants={mobileNavVariant}
+							initial="start"
+							animate={show ? 'end' : 'start'}
+							exit="start"
 						>
-							<Link href={item.url} />
-							{item.title}
-						</NavbarItem>
-					))}
-					<SvgIcon name="LogoDecor" width="250px" color="brown" />
-				</MobileNav>
+							{navbarItems.map((item) => (
+								<NavbarItem
+									variants={navbarItemVariant}
+									key={item.title}
+									$active={router.asPath === item.url}
+								>
+									<Link href={item.url} />
+									{item.title}
+								</NavbarItem>
+							))}
+							<SvgIcon
+								name="LogoDecor"
+								width="250px"
+								color="brown"
+							/>
+						</MobileNav>
+					)}
+				</AnimatePresence>
 			</Wrapper>
 		</>
 	);

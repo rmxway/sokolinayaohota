@@ -9,23 +9,23 @@ export const mainSlider: MainSliderType[] = [
 	{
 		img: '/assets/img/slider/IMG_8960.jpg',
 		alt: 'img1',
-		title: 'Малый зал',
-		description:
-			'Общей площадью в 200 кв. метров и с 30 посадочными зонами значительно уступает большому залу по вместимости, однако этого хватит на пышное торество на 100 человек.',
+		title: 'Большой зал',
+		description: `
+		Обстановка Большого зала без преувеличения царская. Мероприятие в этом зале будет грандиозным. Зал готов принять до 400 персон для проведения банкета.
+		Оформление стильными картинами и золотой лепниной, «тронный зал», полностью оборудованная сцена и тяжелые витые люстры создают атмосферу, сочетающую праздничную роскошь и уют.`,
 	},
 	{
 		img: '/assets/img/slider/IMG_8961.jpg',
 		alt: 'img2',
-		title: 'Большой зал',
-		description:
-			'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae nemo a tenetur voluptatibus nam, cumque voluptatum vel perspiciatis fugiat nihil repellendus minima ut amet rerum quam aliquam! Amet porro, dolorem pariatur temporibus eaque iure placeat, ut asperiores blanditiis aliquam doloribus explicabo neque aperiam eius molestiae culpa commodi id repudiandae quo.',
+		title: 'Малый зал',
+		description: `Малый зал имеет совсем не маленькие размеры и готов принять 120 персон. Зал имеет отдельный вход и гардероб. Также имеется парковка.
+		Здесь всегда присутствует приятная атмосфера, способствующая проведению Вашего мероприятия.`,
 	},
 	{
 		img: '/assets/img/slider/IMG_8968.jpg',
 		alt: 'img3',
-		title: 'Средний зал',
-		description:
-			'Amet porro, dolorem pariatur temporibus eaque iure placeat, ut asperiores blanditiis aliquam doloribus explicabo neque aperiam eius molestiae culpa commodi id repudiandae quo.',
+		title: 'Зал Соколиный дворик',
+		description: `Соколиный дворик - зал с собственным внутренним двориком со своим водопадом. И полностью оборудован всем необходимым для приятного отдыха.`,
 	},
 ];
 

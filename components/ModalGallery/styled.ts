@@ -15,6 +15,10 @@ export const Wrapper = styled.div`
 	${media.lessThan('md')`
 		grid-template-rows: max-content 100px;
 	`}
+
+	${media.lessThan('sm')`
+		grid-template-rows: max-content 70px;
+	`}
 `;
 
 export const Slider = styled.div`
@@ -72,8 +76,10 @@ export const Thumbnails = styled.div`
 	}
 
 	${SliderImage} {
+		min-height: auto;
 		border-radius: 0;
 		object-fit: cover;
+		object-position: center;
 		height: 100%;
 	}
 `;

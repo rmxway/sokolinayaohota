@@ -32,6 +32,8 @@ export const Wrapper = styled.div`
 	}
 
 	${media.lessThan('md')`
+		min-height: auto;
+		
 		& > div {
 			font-size: 20px;
 		}

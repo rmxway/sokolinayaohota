@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { defaultTheme as theme } from '@/theme';
+import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.span`
 	position: absolute;
@@ -14,13 +14,16 @@ export const Wrapper = styled.span`
 	bottom: 0;
 
 	.btn {
-		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		cursor: pointer;
 		width: 48px;
 		height: 48px;
 		border-radius: 100%;
 		background-color: #ffffffbb;
 		transition: all 0.3s;
+		z-index: 1;
 
 		&:hover {
 			box-shadow: ${theme.layout.shadow.basic};
@@ -38,6 +41,16 @@ export const Wrapper = styled.span`
 	.btn-prev {
 		transform: scale(-1, 1);
 	}
+
+	${media.lessThan('sm')`
+		left: 8px;
+		right: 8px;
+
+		.btn {
+			width: 40px;
+			height: 40px;
+		}
+	`}
 `;
 
 export default Wrapper;

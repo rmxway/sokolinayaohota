@@ -93,10 +93,9 @@ export const Banner = styled.div`
 	text-align: center;
 	gap: 40px;
 	flex-wrap: nowrap;
-	min-height: 600px;
 	height: 80vh;
 	z-index: 1;
-	padding: 40px 0;
+	padding: 80px 0;
 
 	${media.lessThan('md')`
 		height: auto;

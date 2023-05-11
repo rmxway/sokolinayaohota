@@ -25,7 +25,7 @@ export const Title = styled(motion.div)<TitleType>`
 	}
 
 	${(props) => media.lessThan('md')`
-			font-size: ${props.size || '3rem'};
+			font-size: ${props.size || '2.5rem'};
 		`}
 `;
 

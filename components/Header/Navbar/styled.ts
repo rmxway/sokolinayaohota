@@ -20,6 +20,7 @@ export const DesktopNav = styled.div`
 export const BurgerButton = styled.button<{ $open: boolean }>`
 	position: relative;
 	display: none;
+
 	width: 28px;
 	height: 28px;
 	margin-left: auto;
@@ -35,7 +36,10 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		background-color: ${theme.colors.brown};
 		transition: all 0.25s ease-in-out;
 		transform-origin: 50%;
-		margin: auto;
+	}
+
+	.second-line {
+		margin: 8px 0;
 	}
 
 	${(props) =>
@@ -60,7 +64,7 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		`}
 
 	${media.lessThan('md')`
-		display: grid;
+		display: block;
 	`}
 `;
 
@@ -96,7 +100,13 @@ export const mobileNavVariant: Variants = {
 	},
 	end: {
 		left: 0,
-		transition: { type: 'tween', ease: 'easeInOut', delay: 0.2 },
+		transition: {
+			type: 'tween',
+			ease: 'easeInOut',
+			delay: 0.2,
+			staggerChildren: 0.06,
+			delayChildren: 0.4,
+		},
 	},
 };
 
@@ -122,7 +132,7 @@ export const wrapperVariant: Variants = {
 	},
 };
 
-export const NavbarItem = styled.div<{ active?: boolean }>`
+export const NavbarItem = styled(motion.div)<{ $active?: boolean }>`
 	position: relative;
 	display: inline-block;
 	font-family: ${theme.layout.fonts.header};
@@ -148,12 +158,12 @@ export const NavbarItem = styled.div<{ active?: boolean }>`
 	`}
 
 	${media.lessThan('md')`
-		font-size: 32px;
-		margin-bottom: 28px;
+		font-size: 1.75rem;
+		margin-bottom: 1rem;
 	`}
 
 	${(props) =>
-		props.active &&
+		props.$active &&
 		css`
 			color: ${props.theme.colors.brown};
 		`}
@@ -167,4 +177,19 @@ export const NavbarItem = styled.div<{ active?: boolean }>`
 	}
 `;
 
-export default NavbarItem;
+export const navbarItemVariant: Variants = {
+	start: {
+		opacity: 0,
+		left: -20,
+	},
+	end: {
+		opacity: 1,
+		left: 0,
+		transition: {
+			duration: 0.1,
+			type: 'spring',
+			stiffness: 200,
+			damping: 20,
+		},
+	},
+};

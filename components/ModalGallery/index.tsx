@@ -24,8 +24,8 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 
 	const mainSwiperConfig: SwiperProps = {
-		speed: 600,
-		spaceBetween: 12,
+		speed: 800,
+		spaceBetween: 8,
 		slidesPerView: 1,
 		initialSlide: currentId - 1,
 		modules: [Thumbs],
@@ -36,9 +36,8 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 
 	const thumbsSwiperConfig: SwiperProps = {
 		modules: [Thumbs, Navigation],
-		spaceBetween: 12,
+		spaceBetween: 8,
 		slidesPerView: 4,
-		lazyPreloadPrevNext: 1,
 		breakpoints: {
 			[jsBreakpoints.xs]: {
 				slidesPerView: 4,
@@ -60,7 +59,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	};
 
 	return (
-		<Modal show={show} onClose={onClose}>
+		<Modal show={show} onClose={onClose} gallery>
 			<Wrapper>
 				<Slider>
 					<Swiper {...mainSwiperConfig}>

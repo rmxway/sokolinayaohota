@@ -7,6 +7,7 @@ import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
 import { useStore } from '@/hooks';
 import bannerImage from '@/public/assets/img/arka.jpg';
+import { regexpPath } from '@/services/regexp';
 import { actionChangeModal } from '@/store/actions';
 
 import { Logo } from './Logo';
@@ -53,7 +54,7 @@ const HeaderBlock: FC = () => {
 					</Container>
 				</Header>
 
-				{router.asPath === '/' && (
+				{router.asPath.match(regexpPath) ? (
 					<Banner>
 						<Container grid gap={40} direction="row" center>
 							<Title>
@@ -70,7 +71,7 @@ const HeaderBlock: FC = () => {
 							/>
 						</Container>
 					</Banner>
-				)}
+				) : null}
 				<BannerImage
 					src={bannerImage.src}
 					alt="banner-image"

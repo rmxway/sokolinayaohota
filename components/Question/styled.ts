@@ -1,13 +1,18 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { defaultTheme as theme } from '@/theme';
+import { Title } from '@/components/Layout';
+import { defaultTheme as theme, media } from '@/theme';
 
 export const Answer = styled(motion.div)`
 	position: relative;
-	font-size: 20px;
+	font-size: 1.125rem;
 	color: ${theme.colors.disabled};
 	overflow: hidden;
+
+	${media.lessThan('md')`
+		font-size: 1rem;
+	`}
 `;
 
 export const PlusMinus = styled.div`
@@ -23,7 +28,7 @@ export const PlusMinus = styled.div`
 	border: 2px solid ${theme.colors.gray.$3};
 	color: ${theme.colors.disabled};
 	font-family: ${theme.layout.fonts.header};
-	font-size: 40px;
+	font-size: 2.5rem;
 	padding-top: 2px;
 	align-self: center;
 
@@ -45,7 +50,8 @@ export const Wrapper = styled(motion.label)`
 	margin-bottom: 20px;
 	transition: box-shadow 0.2s;
 
-	.title {
+	${Title} {
+		font-size: 1.5rem;
 		text-transform: uppercase;
 		padding-top: 4px;
 	}
@@ -64,6 +70,13 @@ export const Wrapper = styled(motion.label)`
 			position: absolute;
 		}
 	}
+
+	${media.lessThan('md')`
+		${Title} {
+			padding-top: 8px;
+			font-size: 1.25rem;
+		}
+	`}
 `;
 
 export default Wrapper;
