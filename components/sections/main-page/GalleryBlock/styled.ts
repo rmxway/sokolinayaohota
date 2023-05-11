@@ -1,3 +1,5 @@
+import 'swiper/scss';
+
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styled, { css } from 'styled-components';

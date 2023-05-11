@@ -1,32 +1,30 @@
 export const questions = [
 	{
 		id: 'q1',
-		question: 'А много-ли вопросов задают в частых вопросах ?',
-		answer: `Задача организации, в особенности же базовый вектор развития играет важную роль в 
-        формировании прогресса профессионального сообщества. 
-        А также ключевые особенности структуры проекта и по сей 
-        день остаются уделом либералов, которые жаждут быть функционально 
-        разнесены на независимые элементы. В своём.`,
+		question: 'За какое время до мероприятия нужно бронировать зал?',
+		answer: `Зал желательно бронировать как можно раньше. В летнее время Банкетные залы начинают активно бронировать уже с ноября месяца.`,
 	},
 	{
 		id: 'q2',
-		question: 'Как сделать заказ ?',
-		answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ipsam ullam ut et aliquam natus blanditiis officia alias veritatis autem suscipit voluptas quis, debitis, molestias hic animi eaque beatae! Reiciendis sed explicabo rem fugiat voluptatum, a atque voluptas corrupti eius?',
+		question: 'Есть ли в зале оборудование и какова его стоимость?',
+		answer: `У нас есть звуковое и световое оборудование. Большой зал также оборудован сценой и большим экраном. Световое и звуковое оборудование предоставляется бесплатно. Для ведущих рекомендуется привозить своё оборудование во избежание накладок с настройкой.
+		Также предоставляем услуги профессиональной фото и видеосъемки, поможем организовать шоу-программу с участием артистов.`,
 	},
 	{
 		id: 'q3',
-		question: 'Где найти меню ?',
-		answer: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ipsam ullam ut et aliquam natus blanditiis officia alias veritatis autem suscipit voluptas quis, debitis, molestias hic animi eaque beatae! Reiciendis sed explicabo rem fugiat voluptatum, a atque voluptas corrupti eius?',
+		question: 'Не повысится ли стоимость банкета к моменту свадьбы?',
+		answer: 'Стоимость банкета в расчете на одного человека рассчитывается индивидуально на основе выбранного меню. Затем стоимость фиксируется в договоре и не повышается рестораном.',
 	},
 	{
 		id: 'q4',
-		question: 'Можно ли заказать артистов ?',
-		answer: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid eum, nostrum quas dolor quisquam vero neque aliquam, optio fugit ab quae dicta maxime necessitatibus quia officia molestias laborum corporis eveniet.',
+		question:
+			'Оформление можно выбрать только из тех вариантов, что есть на сайте?',
+		answer: 'Оформление и цветовое решение можно выбрать любые. На сайте вы увидите лишь некоторые примеры вариантов оформления. К вашим услугам предлагаются услуги флориста.',
 	},
 	{
 		id: 'q5',
-		question: 'А где вы находитесь ?',
-		answer: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid eum, nostrum quas dolor quisquam vero neque aliquam, optio fugit ab quae dicta maxime necessitatibus quia officia molestias laborum corporis eveniet.',
+		question: 'Есть ли бесплатная парковка?',
+		answer: 'Вы и Ваши гости можете воспользоваться большой охраняемой парковкой до 200 машиномест совершенно бесплатно. Оставив автомобиль на время мероприятия, можно забрать его на следующий день.',
 	},
 ];
 

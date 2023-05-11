@@ -7,8 +7,9 @@ import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
-	display: flex;
-	align-items: center;
+	display: grid;
+	grid-auto-flow: row;
+	gap: 20px;
 	text-align: center;
 	padding: 80px 0;
 
@@ -62,13 +63,18 @@ export const Discount = styled.div`
 	background-color: ${theme.colors.brown};
 
 	& > div {
-		font-size: 64px;
+		font-size: 4rem;
 		font-family: ${theme.layout.fonts.header};
 		color: ${theme.colors.primary};
 	}
 
 	${media.lessThan('md')`
-		transform: scale(.8);
+		width: 120px;
+		height: 120px;
+
+		& > div {
+			font-size: 3rem;
+		}
 	`}
 `;
 

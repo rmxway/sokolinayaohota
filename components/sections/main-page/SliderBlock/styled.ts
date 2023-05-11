@@ -1,11 +1,12 @@
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+import 'swiper/scss/effect-fade';
 
+import { Variants } from 'framer-motion';
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { Container } from '@/components/Layout';
+import { Container, Grid, Title } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -38,18 +39,32 @@ export const Info = styled.div`
 		width: 100%;
 	}
 
+	${Title} {
+		font-size: 3.5rem;
+		margin: 0;
+	}
+
 	p {
 		display: -webkit-box;
-		font-size: 24px;
-		-webkit-line-clamp: 9;
+
+		font-size: 1.35rem;
+		-webkit-line-clamp: 12;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
 
 	${media.lessThan('md')`
+		${Grid} {
+			gap: 10px;
+		}
+
+		${Title} {
+			font-size: 2.5rem;
+		}
+
 		p {
-			-webkit-line-clamp: 5;
-			font-size: 20px;
+			-webkit-line-clamp: 8;
+			font-size: 1.125rem;
 		}
 	`}
 
@@ -72,25 +87,34 @@ export const SliderImage = styled(Image)`
 `;
 
 export const SlideContainer = styled.div`
+	position: relative;
 	display: grid;
-	grid-template-columns: 400px 1fr;
+	grid-template-columns: 500px 1fr;
 	margin: 20px 0;
+	bottom: -4px;
 	width: 100%;
 	gap: 80px;
 
-	${media.lessThan('lg')`
-		grid-template-columns: 350px 1fr;
+	${media.lessThan('xl')`
+		grid-template-columns: 400px 1fr;
 		gap: 40px;
+	`}
+
+	${media.lessThan('lg')`
+		grid-template-columns: 350px 1fr;		
 	`}
 
 	${media.lessThan('md')`
 		grid-auto-flow: column;
 		grid-template-columns: 1fr;
-		grid-template-rows: 350px 1fr;
+		grid-template-rows: 250px 1fr;
 		margin: 0;
+		gap: 20px;
 	`}
 
 	${media.lessThan('sm')`
+		grid-template-rows: 350px 1fr;
+		
 		${SliderImage} {
 			border-radius: 0;
 		}
@@ -105,20 +129,12 @@ export const Controllers = styled.div`
 	position: absolute;
 	bottom: 10px;
 	left: 0;
-	width: 400px;
+	right: 0;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	z-index: 2;
-
-	${media.lessThan('lg')`
-		width: 350px;
-	`}
-
-	${media.lessThan('md')`
-		width: 100%;
-	`}
 
 	.btn-next,
 	.btn-prev {
@@ -164,7 +180,7 @@ export const Controllers = styled.div`
 	}
 `;
 
-export const animateTitle = {
+export const animateTitle: Variants = {
 	hidden: {
 		y: -20,
 		opacity: 0,
@@ -174,10 +190,8 @@ export const animateTitle = {
 		opacity: 1,
 		transition: {
 			delay: 0.35,
-			duration: 0.1,
-			stiffness: 150,
-			damping: 12,
-			type: 'spring',
+			duration: 0.5,
+			type: 'tween',
 		},
 	},
 };

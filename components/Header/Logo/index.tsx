@@ -1,24 +1,26 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { FC } from 'react';
 
 import { Grid } from '@/components/Layout';
-import logo from '@/public/assets/img/logo.png';
+import logoImage2x from '@/public/assets/img/logo-2x.png';
 
-import { LogoText } from './styled';
+import { LogoText, LogoWrapper } from './styled';
 
 type LogoTypeProps = {
 	href?: string;
 };
 
 const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
-	<Link href={href} scroll={false}>
+	<LogoWrapper href={href} scroll={false}>
 		<Grid align="center" gap={12}>
 			<Image
-				src={logo.src}
-				blurDataURL={logo.blurDataURL}
-				width={logo.width}
-				height={logo.height}
+				src={logoImage2x.src}
+				blurDataURL={logoImage2x.blurDataURL}
+				placeholder="empty"
+				width={logoImage2x.width}
+				height={logoImage2x.height}
+				quality={70}
+				priority
 				alt="Logo"
 			/>
 			<LogoText>
@@ -26,7 +28,7 @@ const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
 				<span>Банкетный зал</span>
 			</LogoText>
 		</Grid>
-	</Link>
+	</LogoWrapper>
 );
 
 export { Logo };

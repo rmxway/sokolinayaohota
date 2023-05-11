@@ -20,14 +20,11 @@ export const DesktopNav = styled.div`
 export const BurgerButton = styled.button<{ $open: boolean }>`
 	position: relative;
 	display: none;
+
 	width: 28px;
 	height: 28px;
 	margin-left: auto;
-	order: 2;
-	grid-template-columns: 1fr;
 	padding: 0;
-	grid-auto-flow: row;
-	align-items: space-between;
 	cursor: pointer;
 
 	span {
@@ -35,12 +32,14 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		top: 0;
 		width: 100%;
 		height: 2px;
-		flex-shrink: 0;
 		border-radius: 10px;
 		background-color: ${theme.colors.brown};
 		transition: all 0.25s ease-in-out;
 		transform-origin: 50%;
-		margin: 0 auto;
+	}
+
+	.second-line {
+		margin: 8px 0;
 	}
 
 	${(props) =>
@@ -65,7 +64,7 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		`}
 
 	${media.lessThan('md')`
-		display: grid;
+		display: block;
 	`}
 `;
 
@@ -84,7 +83,7 @@ export const MobileNav = styled(motion.div)`
 	box-shadow: ${theme.layout.shadow.big};
 	margin: 0;
 	padding: 40px;
-	z-index: 10;
+	z-index: 20;
 
 	svg {
 		display: block;
@@ -101,7 +100,13 @@ export const mobileNavVariant: Variants = {
 	},
 	end: {
 		left: 0,
-		transition: { type: 'tween', ease: 'easeInOut', delay: 0.2 },
+		transition: {
+			type: 'tween',
+			ease: 'easeInOut',
+			delay: 0.2,
+			staggerChildren: 0.06,
+			delayChildren: 0.4,
+		},
 	},
 };
 
@@ -127,7 +132,7 @@ export const wrapperVariant: Variants = {
 	},
 };
 
-export const NavbarItem = styled.div<{ active?: boolean }>`
+export const NavbarItem = styled(motion.div)<{ $active?: boolean }>`
 	position: relative;
 	display: inline-block;
 	font-family: ${theme.layout.fonts.header};
@@ -153,12 +158,12 @@ export const NavbarItem = styled.div<{ active?: boolean }>`
 	`}
 
 	${media.lessThan('md')`
-		font-size: 32px;
-		margin-bottom: 28px;
+		font-size: 1.75rem;
+		margin-bottom: 1rem;
 	`}
 
 	${(props) =>
-		props.active &&
+		props.$active &&
 		css`
 			color: ${props.theme.colors.brown};
 		`}
@@ -172,4 +177,19 @@ export const NavbarItem = styled.div<{ active?: boolean }>`
 	}
 `;
 
-export default NavbarItem;
+export const navbarItemVariant: Variants = {
+	start: {
+		opacity: 0,
+		left: -20,
+	},
+	end: {
+		opacity: 1,
+		left: 0,
+		transition: {
+			duration: 0.1,
+			type: 'spring',
+			stiffness: 200,
+			damping: 20,
+		},
+	},
+};

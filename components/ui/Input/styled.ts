@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
-import { defaultTheme as theme } from '@/theme';
+import { defaultTheme as theme, media } from '@/theme';
 
 export interface InputTypes {
 	$success?: boolean;
@@ -44,6 +44,8 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 		width: 100%;
 		color: inherit;
 		font-size: 16px;
+		padding: 0;
+		margin: 0;
 		background: none;
 		z-index: 2;
 	}
@@ -101,6 +103,14 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 				background-color: ${props.theme.colors.gray.$3};
 			}
 		`}
+
+	${media.lessThan('md')`
+		height: 40px;
+
+		.icofont {
+			font-size: 1.25rem;
+		}
+	`}
 `;
 
 export const InputError = styled(motion.div)`

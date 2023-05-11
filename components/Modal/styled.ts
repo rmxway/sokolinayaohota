@@ -26,7 +26,12 @@ export const ModalWrapper = styled(motion.div)`
 	`}
 `;
 
-export const ModalWindow = styled(motion.div)<{ $fullscreen?: boolean }>`
+type ModalWindowTypes = {
+	$fullscreen?: boolean;
+	$gallery?: boolean;
+};
+
+export const ModalWindow = styled(motion.div)<ModalWindowTypes>`
 	position: relative;
 	z-index: 1;
 	background-color: #fff;
@@ -92,10 +97,10 @@ export const CloseButton = styled(motion.button)`
 `;
 
 export const animationWrapper: Variants = {
-	start: { opacity: 0 },
+	start: { opacity: 0, transition: { delay: 0.2 } },
 	end: {
 		opacity: 1,
-		transition: { duration: 0.3, staggerChildren: 1, delayChildren: 0.3 },
+		transition: { duration: 0.4, staggerChildren: 1, delayChildren: 0.3 },
 	},
 };
 
@@ -108,7 +113,7 @@ export const animationWindow: Variants = {
 		opacity: 1,
 		top: 0,
 		transition: {
-			duration: 0.7,
+			duration: 1,
 			type: 'spring',
 			stiffness: 200,
 			damping: 15,

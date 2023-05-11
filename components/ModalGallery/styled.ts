@@ -11,6 +11,14 @@ export const Wrapper = styled.div`
 	grid-template-columns: minmax(100%, 1440px);
 	grid-template-rows: minmax(400px, 70vh) 100px;
 	height: 100%;
+
+	${media.lessThan('md')`
+		grid-template-rows: max-content 100px;
+	`}
+
+	${media.lessThan('sm')`
+		grid-template-rows: max-content 70px;
+	`}
 `;
 
 export const Slider = styled.div`
@@ -19,6 +27,9 @@ export const Slider = styled.div`
 	.swiper-wrapper {
 		height: 100%;
 	}
+
+	border-radius: ${theme.radius.blockRadius};
+	overflow: hidden;
 
 	${SliderImage} {
 		object-fit: cover;
@@ -65,8 +76,10 @@ export const Thumbnails = styled.div`
 	}
 
 	${SliderImage} {
+		min-height: auto;
 		border-radius: 0;
 		object-fit: cover;
+		object-position: center;
 		height: 100%;
 	}
 `;

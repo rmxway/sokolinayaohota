@@ -16,7 +16,7 @@ const ButtonUI = ({ children, icon, ...props }: ButtonProps) => {
 
 	return (
 		<Button {...props}>
-			{children}
+			<span>{children}</span>
 			{itemIcon}
 		</Button>
 	);

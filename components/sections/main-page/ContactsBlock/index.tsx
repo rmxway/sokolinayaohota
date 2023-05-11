@@ -47,7 +47,7 @@ export const ContactsBlock = () => (
 				quality={50}
 				alt="map"
 			/>
-			<Logo href="/#header" />
+			<Logo />
 			<Copyright>sokolinayaohota.ru ® 2023</Copyright>
 		</Container>
 	</Wrapper>

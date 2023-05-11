@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { Flexbox, Space, Title } from '@/components/Layout';
+import { Grid, Title } from '@/components/Layout';
 
 import { Answer, PlusMinus, Wrapper } from './styled';
 
@@ -23,11 +23,9 @@ export const Question: FC<QuestionType> = ({ answer, question, id, type }) => {
 				onChange={() => setChecked((prev) => !prev)}
 			/>
 
-			<Flexbox $noWrap direction="row" gap={10}>
+			<Grid direction="column" gap={20}>
 				<div>
-					<Title size="24px" color="brown" className="title">
-						{question}
-					</Title>
+					<Title color="brown">{question}</Title>
 
 					<Answer
 						animate={{
@@ -45,9 +43,8 @@ export const Question: FC<QuestionType> = ({ answer, question, id, type }) => {
 						{answer}
 					</Answer>
 				</div>
-				<Space />
 				<PlusMinus />
-			</Flexbox>
+			</Grid>
 		</Wrapper>
 	);
 };

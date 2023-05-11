@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { desaturate } from 'polished';
 import styled from 'styled-components';
 
-import { LogoText } from '@/components/Header/styled';
+import { LogoText } from '@/components/Header/Logo/styled';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -52,32 +52,36 @@ export const InfoBlock = styled.div`
 		align-items: center;
 		color: #fff;
 		font-family: ${theme.layout.fonts.header};
-		font-size: 28px;
+		font-size: 1.5rem;
 		margin-bottom: 8px;
 	}
 
 	& > span,
 	a {
 		color: ${theme.colors.primary};
-		font-size: 24px;
+		font-size: 1.25rem;
 		font-weight: 400;
 		line-height: 1.5;
 		display: block;
 	}
 
-	${media.lessThan('sm')`
+	${media.lessThan('md')`
+		& > div {
+			font-size: 1.25rem;
+		}
+
 		& > span, a {
-			font-size: 20px
+			font-size: 1.125rem;
 		};
 	`}
 `;
 
 export const Copyright = styled.div`
-	font-size: 24px;
+	font-size: 1.5rem;
 	color: ${theme.colors.disabled};
 
-	${media.lessThan('sm')`
-		font-size: 16px;
+	${media.lessThan('md')`
+		font-size: 1rem;
 	`}
 `;
 
