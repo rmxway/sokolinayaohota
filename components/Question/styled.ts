@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { Title } from '@/components/Layout';
+import { Grid, Title } from '@/components/Layout';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const Answer = styled(motion.div)`
@@ -41,6 +41,7 @@ export const PlusMinus = styled.div`
 export const Wrapper = styled(motion.label)`
 	position: relative;
 	padding: 20px;
+	width: 100%;
 	background-color: #fff;
 	border-radius: ${theme.radius.blockRadius};
 	border: 1px solid ${theme.colors.gray.$3};
@@ -54,6 +55,10 @@ export const Wrapper = styled(motion.label)`
 		font-size: 1.5rem;
 		text-transform: uppercase;
 		padding-top: 4px;
+	}
+
+	${Grid} {
+		grid-template-columns: 1fr 30px;
 	}
 
 	&:hover {

@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { Grid, Space, Title } from '@/components/Layout';
+import { Grid, Title } from '@/components/Layout';
 
 import { Answer, PlusMinus, Wrapper } from './styled';
 
@@ -23,11 +23,9 @@ export const Question: FC<QuestionType> = ({ answer, question, id, type }) => {
 				onChange={() => setChecked((prev) => !prev)}
 			/>
 
-			<Grid direction="column" gap={10}>
+			<Grid direction="column" gap={20}>
 				<div>
-					<Title color="brown">
-						{question}
-					</Title>
+					<Title color="brown">{question}</Title>
 
 					<Answer
 						animate={{
@@ -45,7 +43,6 @@ export const Question: FC<QuestionType> = ({ answer, question, id, type }) => {
 						{answer}
 					</Answer>
 				</div>
-				<Space />
 				<PlusMinus />
 			</Grid>
 		</Wrapper>
