@@ -1,6 +1,8 @@
 import { NextPage } from 'next';
 import { lazy, Suspense } from 'react';
 
+import { PageLoader } from '@/components/Layout';
+
 const ContactsBlock = lazy(
 	() => import('@/components/sections/main-page/ContactsBlock')
 );
@@ -22,7 +24,7 @@ const SliderBlock = lazy(
 const WhyAreWe = lazy(() => import('@/components/sections/main-page/WhyAreWe'));
 
 export const MainPage: NextPage = () => (
-	<Suspense fallback={<div>Loading ...</div>}>
+	<Suspense fallback={<PageLoader />}>
 		<SliderBlock />
 		<PresentBanner />
 		<WhyAreWe />

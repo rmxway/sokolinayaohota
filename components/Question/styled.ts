@@ -58,7 +58,7 @@ export const Wrapper = styled(motion.label)`
 	}
 
 	${Grid} {
-		grid-template-columns: 1fr 30px;
+		grid-template-columns: 1fr 25px;
 	}
 
 	&:hover {

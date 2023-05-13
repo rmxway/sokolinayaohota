@@ -1,14 +1,15 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { FC, lazy, Suspense, useState } from 'react';
 
-import { Container, Title } from '@/components/Layout';
-import { ModalGallery } from '@/components/ModalGallery';
+import { Container, PageLoader, Title } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { mainPageGallery } from '@/mock/gallery';
 
 import { Grid, Item, Wrapper } from './styled';
 
-export const GalleryBlock = () => {
+const ModalGallery = lazy(() => import('@/components/ModalGallery'));
+
+export const GalleryBlock: FC = () => {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
 
@@ -16,6 +17,7 @@ export const GalleryBlock = () => {
 		setSelectedId(id);
 		setOpen((prev) => !prev);
 	};
+
 	return (
 		<Wrapper>
 			<Container grid gap={40} direction="row" center>
@@ -42,12 +44,18 @@ export const GalleryBlock = () => {
 					</ButtonUI>
 				</Link>
 			</Container>
-			<ModalGallery
-				show={isOpen}
-				onClose={() => setOpen(false)}
-				currentId={selectedId}
-			/>
+
+			{isOpen && (
+				<Suspense fallback={<PageLoader />}>
+					<ModalGallery
+						show={isOpen}
+						onClose={() => setOpen(false)}
+						currentId={selectedId}
+					/>
+				</Suspense>
+			)}
 		</Wrapper>
 	);
 };
+
 export default GalleryBlock;

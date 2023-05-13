@@ -136,8 +136,7 @@ export const SliderBlock: FC = () => {
 									alt={slide.alt}
 									width={1000}
 									height={1000}
-									sizes="(max-width: 768px) 100vw
-										(max-width: 1200px) 50vw"
+									sizes="100vw"
 									quality={70}
 								/>
 							</SwiperSlide>

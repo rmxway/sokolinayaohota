@@ -12,10 +12,6 @@ export const navbarItems = [
 		url: '/gallery',
 	},
 	{
-		title: 'Отзывы',
-		url: '/reviews',
-	},
-	{
 		title: 'Контакты',
 		url: '/contacts',
 	},

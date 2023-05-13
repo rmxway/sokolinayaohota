@@ -16,7 +16,6 @@
 		"@types/node": "18.15.11",
 		"@types/react": "18.0.34",
 		"@types/react-dom": "18.0.11",
-		"classnames": "^2.3.2",
 		"eslint": "8.38.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-next": "13.3.0",
@@ -60,13 +59,10 @@
 		"@typescript-eslint/parser": "^5.58.0",
 		"eslint-plugin-storybook": "^0.6.12",
 		"fantasticon": "^2.0.0",
-		"file-loader": "^6.2.0",
 		"framer-motion": "^10.11.2",
 		"polished": "^4.2.2",
 		"prettier": "^2.8.7",
-		"react-input-mask": "next",
-		"storybook": "^7.0.8",
-		"storybook-svgr-react-component": "^1.0.1"
+		"storybook": "^7.0.8"
 	},
 	"packageManager": "yarn@3.5.1"
 }

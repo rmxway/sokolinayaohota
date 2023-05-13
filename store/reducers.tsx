@@ -6,16 +6,18 @@ import {
 	useReducer,
 } from 'react';
 
-import { CHANGE_MODAL } from './actions';
+import { CHANGE_MODAL, CHANGE_TOP_PANEL } from './actions';
 
 export type InitialStateType = {
 	modal: string | null;
+	topPanel: string;
 };
 
 export type DispatchType = React.Dispatch<{ type: string; payload: string }>;
 
 export const initialState = {
 	modal: '',
+	topPanel: '',
 };
 
 type InitialContextType = {
@@ -37,6 +39,11 @@ export const reducer = (
 			return {
 				...state,
 				modal: action.payload,
+			};
+		case CHANGE_TOP_PANEL:
+			return {
+				...state,
+				topPanel: action.payload,
 			};
 		default:
 			return state;

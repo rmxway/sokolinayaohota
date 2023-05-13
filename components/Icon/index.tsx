@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import { ElementType, FC } from 'react';
 
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
@@ -13,10 +12,19 @@ interface IconType {
 	className?: string;
 }
 
-const Icon: FC<IconType> = ({ as: Tag = 'i', active, icon, size, className }) => (
+const Icon: FC<IconType> = ({
+	as: Tag = 'i',
+	active,
+	icon,
+	size,
+	className,
+}) => (
 	<Tag
-		className={cn(`icofont icofont-${icon}`, { [String(className)]: className })}
-		style={{ pointerEvents: active ? 'all' : 'none', fontSize: size }}
+		className={`icofont icofont-${icon} ${className}`}
+		style={{
+			pointerEvents: active ? 'all' : 'none',
+			fontSize: size,
+		}}
 	/>
 );
 export { Icon };

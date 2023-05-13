@@ -36,7 +36,7 @@ export const WhyAreWe: FC = () => (
 			</Grid>
 		</Container>
 
-		<Image src="/assets/img/why-we-are.svg" className={imageStyle.imageBackground} alt="image" width={1200} height={1200}  />
+		<Image src="/assets/img/why-we-are.svg" className={imageStyle.imageBackground} fill alt="image" />
 	</Wrapper>
 );
 
