@@ -23,6 +23,7 @@ export const TopPanelItem: FC<CommonType> = ({ icon, content, onSend }) => {
 	return (
 		<Grid gap={8} align="center" onClick={handleClick}>
 			<Icon
+				active
 				as="button"
 				icon={icon}
 				className={state.topPanel === icon ? 'active' : ''}
