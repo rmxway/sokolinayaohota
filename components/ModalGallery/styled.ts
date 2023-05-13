@@ -12,6 +12,17 @@ export const Wrapper = styled.div`
 	grid-template-rows: minmax(400px, 70vh) 100px;
 	height: 100%;
 
+	.preloader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	${media.lessThan('md')`
 		grid-template-rows: max-content 100px;
 	`}

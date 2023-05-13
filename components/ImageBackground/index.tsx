@@ -13,14 +13,12 @@ export const ImageBackground = ({
 	...props
 }: ImageBackgroundType) => (
 	<Image
-		src={image.src}
-		width={1000}
-		height={1000}
-		alt="image background"
+		src={image}
 		quality={quality}
 		placeholder="blur"
-		blurDataURL={image.blurDataURL}
+		alt="image background"
 		className={styles.imageBackground}
+		fill
 		{...props}
 	/>
 );

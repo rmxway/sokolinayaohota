@@ -11,6 +11,7 @@ export const fadeIn = css`
 	}
 
 	animation: fadeIn 0.5s;
+	animation-fill-mode: forwards;
 `;
 
 export default fadeIn;

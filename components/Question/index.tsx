@@ -24,27 +24,24 @@ export const Question: FC<QuestionType> = ({ answer, question, id, type }) => {
 			/>
 
 			<Grid direction="column" gap={20}>
-				<div>
-					<Title color="brown">{question}</Title>
-
-					<Answer
-						animate={{
-							height: checked ? 'auto' : 0,
-							opacity: checked ? 1 : 0,
-							marginTop: checked ? 20 : 0,
-							transition: {
-								duration: 0.2,
-								type: 'spring',
-								stiffness: 150,
-								damping: 20,
-							},
-						}}
-					>
-						{answer}
-					</Answer>
-				</div>
+				<Title color="brown">{question}</Title>
 				<PlusMinus />
 			</Grid>
+			<Answer
+				animate={{
+					height: checked ? 'auto' : 0,
+					opacity: checked ? 1 : 0,
+					marginTop: checked ? 20 : 0,
+					transition: {
+						duration: 0.2,
+						type: 'spring',
+						stiffness: 150,
+						damping: 20,
+					},
+				}}
+			>
+				{answer}
+			</Answer>
 		</Wrapper>
 	);
 };

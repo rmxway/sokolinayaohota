@@ -14,14 +14,10 @@ const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
 	<LogoWrapper href={href} scroll={false}>
 		<Grid align="center" gap={12}>
 			<Image
-				src={logoImage2x.src}
-				blurDataURL={logoImage2x.blurDataURL}
-				placeholder="empty"
-				width={logoImage2x.width}
-				height={logoImage2x.height}
+				src={logoImage2x}
 				quality={70}
-				priority
 				alt="Logo"
+				priority
 			/>
 			<LogoText>
 				Соколиная охота

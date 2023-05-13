@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
-import { Container, Flexbox } from '@/components/Layout';
 import { Button } from '@/components/ui/Button/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
@@ -11,43 +10,6 @@ export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-`;
-
-export const TopPanel = styled.div`
-	background-color: rgba(255, 255, 255, 0.75);
-	font-weight: 500;
-	font-size: 1.125rem;
-	line-height: 1.2;
-	padding: 12px 0;
-	z-index: 1;
-
-	${Container} {
-		height: 100%;
-	}
-
-	${Flexbox} {
-		flex-direction: row;
-		justify-content: flex-start;
-		text-align: inherit;
-	}
-
-	a,
-	& {
-		color: ${theme.colors.brown};
-	}
-
-	${media.lessThan('sm')`
-		height: auto;
-		padding: 16px 0;
-		font-size: 1rem;
-
-		${Container} {
-			align-items: start;
-			grid-auto-flow: row;
-			justify-items: start;
-			gap: 16px;
-		}
-	`}
 `;
 
 export const Header = styled.header`

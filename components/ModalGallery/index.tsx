@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import { Navigation, Swiper as TypeSwiper, Thumbs } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
+import { Preloader } from '@/components/Layout';
 import { Modal } from '@/components/Modal';
 import { SliderImage } from '@/components/sections/main-page/SliderBlock/styled';
 import { mainPageGallery } from '@/mock/gallery';
@@ -24,11 +25,12 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 
 	const mainSwiperConfig: SwiperProps = {
+		modules: [Thumbs],
 		speed: 800,
 		spaceBetween: 8,
 		slidesPerView: 1,
+		lazyPreloaderClass: 'preloader',
 		initialSlide: currentId - 1,
-		modules: [Thumbs],
 		thumbs: {
 			swiper: thumbSwiper && !thumbSwiper.destroyed ? thumbSwiper : null,
 		},
@@ -38,6 +40,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 		modules: [Thumbs, Navigation],
 		spaceBetween: 8,
 		slidesPerView: 4,
+		lazyPreloaderClass: 'preloader',
 		breakpoints: {
 			[jsBreakpoints.xs]: {
 				slidesPerView: 4,
@@ -68,11 +71,15 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 								<SliderImage
 									width={1440}
 									height={1440}
-									priority
+									sizes="100vw"
 									quality={60}
+									className="swiper-lazy"
 									src={image.url}
 									alt={`image${image.id}`}
 								/>
+								<div className="preloader">
+									<Preloader />
+								</div>
 							</SwiperSlide>
 						))}
 					</Swiper>
@@ -84,11 +91,14 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 								<SliderImage
 									width={200}
 									height={200}
-									priority
 									quality={50}
+									className="swiper-lazy"
 									src={image.url}
 									alt={`image${image.id}`}
 								/>
+								<div className="preloader">
+									<Preloader />
+								</div>
 							</SwiperSlide>
 						))}
 						<Controls />

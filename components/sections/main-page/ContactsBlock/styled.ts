@@ -33,7 +33,8 @@ export const Wrapper = styled.div`
 	`}
 
 	${media.lessThan('sm')`
-		.info-grid {			
+		.info-grid {		
+			justify-content: center;	
 			grid-auto-flow: row;
 			grid-template-column: 1fr;			
 		}
@@ -85,12 +86,20 @@ export const Copyright = styled.div`
 	`}
 `;
 
+export const MapWrapper = styled.div`
+	position: relative;
+	height: 700px;
+	width: 100%;
+	margin: 20px 0;
+
+	${media.lessThan('md')`
+		height: 500px;
+	`}
+`;
+
 export const Map = styled(Image)`
-	max-width: 100%;
-	height: auto;
 	object-fit: cover;
 	object-position: center;
-	margin: 20px 0;
 	border-radius: ${theme.radius.blockRadius};
 	box-shadow: ${theme.layout.shadow.basic}, ${theme.layout.shadow.big},
 		${theme.layout.shadow.big};

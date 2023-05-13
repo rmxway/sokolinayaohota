@@ -3,7 +3,7 @@ import { Logo } from '@/components/Header/Logo';
 import { Container, Grid, Title } from '@/components/Layout';
 import map from '@/public/assets/img/map.jpg';
 
-import { Copyright, InfoBlock, Map, Wrapper } from './styled';
+import { Copyright, InfoBlock, Map, MapWrapper, Wrapper } from './styled';
 
 export const ContactsBlock = () => (
 	<Wrapper>
@@ -38,15 +38,11 @@ export const ContactsBlock = () => (
 					<span>пр-д Сокольнического круга, д. 11</span>
 				</InfoBlock>
 			</Grid>
-			<Map
-				src={map.src}
-				placeholder="blur"
-				blurDataURL={map.blurDataURL}
-				width={1320}
-				height={500}
-				quality={50}
-				alt="map"
-			/>
+
+			<MapWrapper>
+				<Map src={map} placeholder="blur" fill alt="map" quality={50} />
+			</MapWrapper>
+
 			<Logo />
 			<Copyright>sokolinayaohota.ru ® 2023</Copyright>
 		</Container>
