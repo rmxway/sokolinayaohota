@@ -10,7 +10,13 @@ import {
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { Icon } from '@/components';
-import { Container, Flexbox, Grid, Title } from '@/components/Layout';
+import {
+	Container,
+	FetchedImage,
+	Flexbox,
+	Grid,
+	Title,
+} from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { mainSlider } from '@/mock/main-slider';
 
@@ -20,7 +26,6 @@ import {
 	Controllers,
 	Info,
 	SlideContainer,
-	SliderImage,
 	Wrapper,
 } from './styled';
 
@@ -131,7 +136,7 @@ export const SliderBlock: FC = () => {
 					<Swiper {...imagesSwiperConfig}>
 						{mainSlider.map((slide) => (
 							<SwiperSlide key={slide.alt}>
-								<SliderImage
+								<FetchedImage
 									src={slide.img}
 									alt={slide.alt}
 									width={1000}

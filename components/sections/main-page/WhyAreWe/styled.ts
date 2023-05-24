@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
 	${media.lessThan('lg')`
 		${Grid} {
 			grid-auto-flow: row;
-			grid-template-columns: 1fr 1fr;
+			gap: 12px;
 		}
 	`}
 
@@ -34,11 +34,13 @@ export const Wrapper = styled.div`
 		}
 
 		${Grid} {
-			gap: 12px
+			gap: 12px;
+			grid-auto-flow: row;
+			grid-template-columns: 1fr 1fr;
 		}
 	`}
 
-	${media.lessThan('xs')`
+	${media.lessThan('xxs')`
 		${Grid} {
 			grid-template-columns: 1fr;
 		}
@@ -103,22 +105,22 @@ export const Item = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-	width: 120px;
-	height: 120px;
+	width: 100px;
+	height: 100px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	background-color: ${theme.colors.brown}1a;
+	background-color: ${theme.colors.brown}11;
 
 	.icofont {
 		color: ${theme.colors.brown};
-		font-size: 2.75rem;
+		font-size: 2.5rem;
 	}
 
 	${media.lessThan('md')`
-		width: 100px;
-		height: 100px;
+		width: 72px;
+		height: 72px;
 
 		.icofont {
 			color: ${theme.colors.brown};

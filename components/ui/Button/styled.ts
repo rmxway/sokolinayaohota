@@ -153,7 +153,7 @@ const Button = styled.button<ButtonProps>`
 	}
 
 	${(props) => props.mobile && propsMobile}
-	${media.lessThan('md')`${propsMobile}`}
+	${media.lessThan('lg')`${propsMobile}`}
 `;
 
 const textVar = {

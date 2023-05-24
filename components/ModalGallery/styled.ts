@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { SliderImage } from '@/components/sections/main-page/SliderBlock/styled';
+import { WrapperFetchedImage } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -12,23 +12,12 @@ export const Wrapper = styled.div`
 	grid-template-rows: minmax(400px, 70vh) 100px;
 	height: 100%;
 
-	.preloader {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
 	${media.lessThan('md')`
-		grid-template-rows: max-content 100px;
+		grid-template-rows: 70vh 100px;
 	`}
 
 	${media.lessThan('sm')`
-		grid-template-rows: max-content 70px;
+		grid-template-rows: max-content 80px;
 	`}
 `;
 
@@ -39,13 +28,12 @@ export const Slider = styled.div`
 		height: 100%;
 	}
 
-	border-radius: ${theme.radius.blockRadius};
-	overflow: hidden;
-
-	${SliderImage} {
-		object-fit: cover;
+	${WrapperFetchedImage} {
 		height: 100%;
 	}
+
+	border-radius: ${theme.radius.blockRadius};
+	overflow: hidden;
 
 	${media.lessThan('md')`
 		.swiper-slide,
@@ -53,10 +41,6 @@ export const Slider = styled.div`
 		.swiper-wrapper {			
 			max-height: 100%;
 		}
-		
-		${SliderImage} {
-			height: 100%;
-		}	
 	`}
 `;
 
@@ -86,11 +70,9 @@ export const Thumbnails = styled.div`
 		opacity: 1;
 	}
 
-	${SliderImage} {
+	${WrapperFetchedImage} {
 		min-height: auto;
 		border-radius: 0;
-		object-fit: cover;
-		object-position: center;
 		height: 100%;
 	}
 `;

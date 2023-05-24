@@ -7,6 +7,7 @@ const base = css`
 		scroll-snap-align: inherit;
 		scroll-snap-type: mandatory;
 		scroll-behavior: smooth;
+		font-size: 14px;
 	}
 
 	*,
@@ -20,10 +21,10 @@ const base = css`
 	[data-scroll-lock-locked] {
 		height: 100vh;
 	}
+
 	body {
 		background-color: #fff;
 		${ZenKakuFont.style}
-		font-size: 1rem;
 
 		display: block;
 		line-height: 1.25;

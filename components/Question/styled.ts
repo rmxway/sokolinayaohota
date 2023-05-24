@@ -28,7 +28,7 @@ export const PlusMinus = styled.div`
 	border: 2px solid ${theme.colors.gray.$3};
 	color: ${theme.colors.disabled};
 	font-family: ${theme.layout.fonts.header};
-	font-size: 2.5rem;
+	font-size: 2rem;
 	padding-top: 2px;
 	align-self: center;
 
@@ -76,10 +76,9 @@ export const Wrapper = styled(motion.label)`
 		}
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		${Title} {
 			padding-top: 8px;
-			font-size: 1.25rem;
 		}
 	`}
 `;

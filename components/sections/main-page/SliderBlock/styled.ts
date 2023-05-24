@@ -3,10 +3,9 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/effect-fade';
 
 import { Variants } from 'framer-motion';
-import Image from 'next/image';
 import styled from 'styled-components';
 
-import { Container, Grid, Title } from '@/components/Layout';
+import { Container, Grid, Title, WrapperFetchedImage } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -53,7 +52,7 @@ export const Info = styled.div`
 		overflow: hidden;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		${Grid} {
 			gap: 10px;
 		}
@@ -73,19 +72,6 @@ export const Info = styled.div`
 	`}
 `;
 
-export const SliderImage = styled(Image)`
-	object-fit: cover;
-	object-position: center;
-	width: 100%;
-	height: 520px;
-	border-radius: ${theme.radius.blockRadius};
-
-	${media.lessThan('sm')`
-		height: 100%;
-		min-height: 400px;
-	`}
-`;
-
 export const SlideContainer = styled.div`
 	position: relative;
 	display: grid;
@@ -94,6 +80,24 @@ export const SlideContainer = styled.div`
 	bottom: -4px;
 	width: 100%;
 	gap: 80px;
+
+	${WrapperFetchedImage} {
+		width: 100%;
+		height: 520px;
+		border-radius: ${theme.radius.blockRadius};
+		overflow: hidden;
+
+		${media.lessThan('lg')`
+			height: 450px;
+		`}
+
+		${media.lessThan('sm')`
+			height: 100%;
+			min-height: 300px;
+			border-radius: 0;
+		`}
+
+	}
 
 	${media.lessThan('xl')`
 		grid-template-columns: 400px 1fr;
@@ -114,10 +118,6 @@ export const SlideContainer = styled.div`
 
 	${media.lessThan('sm')`
 		grid-template-rows: 350px 1fr;
-		
-		${SliderImage} {
-			border-radius: 0;
-		}
 	`}
 
 	.swiper {

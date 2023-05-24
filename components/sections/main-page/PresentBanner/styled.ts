@@ -27,15 +27,15 @@ export const Wrapper = styled.div`
 	}
 
 	& > div {
-		font-size: 24px;
+		font-size: 1.5rem;
 		line-height: 1.75;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		min-height: auto;
 		
 		& > div {
-			font-size: 20px;
+			font-size: 1.25em;
 		}
 	`}
 `;
@@ -49,7 +49,7 @@ export const MainText = styled.div`
 		font-size: 3rem;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		font-size: 1.5rem;
 
 		div {

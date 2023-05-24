@@ -1,21 +1,28 @@
 import Link from 'next/link';
 import { FC, lazy, Suspense, useState } from 'react';
 
-import { Container, PageLoader, Title } from '@/components/Layout';
+import {
+	Container,
+	FetchedImage,
+	PageLoader,
+	Title,
+} from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { mainPageGallery } from '@/mock/gallery';
 
-import { Grid, Item, Wrapper } from './styled';
+import { Grid, Wrapper } from './styled';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
 export const GalleryBlock: FC = () => {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
+	const [suspended, setSuspended] = useState(false);
 
 	const handleShowImageInModal = (id: number) => {
 		setSelectedId(id);
 		setOpen((prev) => !prev);
+		if (!suspended) setSuspended(true);
 	};
 
 	return (
@@ -25,14 +32,14 @@ export const GalleryBlock: FC = () => {
 
 				<Grid>
 					{mainPageGallery.map((image, idx) => (
-						<Item
+						<FetchedImage
 							key={image.id}
-							$big={idx === 0}
 							src={image.url}
+							alt={`image${image.id}`}
 							width={400}
 							height={400}
 							quality={20}
-							alt={`image${image.id}`}
+							className={idx === 0 ? 'big' : ''}
 							onClick={() => handleShowImageInModal(image.id)}
 						/>
 					))}
@@ -45,11 +52,11 @@ export const GalleryBlock: FC = () => {
 				</Link>
 			</Container>
 
-			{isOpen && (
-				<Suspense fallback={<PageLoader />}>
+			{suspended && (
+				<Suspense key="Gallery" fallback={<PageLoader />}>
 					<ModalGallery
 						show={isOpen}
-						onClose={() => setOpen(false)}
+						onClose={() => setOpen((prev) => !prev)}
 						currentId={selectedId}
 					/>
 				</Suspense>

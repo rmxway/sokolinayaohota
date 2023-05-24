@@ -8,7 +8,7 @@ import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
-	padding: 80px 0;
+	padding: 80px 0 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -78,7 +78,7 @@ export const InfoBlock = styled.div`
 `;
 
 export const Copyright = styled.div`
-	font-size: 1.5rem;
+	font-size: 1rem;
 	color: ${theme.colors.disabled};
 
 	${media.lessThan('md')`
@@ -88,13 +88,9 @@ export const Copyright = styled.div`
 
 export const MapWrapper = styled.div`
 	position: relative;
-	height: 700px;
+	min-height: 500px;
 	width: 100%;
 	margin: 20px 0;
-
-	${media.lessThan('md')`
-		height: 500px;
-	`}
 `;
 
 export const Map = styled(Image)`

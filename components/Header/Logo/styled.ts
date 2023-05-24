@@ -10,6 +10,12 @@ export const LogoWrapper = styled(Link)`
 		width: 80px;
 		height: auto;
 	}
+
+	${media.lessThan('sm')`
+		img {
+			width: 64px;
+		}
+	`}
 `;
 
 export const LogoText = styled.div`

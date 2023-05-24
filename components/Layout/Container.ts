@@ -60,7 +60,7 @@ const Container = styled.div<ContainerType>`
 	`}
 
 	${media.lessThan('md')`
-		max-width: 750px;
+		max-width: 770px;
 	`}
 `;
 
