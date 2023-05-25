@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { Grid } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -11,7 +10,7 @@ export const Wrapper = styled.div`
 	align-items: center;
 	padding-top: 80px;
 
-	${Grid} {
+	.grid {
 		align-items: stretch;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
@@ -22,7 +21,7 @@ export const Wrapper = styled.div`
 	}
 
 	${media.lessThan('lg')`
-		${Grid} {
+		.grid {
 			grid-auto-flow: row;
 			gap: 12px;
 		}
@@ -33,7 +32,7 @@ export const Wrapper = styled.div`
 			min-height: 100%;
 		}
 
-		${Grid} {
+		.grid {
 			gap: 12px;
 			grid-auto-flow: row;
 			grid-template-columns: 1fr 1fr;
@@ -41,7 +40,7 @@ export const Wrapper = styled.div`
 	`}
 
 	${media.lessThan('xxs')`
-		${Grid} {
+		.grid {
 			grid-template-columns: 1fr;
 		}
 	`}
@@ -49,6 +48,7 @@ export const Wrapper = styled.div`
 
 export const Item = styled.div`
 	min-height: 200px;
+	width: 100%;
 	background-color: #fff;
 	border-radius: ${theme.radius.blockRadius};
 	border: 1px solid ${theme.colors.gray.$3};

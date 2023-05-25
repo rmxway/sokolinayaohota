@@ -10,6 +10,7 @@ import {
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { Icon } from '@/components';
+import { ErrorMessage } from '@/components/ErrorMessage';
 import {
 	Container,
 	FetchedImage,
@@ -19,7 +20,7 @@ import {
 	Title,
 } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
-import { mainSlider } from '@/mock/main-slider';
+import { MainSliderType } from '@/mock/main-slider';
 
 import {
 	animateText,
@@ -30,7 +31,12 @@ import {
 	Wrapper,
 } from './styled';
 
-export const SliderBlock: FC = () => {
+type SliderBlockProps = {
+	data: MainSliderType[] | undefined;
+	error?: string;
+};
+
+export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
 	const [isLoaded, setLoaded] = useState(false);
@@ -76,6 +82,15 @@ export const SliderBlock: FC = () => {
 		},
 	};
 
+	if (!data?.length)
+		return (
+			<Wrapper>
+				<Container grid>
+					<ErrorMessage message={error} />
+				</Container>
+			</Wrapper>
+		);
+
 	return (
 		<Wrapper>
 			{!isLoaded && <Preloader />}
@@ -83,7 +98,7 @@ export const SliderBlock: FC = () => {
 				<SlideContainer $isLoaded={isLoaded}>
 					<Info>
 						<Swiper {...mainSwiperConfig}>
-							{mainSlider.map((slide, index) => (
+							{data?.map((slide, index) => (
 								<SwiperSlide key={slide.alt}>
 									<Grid direction="row" gap={32}>
 										<AnimatePresence>
@@ -141,7 +156,7 @@ export const SliderBlock: FC = () => {
 					</Info>
 					{isLoaded && (
 						<Swiper {...imagesSwiperConfig}>
-							{mainSlider.map((slide) => (
+							{data?.map((slide) => (
 								<SwiperSlide key={slide.alt}>
 									<FetchedImage
 										src={slide.img}

@@ -1,18 +1,17 @@
+import { FC } from 'react';
+
 import { Icon } from '@/components/Icon';
-import { Grid } from '@/components/Layout';
 
 import { Message, Wrapper } from './styled';
 
-export const ErrorMessage = () => (
+export const ErrorMessage: FC<{ message?: string }> = ({ message }) => (
 	<Wrapper>
-		<Grid align="center" justify="center" direction="row" gap={20}>
-			<Message>
-				<Icon icon="time" as="div" />
-				<br />
-				<p>Что то пошло не так ...</p>
-				<div>Уже работаем над ошибкой</div>
-			</Message>
-		</Grid>
+		<Message>
+			<Icon icon="time" as="div" />
+			<br />
+			<p>{message || 'Что то пошло не так'}</p>
+			<div>Уже работаем над ошибкой</div>
+		</Message>
 	</Wrapper>
 );
 export default ErrorMessage;

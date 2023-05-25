@@ -1,4 +1,4 @@
-interface MainSliderType {
+export interface MainSliderType {
 	img: string;
 	alt: string;
 	title: string;

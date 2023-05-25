@@ -43,7 +43,7 @@ const HeaderBlock: FC = () => {
 				{router.asPath === '/' ? (
 					<Banner>
 						<Container grid gap={40} direction="row" center>
-							<Title>
+							<Title color='white'>
 								Роскошные банкетные залы <br />
 								для проведения вашего мероприятия
 							</Title>
