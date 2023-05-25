@@ -27,10 +27,14 @@ const defaultTheme: DefaultTheme = {
 			$9: '#222222',
 		},
 		gradients: {
-			golden: `linear-gradient(180deg, #FFDE7D, #EDB97C)`,
-			brown: `linear-gradient(180deg, #42210B, #5E361B)`,
-			rubin: `linear-gradient(180deg, #FF4773 0%, #F22E13 100%)`,
-			disabled: `linear-gradient(180deg, #e8e8e8 0%, #cbc8c8 100%)`,
+			golden: (deg = '180deg') =>
+				`linear-gradient(${deg}, #FFDE7D, #EDB97C)`,
+			brown: (deg = '180deg') =>
+				`linear-gradient(${deg}, #42210B, #5E361B)`,
+			rubin: (deg = '180deg') =>
+				`linear-gradient(${deg}, #FF4773 0%, #F22E13 100%)`,
+			disabled: (deg = '180deg') =>
+				`linear-gradient(${deg}, #e8e8e8 0%, #cbc8c8 100%)`,
 		},
 	},
 	layout: {

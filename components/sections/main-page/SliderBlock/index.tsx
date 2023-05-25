@@ -15,6 +15,7 @@ import {
 	FetchedImage,
 	Flexbox,
 	Grid,
+	Preloader,
 	Title,
 } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
@@ -32,6 +33,7 @@ import {
 export const SliderBlock: FC = () => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
+	const [isLoaded, setLoaded] = useState(false);
 
 	const mainSwiperConfig: SwiperProps = {
 		speed: 300,
@@ -57,6 +59,9 @@ export const SliderBlock: FC = () => {
 		onSlideChange: (swiper) => {
 			setSlideIndex(swiper.realIndex);
 		},
+		onInit: () => {
+			setLoaded(true);
+		},
 	};
 
 	const imagesSwiperConfig: SwiperProps = {
@@ -73,8 +78,9 @@ export const SliderBlock: FC = () => {
 
 	return (
 		<Wrapper>
+			{!isLoaded && <Preloader />}
 			<Container>
-				<SlideContainer>
+				<SlideContainer $isLoaded={isLoaded}>
 					<Info>
 						<Swiper {...mainSwiperConfig}>
 							{mainSlider.map((slide, index) => (
@@ -133,20 +139,22 @@ export const SliderBlock: FC = () => {
 							</span>
 						</Swiper>
 					</Info>
-					<Swiper {...imagesSwiperConfig}>
-						{mainSlider.map((slide) => (
-							<SwiperSlide key={slide.alt}>
-								<FetchedImage
-									src={slide.img}
-									alt={slide.alt}
-									width={1000}
-									height={1000}
-									sizes="100vw"
-									quality={70}
-								/>
-							</SwiperSlide>
-						))}
-					</Swiper>
+					{isLoaded && (
+						<Swiper {...imagesSwiperConfig}>
+							{mainSlider.map((slide) => (
+								<SwiperSlide key={slide.alt}>
+									<FetchedImage
+										src={slide.img}
+										alt={slide.alt}
+										width={1000}
+										height={1000}
+										sizes="100vw"
+										quality={70}
+									/>
+								</SwiperSlide>
+							))}
+						</Swiper>
+					)}
 				</SlideContainer>
 			</Container>
 		</Wrapper>

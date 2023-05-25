@@ -19,10 +19,10 @@ interface Colors {
 		$9: string;
 	};
 	gradients: {
-		golden: string;
-		brown: string;
-		rubin: string;
-		disabled: string;
+		golden: (deg?: string) => string;
+		brown: (deg?: string) => string;
+		rubin: (deg?: string) => string;
+		disabled: (deg?: string) => string;
 	};
 }
 

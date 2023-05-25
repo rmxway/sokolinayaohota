@@ -5,14 +5,27 @@ import 'swiper/scss/effect-fade';
 import { Variants } from 'framer-motion';
 import styled from 'styled-components';
 
-import { Container, Grid, Title, WrapperFetchedImage } from '@/components/Layout';
+import {
+	Container,
+	Grid,
+	Title,
+	WrapperFetchedImage,
+} from '@/components/Layout';
+import { Ellipsis } from '@/components/Layout/Preloader/styled';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
-	background-image: ${theme.colors.gradients.golden};
+	background-image: ${theme.colors.gradients.golden()};
 	padding: 80px 0;
+	max-height: 100vh;
+
+	${Ellipsis} {
+		position: absolute;
+		left: calc(50% - 30px);
+		top: calc(50% - 30px);
+	}
 
 	h1 {
 		color: ${theme.colors.disabled};
@@ -72,7 +85,7 @@ export const Info = styled.div`
 	`}
 `;
 
-export const SlideContainer = styled.div`
+export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	position: relative;
 	display: grid;
 	grid-template-columns: 500px 1fr;
@@ -80,6 +93,9 @@ export const SlideContainer = styled.div`
 	bottom: -4px;
 	width: 100%;
 	gap: 80px;
+
+	transition: opacity 0.3s;
+	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
 
 	${WrapperFetchedImage} {
 		width: 100%;
@@ -96,7 +112,6 @@ export const SlideContainer = styled.div`
 			min-height: 300px;
 			border-radius: 0;
 		`}
-
 	}
 
 	${media.lessThan('xl')`

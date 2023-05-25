@@ -68,7 +68,7 @@ const mixinButton = ($background = '#fff', $color = '#fff') => css`
 
 	&:disabled,
 	&:disabled:hover {
-		background: ${theme.colors.gradients.disabled}!important;
+		background: ${theme.colors.gradients.disabled()}!important;
 		color: ${theme.colors.disabled};
 		pointer-events: none;
 		cursor: default;
@@ -123,14 +123,14 @@ const Button = styled.button<ButtonProps>`
 	${(props) => {
 		if (props?.primary)
 			return mixinButton(
-				theme.colors.gradients.golden,
+				theme.colors.gradients.golden(),
 				theme.colors.brown
 			);
 		if (props?.brown)
 			return mixinButton(theme.colors.brown, theme.colors.primary);
 		if (props?.success) return mixinButton(theme.colors.success, '#fff');
 		if (props?.danger)
-			return mixinButton(theme.colors.gradients.rubin, '#fff');
+			return mixinButton(theme.colors.gradients.rubin(), '#fff');
 		return null;
 	}}
 
