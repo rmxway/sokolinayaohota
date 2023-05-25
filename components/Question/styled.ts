@@ -7,7 +7,7 @@ import { defaultTheme as theme, media } from '@/theme';
 export const Answer = styled(motion.div)`
 	position: relative;
 	font-size: 1.125rem;
-	color: ${theme.colors.disabled};
+	color: ${theme.colors.solid.disabled};
 	overflow: hidden;
 
 	${media.lessThan('md')`
@@ -26,7 +26,7 @@ export const PlusMinus = styled.div`
 	height: 30px;
 	border-radius: 50%;
 	border: 2px solid ${theme.colors.gray.$3};
-	color: ${theme.colors.disabled};
+	color: ${theme.colors.solid.disabled};
 	font-family: ${theme.layout.fonts.header};
 	font-size: 2rem;
 	padding-top: 2px;

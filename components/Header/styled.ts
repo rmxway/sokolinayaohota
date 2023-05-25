@@ -75,7 +75,7 @@ export const Banner = styled.div`
 
 	h2 {
 		font-size: 72px;
-		color: ${theme.colors.primary};
+		color: ${theme.colors.solid.primary};
 	}
 `;
 

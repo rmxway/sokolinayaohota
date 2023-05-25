@@ -1,12 +1,14 @@
 import 'styled-components';
 
 interface Colors {
-	primary: string;
-	success: string;
-    danger: string;
-	disabled: string;
-    brown: string;
-	white: string;
+	solid: {
+		primary: string;
+		success: string;
+		danger: string;
+		disabled: string;
+		brown: string;
+		white: string;
+	};
 	gray: {
 		$1: string;
 		$2: string;
@@ -33,7 +35,7 @@ interface Layout {
 		body: string;
 	};
 	containerWidth: string;
-    shadow: {
+	shadow: {
 		basic: string;
 		big: string;
 		gallery: string;

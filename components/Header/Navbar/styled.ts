@@ -34,7 +34,7 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		width: 100%;
 		height: 2px;
 		border-radius: 10px;
-		background-color: ${theme.colors.brown};
+		background-color: ${theme.colors.solid.brown};
 		transition: all 0.25s ease-in-out;
 		transform-origin: 50%;
 	}
@@ -80,7 +80,7 @@ export const MobileNav = styled(motion.div)`
 	justify-content: center;
 	align-items: center;
 
-	background-image: ${theme.colors.gradients.golden};
+	background-image: ${theme.colors.gradients.golden()};
 	box-shadow: ${theme.layout.shadow.big};
 	margin: 0;
 	padding: 40px;
@@ -139,7 +139,7 @@ export const NavbarItem = styled(motion.div)<{ $active?: boolean }>`
 	font-family: ${theme.layout.fonts.header};
 	font-size: 1.5rem;
 	margin-right: 10px;
-	color: ${(props) => props.theme.colors.disabled};
+	color: ${(props) => props.theme.colors.solid.disabled};
 	text-decoration: none;
 	border-bottom: 2px solid transparent;
 	margin: 0 20px;
@@ -166,11 +166,11 @@ export const NavbarItem = styled(motion.div)<{ $active?: boolean }>`
 	${(props) =>
 		props.$active &&
 		css`
-			color: ${props.theme.colors.brown};
+			color: ${props.theme.colors.solid.brown};
 		`}
 
 	&:hover {
-		color: ${(props) => props.theme.colors.brown};
+		color: ${(props) => props.theme.colors.solid.brown};
 	}
 
 	&:last-child {

@@ -16,13 +16,13 @@ export const Wrapper = styled.div`
 	text-align: center;
 	background-image: linear-gradient(
 		0deg,
-		${desaturate(0.35, theme.colors.brown)} 0%,
+		${desaturate(0.35, theme.colors.solid.brown)} 0%,
 		#1c1c1c 95%
 	);
-	background-color: ${theme.colors.brown};
+	background-color: ${theme.colors.solid.brown};
 
 	${LogoText} {
-		color: ${theme.colors.primary};
+		color: ${theme.colors.solid.primary};
 	}
 
 	${media.lessThan('md')`
@@ -59,7 +59,7 @@ export const InfoBlock = styled.div`
 
 	& > span,
 	a {
-		color: ${theme.colors.primary};
+		color: ${theme.colors.solid.primary};
 		font-size: 1.25rem;
 		font-weight: 400;
 		line-height: 1.5;
@@ -79,7 +79,7 @@ export const InfoBlock = styled.div`
 
 export const Copyright = styled.div`
 	font-size: 1rem;
-	color: ${theme.colors.disabled};
+	color: ${theme.colors.solid.disabled};
 
 	${media.lessThan('md')`
 		font-size: 1rem;

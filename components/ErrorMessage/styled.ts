@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 
 export const Message = styled.div`
 	position: relative;
-	color: ${theme.colors.white};
+	color: ${theme.colors.solid.white};
 
 	p {
 		font-size: 1.75rem;

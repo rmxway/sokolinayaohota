@@ -29,16 +29,16 @@ export const StyledLoader = styled.div`
 
 	@keyframes changeColors {
 		0% {
-			background: ${(props) => props.theme.colors.primary};
+			background: ${(props) => props.theme.colors.solid.primary};
 		}
 		33% {
-			background: ${(props) => props.theme.colors.primary};
+			background: ${(props) => props.theme.colors.solid.primary};
 		}
 		66% {
-			background: ${(props) => darken(0.05, props.theme.colors.primary)};
+			background: ${(props) => darken(0.05, props.theme.colors.solid.primary)};
 		}
 		100% {
-			background: ${(props) => props.theme.colors.primary};
+			background: ${(props) => props.theme.colors.solid.primary};
 		}
 	}
 	animation-name: rotateLoading;
@@ -58,7 +58,7 @@ export const StyledLoader = styled.div`
 		height: 30px;
 		border-radius: 100%;
 		margin: 0;
-		background: ${(props) => props.theme.colors.primary};
+		background: ${(props) => props.theme.colors.solid.primary};
 		mask-image: linear-gradient(to left, transparent 50%, black 100%);
 		animation: changeColors 3s forwards infinite linear;
 	}

@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 			margin-top: 20px;
 			text-transform: uppercase;
 			font-size: 3.875rem;
-			color: ${theme.colors.primary};
+			color: ${theme.colors.solid.primary};
 		}
 	}
 
@@ -31,8 +31,8 @@ export const Wrapper = styled.div`
 
 	${FinalText} {
 		color: ${!FinalText.defaultProps?.$valid
-			? theme.colors.white
-			: theme.colors.danger};
+			? theme.colors.solid.white
+			: theme.colors.solid.danger};
 	}
 
 	${media.lessThan('lg')`
@@ -60,12 +60,12 @@ export const Discount = styled.div`
 	width: 128px;
 	height: 128px;
 	border-radius: 200px;
-	background-color: ${theme.colors.brown};
+	background-color: ${theme.colors.solid.brown};
 
 	& > div {
 		font-size: 3.5rem;
 		font-family: ${theme.layout.fonts.header};
-		color: ${theme.colors.primary};
+		color: ${theme.colors.solid.primary};
 	}
 
 	${media.lessThan('lg')`

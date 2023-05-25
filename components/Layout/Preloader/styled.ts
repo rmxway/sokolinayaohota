@@ -33,7 +33,7 @@ export const Ellipsis = styled.div`
 		width: 12px;
 		height: 12px;
 		border-radius: 50%;
-		background: ${theme.colors.brown};
+		background: ${theme.colors.solid.brown};
 		animation-timing-function: cubic-bezier(0, 1, 1, 0);
 
 		&:nth-child(1) {

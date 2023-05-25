@@ -22,7 +22,7 @@ export const LogoText = styled.div`
 	display: flex;
 	flex-direction: column;
 	text-align: left;
-	color: ${theme.colors.brown};
+	color: ${theme.colors.solid.brown};
 	font-family: ${theme.layout.fonts.old};
 	font-size: 1.25rem;
 

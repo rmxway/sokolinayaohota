@@ -67,11 +67,11 @@ export const Item = styled.div`
 		line-height: 1;
 		letter-spacing: 0.5px;
 		text-transform: uppercase;
-		color: ${theme.colors.brown};
+		color: ${theme.colors.solid.brown};
 	}
 
 	& > span {
-		color: ${theme.colors.disabled}bb;
+		color: ${theme.colors.solid.disabled}bb;
 		font-size: 1.125rem;
 		line-height: 1.2;
 		font-weight: 400;
@@ -111,10 +111,10 @@ export const IconWrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	background-color: ${theme.colors.brown}11;
+	background-color: ${theme.colors.solid.brown}11;
 
 	.icofont {
-		color: ${theme.colors.brown};
+		color: ${theme.colors.solid.brown};
 		font-size: 2.5rem;
 	}
 
@@ -123,7 +123,7 @@ export const IconWrapper = styled.div`
 		height: 72px;
 
 		.icofont {
-			color: ${theme.colors.brown};
+			color: ${theme.colors.solid.brown};
 			font-size: 2rem;
 		}
 	`}

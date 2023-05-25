@@ -18,4 +18,7 @@ export const ObserverEntry = forwardRef(
 		return null;
 	}
 );
+
+ObserverEntry.displayName = 'Observer';
+
 export default ObserverEntry;

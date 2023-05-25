@@ -9,12 +9,14 @@ import {
 const defaultTheme: DefaultTheme = {
 	name: 'default',
 	colors: {
-		primary: '#FFDE7D',
-		success: '#079404',
-		danger: '#FF4773',
-		disabled: '#958888',
-		brown: '#42210B',
-		white: '#FFFFFF',
+		solid: {
+			primary: '#FFDE7D',
+			success: '#079404',
+			danger: '#FF4773',
+			disabled: '#958888',
+			brown: '#42210B',
+			white: '#FFFFFF',
+		},
 		gray: {
 			$1: '#ddd',
 			$2: '#ececec',

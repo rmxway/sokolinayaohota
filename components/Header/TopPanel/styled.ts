@@ -23,7 +23,7 @@ export const TopPanelSC = styled.div`
 
 	a,
 	& {
-		color: ${theme.colors.brown};
+		color: ${theme.colors.solid.brown};
 	}
 
 	${media.lessThan('sm')`
