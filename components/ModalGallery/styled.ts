@@ -66,7 +66,7 @@ export const Thumbnails = styled.div`
 	}
 
 	.swiper-slide-thumb-active {
-		border-color: ${theme.colors.disabled};
+		border-color: ${theme.colors.solid.disabled};
 		opacity: 1;
 	}
 

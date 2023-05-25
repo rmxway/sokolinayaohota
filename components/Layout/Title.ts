@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
@@ -12,7 +13,7 @@ type TitleType = {
  * @param {string} color}
  * @param {string} size}
  */
-export const Title = styled.div<TitleType>`
+export const Title = styled(motion.div)<TitleType>`
 	font-family: ${theme.layout.fonts.header};
 	font-weight: 600;
 	line-height: 1;
