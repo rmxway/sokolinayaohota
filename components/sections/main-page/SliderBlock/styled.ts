@@ -19,7 +19,6 @@ export const Wrapper = styled.div`
 	position: relative;
 	background-image: ${theme.colors.gradients.golden()};
 	padding: 80px 0;
-	max-height: 100vh;
 
 	${Ellipsis} {
 		position: absolute;

@@ -9,15 +9,15 @@ export const Wrapper = styled.div`
 	gap: 20px;
 	max-width: 100%;
 	grid-template-columns: minmax(100%, 1440px);
-	grid-template-rows: minmax(400px, 70vh) 100px;
+	grid-template-rows: minmax(400px, 900px) 100px;
 	height: 100%;
 
-	${media.lessThan('md')`
-		grid-template-rows: 70vh 100px;
+	${media.lessThan('lg')`
+		grid-template-rows: minmax(400px, 70vh) 100px;
 	`}
 
 	${media.lessThan('sm')`
-		grid-template-rows: max-content 80px;
+		grid-template-rows: 70vh 80px;
 	`}
 `;
 
@@ -30,6 +30,10 @@ export const Slider = styled.div`
 
 	${WrapperFetchedImage} {
 		height: 100%;
+		img {
+
+			// object-fit: contain;
+		}
 	}
 
 	border-radius: ${theme.radius.blockRadius};

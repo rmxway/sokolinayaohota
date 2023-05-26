@@ -56,9 +56,9 @@ export const TopPanelSC = styled.div`
 					content: '';
 					position: absolute;
 					left: 50%;	
-					transform: translate(-50%, 26px);
+					transform: translate(-50%, 22px);
 					
-					border: 8px solid ${rgba(theme.colors.gray.$8, 0.85)};
+					border: 10px solid ${rgba(theme.colors.gray.$6, 1)};
 					border-top-color: transparent;
 					border-left-color: transparent;
 					border-right-color: transparent;
@@ -74,7 +74,7 @@ export const TopPanelSC = styled.div`
 export const InfoBlock = styled(motion.div)`
 	position: relative;
 	top: 16px;
-	background-color: ${rgba(theme.colors.gray.$8, 0.85)}; // 8c - opacity ~ 55%
+	background-color: ${rgba(theme.colors.gray.$6, 1)}; // 8c - opacity ~ 55%
 
 	& > div {
 		display: flex;
@@ -99,9 +99,15 @@ export const contentAnimation: Variants = {
 	start: {
 		opacity: 0,
 		height: 0,
+		transition: {
+			duration: 0.1
+		}
 	},
 	end: {
 		opacity: 1,
 		height: 'auto',
+		transition: {
+			duration: 0.1
+		}
 	},
 };

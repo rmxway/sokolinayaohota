@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { defaultTheme as theme } from '@/theme';
+import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.div`
 	display: inline-flex;
@@ -11,7 +11,11 @@ export const Wrapper = styled.div`
 	flex-shrink: 0;
 	justify-content: center;
 	box-shadow: ${theme.layout.shadow.basic};
-	margin: 0 auto;
+	margin: 20px auto;
+
+	${media.lessThan('md')`
+		font-size: .75rem;
+	`}
 `;
 
 export const Message = styled.div`
@@ -19,11 +23,11 @@ export const Message = styled.div`
 	display: grid;
 	align-items: center;
 	text-align: center;
-	grid-template-columns: auto;	
+	grid-template-columns: auto;
 	color: ${theme.colors.solid.white};
 
 	p {
-		font-size: 1.75rem;
+		font-size: 1.75em;
 		font-family: ${theme.layout.fonts.header};
 	}
 `;
