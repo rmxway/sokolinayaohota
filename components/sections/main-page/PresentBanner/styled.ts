@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
 	background-size: cover;
 	background-position: center;
-	color: ${theme.colors.primary};
+	color: ${theme.colors.solid.primary};
 	text-align: center;
 	padding: 80px 0;
 
@@ -22,20 +22,20 @@ export const Wrapper = styled.div`
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: ${theme.colors.brown};
+		background-color: ${theme.colors.solid.brown};
 		opacity: 0.83;
 	}
 
 	& > div {
-		font-size: 24px;
+		font-size: 1.5rem;
 		line-height: 1.75;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		min-height: auto;
 		
 		& > div {
-			font-size: 20px;
+			font-size: 1.25em;
 		}
 	`}
 `;
@@ -49,7 +49,7 @@ export const MainText = styled.div`
 		font-size: 3rem;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		font-size: 1.5rem;
 
 		div {

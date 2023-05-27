@@ -43,7 +43,7 @@ module.exports = {
 		'no-new': 'off',
 		camelcase: 'off',
 		'react/react-in-jsx-scope': 'off',
-		'react/display-name': 'off',
+		'react/display-name': 'error',
 		'no-underscore-dangle': 'off',
 		'simple-import-sort/imports': 'error',
 		'simple-import-sort/exports': 'error',

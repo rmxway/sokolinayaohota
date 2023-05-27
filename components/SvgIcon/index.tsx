@@ -8,7 +8,7 @@ import { defaultTheme as theme } from '@/theme';
 interface SVGType {
 	/** Select Icon */
 	name: 'BarDecor' | 'BarDecor2' | 'LogoDecor';
-	color?: keyof typeof theme.colors;
+	color?: keyof typeof theme.colors.solid;
 	width?: string;
 	inverse?: boolean;
 }
@@ -21,7 +21,7 @@ export const SvgIcon: FC<SVGType> = ({
 	...propsComponent
 }) => {
 	const props = {
-		fill: theme.colors[color || 'disabled'],
+		fill: theme.colors.solid[color || 'disabled'],
 		style: {
 			maxWidth: width,
 			transform: `rotate(${inverse ? '180deg' : '0deg'})`,

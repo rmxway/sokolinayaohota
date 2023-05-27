@@ -4,14 +4,13 @@ import { Grid, Title } from '@/components/Layout';
 
 import { Answer, PlusMinus, Wrapper } from './styled';
 
-type QuestionType = {
+export type QuestionType = {
 	answer?: string;
 	question?: string;
-	id: string;
-	type: 'checkbox' | 'radio';
+	id?: string;
 };
 
-export const Question: FC<QuestionType> = ({ answer, question, id, type }) => {
+export const Question: FC<QuestionType> = ({ answer, question, id }) => {
 	const [checked, setChecked] = useState(false);
 
 	return (
@@ -19,7 +18,7 @@ export const Question: FC<QuestionType> = ({ answer, question, id, type }) => {
 			<input
 				name="questions"
 				id={id}
-				type={type}
+				type="checkbox"
 				onChange={() => setChecked((prev) => !prev)}
 			/>
 

@@ -18,7 +18,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	width: 100%;
 	max-width: 100%;
 	align-items: center;
-	font-size: 16px;
+	font-size: 1rem;
 	cursor: text;
 
 	.icofont {
@@ -43,7 +43,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	input {
 		width: 100%;
 		color: inherit;
-		font-size: 16px;
+		font-size: 1rem;
 		padding: 0;
 		margin: 0;
 		background: none;
@@ -61,11 +61,11 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 		css`
 			&,
 			.icofont {
-				color: ${theme.colors.success};
+				color: ${theme.colors.solid.success};
 			}
 			& > div,
 			& > input:focus ~ div {
-				border-color: ${theme.colors.success};
+				border-color: ${theme.colors.solid.success};
 			}
 
 			& > input:focus ~ div {
@@ -78,11 +78,11 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 		css`
 			&,
 			.icofont {
-				color: ${theme.colors.danger};
+				color: ${theme.colors.solid.danger};
 			}
 			& > div,
 			& > input:focus ~ div {
-				border-color: ${theme.colors.danger};
+				border-color: ${theme.colors.solid.danger};
 			}
 
 			& > input:focus ~ div {
@@ -104,7 +104,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 			}
 		`}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		height: 40px;
 
 		.icofont {
@@ -114,8 +114,8 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 `;
 
 export const InputError = styled(motion.div)`
-	color: ${theme.colors.danger};
-	font-size: 12px;
+	color: ${theme.colors.solid.danger};
+	font-size: 0.75rem;
 	margin: -15px 0 15px;
 	text-align: left;
 `;

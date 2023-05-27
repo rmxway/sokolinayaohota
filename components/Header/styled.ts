@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import { Button } from '@/components/ui/Button/styled';
-import { defaultTheme as theme, media } from '@/theme';
+import { media } from '@/theme';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -69,13 +69,8 @@ export const Banner = styled.div`
 		margin: 0;
 	}
 
-	h1 {
-		color: #fff;
-	}
-
 	h2 {
 		font-size: 72px;
-		color: ${theme.colors.primary};
 	}
 `;
 

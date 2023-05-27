@@ -27,10 +27,6 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 		};
 
 		try {
-			await new Promise((r) => {
-				setTimeout(r, 1000);
-			});
-
 			if (fetchUrl) {
 				await fetch(fetchUrl, {
 					method: 'POST',
@@ -125,6 +121,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 
 					<FinalText
 						variants={fadeInOut}
+						initial="start"
 						animate={isComplete ? 'end' : 'start'}
 						$valid={!!error}
 					>

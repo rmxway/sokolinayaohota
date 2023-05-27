@@ -1,9 +1,8 @@
 import 'swiper/scss';
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
+import { WrapperFetchedImage } from '@/components/Layout/FetchedImage';
 import { defaultTheme as theme } from '@/theme/defaultTheme';
 import { media } from '@/theme/media';
 
@@ -30,41 +29,47 @@ export const Grid = styled.div`
 		grid-template-columns: repeat(3, 1fr);		
 		grid-template-rows: repeat(3, 20vw);
 	`}
-`;
 
-export const Item = styled(motion(Image))<{ $big?: boolean }>`
-	position: relative;
-	top: 0;
+	${WrapperFetchedImage} {
+		position: relative;
+		top: 0;
 
-	${(props) =>
-		props.$big &&
-		css`
+		&.big {
 			grid-column-start: 1;
 			grid-column-end: 2;
 			grid-row-start: 1;
 			grid-row-end: 3;
+		}
+
+		${media.lessThan('md')`
+			&, &.big {	
+				grid-column-start: auto;
+				grid-column-end: auto;
+				grid-row-start: auto;
+				grid-row-end: auto;
+			}
 		`}
 
-	${media.lessThan('md')`
-		grid-column-start: auto;
-		grid-column-end: auto;
-		grid-row-start: auto;
-		grid-row-end: auto;
-	`} 
+		&, img {
+			max-width: 100%;
+			max-height: 100%;
+			border-radius: ${theme.radius.blockRadius};
+		}
 
-	max-width: 100%;
-	max-height: 100%;
-	border-radius: ${theme.radius.blockRadius};
-	box-shadow: ${theme.layout.shadow.basic};
-	object-fit: cover;
-	cursor: pointer;
-	opacity: 0.8;
-	transition: 0.3s;
+		opacity: 0.8;
+		cursor: pointer;
+		box-shadow: ${theme.layout.shadow.basic};
+		transition: .3s;
 
-	&:hover {
-		top: -2px;
-		box-shadow: ${theme.layout.shadow.gallery};
-		opacity: 1;
+		&:hover {
+			top: -2px;
+			box-shadow: ${theme.layout.shadow.gallery};
+			opacity: 1;
+		}
+
+		img {
+			object-fit: cover;
+		}
 	}
 `;
 

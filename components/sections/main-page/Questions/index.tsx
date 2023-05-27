@@ -1,29 +1,36 @@
 import { FC } from 'react';
 
 import { ImageBackground, Question } from '@/components';
+import { ErrorMessage } from '@/components/ErrorMessage';
 import { Container, Flexbox, Title } from '@/components/Layout';
-import { questions } from '@/mock/questions';
+import { QuestionType } from '@/components/Question';
 import imageBack from '@/public/assets/img/questions.jpg';
 
 import { Wrapper } from './styled';
 
-const typeInput = 'checkbox';
+type Props = {
+	data: QuestionType[] | undefined;
+	error?: string;
+};
 
-export const Questions: FC = () => (
+export const Questions: FC<Props> = ({ data, error }) => (
 	<Wrapper>
-		<Container>
+		<Container grid direction="row" gap={40}>
 			<Title color="disabled">Частые вопросы</Title>
-			<Flexbox direction="column" style={{ marginTop: '40px' }}>
-				{questions.map((question) => (
-					<Question
-						key={question.id}
-						id={question.id}
-						type={typeInput}
-						question={question.question}
-						answer={question.answer}
-					/>
-				))}
-			</Flexbox>
+			{data?.length ? (
+				<Flexbox direction="column">
+					{data.map((question) => (
+						<Question
+							key={question.id}
+							id={question.id}
+							question={question.question}
+							answer={question.answer}
+						/>
+					))}
+				</Flexbox>
+			) : (
+				<ErrorMessage message={error} />
+			)}
 		</Container>
 		<ImageBackground image={imageBack} quality={20} />
 	</Wrapper>

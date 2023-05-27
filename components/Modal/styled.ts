@@ -82,7 +82,7 @@ export const CloseButton = styled(motion.button)`
 	height: 32px;
 	width: 32px;
 	border-radius: 40px;
-	color: ${theme.colors.disabled};
+	color: ${theme.colors.solid.disabled};
 	cursor: pointer;
 	transition: all 0.2s;
 	opacity: 0.8;

@@ -8,7 +8,7 @@ import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
-	padding: 80px 0;
+	padding: 80px 0 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -16,13 +16,13 @@ export const Wrapper = styled.div`
 	text-align: center;
 	background-image: linear-gradient(
 		0deg,
-		${desaturate(0.35, theme.colors.brown)} 0%,
+		${desaturate(0.35, theme.colors.solid.brown)} 0%,
 		#1c1c1c 95%
 	);
-	background-color: ${theme.colors.brown};
+	background-color: ${theme.colors.solid.brown};
 
 	${LogoText} {
-		color: ${theme.colors.primary};
+		color: ${theme.colors.solid.primary};
 	}
 
 	${media.lessThan('md')`
@@ -59,7 +59,7 @@ export const InfoBlock = styled.div`
 
 	& > span,
 	a {
-		color: ${theme.colors.primary};
+		color: ${theme.colors.solid.primary};
 		font-size: 1.25rem;
 		font-weight: 400;
 		line-height: 1.5;
@@ -78,8 +78,8 @@ export const InfoBlock = styled.div`
 `;
 
 export const Copyright = styled.div`
-	font-size: 1.5rem;
-	color: ${theme.colors.disabled};
+	font-size: 1rem;
+	color: ${theme.colors.solid.disabled};
 
 	${media.lessThan('md')`
 		font-size: 1rem;
@@ -88,13 +88,9 @@ export const Copyright = styled.div`
 
 export const MapWrapper = styled.div`
 	position: relative;
-	height: 700px;
+	min-height: 500px;
 	width: 100%;
 	margin: 20px 0;
-
-	${media.lessThan('md')`
-		height: 500px;
-	`}
 `;
 
 export const Map = styled(Image)`

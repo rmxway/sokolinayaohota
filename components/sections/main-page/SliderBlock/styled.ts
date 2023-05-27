@@ -3,20 +3,31 @@ import 'swiper/scss/pagination';
 import 'swiper/scss/effect-fade';
 
 import { Variants } from 'framer-motion';
-import Image from 'next/image';
 import styled from 'styled-components';
 
-import { Container, Grid, Title } from '@/components/Layout';
+import {
+	Container,
+	Grid,
+	Title,
+	WrapperFetchedImage,
+} from '@/components/Layout';
+import { Ellipsis } from '@/components/Layout/Preloader/styled';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
-	background-image: ${theme.colors.gradients.golden};
+	background-image: ${theme.colors.gradients.golden()};
 	padding: 80px 0;
 
+	${Ellipsis} {
+		position: absolute;
+		left: calc(50% - 30px);
+		top: calc(50% - 30px);
+	}
+
 	h1 {
-		color: ${theme.colors.disabled};
+		color: ${theme.colors.solid.disabled};
 	}
 
 	${media.lessThan('sm')`
@@ -32,7 +43,7 @@ export const Wrapper = styled.div`
 export const Info = styled.div`
 	display: flex;
 	width: 100%;
-	color: ${theme.colors.brown};
+	color: ${theme.colors.solid.brown};
 	overflow: hidden;
 
 	.swiper {
@@ -53,7 +64,7 @@ export const Info = styled.div`
 		overflow: hidden;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		${Grid} {
 			gap: 10px;
 		}
@@ -73,20 +84,7 @@ export const Info = styled.div`
 	`}
 `;
 
-export const SliderImage = styled(Image)`
-	object-fit: cover;
-	object-position: center;
-	width: 100%;
-	height: 520px;
-	border-radius: ${theme.radius.blockRadius};
-
-	${media.lessThan('sm')`
-		height: 100%;
-		min-height: 400px;
-	`}
-`;
-
-export const SlideContainer = styled.div`
+export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	position: relative;
 	display: grid;
 	grid-template-columns: 500px 1fr;
@@ -94,6 +92,26 @@ export const SlideContainer = styled.div`
 	bottom: -4px;
 	width: 100%;
 	gap: 80px;
+
+	transition: opacity 0.3s;
+	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
+
+	${WrapperFetchedImage} {
+		width: 100%;
+		height: 520px;
+		border-radius: ${theme.radius.blockRadius};
+		overflow: hidden;
+
+		${media.lessThan('lg')`
+			height: 450px;
+		`}
+
+		${media.lessThan('sm')`
+			height: 100%;
+			min-height: 300px;
+			border-radius: 0;
+		`}
+	}
 
 	${media.lessThan('xl')`
 		grid-template-columns: 400px 1fr;
@@ -114,10 +132,6 @@ export const SlideContainer = styled.div`
 
 	${media.lessThan('sm')`
 		grid-template-rows: 350px 1fr;
-		
-		${SliderImage} {
-			border-radius: 0;
-		}
 	`}
 
 	.swiper {
@@ -171,11 +185,11 @@ export const Controllers = styled.div`
 			height: 10px;
 			opacity: 1;
 			background: none;
-			border: 1px solid ${theme.colors.brown};
+			border: 1px solid ${theme.colors.solid.brown};
 		}
 
 		.swiper-pagination-bullet-active {
-			background: ${theme.colors.brown};
+			background: ${theme.colors.solid.brown};
 		}
 	}
 `;

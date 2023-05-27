@@ -6,6 +6,7 @@ interface BreakpointsType {
 	md: string | number;
 	sm: string | number;
 	xs: string | number;
+	xxs: string | number;
 }
 
 const jsBreakpoints: BreakpointsType = {
@@ -14,6 +15,7 @@ const jsBreakpoints: BreakpointsType = {
 	md: 1024,
 	sm: 768,
 	xs: 600,
+	xxs: 420,
 };
 
 const breakpoints: BreakpointsType = {
@@ -22,6 +24,7 @@ const breakpoints: BreakpointsType = {
 	md: `${jsBreakpoints.md}px`,
 	sm: `${jsBreakpoints.sm}px`,
 	xs: `${jsBreakpoints.xs}px`,
+	xxs: `${jsBreakpoints.xxs}px`,
 };
 
 const media = generateMedia(breakpoints);

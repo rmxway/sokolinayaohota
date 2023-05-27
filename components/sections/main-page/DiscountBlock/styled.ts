@@ -14,14 +14,14 @@ export const Wrapper = styled.div`
 	padding: 80px 0;
 
 	${Title} {
-		font-size: 64px;
+		font-size: 4rem;
 
 		span {
 			display: block;
 			margin-top: 20px;
 			text-transform: uppercase;
-			font-size: 62px;
-			color: ${theme.colors.primary};
+			font-size: 3.875rem;
+			color: ${theme.colors.solid.primary};
 		}
 	}
 
@@ -31,22 +31,22 @@ export const Wrapper = styled.div`
 
 	${FinalText} {
 		color: ${!FinalText.defaultProps?.$valid
-			? theme.colors.white
-			: theme.colors.danger};
+			? theme.colors.solid.white
+			: theme.colors.solid.danger};
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		${Title} {
-			font-size: 52px;	
+			font-size: 3.25rem;	
 
 			span {
-				font-size: 48px;
+				font-size: 3rem;
 				letter-spacing: 0.5px;
 			}
 		}
 	`}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		${FormStyled} {
 			max-width: 320px;
 		}
@@ -57,20 +57,20 @@ export const Discount = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 168px;
-	height: 168px;
+	width: 128px;
+	height: 128px;
 	border-radius: 200px;
-	background-color: ${theme.colors.brown};
+	background-color: ${theme.colors.solid.brown};
 
 	& > div {
-		font-size: 4rem;
+		font-size: 3.5rem;
 		font-family: ${theme.layout.fonts.header};
-		color: ${theme.colors.primary};
+		color: ${theme.colors.solid.primary};
 	}
 
-	${media.lessThan('md')`
-		width: 120px;
-		height: 120px;
+	${media.lessThan('lg')`
+		width: 100px;
+		height: 100px;
 
 		& > div {
 			font-size: 3rem;

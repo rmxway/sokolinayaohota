@@ -2,6 +2,7 @@ import { ImageBackground } from '@/components';
 import { FormOrder } from '@/components/FormOrder';
 import { Container, Grid, Title } from '@/components/Layout';
 import imageBack from '@/public/assets/img/discount.jpg';
+import { fetchApi } from '@/services/variable';
 
 import { Discount, Wrapper } from './styled';
 
@@ -20,7 +21,7 @@ export const DiscountBlock = () => (
 					<div>-10%</div>
 				</Discount>
 			</Grid>
-			<FormOrder name="discount-form" />
+			<FormOrder name="discount-form" fetchUrl={fetchApi('send-user-request')} />
 		</Container>
 		<ImageBackground image={imageBack} quality={50} />
 	</Wrapper>
