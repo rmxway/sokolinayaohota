@@ -74,8 +74,8 @@ export const getServerSideProps = async (): Promise<{
 	return {
 		props: {
 			slider: (Array.isArray(destSlider) && destSlider) || [],
-			advantages: destAdvantages || [],
-			questions: destQuestions || [],
+			advantages: (Array.isArray(destAdvantages) && destAdvantages) || [],
+			questions: (Array.isArray(destQuestions) && destQuestions) || [],
 			error: errorMessage,
 		},
 	};

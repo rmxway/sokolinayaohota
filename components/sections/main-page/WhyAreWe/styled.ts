@@ -46,6 +46,30 @@ export const Wrapper = styled.div`
 	`}
 `;
 
+export const ItemDescription = styled.div`
+	color: ${theme.colors.solid.disabled}bb;
+	font-size: 1.125rem;
+	line-height: 1.2;
+	font-weight: 400;
+	text-align: left;
+
+	p {
+		display: block;
+		margin-bottom: 16px;
+	}
+
+	ul {
+		li {
+			list-style: disc;
+			margin-bottom: 16px;
+		}
+	}
+
+	${media.lessThan('md')`
+		font-size: 1rem;	
+	`}
+`;
+
 export const Item = styled.div`
 	min-height: 200px;
 	width: 100%;
@@ -70,26 +94,6 @@ export const Item = styled.div`
 		color: ${theme.colors.solid.brown};
 	}
 
-	& > span {
-		color: ${theme.colors.solid.disabled}bb;
-		font-size: 1.125rem;
-		line-height: 1.2;
-		font-weight: 400;
-		text-align: left;
-
-		p {
-			display: block;
-			margin-bottom: 16px;
-		}
-
-		ul {
-			li {
-				list-style: disc;
-				margin-bottom: 16px;
-			}
-		}
-	}
-
 	&:hover {
 		box-shadow: ${theme.layout.shadow.big};
 		z-index: 2;
@@ -97,10 +101,6 @@ export const Item = styled.div`
 
 	${media.lessThan('md')`
 		gap: 20px;
-		
-		& > span {
-			font-size: 1rem;
-		}
 	`}
 `;
 
