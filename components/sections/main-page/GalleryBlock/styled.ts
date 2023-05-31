@@ -11,6 +11,10 @@ export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	padding: 80px 0;
+
+	${media.lessThan('lg')`
+		padding: 40px 0;
+	`}
 `;
 
 export const Grid = styled.div`
@@ -59,7 +63,7 @@ export const Grid = styled.div`
 		opacity: 0.8;
 		cursor: pointer;
 		box-shadow: ${theme.layout.shadow.basic};
-		transition: .3s;
+		transition: 0.3s;
 
 		&:hover {
 			top: -2px;

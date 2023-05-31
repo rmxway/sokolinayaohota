@@ -59,7 +59,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	};
 
 	return (
-		<Modal show={show} onClose={onClose} gallery>
+		<Modal show={show} onClose={onClose}>
 			<Wrapper>
 				<Slider>
 					<Swiper {...mainSwiperConfig}>

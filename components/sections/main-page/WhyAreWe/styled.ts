@@ -21,6 +21,8 @@ export const Wrapper = styled.div`
 	}
 
 	${media.lessThan('lg')`
+		padding-top: 40px;
+
 		.grid {
 			grid-auto-flow: row;
 			gap: 12px;
@@ -101,6 +103,7 @@ export const Item = styled.div`
 
 	${media.lessThan('md')`
 		gap: 20px;
+		padding: 20px;
 	`}
 `;
 

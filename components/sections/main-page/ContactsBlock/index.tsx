@@ -5,13 +5,23 @@ import map from '@/public/assets/img/map.jpg';
 
 import { Copyright, InfoBlock, Map, MapWrapper, Wrapper } from './styled';
 
-export const ContactsBlock = () => (
+type ContactsProps = {
+	additionalLayer?: React.ReactNode;
+};
+
+/**
+ *
+ * @param additionalLayer - добавить любой контент или компонент в область под заголовком
+ * @returns
+ */
+export const ContactsBlock = ({ additionalLayer }: ContactsProps) => (
 	<Wrapper>
 		<Container grid gap={40} direction="row" center>
 			<SvgIcon name="BarDecor" color="primary" width="150px" inverse />
 			<Title color="primary">
 				Как с нами <span>связаться ?</span>
 			</Title>
+			{additionalLayer}
 			<Grid justify="space-between" className="info-grid" $w100 gap={20}>
 				<InfoBlock>
 					<div>

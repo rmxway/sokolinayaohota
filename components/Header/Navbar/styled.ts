@@ -86,12 +86,16 @@ export const MobileNav = styled(motion.div)`
 	padding: 40px;
 	z-index: 20;
 
-	svg {
+	svg,
+	img {
 		display: block;
 		margin-top: auto;
 		margin-bottom: auto;
 		pointer-events: none;
-		opacity: 0.5;
+		opacity: 0.85;
+		mix-blend-mode: luminosity;
+		max-width: 75%;
+		object-fit: contain;
 	}
 `;
 
@@ -144,6 +148,7 @@ export const NavbarItem = styled(motion.div)<{ $active?: boolean }>`
 	border-bottom: 2px solid transparent;
 	margin: 0 20px;
 	transition: color 0.2s;
+	mix-blend-mode: multiply;
 
 	a {
 		position: absolute;

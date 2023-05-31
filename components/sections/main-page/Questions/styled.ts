@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { media } from '@/theme';
+
 export const Wrapper = styled.div`
 	position: relative;
 	display: flex;
@@ -17,6 +19,10 @@ export const Wrapper = styled.div`
 		top: 0;
 		left: 0;
 	}
+
+	${media.lessThan('lg')`
+		padding: 40px 0;
+	`}
 `;
 
 export default Wrapper;

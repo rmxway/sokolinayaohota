@@ -10,7 +10,7 @@ USER node
 
 RUN yarn install
 
-RUN npx next telemetry disable
+RUN yarn next telemetry disable
 
 RUN yarn build
 

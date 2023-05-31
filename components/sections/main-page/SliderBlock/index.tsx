@@ -45,6 +45,7 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 		speed: 300,
 		spaceBetween: 100,
 		slidesPerView: 1,
+		autoHeight: true,
 		loop: true,
 		modules: [Thumbs, Pagination, Navigation],
 		thumbs: {
@@ -72,9 +73,10 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 
 	const imagesSwiperConfig: SwiperProps = {
 		modules: [Thumbs, EffectFade],
-		speed: 1000,
+		speed: 600,
 		allowTouchMove: false,
 		effect: 'fade',
+		autoHeight: true,
 		spaceBetween: 20,
 		slidesPerView: 1,
 		onSwiper: (swiper) => {
@@ -128,31 +130,29 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 									</Grid>
 								</SwiperSlide>
 							))}
-							<span slot="container-end">
-								<Controllers>
-									<Flexbox>
-										<Icon
-											icon="arrow-simple"
-											className="btn-prev"
-											as="div"
-											active
-										/>
-										<Icon
-											icon="arrow-simple"
-											className="btn-next"
-											as="div"
-											active
-										/>
-									</Flexbox>
-									<div>
-										<div className="slider-pagination" />
-									</div>
-									<ButtonUI brown icon="arrow">
-										Подробнее
-									</ButtonUI>
-								</Controllers>
-							</span>
 						</Swiper>
+						<Controllers>
+							<Flexbox>
+								<Icon
+									icon="arrow-simple"
+									className="btn-prev"
+									as="div"
+									active
+								/>
+								<Icon
+									icon="arrow-simple"
+									className="btn-next"
+									as="div"
+									active
+								/>
+							</Flexbox>
+							<div>
+								<div className="slider-pagination" />
+							</div>
+							<ButtonUI brown icon="arrow">
+								Подробнее
+							</ButtonUI>
+						</Controllers>
 					</Info>
 					{isLoaded && (
 						<Swiper {...imagesSwiperConfig}>

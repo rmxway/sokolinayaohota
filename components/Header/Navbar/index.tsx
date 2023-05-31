@@ -1,11 +1,13 @@
 import { AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useRef, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
-import { SvgIcon } from '@/components/SvgIcon';
+import { Space } from '@/components/Layout';
 import { navbarItems } from '@/mock/navbar';
+import oldLogo from '@/public/assets/img/old-logo.png';
 
 import {
 	BurgerButton,
@@ -83,10 +85,11 @@ export const Navbar: FC = () => {
 									{item.title}
 								</NavbarItem>
 							))}
-							<SvgIcon
-								name="LogoDecor"
-								width="250px"
-								color="brown"
+							<Space />
+							<Image
+								src={oldLogo}
+								alt="Logo navbar"
+								quality={60}
 							/>
 						</MobileNav>
 					)}

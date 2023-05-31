@@ -30,6 +30,10 @@ export const Wrapper = styled.div`
 		color: ${theme.colors.solid.disabled};
 	}
 
+	${media.lessThan('lg')`
+		padding: 40px 0;
+	`}
+
 	${media.lessThan('sm')`
 		padding: 0;
 		padding-top: 40px;
@@ -41,10 +45,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Info = styled.div`
+	position: relative;
 	display: flex;
 	width: 100%;
 	color: ${theme.colors.solid.brown};
-	overflow: hidden;
+
+	transition: all 0.3s;
 
 	.swiper {
 		width: 100%;
@@ -79,8 +85,16 @@ export const Info = styled.div`
 		}
 	`}
 
+	${media.lessThan('md')`
+		margin-bottom: 20px;		
+
+		.swiper {		
+			padding-bottom: 80px;
+		}
+	`}
+
 	${media.lessThan('sm')`
-		padding: 20px;
+		padding: 0 20px;
 	`}
 `;
 
@@ -88,27 +102,20 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	position: relative;
 	display: grid;
 	grid-template-columns: 500px 1fr;
-	margin: 20px 0;
 	bottom: -4px;
 	width: 100%;
 	gap: 80px;
-
-	transition: opacity 0.3s;
 	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
+	transition: opacity 0.5s;
 
 	${WrapperFetchedImage} {
 		width: 100%;
-		height: 520px;
+		height: 420px;
 		border-radius: ${theme.radius.blockRadius};
 		overflow: hidden;
 
-		${media.lessThan('lg')`
-			height: 450px;
-		`}
-
 		${media.lessThan('sm')`
-			height: 100%;
-			min-height: 300px;
+			height: 400px;
 			border-radius: 0;
 		`}
 	}
@@ -123,15 +130,9 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	`}
 
 	${media.lessThan('md')`
-		grid-auto-flow: column;
-		grid-template-columns: 1fr;
-		grid-template-rows: 250px 1fr;
-		margin: 0;
-		gap: 20px;
-	`}
-
-	${media.lessThan('sm')`
-		grid-template-rows: 350px 1fr;
+		display: block;
+		height:	auto;
+		transition: all 0.3s;	
 	`}
 
 	.swiper {
@@ -141,7 +142,7 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 
 export const Controllers = styled.div`
 	position: absolute;
-	bottom: 10px;
+	bottom: 0;
 	left: 0;
 	right: 0;
 	height: 50px;

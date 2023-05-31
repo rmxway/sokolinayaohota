@@ -21,9 +21,17 @@ export const Wrapper = styled.div`
 	);
 	background-color: ${theme.colors.solid.brown};
 
+	color: white;
+	font-size: 1.25rem;
+	text-align: left;
+
 	${LogoText} {
 		color: ${theme.colors.solid.primary};
 	}
+
+	${media.lessThan('lg')`
+		padding: 40px 0 80px;
+	`}
 
 	${media.lessThan('md')`
 		.info-grid {			

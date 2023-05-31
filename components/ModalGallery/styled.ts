@@ -5,34 +5,24 @@ import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
-	display: grid;
-	gap: 20px;
-	max-width: 100%;
-	grid-template-columns: minmax(100%, 1440px);
-	grid-template-rows: minmax(400px, 900px) 100px;
-	height: 100%;
-
-	${media.lessThan('lg')`
-		grid-template-rows: minmax(400px, 70vh) 100px;
-	`}
-
-	${media.lessThan('sm')`
-		grid-template-rows: 70vh 80px;
-	`}
+	display: block;
+	max-width: 1300px;
 `;
 
 export const Slider = styled.div`
-	.swiper-slide,
-	.swiper,
-	.swiper-wrapper {
-		height: 100%;
-	}
+	display: flex;
+	max-height: 70vh;
+
+	margin-bottom: 20px;
 
 	${WrapperFetchedImage} {
 		height: 100%;
-		img {
 
-			// object-fit: contain;
+		img {
+			height: 100%;
+			max-height: 100%;
+			object-fit: contain;
+			object-position: center;
 		}
 	}
 
@@ -50,7 +40,7 @@ export const Slider = styled.div`
 
 export const Thumbnails = styled.div`
 	position: relative;
-	height: 100%;
+	height: 100px;
 
 	.swiper {
 		height: 100%;
@@ -78,5 +68,14 @@ export const Thumbnails = styled.div`
 		min-height: auto;
 		border-radius: 0;
 		height: 100%;
+
+		img {
+			object-fit: cover;
+			height: 100%;
+		}
 	}
+
+	${media.lessThan('md')`
+		height: 80px;
+	`}
 `;
