@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { ImageBackground, Question } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { Container, Flexbox, Title } from '@/components/Layout';
-import { QuestionType } from '@/components/Question';
+import { QuestionType } from '@/mock/questions';
 import imageBack from '@/public/assets/img/questions.jpg';
 
 import { Wrapper } from './styled';

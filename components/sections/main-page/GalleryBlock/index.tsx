@@ -10,7 +10,7 @@ import {
 import { ButtonUI } from '@/components/ui';
 import { mainPageGallery } from '@/mock/gallery';
 
-import { Grid, Wrapper } from './styled';
+import { GalleryImage, Grid, Wrapper } from './styled';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
@@ -18,6 +18,8 @@ export const GalleryBlock: FC = () => {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
+
+	const galleryImages = mainPageGallery.slice(0, 9);
 
 	const handleShowImageInModal = (id: number) => {
 		setSelectedId(id);
@@ -31,17 +33,20 @@ export const GalleryBlock: FC = () => {
 				<Title color="disabled">Галерея</Title>
 
 				<Grid>
-					{mainPageGallery.map((image, idx) => (
-						<FetchedImage
+					{galleryImages.map((image, idx) => (
+						<GalleryImage
 							key={image.id}
-							src={image.url}
-							alt={`image${image.id}`}
-							width={400}
-							height={400}
-							quality={20}
 							className={idx === 0 ? 'big' : ''}
-							onClick={() => handleShowImageInModal(image.id)}
-						/>
+							onClick={() => handleShowImageInModal(idx)}
+						>
+							<FetchedImage
+								src={image.url}
+								alt={`image${image.id}`}
+								width={400}
+								height={400}
+								quality={20}
+							/>
+						</GalleryImage>
 					))}
 				</Grid>
 
@@ -57,6 +62,7 @@ export const GalleryBlock: FC = () => {
 					<ModalGallery
 						show={isOpen}
 						onClose={() => setOpen((prev) => !prev)}
+						gallery={galleryImages}
 						currentId={selectedId}
 					/>
 				</Suspense>

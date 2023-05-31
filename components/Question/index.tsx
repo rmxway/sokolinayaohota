@@ -1,14 +1,9 @@
 import { FC, useState } from 'react';
 
 import { Grid, Title } from '@/components/Layout';
+import { QuestionType } from '@/mock/questions';
 
 import { Answer, PlusMinus, Wrapper } from './styled';
-
-export type QuestionType = {
-	answer?: string;
-	question?: string;
-	id?: string;
-};
 
 export const Question: FC<QuestionType> = ({ answer, question, id }) => {
 	const [checked, setChecked] = useState(false);

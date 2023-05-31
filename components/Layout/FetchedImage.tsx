@@ -24,6 +24,8 @@ const ImageStyled = styled(Image)`
 	width: 100%;
 	height: 100%;
 
+	display: block;
+
 	&.loaded {
 		opacity: 1;
 	}

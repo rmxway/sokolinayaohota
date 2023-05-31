@@ -85,21 +85,6 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 							value={values.name}
 						/>
 						<InputUI
-							type="email"
-							id="email"
-							name="email"
-							icon="mail"
-							error={
-								touched.email && errors.email
-									? errors.email
-									: null
-							}
-							placeholder="Электронная почта *"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.email}
-						/>
-						<InputUI
 							type="text"
 							id="phone"
 							name="phone"
@@ -109,10 +94,25 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 									? errors.phone
 									: null
 							}
-							placeholder="Телефон"
+							placeholder="Телефон *"
 							onChange={handleChange}
 							onBlur={handleBlur}
 							value={values.phone}
+						/>
+						<InputUI
+							type="email"
+							id="email"
+							name="email"
+							icon="mail"
+							error={
+								touched.email && errors.email
+									? errors.email
+									: null
+							}
+							placeholder="Электронная почта"
+							onChange={handleChange}
+							onBlur={handleBlur}
+							value={values.email}
 						/>
 						<ButtonUI danger type="submit" disabled={!isValid} w100>
 							Отправить

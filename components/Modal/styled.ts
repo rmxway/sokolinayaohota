@@ -15,13 +15,13 @@ export const ModalWrapper = styled(motion.div)`
 	justify-content: center;
 	align-items: flex-start;
 	z-index: 100;
-	padding: 20px;
+	padding: 8px;
 	touch-action: pan-y;
 	cursor: pointer;
 	overflow-y: auto;
 	backdrop-filter: blur(8px);
 
-	${media.lessThan('xs')`
+	${media.lessThan('sm')`
 		padding: 0;
 	`}
 `;
@@ -65,7 +65,7 @@ export const ModalWindow = styled(motion.div)<ModalWindowTypes>`
 		margin-top: 0;
 	`}
 
-	${media.lessThan('xs')`
+	${media.lessThan('sm')`
 		min-width: auto;
 		width: 100%;
 		min-height: 100%;
@@ -107,16 +107,12 @@ export const animationWrapper: Variants = {
 export const animationWindow: Variants = {
 	start: {
 		opacity: 0,
-		top: 20,
 	},
 	end: {
 		opacity: 1,
-		top: 0,
 		transition: {
-			duration: 1,
-			type: 'spring',
-			stiffness: 200,
-			damping: 15,
+			duration: 0.3,
+			type: 'tween',
 		},
 	},
 };

@@ -1,3 +1,9 @@
+export type QuestionType = {
+	id?: string;
+	question?: string;
+	answer?: string;
+};
+
 export const questions = [
 	{
 		id: 'q1',

@@ -8,11 +8,10 @@ export const validationSchema = Yup.object().shape({
 		.min(4, 'Очень короткое имя')
 		.max(25, 'Должно быть не больше 25 символов')
 		.required('Обязательно для заполнения'),
-	email: Yup.string()
-		.matches(regexpEmail, 'Неправильный email')
-		.required('Обязательно для заполнения'),
+	email: Yup.string().matches(regexpEmail, 'Неправильный email'),
 	phone: Yup.string()
 		.matches(regexpNumber, 'Неправильный номер телефона')
+		.required('Обязательно для заполнения')
 		.trim(),
 });
 

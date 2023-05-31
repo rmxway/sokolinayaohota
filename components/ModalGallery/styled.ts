@@ -4,7 +4,7 @@ import { WrapperFetchedImage } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
-export const Wrapper = styled.div`
+export const WrapperModalGallery = styled.div`
 	display: block;
 	max-width: 1300px;
 `;
@@ -21,13 +21,10 @@ export const Slider = styled.div`
 		img {
 			height: 100%;
 			max-height: 100%;
-			object-fit: contain;
+			object-fit: cover;
 			object-position: center;
 		}
 	}
-
-	border-radius: ${theme.radius.blockRadius};
-	overflow: hidden;
 
 	${media.lessThan('md')`
 		.swiper-slide,
@@ -76,6 +73,6 @@ export const Thumbnails = styled.div`
 	}
 
 	${media.lessThan('md')`
-		height: 80px;
+		height: 12vw;
 	`}
 `;

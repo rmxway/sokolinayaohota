@@ -2,16 +2,21 @@ import { FC } from 'react';
 
 import { Icon } from '@/components/Icon';
 
-import { Message, Wrapper } from './styled';
+import { Message, WrapperErrorMessage } from './styled';
 
-export const ErrorMessage: FC<{ message?: string }> = ({ message }) => (
-	<Wrapper>
+type ErrorMessageProps = {
+	message?: string;
+	flat?: boolean;
+};
+
+export const ErrorMessage: FC<ErrorMessageProps> = ({ message, flat }) => (
+	<WrapperErrorMessage $flat={flat}>
 		<Message>
 			<Icon icon="time" as="div" />
 			<br />
 			<p>{message || 'Что то пошло не так'}</p>
 			<div>Уже работаем над ошибкой</div>
 		</Message>
-	</Wrapper>
+	</WrapperErrorMessage>
 );
 export default ErrorMessage;

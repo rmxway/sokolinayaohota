@@ -21,7 +21,7 @@ export const Wrapper = styled.span`
 		width: 48px;
 		height: 48px;
 		border-radius: 100%;
-		background-color: #ffffffbb;
+		background-color: #f1f1f1bb;
 		transition: all 0.3s;
 		z-index: 1;
 
