@@ -12,6 +12,7 @@ export const WrapperModalGallery = styled.div`
 export const Slider = styled.div`
 	display: flex;
 	max-height: 70vh;
+	min-height: 500px;
 
 	margin-bottom: 20px;
 
@@ -27,10 +28,18 @@ export const Slider = styled.div`
 	}
 
 	${media.lessThan('md')`
+		min-height: auto; 
+
 		.swiper-slide,
 		.swiper,
 		.swiper-wrapper {			
 			max-height: 100%;
+		}
+
+		${WrapperFetchedImage} {
+			img {
+				object-fit: content;
+			}
 		}
 	`}
 `;

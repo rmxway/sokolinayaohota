@@ -15,9 +15,8 @@ export const Wrapper = styled.div`
 	z-index: 100;
 
 	opacity: 0;
-	
 	${fadeIn}
-	animation-delay: 0.5s;	
+	animation-delay: 0.5s;
 `;
 
 export const Ellipsis = styled.div`
@@ -26,6 +25,10 @@ export const Ellipsis = styled.div`
 	width: 80px;
 	height: 80px;
 	transform: scale(0.7);
+
+	opacity: 0;
+	animation-delay: 0.25s;
+	${fadeIn}
 
 	div {
 		position: absolute;

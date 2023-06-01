@@ -4,7 +4,7 @@ export const navbarItems = [
 		url: '/',
 	},
 	{
-		title: 'Банкетные залы',
+		title: 'Залы',
 		url: '/halls',
 	},
 	{

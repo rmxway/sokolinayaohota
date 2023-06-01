@@ -3,8 +3,7 @@ import { desaturate } from 'polished';
 import styled from 'styled-components';
 
 import { LogoText } from '@/components/Header/Logo/styled';
-import { defaultTheme as theme } from '@/theme';
-import { media } from '@/theme/media';
+import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.div`
 	position: relative;

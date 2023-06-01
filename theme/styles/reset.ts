@@ -135,11 +135,13 @@ const reset = css`
 		border: none;
 		outline: none;
 		background: none;
-        font-family: inherit;
+		font-family: inherit;
 	}
-	
 	a {
 		text-decoration: none;
+	}
+	p {
+		margin-bottom: 2rem;
 	}
 `;
 

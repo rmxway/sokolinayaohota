@@ -5,6 +5,7 @@ import { lazy, Suspense, useState } from 'react';
 import {
 	Container,
 	FetchedImage,
+	Flexbox,
 	Grid,
 	PageLoader,
 	Title,
@@ -53,7 +54,7 @@ const GalleryPage: NextPage = () => {
 			<WrapperGalleryPage>
 				<Container grid gap={40} direction="row" center mt>
 					<Title>Галерея</Title>
-					<Grid>
+					<Flexbox>
 						{categories.map(
 							(category) =>
 								(existedCategory.includes(category.code) ||
@@ -72,14 +73,13 @@ const GalleryPage: NextPage = () => {
 									</CategoryButton>
 								)
 						)}
-					</Grid>
+					</Flexbox>
 					<Grid gap={20} direction="row" className="gallery-grid">
 						<LayoutGroup>
 							{filteredImages.map((image, idx) => (
 								<GalleryImage
 									layoutRoot
 									variants={galleryImageAnimation}
-									initial="start"
 									animate="end"
 									exit="start"
 									transition={{
@@ -94,7 +94,7 @@ const GalleryPage: NextPage = () => {
 										alt={`image${image.id}`}
 										width={400}
 										height={400}
-										quality={20}
+										quality={10}
 									/>
 								</GalleryImage>
 							))}
