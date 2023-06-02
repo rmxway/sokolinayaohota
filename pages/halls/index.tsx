@@ -6,7 +6,7 @@ import { Container, Grid, Title } from '@/components/Layout';
 import { HallsPage } from '@/components/sections/halls';
 import { halls, HallsTypes } from '@/mock/halls';
 
-import { FormBlock, Sidebar } from './styled';
+import { FormBlock, MainBlock, Sidebar } from './styled';
 
 export const Halls = () => {
 	const [currentType, setCurrentType] = useState<HallsTypes>('big-hall');
@@ -16,7 +16,7 @@ export const Halls = () => {
 
 	return (
 		<>
-			<Container grid mt gap={40}>
+			<MainBlock grid gap={40}>
 				<Sidebar>
 					<p>Все залы:</p>
 
@@ -33,6 +33,7 @@ export const Halls = () => {
 						))}
 					</Grid>
 				</Sidebar>
+
 				{currentHall.length ? (
 					currentHall.map((hall) => (
 						<HallsPage key={hall.type} {...hall} />
@@ -40,22 +41,27 @@ export const Halls = () => {
 				) : (
 					<h3>Залов не найдено</h3>
 				)}
-			</Container>
+			</MainBlock>
 			<FormBlock>
-				<Container grid direction="row" gap={20}>
-					<Grid gap={40} align="center">
-						<Grid gap={20} direction="row" justify="center">
-							<Icon icon="secure" size={200} />
+				<Container grid direction="column" gap={40}>
+					<Grid gap={20} direction="row">
+						<Grid
+							gap={20}
+							direction="column"
+							align="center"
+							justify="center"
+						>
+							<Icon icon="secure" size={40} />
+							<Title color="primary">Бронирование</Title>
 						</Grid>
 						<Grid gap={20} direction="row">
-							<Title color="primary">Бронирование</Title>
-							<span>
+							<span className="info">
 								Отправьте заявку на проведение мероприятия, и
 								наши специалисты подберут для вас самые лучшие
 								условия, помогут составить меню с учетом ваших
 								пожеланий. Скидки для всех.
 							</span>
-							<span>
+							<span className="info">
 								Мы позаботимся о том, что бы ваше торжество
 								запомнилось на всю жизнь!
 							</span>

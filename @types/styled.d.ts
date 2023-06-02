@@ -25,6 +25,7 @@ interface Colors {
 		brown: (deg?: string) => string;
 		rubin: (deg?: string) => string;
 		disabled: (deg?: string) => string;
+		black: (deg?: string) => string;
 	};
 }
 

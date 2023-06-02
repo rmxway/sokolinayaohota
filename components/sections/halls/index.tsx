@@ -1,17 +1,17 @@
 import { NextPage } from 'next';
 
 import { Icon } from '@/components/Icon';
-import { Grid, Title } from '@/components/Layout';
+import { Title } from '@/components/Layout';
 import { HallType } from '@/mock/halls';
 
-import { BlockContent, HallAdvantages } from './styled';
+import { BlockContent, HallAdvantages, HallsPageWrapper } from './styled';
 
 const HallsPage: NextPage<HallType> = ({
 	advantages = [],
 	description = [],
 	title,
 }) => (
-	<Grid gap={40} $w100>
+	<HallsPageWrapper gap={40} $w100>
 		<BlockContent>
 			<Title>{title}</Title>
 			<br />
@@ -34,7 +34,7 @@ const HallsPage: NextPage<HallType> = ({
 				</ul>
 			) : null}
 		</HallAdvantages>
-	</Grid>
+	</HallsPageWrapper>
 );
 
 export { HallsPage };

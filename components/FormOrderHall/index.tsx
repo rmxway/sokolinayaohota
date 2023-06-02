@@ -79,7 +79,6 @@ export const FormOrderHall: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 						gap={20}
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
-						key="Flex"
 						layout
 					>
 						<InputUI

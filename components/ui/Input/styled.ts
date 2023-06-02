@@ -22,7 +22,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	height: 52px;
 	width: 100%;
 	max-width: 100%;
-	margin-bottom: 20px;
+	margin-bottom: 8px;
 	display: inline-flex;
 	align-items: center;
 
@@ -133,7 +133,6 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 export const InputError = styled(motion.div)`
 	color: ${theme.colors.solid.danger};
 	font-size: 0.85rem;
-	margin: -15px 0 15px;
 	text-align: left;
 `;
 

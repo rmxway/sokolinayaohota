@@ -1,4 +1,3 @@
-export { ContactsBlock } from './ContactsBlock';
 export { DiscountBlock } from './DiscountBlock';
 export { GalleryBlock } from './GalleryBlock';
 export { PresentBanner } from './PresentBanner';

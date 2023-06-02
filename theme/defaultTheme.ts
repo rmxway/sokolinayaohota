@@ -37,6 +37,8 @@ const defaultTheme: DefaultTheme = {
 				`linear-gradient(${deg}, #FF4773 0%, #F22E13 100%)`,
 			disabled: (deg = '180deg') =>
 				`linear-gradient(${deg}, #e8e8e8 0%, #cbc8c8 100%)`,
+			black: (deg = '180deg') =>
+				`linear-gradient(${deg}, #3b2d26 0%, #544740 100%)`,
 		},
 	},
 	layout: {

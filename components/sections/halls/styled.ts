@@ -1,20 +1,32 @@
 import styled from 'styled-components';
 
-import { defaultTheme as theme } from '@/theme';
+import { Grid } from '@/components/Layout';
+import { defaultTheme as theme, media } from '@/theme';
+
+export const HallsPageWrapper = styled(Grid)`
+	grid-template-columns: 1fr 340px;
+
+	${media.lessThan('lg')`	
+		grid-auto-flow: row;
+		grid-template-columns: 1fr;
+	`}
+
+	${media.lessThan('lg')`
+		gap: 20px;
+	`}
+`;
 
 export const BlockContent = styled.div`
 	font-size: 1.35rem;
-	width: 100%;
 `;
 
 export const HallAdvantages = styled.div`
 	position: relative;
-	width: 350px;
 	padding: 40px;
+	width: 100%;
 	background-image: ${theme.colors.gradients.golden('-45deg')};
 	border-radius: ${theme.radius.blockRadius};
 	color: ${theme.colors.solid.brown};
-	box-shadow: ${theme.layout.shadow.big};
 
 	ul {
 		list-style: none;
@@ -35,4 +47,12 @@ export const HallAdvantages = styled.div`
 			gap: 12px;
 		}
 	}
+
+	${media.lessThan('md')`
+		padding: 20px;
+
+		ul {
+			gap: 12px;
+		}
+	`}
 `;

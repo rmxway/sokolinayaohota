@@ -1,11 +1,26 @@
 import styled from 'styled-components';
 
-import { Title } from '@/components/Layout';
-import { defaultTheme as theme } from '@/theme';
+import { Container } from '@/components/Layout';
+import { defaultTheme as theme, media } from '@/theme';
+
+export const MainBlock = styled(Container)`
+	padding-top: 80px;
+	padding-bottom: 80px;
+	min-height: 50vh;
+
+	${media.lessThan('lg')`
+		padding-top: 40px;
+		padding-bottom: 40px;
+		min-height: auto;
+	`}
+
+	${media.lessThan('md')`
+		grid-auto-flow: row;
+	`}
+`;
 
 export const Sidebar = styled.div`
 	position: relative;
-	min-width: 200px;
 	border-right: 1px solid silver;
 	padding-right: 40px;
 
@@ -25,27 +40,43 @@ export const Sidebar = styled.div`
 			color: ${theme.colors.solid.brown};
 		}
 	}
+
+	${media.lessThan('md')`
+		width: 100%;
+		border-right: none;		
+		border-bottom: 1px solid silver;
+		padding-right: 0;
+		padding-bottom: 40px;
+	`}
 `;
 
 export const FormBlock = styled.div`
 	position: relative;
-	display: flex;
-	align-items: center;
+	min-height: 40vh;
 	padding: 80px 0;
-	background-image: ${theme.colors.gradients.brown('180deg')};
+	background-image: ${theme.colors.gradients.black('-160deg')};
 	color: ${theme.colors.solid.primary};
-	margin-top: 40px;
-	min-height: 60vh;
 
-	${Title} {
-		margin-bottom: 20px;
+	${Container} {
+		grid-template-columns: 1fr 1.5fr;
 	}
 
-	span {
+	.info {
 		display: block;
-		font-size: 1.5rem;
+		font-size: 1.35rem;
 		text-align: left;
+		color: ${theme.colors.solid.primary};
 	}
+
+	${media.lessThan('lg')`
+		padding: 40px 0 80px;
+		min-height: auto;
+		
+		${Container} {		
+			grid-auto-flow: row;
+			grid-template-columns: 1fr;
+		}	
+	`}
 `;
 
 export default Sidebar;

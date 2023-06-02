@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
 import { Grid } from '@/components/Layout';
+import { media } from '@/theme';
 
 export const FormStyled = styled.form<{ $fetching?: boolean }>`
 	position: relative;
@@ -16,9 +17,14 @@ export const FormStyled = styled.form<{ $fetching?: boolean }>`
 		`}
 
 	${Grid} {
-		margin: 40px 0;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
+
+	${media.lessThan('md')`
+		${Grid} {
+			grid-template-columns: 1fr;			
+		}
+	`}
 `;
 
 export const FinalText = styled(motion.div)<{ $valid: boolean }>`
