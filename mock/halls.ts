@@ -4,7 +4,7 @@ export type HallType = {
 	advantages: string[];
 	description: string[];
 	title: string;
-	type: HallsTypes;
+	type?: HallsTypes;
 };
 
 export const halls: HallType[] = [

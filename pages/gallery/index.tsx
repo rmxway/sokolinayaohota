@@ -11,12 +11,14 @@ import {
 	Title,
 } from '@/components/Layout';
 import {
+	CategoryButton,
+	WrapperGalleryPage,
+} from '@/components/sections/gallery/styled';
+import {
 	GalleryImage,
 	galleryImageAnimation,
 } from '@/components/sections/main-page/GalleryBlock/styled';
 import { categories, ImageCategory, mainPageGallery } from '@/mock/gallery';
-
-import { CategoryButton, WrapperGalleryPage } from './styled';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 

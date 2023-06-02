@@ -39,6 +39,11 @@ export const Navbar: FC = () => {
 		if (e.target !== containerRef.current) setShow((prev) => !prev);
 	};
 
+	const activeLink = (url: string): boolean => {
+		const active = url.split('/');
+		return active[1] === router.asPath.split('/')[1];
+	};
+
 	return (
 		<>
 			<BurgerButton
@@ -52,10 +57,7 @@ export const Navbar: FC = () => {
 			</BurgerButton>
 			<DesktopNav>
 				{navbarItems.map((item) => (
-					<NavbarItem
-						key={item.title}
-						$active={router.asPath === item.url}
-					>
+					<NavbarItem key={item.title} $active={activeLink(item.url)}>
 						<Link href={item.url} aria-label={item.title} />
 						{item.title}
 					</NavbarItem>
@@ -79,7 +81,7 @@ export const Navbar: FC = () => {
 								<NavbarItem
 									variants={navbarItemVariant}
 									key={item.title}
-									$active={router.asPath === item.url}
+									$active={activeLink(item.url)}
 								>
 									<Link href={item.url} />
 									{item.title}

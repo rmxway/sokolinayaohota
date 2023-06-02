@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import { FC, useState } from 'react';
 import {
 	EffectFade,
@@ -20,7 +21,7 @@ import {
 	Title,
 } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
-import { MainSliderType } from '@/mock/main-slider';
+import { mainSlider as data, MainSliderType } from '@/mock/main-slider';
 
 import {
 	animateText,
@@ -36,10 +37,13 @@ type SliderBlockProps = {
 	error?: string;
 };
 
-export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
+export const SliderBlock: FC<SliderBlockProps> = () => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
 	const [isLoaded, setLoaded] = useState(false);
+	const router = useRouter();
+	const [currentPath, setCurrentPath] = useState('/halls/big-hall');
+	const typesPath = data.map((item) => item.type);
 
 	const mainSwiperConfig: SwiperProps = {
 		speed: 300,
@@ -63,8 +67,9 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 			nextEl: '.btn-next',
 			prevEl: '.btn-prev',
 		},
-		onSlideChange: (swiper) => {
+		onSlideChangeTransitionEnd: (swiper) => {
 			setSlideIndex(swiper.realIndex);
+			setCurrentPath(`/halls/${typesPath[swiper.realIndex]}`);
 		},
 		onInit: () => {
 			setLoaded(true);
@@ -88,7 +93,7 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 		return (
 			<Wrapper>
 				<Container grid>
-					<ErrorMessage message={error} />
+					<ErrorMessage />
 				</Container>
 			</Wrapper>
 		);
@@ -149,7 +154,13 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 							<div>
 								<div className="slider-pagination" />
 							</div>
-							<ButtonUI brown icon="arrow">
+							<ButtonUI
+								brown
+								icon="arrow"
+								onClick={() => {
+									router.replace(currentPath);
+								}}
+							>
 								Подробнее
 							</ButtonUI>
 						</Controllers>

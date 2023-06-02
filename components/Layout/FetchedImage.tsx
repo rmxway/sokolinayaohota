@@ -34,15 +34,20 @@ const ImageStyled = styled(Image)`
 export const FetchedImage: FC<ImageProps> = ({ className, ...props }) => {
 	const [loaded, setLoaded] = useState(false);
 
-	const eventLoaded = (event: HTMLImageElement) => {
-		event.classList.add('loaded');
+	const eventLoaded = (image: HTMLImageElement) => {
+		image.classList.add('loaded');
 		setLoaded((prev) => !prev);
 	};
 
 	return (
 		<WrapperFetchedImage {...{ className }}>
 			{!loaded && <Preloader />}
-			<ImageStyled {...props} onLoadingComplete={eventLoaded} />
+			<ImageStyled
+				{...props}
+				placeholder="empty"
+				loading="lazy"
+				onLoadingComplete={eventLoaded}
+			/>
 		</WrapperFetchedImage>
 	);
 };

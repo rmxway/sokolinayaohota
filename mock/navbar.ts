@@ -5,7 +5,7 @@ export const navbarItems = [
 	},
 	{
 		title: 'Залы',
-		url: '/halls',
+		url: '/halls/big-hall',
 	},
 	{
 		title: 'Галерея',
