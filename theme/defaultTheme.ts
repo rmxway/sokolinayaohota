@@ -18,7 +18,7 @@ const defaultTheme: DefaultTheme = {
 			white: '#FFFFFF',
 		},
 		gray: {
-			$1: '#ddd',
+			$1: '#f7f7f7',
 			$2: '#ececec',
 			$3: '#cdcdcd',
 			$4: '#bebebe',

@@ -17,7 +17,7 @@ const Icon: FC<IconType> = ({
 	active,
 	icon,
 	size,
-	className,
+	className = '',
 }) => (
 	<Tag
 		className={`icofont icofont-${icon} ${className}`}

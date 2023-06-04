@@ -1,8 +1,10 @@
-import { Formik, FormikValues } from 'formik';
-import { FC, useState } from 'react';
+import { Formik, FormikValues, useFormikContext } from 'formik';
+import { useRouter } from 'next/router';
+import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
 
 import { Grid } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
+import { SelectUI } from '@/components/ui/Select';
 import { regexpFilterNumber } from '@/services/regexp';
 import { fadeInOut } from '@/theme/styles/motionAnimations';
 
@@ -14,7 +16,36 @@ type FormOrderProps = {
 	name: string;
 };
 
-export const FormOrderHall: FC<FormOrderProps> = ({ fetchUrl, name }) => {
+type AutoResetFormProps = {
+	setIsComplete: Dispatch<SetStateAction<boolean>>;
+	isComplete: boolean;
+};
+
+const AutoResetForm: FC<AutoResetFormProps> = ({
+	setIsComplete,
+	isComplete,
+}) => {
+	const router = useRouter();
+	const { resetForm, validateForm } = useFormikContext();
+
+	useEffect(() => {
+		const handlePageChange = (lastPath: string) => {
+			if (lastPath === router.asPath || !isComplete) return;
+			resetForm();
+			validateForm();
+			setIsComplete(false);
+		};
+		router.events.on('routeChangeStart', handlePageChange);
+
+		return () => {
+			router.events.off('routeChangeStart', handlePageChange);
+		};
+	}, [isComplete, resetForm, router, setIsComplete, validateForm]);
+
+	return null;
+};
+
+export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 	const [error, setError] = useState('');
 	const [isComplete, setIsComplete] = useState(false);
 
@@ -54,9 +85,7 @@ export const FormOrderHall: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 
 	return (
 		<Formik
-			initialValues={initialValues}
-			validationSchema={validationSchema}
-			onSubmit={(values) => onSubmit(values)}
+			{...{ initialValues, onSubmit, validationSchema }}
 			validateOnMount
 		>
 			{({
@@ -79,7 +108,6 @@ export const FormOrderHall: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 						gap={20}
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
-						layout
 					>
 						<InputUI
 							type="text"
@@ -108,20 +136,12 @@ export const FormOrderHall: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 							onBlur={handleBlur}
 							value={values.phone}
 						/>
-						<InputUI
+						<SelectUI
 							type="text"
 							id="event"
 							name="event"
-							icon="heart"
-							error={
-								touched.event && errors.event
-									? errors.event
-									: null
-							}
-							placeholder="Событие"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.event}
+							values={['Свадьба', 'День рождения', 'Вечеринка']}
+							placeholder="Событие *"
 						/>
 						<InputUI
 							type="text"
@@ -154,23 +174,32 @@ export const FormOrderHall: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 						<ButtonUI danger type="submit" disabled={!isValid} w100>
 							Отправить
 						</ButtonUI>
+
+						<p>* Обязательное поле</p>
 					</Grid>
 
-					<FinalText
-						variants={fadeInOut}
-						initial="start"
-						animate={isComplete ? 'end' : 'start'}
-						$valid={!!error}
-					>
-						{error || (
-							<>
-								Спасибо!
-								<br />
-								В ближайшее время <br />с вами свяжется наш
-								менеджер.
-							</>
-						)}
-					</FinalText>
+					<AutoResetForm
+						setIsComplete={setIsComplete}
+						isComplete={isComplete}
+					/>
+
+					{isComplete && (
+						<FinalText
+							variants={fadeInOut}
+							initial="start"
+							animate={isComplete ? 'end' : 'start'}
+							$valid={!!error}
+						>
+							{error || (
+								<>
+									Спасибо!
+									<br />
+									В ближайшее время <br />с вами свяжется наш
+									менеджер.
+								</>
+							)}
+						</FinalText>
+					)}
 				</FormStyled>
 			)}
 		</Formik>

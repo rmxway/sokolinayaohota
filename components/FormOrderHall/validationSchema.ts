@@ -17,7 +17,7 @@ export const validationSchema = Yup.object().shape({
 		.max(25, 'Должно быть не больше 25 символов')
 		.required('Обязательно для заполнения')
 		.trim(),
-	date: Yup.string().required('Обязательно для заполнения').trim(),
+	date: Yup.string().trim(),
 	countPeople: Yup.string().required('Обязательно для заполнения').trim(),
 });
 

@@ -22,7 +22,6 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	height: 52px;
 	width: 100%;
 	max-width: 100%;
-	margin-bottom: 8px;
 	display: inline-flex;
 	align-items: center;
 
@@ -82,6 +81,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 	${(props) =>
 		props.$danger &&
 		css`
+			margin-bottom: 12px;
 			&,
 			.icofont {
 				color: ${theme.colors.solid.danger};
@@ -131,6 +131,8 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 `;
 
 export const InputError = styled(motion.div)`
+	position: absolute;
+	top: 90%;
 	color: ${theme.colors.solid.danger};
 	font-size: 0.85rem;
 	text-align: left;

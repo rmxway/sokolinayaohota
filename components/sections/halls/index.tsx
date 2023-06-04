@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
 import { Icon } from '@/components/Icon';
-import { Title } from '@/components/Layout';
+import { Title, VideoYouTube } from '@/components/Layout';
 import { HallType } from '@/mock/halls';
 
 import { BlockContent, HallAdvantages, HallsPageWrapper } from './styled';
@@ -10,6 +10,7 @@ const HallsPage: NextPage<HallType> = ({
 	advantages = [],
 	description = [],
 	title,
+	video,
 }) => (
 	<HallsPageWrapper gap={40} $w100>
 		<BlockContent>
@@ -20,6 +21,8 @@ const HallsPage: NextPage<HallType> = ({
 						<p key={info.slice(0, 10)}>{info}</p>
 				  ))
 				: null}
+
+			{video && <VideoYouTube src={video} />}
 			{/* Slider */}
 		</BlockContent>
 		<HallAdvantages>

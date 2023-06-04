@@ -8,7 +8,7 @@ import {
 	InputWrapper,
 } from './styled';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	/** Uniq name for field */
 	name: string;
 	success?: boolean;
@@ -60,7 +60,6 @@ const InputUI = ({
 			$success={success}
 			$danger={!!error || danger}
 			htmlFor={name}
-			layout
 		>
 			<input
 				// mask={mask()}
@@ -80,7 +79,6 @@ const InputUI = ({
 				initial="start"
 				animate="end"
 				exit="end"
-				layout
 			>
 				{error}
 			</InputError>

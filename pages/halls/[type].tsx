@@ -96,5 +96,4 @@ export const Halls: NextPage<HallsProps> = ({
 		</FormBlock>
 	</>
 );
-
 export default Halls;

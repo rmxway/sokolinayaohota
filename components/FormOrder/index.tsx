@@ -1,7 +1,7 @@
 import { Formik, FormikValues } from 'formik';
 import { FC, useState } from 'react';
 
-import { Flexbox } from '@/components/Layout';
+import { Grid } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
 import { regexpFilterNumber } from '@/services/regexp';
 import { fadeInOut } from '@/theme/styles/motionAnimations';
@@ -65,11 +65,12 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 					$fetching={isSubmitting}
 					name={name}
 				>
-					<Flexbox
-						direction="column"
+					<Grid
+						direction="row"
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
 						key="Flex"
+						gap={20}
 						layout
 					>
 						<InputUI
@@ -117,7 +118,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 						<ButtonUI danger type="submit" disabled={!isValid} w100>
 							Отправить
 						</ButtonUI>
-					</Flexbox>
+					</Grid>
 
 					<FinalText
 						variants={fadeInOut}
