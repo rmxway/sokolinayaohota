@@ -1,87 +1,8 @@
 import styled from 'styled-components';
 
-import { WrapperFetchedImage } from '@/components/Layout';
-import { defaultTheme as theme } from '@/theme';
-import { media } from '@/theme/media';
-
 export const WrapperModalGallery = styled.div`
 	display: block;
 	max-width: 1300px;
 `;
 
-export const Slider = styled.div`
-	display: flex;
-	max-height: 70vh;
-	min-height: 500px;
-
-	margin-bottom: 20px;
-
-	${WrapperFetchedImage} {
-		height: 100%;
-
-		img {
-			height: 100%;
-			max-height: 100%;
-			object-fit: cover;
-			object-position: center;
-		}
-	}
-
-	${media.lessThan('md')`
-		min-height: auto; 
-
-		.swiper-slide,
-		.swiper,
-		.swiper-wrapper {			
-			max-height: 100%;
-		}
-
-		${WrapperFetchedImage} {
-			img {
-				object-fit: content;
-			}
-		}
-	`}
-`;
-
-export const Thumbnails = styled.div`
-	position: relative;
-	height: 100px;
-
-	.swiper {
-		height: 100%;
-	}
-
-	.swiper-slide {
-		opacity: 0.8;
-		transition: all 0.2s;
-		cursor: pointer;
-		border: 4px solid transparent;
-		border-radius: 8px;
-		overflow: hidden;
-
-		&:hover {
-			opacity: 1;
-		}
-	}
-
-	.swiper-slide-thumb-active {
-		border-color: ${theme.colors.solid.disabled};
-		opacity: 1;
-	}
-
-	${WrapperFetchedImage} {
-		min-height: auto;
-		border-radius: 0;
-		height: 100%;
-
-		img {
-			object-fit: cover;
-			height: 100%;
-		}
-	}
-
-	${media.lessThan('md')`
-		height: 12vw;
-	`}
-`;
+export default WrapperModalGallery;

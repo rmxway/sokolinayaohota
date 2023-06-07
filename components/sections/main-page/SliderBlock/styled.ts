@@ -12,6 +12,7 @@ import {
 	WrapperFetchedImage,
 } from '@/components/Layout';
 import { Ellipsis } from '@/components/Layout/Preloader/styled';
+import { SliderStyle, ThumbnailsStyle } from '@/components/Slider/style';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -37,7 +38,7 @@ export const Wrapper = styled.div`
 	${media.lessThan('sm')`
 		padding: 0;
 		padding-top: 40px;
-
+	
 		${Container} {
 			padding: 0;
 		}
@@ -49,8 +50,7 @@ export const Info = styled.div`
 	display: flex;
 	width: 100%;
 	color: ${theme.colors.solid.brown};
-
-	transition: all 0.3s;
+	padding-bottom: 72px;
 
 	.swiper {
 		width: 100%;
@@ -86,11 +86,7 @@ export const Info = styled.div`
 	`}
 
 	${media.lessThan('md')`
-		margin-bottom: 20px;		
-
-		.swiper {		
-			padding-bottom: 80px;
-		}
+		margin-bottom: 20px;
 	`}
 
 	${media.lessThan('sm')`
@@ -108,16 +104,19 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
 	transition: opacity 0.5s;
 
-	${WrapperFetchedImage} {
-		width: 100%;
-		height: 420px;
-		border-radius: ${theme.radius.blockRadius};
-		overflow: hidden;
+	${SliderStyle} {
+		min-height: auto;
+		height: 380px;
 
-		${media.lessThan('sm')`
-			height: 400px;
+		${WrapperFetchedImage} {
+			width: 100%;
+			height: 100%;
 			border-radius: 0;
-		`}
+
+			img {
+				object-fit: cover;
+			}
+		}
 	}
 
 	${media.lessThan('xl')`
@@ -132,7 +131,17 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	${media.lessThan('md')`
 		display: block;
 		height:	auto;
-		transition: all 0.3s;	
+	`}
+
+	${media.lessThan('sm')`
+		${SliderStyle} {
+			border-radius: 0;
+			height: 350px;
+		}
+
+		${ThumbnailsStyle} {
+			border-radius: 0;
+		}
 	`}
 
 	.swiper {
@@ -193,6 +202,10 @@ export const Controllers = styled.div`
 			background: ${theme.colors.solid.brown};
 		}
 	}
+
+	${media.lessThan('sm')`
+		padding: 0 20px;
+	`}
 `;
 
 export const animateTitle: Variants = {

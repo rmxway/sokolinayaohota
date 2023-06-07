@@ -93,6 +93,9 @@ export const HallsPageWrapper = styled(Grid)`
 `;
 
 export const BlockContent = styled.div`
+	position: relative;
+	width: 100%;
+	min-width: 1%;
 	font-size: 1.35rem;
 `;
 

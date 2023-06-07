@@ -1,12 +1,4 @@
-export type HallsTypes = 'falcon-yard' | 'big-hall' | 'small-hall';
-
-export type HallType = {
-	advantages: string[];
-	description: string[];
-	title: string;
-	type: HallsTypes;
-	video?: string;
-};
+import { HallType } from '@/@types/types';
 
 export const halls: HallType[] = [
 	{
@@ -39,3 +31,5 @@ export const halls: HallType[] = [
 		],
 	},
 ];
+
+export default halls;

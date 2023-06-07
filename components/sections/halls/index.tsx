@@ -1,8 +1,9 @@
 import { NextPage } from 'next';
 
+import { HallType } from '@/@types/types';
 import { Icon } from '@/components/Icon';
 import { Title, VideoYouTube } from '@/components/Layout';
-import { HallType } from '@/mock/halls';
+import { Slider } from '@/components/Slider';
 
 import { BlockContent, HallAdvantages, HallsPageWrapper } from './styled';
 
@@ -11,6 +12,7 @@ const HallsPage: NextPage<HallType> = ({
 	description = [],
 	title,
 	video,
+	images,
 }) => (
 	<HallsPageWrapper gap={40} $w100>
 		<BlockContent>
@@ -23,7 +25,7 @@ const HallsPage: NextPage<HallType> = ({
 				: null}
 
 			{video && <VideoYouTube src={video} />}
-			{/* Slider */}
+			{images && <Slider images={images} countThumbsPerView={5} />}
 		</BlockContent>
 		<HallAdvantages>
 			{advantages.length ? (

@@ -1,10 +1,8 @@
 import { NextPage } from 'next';
 import { lazy, Suspense } from 'react';
 
+import { AdvantageType, MainSliderType, QuestionType } from '@/@types/types';
 import { PageLoader } from '@/components/Layout';
-import { AdvantageType } from '@/mock/advantages';
-import { MainSliderType } from '@/mock/main-slider';
-import { QuestionType } from '@/mock/questions';
 import { fetchApi } from '@/services/variable';
 
 const ContactsBlock = lazy(

@@ -2,6 +2,7 @@ import { LayoutGroup } from 'framer-motion';
 import { NextPage } from 'next';
 import { lazy, Suspense, useState } from 'react';
 
+import { ImageCategory } from '@/@types/types';
 import {
 	Container,
 	FetchedImage,
@@ -18,7 +19,7 @@ import {
 	GalleryImage,
 	galleryImageAnimation,
 } from '@/components/sections/main-page/GalleryBlock/styled';
-import { categories, ImageCategory, mainPageGallery } from '@/mock/gallery';
+import { categories, galleryImages } from '@/mock/gallery';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
@@ -28,9 +29,9 @@ const GalleryPage: NextPage = () => {
 	const [suspended, setSuspended] = useState(false);
 	const [currentCategory, setCurrentCategory] =
 		useState<ImageCategory>('all');
-	const [filteredImages, setFilteredImages] = useState(mainPageGallery);
+	const [filteredImages, setFilteredImages] = useState(galleryImages);
 	const existedCategory = [
-		...new Set(mainPageGallery.map((item) => item.type)),
+		...new Set(galleryImages.map((item) => item.type)),
 	];
 
 	const handleShowImageInModal = (id: number) => {
@@ -42,12 +43,12 @@ const GalleryPage: NextPage = () => {
 	const handleFilterGallery = (code: ImageCategory) => {
 		if (code === 'all') {
 			setCurrentCategory('all');
-			setFilteredImages(mainPageGallery);
+			setFilteredImages(galleryImages);
 			return;
 		}
 		setCurrentCategory(code);
 		setFilteredImages([
-			...mainPageGallery.filter((item) => item.type === code),
+			...galleryImages.filter((item) => item.type === code),
 		]);
 	};
 

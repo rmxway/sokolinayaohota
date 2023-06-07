@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 
+import { HallsTypes, HallType } from '@/@types/types';
 import { Icon } from '@/components';
 import { FormOrderHall } from '@/components/FormOrderHall';
 import { Container, Grid, Title } from '@/components/Layout';
@@ -10,7 +11,8 @@ import {
 	MainBlock,
 	Sidebar,
 } from '@/components/sections/halls/styled';
-import { halls, HallsTypes, HallType } from '@/mock/halls';
+import { galleryImages } from '@/mock/gallery';
+import { halls } from '@/mock/halls';
 
 type PathType = {
 	type: HallsTypes | undefined;
@@ -26,7 +28,13 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: { params: PathType }) => {
 	const titles = halls.map(({ title, type }) => ({ title, type }));
-	const currentHall = halls.find((item) => item.type === params.type);
+
+	// temp decision
+	const data = halls.map((item) => {
+		const images = galleryImages.filter((img) => img.type === item.type);
+		return { ...item, images };
+	});
+	const currentHall = data.find((item) => item.type === params.type);
 
 	return { props: { params, titles, currentHall } };
 };

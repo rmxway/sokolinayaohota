@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
+import { AdvantageType } from '@/@types/types';
 import { Icon } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import imageStyle from '@/components/ImageBackground/styles.module.scss';
 import { Container, Grid, Title } from '@/components/Layout';
-import { AdvantageType } from '@/mock/advantages';
 
 import { IconWrapper, Item, ItemDescription, Wrapper } from './styled';
 

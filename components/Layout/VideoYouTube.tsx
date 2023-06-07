@@ -6,6 +6,7 @@ import { defaultTheme as theme } from '@/theme';
 export const VideoYouTubeWrapper = styled.div`
 	position: relative;
 	padding-bottom: 55%;
+	margin-bottom: 20px;
 
 	iframe {
 		position: absolute;

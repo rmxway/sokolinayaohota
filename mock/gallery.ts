@@ -1,20 +1,4 @@
-export type ImageCategory =
-	| 'falcon-yard'
-	| 'big-hall'
-	| 'small-hall'
-	| 'eat'
-	| 'all';
-
-export type GalleryImageType = {
-	id: number;
-	url: string;
-	type: ImageCategory;
-};
-
-type CategoryType = {
-	name: string;
-	code: ImageCategory;
-};
+import { CategoryType, GalleryImageType } from '@/@types/types';
 
 export const categories: CategoryType[] = [
 	{
@@ -39,7 +23,7 @@ export const categories: CategoryType[] = [
 	},
 ];
 
-export const mainPageGallery: GalleryImageType[] = [
+export const galleryImages: GalleryImageType[] = [
 	{
 		id: 1,
 		url: '/assets/img/gallery/falcon-yard/1.jpg',
@@ -157,4 +141,4 @@ export const mainPageGallery: GalleryImageType[] = [
 	},
 ];
 
-export default mainPageGallery;
+export default galleryImages;

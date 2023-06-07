@@ -1,15 +1,4 @@
-import icomoon from '@/public/assets/fonts/icofont/icofont.json';
-
-type DescriptionElement = {
-	type: 'ul' | 'p';
-	values: string[];
-};
-
-export type AdvantageType = {
-	title: string;
-	icon: keyof typeof icomoon;
-	description: DescriptionElement[];
-};
+import { AdvantageType } from '@/@types/types';
 
 export const advantages: AdvantageType[] = [
 	{

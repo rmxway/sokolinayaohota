@@ -8,7 +8,7 @@ import {
 	Title,
 } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
-import { mainPageGallery } from '@/mock/gallery';
+import { galleryImages } from '@/mock/gallery';
 
 import { GalleryImage, Grid, Wrapper } from './styled';
 
@@ -19,7 +19,7 @@ export const GalleryBlock: FC = () => {
 	const [isOpen, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
 
-	const galleryImages = mainPageGallery.slice(0, 9);
+	const images = galleryImages.slice(0, 9);
 
 	const handleShowImageInModal = (id: number) => {
 		setSelectedId(id);
@@ -33,7 +33,7 @@ export const GalleryBlock: FC = () => {
 				<Title color="disabled">Галерея</Title>
 
 				<Grid>
-					{galleryImages.map((image, idx) => (
+					{images.map((image, idx) => (
 						<GalleryImage
 							key={image.id}
 							className={idx === 0 ? 'big' : ''}
@@ -62,7 +62,7 @@ export const GalleryBlock: FC = () => {
 					<ModalGallery
 						show={isOpen}
 						onClose={() => setOpen((prev) => !prev)}
-						gallery={galleryImages}
+						gallery={images}
 						currentId={selectedId}
 					/>
 				</Suspense>
