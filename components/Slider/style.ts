@@ -1,22 +1,38 @@
 import styled from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout';
+import { Ellipsis } from '@/components/Layout/Preloader/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const SliderWrapper = styled.div`
-	position: relative;	
+	position: relative;
+	text-align: center;
+	background-color: ${theme.colors.gray.$1};
+	border-radius: 20px;
+	border: 1px solid ${theme.colors.gray.$4};
+	overflow: hidden;
+
+	${Ellipsis} {
+		margin: auto;
+	}
+`;
+
+export const LoadingWrapper = styled.div<{ $loaded: boolean }>`
+	display: ${(props) => (props.$loaded ? 'block' : 'none')};
+	height: 100%;
+	opacity: ${(props) => (props.$loaded ? 1 : 0)};
+	padding: ${(props) => (props.$loaded ? '0' : '40px')};
+	transition: 0.2s all;
 `;
 
 export const SliderStyle = styled.div`
+	position: relative;
+	width: 100%;
 	display: flex;
 	grid-template-columns: 1fr;
+	height: calc(100% - 80px);
 	max-height: 70vh;
-	min-height: 500px;
-	max-width: 100%;
-
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
-	overflow: hidden;
+	min-height: 200px;
 
 	.swiper {
 		width: 100%;
@@ -33,8 +49,9 @@ export const SliderStyle = styled.div`
 		}
 	}
 
-	${media.lessThan('lg')`
-		min-height: auto; 
+	${media.lessThan('md')`
+		min-height: 0;
+		height: 50vw;
 
 		.swiper-slide,
 		.swiper,
@@ -43,21 +60,19 @@ export const SliderStyle = styled.div`
 		}
 
 		${WrapperFetchedImage} {
-			img {
-				object-fit: content;
-			}
+			width: 100%;
 		}
 	`}
 `;
 
 export const ThumbnailsStyle = styled.div`
 	position: relative;
-	height: 100px;
+	height: 80px;
+	width: 100%;
+	z-index: 1;
 
 	background-image: ${theme.colors.gradients.black()};
 	padding: 8px;
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
 
 	.swiper {
 		height: 100%;
@@ -77,13 +92,12 @@ export const ThumbnailsStyle = styled.div`
 	}
 
 	.swiper-slide-thumb-active {
-		border-color: ${theme.colors.solid.primary};
+		border-color: ${theme.colors.solid.white};
 		opacity: 1;
 	}
 
 	${WrapperFetchedImage} {
 		min-height: auto;
-		border-radius: 0;
 		height: 100%;
 
 		img {
@@ -91,9 +105,4 @@ export const ThumbnailsStyle = styled.div`
 			height: 100%;
 		}
 	}
-
-	${media.lessThan('md')`
-		min-height: 80px;
-		height: 12vw;
-	`}
 `;

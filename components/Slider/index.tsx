@@ -1,3 +1,5 @@
+import 'swiper/scss';
+
 import { FC, useState } from 'react';
 import { Navigation, Swiper as TypeSwiper, Thumbs } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
@@ -7,7 +9,12 @@ import { FetchedImage, Preloader } from '@/components/Layout';
 import { jsBreakpoints } from '@/theme/media';
 
 import { Controls } from './Controls';
-import { SliderStyle, SliderWrapper, ThumbnailsStyle } from './style';
+import {
+	LoadingWrapper,
+	SliderStyle,
+	SliderWrapper,
+	ThumbnailsStyle,
+} from './style';
 
 type SliderProps = {
 	images: GalleryImageType[];
@@ -18,7 +25,7 @@ type SliderProps = {
 
 export const Slider: FC<SliderProps> = ({
 	images,
-	initialSlide = 1,
+	initialSlide = 0,
 	controls = true,
 	countThumbsPerView = 7,
 }) => {
@@ -28,7 +35,8 @@ export const Slider: FC<SliderProps> = ({
 	const mainSwiperConfig: SwiperProps = {
 		modules: [Thumbs, Navigation],
 		speed: 800,
-		spaceBetween: 8,
+		spaceBetween: 1,
+		lazyPreloadPrevNext: 1,
 		slidesPerView: 1,
 		initialSlide,
 		thumbs: {
@@ -38,12 +46,12 @@ export const Slider: FC<SliderProps> = ({
 			nextEl: '.btn-slider.btn-next',
 			prevEl: '.btn-slider.btn-prev',
 		},
-		onSwiper: (swiper) => {
+		onSwiper(swiper) {
 			swiper.update();
 		},
-		onInit: () => {
+		onInit() {
 			setLoaded(true);
-		},
+		},		
 	};
 
 	const thumbsSwiperConfig: SwiperProps = {
@@ -71,16 +79,16 @@ export const Slider: FC<SliderProps> = ({
 	};
 
 	return (
-		<>
+		<SliderWrapper>
 			{!isLoaded && <Preloader />}
-			<SliderWrapper>
+			<LoadingWrapper $loaded={isLoaded}>
 				<SliderStyle>
 					<Swiper {...mainSwiperConfig}>
 						{images.map((image) => (
 							<SwiperSlide key={image.id}>
 								<FetchedImage
-									width={1440}
-									height={1440}
+									width={1000}
+									height={1000}
 									sizes="100vw"
 									quality={50}
 									src={image.url}
@@ -107,8 +115,8 @@ export const Slider: FC<SliderProps> = ({
 						{controls ? <Controls name="thumbnails" /> : null}
 					</Swiper>
 				</ThumbnailsStyle>
-			</SliderWrapper>
-		</>
+			</LoadingWrapper>
+		</SliderWrapper>
 	);
 };
 

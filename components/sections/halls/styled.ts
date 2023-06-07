@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
 import { Container, Grid } from '@/components/Layout';
+import {
+	SliderStyle,
+	SliderWrapper,
+	ThumbnailsStyle,
+} from '@/components/Slider/style';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const MainBlock = styled(Container)`
 	padding-top: 80px;
 	padding-bottom: 80px;
 	min-height: 50vh;
+	align-items: start;
 
 	${media.lessThan('lg')`
 		padding-top: 40px;
@@ -20,9 +26,10 @@ export const MainBlock = styled(Container)`
 `;
 
 export const Sidebar = styled.div`
-	position: relative;
-	border-right: 1px solid silver;
-	padding-right: 40px;
+	position: sticky;
+	top: 20px;
+	bottom: 20px;
+	height: auto;
 
 	p {
 		font-size: 1.25rem;
@@ -42,11 +49,9 @@ export const Sidebar = styled.div`
 	}
 
 	${media.lessThan('md')`
+		position: relative;
+		top: 0;	
 		width: 100%;
-		border-right: none;		
-		border-bottom: 1px solid silver;
-		padding-right: 0;
-		padding-bottom: 40px;
 	`}
 `;
 
@@ -81,14 +86,44 @@ export const FormBlock = styled.div`
 
 export const HallsPageWrapper = styled(Grid)`
 	grid-template-columns: 1fr 340px;
+	border-left: 1px solid silver;
+	padding-left: 40px;
 
-	${media.lessThan('lg')`	
+	${SliderWrapper} {
+		padding-bottom: 65%;
+		height: auto;
+
+		${SliderStyle} {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: calc(100% - 80px);
+			min-height: auto;
+			max-height: 100%;
+		}
+
+		${ThumbnailsStyle} {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+	}
+
+	${media.lessThan('xl')`	
 		grid-auto-flow: row;
 		grid-template-columns: 1fr;
 	`}
 
 	${media.lessThan('lg')`
 		gap: 20px;
+	`}
+
+	${media.lessThan('md')`
+		border-left: none;		
+		border-top: 1px solid silver;
+		padding-left: 0;
+		padding-top: 40px;
 	`}
 `;
 

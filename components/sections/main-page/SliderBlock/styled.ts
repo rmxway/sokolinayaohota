@@ -1,6 +1,4 @@
-import 'swiper/scss';
 import 'swiper/scss/pagination';
-import 'swiper/scss/effect-fade';
 
 import { Variants } from 'framer-motion';
 import styled from 'styled-components';
@@ -12,13 +10,13 @@ import {
 	WrapperFetchedImage,
 } from '@/components/Layout';
 import { Ellipsis } from '@/components/Layout/Preloader/styled';
-import { SliderStyle, ThumbnailsStyle } from '@/components/Slider/style';
+import { SliderStyle, SliderWrapper } from '@/components/Slider/style';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
-	background-image: ${theme.colors.gradients.golden()};
+	background-color: ${theme.colors.solid.primary};
 	padding: 80px 0;
 
 	${Ellipsis} {
@@ -90,7 +88,8 @@ export const Info = styled.div`
 	`}
 
 	${media.lessThan('sm')`
-		padding: 0 20px;
+		padding-left: 20px;
+		padding-right: 20px;
 	`}
 `;
 
@@ -104,14 +103,16 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
 	transition: opacity 0.5s;
 
+	${SliderWrapper} {
+		height: 450px;
+	}
+
 	${SliderStyle} {
 		min-height: auto;
-		height: 380px;
 
 		${WrapperFetchedImage} {
 			width: 100%;
 			height: 100%;
-			border-radius: 0;
 
 			img {
 				object-fit: cover;
@@ -131,16 +132,20 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	${media.lessThan('md')`
 		display: block;
 		height:	auto;
+
+		${SliderStyle} {
+			height: calc(100% - 80px);
+		}
 	`}
 
 	${media.lessThan('sm')`
-		${SliderStyle} {
+		${SliderWrapper} {
 			border-radius: 0;
-			height: 350px;
+			height: auto;
 		}
 
-		${ThumbnailsStyle} {
-			border-radius: 0;
+		${SliderStyle} {
+			height: 350px;
 		}
 	`}
 
