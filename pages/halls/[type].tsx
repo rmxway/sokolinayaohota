@@ -29,23 +29,13 @@ export const getServerSideProps = async ({ params }: { params: PathType }) => {
 			error = e.message;
 		});
 
-	// temp decision
-	const halls: HallType[] = json?.halls.map((hall, index) => ({
-		...hall,
-		images: hall.images?.map((image, idx) => ({
-			...image,
-			id: +`${index}${idx}`,
-		})),
-	}));
-	// ----------------------------------------------------------
-
 	const titles =
 		json?.halls.map(({ name, tag }) => ({
 			title: name,
 			tag,
 		})) || [];
 
-	const currentHall: HallType | undefined = halls.find(
+	const currentHall: HallType | undefined = json?.halls.find(
 		(hall) => params.type === hall.tag
 	);
 
