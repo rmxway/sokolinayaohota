@@ -1,9 +1,14 @@
 import { Icon } from '@/components';
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
 
-import { animateError, InputError, InputWrapper } from './styled';
+import {
+	animateError,
+	InputBlockWrapper,
+	InputError,
+	InputWrapper,
+} from './styled';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	/** Uniq name for field */
 	name: string;
 	success?: boolean;
@@ -48,14 +53,13 @@ const InputUI = ({
 	onBlur,
 	...props
 }: InputProps) => (
-	<>
+	<InputBlockWrapper>
 		<InputWrapper
 			className={className}
 			$disabled={disabled}
 			$success={success}
 			$danger={!!error || danger}
 			htmlFor={name}
-			layout
 		>
 			<input
 				// mask={mask()}
@@ -75,12 +79,11 @@ const InputUI = ({
 				initial="start"
 				animate="end"
 				exit="end"
-				layout
 			>
 				{error}
 			</InputError>
 		) : null}
-	</>
+	</InputBlockWrapper>
 );
 
 export { InputUI };

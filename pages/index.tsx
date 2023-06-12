@@ -1,10 +1,13 @@
 import { NextPage } from 'next';
 import { lazy, Suspense } from 'react';
 
+import {
+	AdvantageType,
+	GalleryImageType,
+	MainSliderType,
+	QuestionType,
+} from '@/@types/types';
 import { PageLoader } from '@/components/Layout';
-import { QuestionType } from '@/components/Question';
-import { AdvantageType } from '@/mock/advantages';
-import { MainSliderType } from '@/mock/main-slider';
 import { fetchApi } from '@/services/variable';
 
 const ContactsBlock = lazy(
@@ -27,73 +30,47 @@ const SliderBlock = lazy(
 );
 const WhyAreWe = lazy(() => import('@/components/sections/main-page/WhyAreWe'));
 
-type ErrorMessageType = {
-	slider: string | undefined;
-	advantages: string | undefined;
-	questions: string | undefined;
+type ResponseData = {
+	faqs: QuestionType[];
+	advantages: AdvantageType[];
+	mainSlides: MainSliderType[];
+	galleryImages: GalleryImageType[];
 };
 
 type MainPageProps = {
-	slider?: MainSliderType[];
-	advantages?: AdvantageType[];
-	questions?: QuestionType[];
-	error?: ErrorMessageType;
+	data?: ResponseData | undefined;
+	error?: string | undefined;
 };
 
 export const getServerSideProps = async (): Promise<{
 	props: MainPageProps;
 }> => {
-	const errorMessage: ErrorMessageType = {
-		slider: '',
-		advantages: '',
-		questions: '',
-	};
+	let errorMessage: string | undefined = '';
 
-	const responseSlider = fetch(fetchApi('main-slides'));
-	const responseQuestions = fetch(fetchApi('faqs'));
-	const responseAdvantages = fetch(fetchApi('advantages'));
+	const mainPageData = fetch(fetchApi('main-page-data'));
 
-	const [destSlider, destAdvantages, destQuestions] = await Promise.all([
-		responseSlider
-			.then((resp) => resp.json())
-			.catch((e) => {
-				errorMessage.slider = e.message;
-			}),
-		responseAdvantages
-			.then((resp) => resp.json())
-			.catch((e) => {
-				errorMessage.advantages = e.message;
-			}),
-		responseQuestions
-			.then((resp) => resp.json())
-			.catch((e) => {
-				errorMessage.questions = e.message;
-			}),
-	]);
+	const data = await mainPageData
+		.then((resp) => resp.json())
+		.catch((e) => {
+			errorMessage = e.message;
+		});
 
 	return {
 		props: {
-			slider: (Array.isArray(destSlider) && destSlider) || [],
-			advantages: (Array.isArray(destAdvantages) && destAdvantages) || [],
-			questions: (Array.isArray(destQuestions) && destQuestions) || [],
+			data,
 			error: errorMessage,
 		},
 	};
 };
 
-export const MainPage: NextPage<MainPageProps> = ({
-	slider,
-	advantages,
-	questions,
-	error,
-}) => (
+export const MainPage: NextPage<MainPageProps> = ({ data, error }) => (
 	<Suspense fallback={<PageLoader />}>
-		<SliderBlock data={slider} error={error?.slider} />
+		<SliderBlock data={data?.mainSlides} {...{ error }} />
 		<PresentBanner />
-		<WhyAreWe data={advantages} error={error?.advantages} />
-		<GalleryBlock />
+		<WhyAreWe data={data?.advantages} {...{ error }} />
+		<GalleryBlock data={data?.galleryImages} {...{ error }} />
 		<DiscountBlock />
-		<Questions data={questions} error={error?.questions} />
+		<Questions data={data?.faqs} {...{ error }} />
 		<ContactsBlock />
 	</Suspense>
 );

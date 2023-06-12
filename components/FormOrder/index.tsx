@@ -1,7 +1,7 @@
 import { Formik, FormikValues } from 'formik';
 import { FC, useState } from 'react';
 
-import { Flexbox } from '@/components/Layout';
+import { Grid } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
 import { regexpFilterNumber } from '@/services/regexp';
 import { fadeInOut } from '@/theme/styles/motionAnimations';
@@ -65,11 +65,12 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 					$fetching={isSubmitting}
 					name={name}
 				>
-					<Flexbox
-						direction="column"
+					<Grid
+						direction="row"
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
 						key="Flex"
+						gap={20}
 						layout
 					>
 						<InputUI
@@ -85,21 +86,6 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 							value={values.name}
 						/>
 						<InputUI
-							type="email"
-							id="email"
-							name="email"
-							icon="mail"
-							error={
-								touched.email && errors.email
-									? errors.email
-									: null
-							}
-							placeholder="Электронная почта *"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.email}
-						/>
-						<InputUI
 							type="text"
 							id="phone"
 							name="phone"
@@ -109,15 +95,30 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 									? errors.phone
 									: null
 							}
-							placeholder="Телефон"
+							placeholder="Телефон *"
 							onChange={handleChange}
 							onBlur={handleBlur}
 							value={values.phone}
 						/>
+						<InputUI
+							type="email"
+							id="email"
+							name="email"
+							icon="mail"
+							error={
+								touched.email && errors.email
+									? errors.email
+									: null
+							}
+							placeholder="Электронная почта"
+							onChange={handleChange}
+							onBlur={handleBlur}
+							value={values.email}
+						/>
 						<ButtonUI danger type="submit" disabled={!isValid} w100>
 							Отправить
 						</ButtonUI>
-					</Flexbox>
+					</Grid>
 
 					<FinalText
 						variants={fadeInOut}

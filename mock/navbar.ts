@@ -4,8 +4,8 @@ export const navbarItems = [
 		url: '/',
 	},
 	{
-		title: 'Банкетные залы',
-		url: '/halls',
+		title: 'Залы',
+		url: '/halls/big-hall',
 	},
 	{
 		title: 'Галерея',

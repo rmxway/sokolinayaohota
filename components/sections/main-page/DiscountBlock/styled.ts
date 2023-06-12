@@ -36,6 +36,8 @@ export const Wrapper = styled.div`
 	}
 
 	${media.lessThan('lg')`
+		padding: 40px 0;
+
 		${Title} {
 			font-size: 3.25rem;	
 

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import { Button } from '@/components/ui/Button/styled';
-import { media } from '@/theme';
+import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.div`
 	position: relative;
@@ -10,6 +10,9 @@ export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	${media.lessThan('md')`
+		padding-top: 88px;
+	`}
 `;
 
 export const Header = styled.header`
@@ -27,9 +30,14 @@ export const Header = styled.header`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	z-index: 2;
+	z-index: 100;
 
 	${media.lessThan('md')`
+		position: fixed;
+		top: 0;	
+		width: 100%;
+		box-shadow: ${theme.layout.shadow.big};
+
 		${Button} {
 			display: none;
 		}
@@ -56,12 +64,12 @@ export const Banner = styled.div`
 	text-align: center;
 	gap: 40px;
 	flex-wrap: nowrap;
-	height: 80vh;
+	min-height: 500px;
 	z-index: 1;
-	padding: 80px 0;
+	padding: 40px 0;
 
-	${media.lessThan('md')`
-		height: auto;
+	${media.lessThan('lg')`
+		min-height: auto;
 	`}
 
 	h1,

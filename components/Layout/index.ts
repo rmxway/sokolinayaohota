@@ -7,3 +7,4 @@ export * from './Preloader';
 export * from './Preloader/PageLoader';
 export * from './Space';
 export * from './Title';
+export * from './VideoYouTube';

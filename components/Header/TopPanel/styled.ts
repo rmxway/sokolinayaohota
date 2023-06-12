@@ -6,12 +6,13 @@ import { Container, Grid } from '@/components/Layout';
 import { defaultTheme as theme, fadeIn, media } from '@/theme';
 
 export const TopPanelSC = styled.div`
+	position: relative;
 	background-color: rgba(255, 255, 255, 0.75);
 	font-weight: 500;
 	font-size: 1.125rem;
 	line-height: 1.2;
 	padding: 12px 0;
-	z-index: 1;
+	z-index: 100;
 
 	${Container} {
 		height: 100%;
@@ -26,9 +27,14 @@ export const TopPanelSC = styled.div`
 		color: ${theme.colors.solid.brown};
 	}
 
-	${media.lessThan('sm')`
+	${media.lessThan('md')`
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		background-color: rgba(245, 245, 245, 0.95);
+
 		height: auto;
-		padding: 16px 0;
+		padding: 8px 0;
 		font-size: 1rem;
 
 		${Container} {
@@ -56,10 +62,10 @@ export const TopPanelSC = styled.div`
 					content: '';
 					position: absolute;
 					left: 50%;	
-					transform: translate(-50%, 22px);
+					transform: translate(-50%, -22px);
 					
 					border: 10px solid ${rgba(theme.colors.gray.$6, 1)};
-					border-top-color: transparent;
+					border-bottom-color: transparent;
 					border-left-color: transparent;
 					border-right-color: transparent;
 					
@@ -73,7 +79,7 @@ export const TopPanelSC = styled.div`
 
 export const InfoBlock = styled(motion.div)`
 	position: relative;
-	top: 16px;
+	top: -16px;
 	background-color: ${rgba(theme.colors.gray.$6, 1)}; // 8c - opacity ~ 55%
 
 	& > div {
@@ -81,8 +87,8 @@ export const InfoBlock = styled(motion.div)`
 		justify-content: center;
 		text-align: center;
 		align-items: center;
-		padding: 12px 20px;
-		min-height: 65px;
+		padding: 8px 20px;
+		min-height: 50px;
 	}
 
 	&,
@@ -90,7 +96,7 @@ export const InfoBlock = styled(motion.div)`
 		color: #fff;
 	}
 
-	${media.greaterThan('sm')`
+	${media.greaterThan('md')`
 		display: none !important;
 	`}
 `;
@@ -100,14 +106,14 @@ export const contentAnimation: Variants = {
 		opacity: 0,
 		height: 0,
 		transition: {
-			duration: 0.1
-		}
+			duration: 0.1,
+		},
 	},
 	end: {
 		opacity: 1,
 		height: 'auto',
 		transition: {
-			duration: 0.1
-		}
+			duration: 0.1,
+		},
 	},
 };

@@ -1,5 +1,6 @@
 import 'swiper/scss';
 
+import { motion, Variants } from 'framer-motion';
 import styled from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout/FetchedImage';
@@ -11,6 +12,10 @@ export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	padding: 80px 0;
+
+	${media.lessThan('lg')`
+		padding: 40px 0;
+	`}
 `;
 
 export const Grid = styled.div`
@@ -29,48 +34,53 @@ export const Grid = styled.div`
 		grid-template-columns: repeat(3, 1fr);		
 		grid-template-rows: repeat(3, 20vw);
 	`}
+`;
+
+export const GalleryImage = styled(motion.div)`
+	position: relative;
+	top: 0;
+
+	border-radius: ${theme.radius.borderRadius};
+	overflow: hidden;
+	box-shadow: none;
+
+	cursor: zoom-in;
+	transition: 0.2s;
+
+	&.big {
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 1;
+		grid-row-end: 3;
+	}
 
 	${WrapperFetchedImage} {
-		position: relative;
-		top: 0;
-
-		&.big {
-			grid-column-start: 1;
-			grid-column-end: 2;
-			grid-row-start: 1;
-			grid-row-end: 3;
-		}
-
-		${media.lessThan('md')`
-			&, &.big {	
-				grid-column-start: auto;
-				grid-column-end: auto;
-				grid-row-start: auto;
-				grid-row-end: auto;
-			}
-		`}
-
-		&, img {
-			max-width: 100%;
-			max-height: 100%;
-			border-radius: ${theme.radius.blockRadius};
-		}
-
-		opacity: 0.8;
-		cursor: pointer;
-		box-shadow: ${theme.layout.shadow.basic};
-		transition: .3s;
-
-		&:hover {
-			top: -2px;
-			box-shadow: ${theme.layout.shadow.gallery};
-			opacity: 1;
-		}
-
-		img {
-			object-fit: cover;
-		}
+		width: 100%;
+		height: 100%;
 	}
+
+	&:hover {
+		top: -2px;
+		box-shadow: ${theme.layout.shadow.gallery};
+	}
+
+	${media.lessThan('md')`
+		&, &.big {	
+			grid-column-start: auto;
+			grid-column-end: auto;
+			grid-row-start: auto;
+			grid-row-end: auto;
+		}
+	`}
 `;
+
+export const galleryImageAnimation: Variants = {
+	start: {
+		scale: 0,
+	},
+	end: {
+		scale: 1,
+	},
+};
 
 export default Wrapper;

@@ -11,7 +11,7 @@ export const LogoWrapper = styled(Link)`
 		height: auto;
 	}
 
-	${media.lessThan('sm')`
+	${media.lessThan('md')`
 		img {
 			width: 64px;
 		}

@@ -1,11 +1,13 @@
 import { AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useRef, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
-import { SvgIcon } from '@/components/SvgIcon';
+import { Space } from '@/components/Layout';
 import { navbarItems } from '@/mock/navbar';
+import oldLogo from '@/public/assets/img/old-logo.png';
 
 import {
 	BurgerButton,
@@ -37,6 +39,11 @@ export const Navbar: FC = () => {
 		if (e.target !== containerRef.current) setShow((prev) => !prev);
 	};
 
+	const activeLink = (url: string): boolean => {
+		const active = url.split('/');
+		return active[1] === router.asPath.split('/')[1];
+	};
+
 	return (
 		<>
 			<BurgerButton
@@ -50,10 +57,7 @@ export const Navbar: FC = () => {
 			</BurgerButton>
 			<DesktopNav>
 				{navbarItems.map((item) => (
-					<NavbarItem
-						key={item.title}
-						$active={router.asPath === item.url}
-					>
+					<NavbarItem key={item.title} $active={activeLink(item.url)}>
 						<Link href={item.url} aria-label={item.title} />
 						{item.title}
 					</NavbarItem>
@@ -77,16 +81,17 @@ export const Navbar: FC = () => {
 								<NavbarItem
 									variants={navbarItemVariant}
 									key={item.title}
-									$active={router.asPath === item.url}
+									$active={activeLink(item.url)}
 								>
 									<Link href={item.url} />
 									{item.title}
 								</NavbarItem>
 							))}
-							<SvgIcon
-								name="LogoDecor"
-								width="250px"
-								color="brown"
+							<Space />
+							<Image
+								src={oldLogo}
+								alt="Logo navbar"
+								quality={60}
 							/>
 						</MobileNav>
 					)}

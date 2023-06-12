@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
+import { QuestionType } from '@/@types/types';
 import { ImageBackground, Question } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { Container, Flexbox, Title } from '@/components/Layout';
-import { QuestionType } from '@/components/Question';
 import imageBack from '@/public/assets/img/questions.jpg';
 
 import { Wrapper } from './styled';

@@ -19,6 +19,14 @@ export const TopPanelBlock = () => {
 
 	return (
 		<TopPanelSC>
+			<InfoBlock
+				variants={contentAnimation}
+				initial="start"
+				animate={state.topPanel !== '' ? 'end' : 'start'}
+				exit="start"
+			>
+				<div>{content && content.content}</div>
+			</InfoBlock>
 			<Container grid gap={8} spaceBetween center>
 				<TopPanelItem
 					onSend={handleClick}
@@ -31,14 +39,6 @@ export const TopPanelBlock = () => {
 					content={<a href="tel:+74992686834">+7 (499) 268-68-34</a>}
 				/>
 			</Container>
-			<InfoBlock
-				variants={contentAnimation}
-				initial="start"
-				animate={state.topPanel !== '' ? 'end' : 'start'}
-				exit="start"
-			>
-				<div>{content && content.content}</div>
-			</InfoBlock>
 		</TopPanelSC>
 	);
 };

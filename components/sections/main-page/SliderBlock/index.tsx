@@ -1,26 +1,21 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
 import { FC, useState } from 'react';
-import {
-	EffectFade,
-	Navigation,
-	Pagination,
-	Swiper as TypeSwiper,
-	Thumbs,
-} from 'swiper';
+import { Navigation, Pagination, Swiper as TypeSwiper, Thumbs } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
+import { MainSliderType } from '@/@types/types';
 import { Icon } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import {
 	Container,
-	FetchedImage,
 	Flexbox,
 	Grid,
 	Preloader,
 	Title,
 } from '@/components/Layout';
+import { Slider } from '@/components/Slider';
 import { ButtonUI } from '@/components/ui';
-import { MainSliderType } from '@/mock/main-slider';
 
 import {
 	animateText,
@@ -40,11 +35,15 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
 	const [isLoaded, setLoaded] = useState(false);
+	const [currentPath, setCurrentPath] = useState('/halls/big-hall');
+
+	const typesPath = data?.map((item) => item.tag);
 
 	const mainSwiperConfig: SwiperProps = {
 		speed: 300,
-		spaceBetween: 100,
+		spaceBetween: 20,
 		slidesPerView: 1,
+		autoHeight: true,
 		loop: true,
 		modules: [Thumbs, Pagination, Navigation],
 		thumbs: {
@@ -62,8 +61,10 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 			nextEl: '.btn-next',
 			prevEl: '.btn-prev',
 		},
-		onSlideChange: (swiper) => {
+		onSlideChangeTransitionEnd: (swiper) => {
 			setSlideIndex(swiper.realIndex);
+			if (typesPath)
+				setCurrentPath(`/halls/${typesPath[swiper.realIndex]}`);
 		},
 		onInit: () => {
 			setLoaded(true);
@@ -71,10 +72,9 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 	};
 
 	const imagesSwiperConfig: SwiperProps = {
-		modules: [Thumbs, EffectFade],
-		speed: 1000,
+		modules: [Thumbs],
+		speed: 600,
 		allowTouchMove: false,
-		effect: 'fade',
 		spaceBetween: 20,
 		slidesPerView: 1,
 		onSwiper: (swiper) => {
@@ -82,7 +82,7 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 		},
 	};
 
-	if (!data?.length)
+	if (error)
 		return (
 			<Wrapper>
 				<Container grid>
@@ -98,73 +98,72 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 				<SlideContainer $isLoaded={isLoaded}>
 					<Info>
 						<Swiper {...mainSwiperConfig}>
-							{data?.map((slide, index) => (
-								<SwiperSlide key={slide.alt}>
+							{data?.map(({ title, description }, index) => (
+								<SwiperSlide key={title}>
 									<Grid direction="row" gap={32}>
 										<AnimatePresence>
-											{slideIndex === index && (
-												<>
-													<Title
-														variants={animateTitle}
-														initial="hidden"
-														animate="visible"
-														exit="visible"
-														layout
-														color="brown"
-													>
-														{slide.title}
-													</Title>
-													<motion.p
-														variants={animateText}
-														initial="hidden"
-														animate="visible"
-														layout
-													>
-														{slide.description}
-													</motion.p>
-												</>
-											)}
+											<>
+												<Title
+													variants={animateTitle}
+													initial="hidden"
+													animate={
+														slideIndex === index
+															? 'visible'
+															: 'hidden'
+													}
+													color="brown"
+												>
+													{title}
+												</Title>
+												<motion.p
+													variants={animateText}
+													initial="hidden"
+													animate={
+														slideIndex === index
+															? 'visible'
+															: 'hidden'
+													}
+												>
+													{description}
+												</motion.p>
+											</>
 										</AnimatePresence>
 									</Grid>
 								</SwiperSlide>
 							))}
-							<span slot="container-end">
-								<Controllers>
-									<Flexbox>
-										<Icon
-											icon="arrow-simple"
-											className="btn-prev"
-											as="div"
-											active
-										/>
-										<Icon
-											icon="arrow-simple"
-											className="btn-next"
-											as="div"
-											active
-										/>
-									</Flexbox>
-									<div>
-										<div className="slider-pagination" />
-									</div>
-									<ButtonUI brown icon="arrow">
-										Подробнее
-									</ButtonUI>
-								</Controllers>
-							</span>
 						</Swiper>
+						<Controllers>
+							<Flexbox>
+								<Icon
+									icon="arrow-simple"
+									className="btn-prev"
+									as="div"
+									active
+								/>
+								<Icon
+									icon="arrow-simple"
+									className="btn-next"
+									as="div"
+									active
+								/>
+							</Flexbox>
+							<div>
+								<div className="slider-pagination" />
+							</div>
+							<Link href={currentPath}>
+								<ButtonUI brown icon="arrow">
+									Подробнее
+								</ButtonUI>
+							</Link>
+						</Controllers>
 					</Info>
 					{isLoaded && (
 						<Swiper {...imagesSwiperConfig}>
-							{data?.map((slide) => (
-								<SwiperSlide key={slide.alt}>
-									<FetchedImage
-										src={slide.img}
-										alt={slide.alt}
-										width={1000}
-										height={1000}
-										sizes="100vw"
-										quality={70}
+							{data?.map(({ tag, images }) => (
+								<SwiperSlide key={tag}>
+									<Slider
+										images={images}
+										countThumbsPerView={5}
 									/>
 								</SwiperSlide>
 							))}

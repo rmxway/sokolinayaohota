@@ -30,7 +30,7 @@ const Container = styled.div<ContainerType>`
 	${(props) =>
 		props.mt &&
 		css`
-			margin-top: 20px;
+			margin-top: 40px;
 		`}
 
 	${(props) =>

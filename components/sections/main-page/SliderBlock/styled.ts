@@ -1,6 +1,4 @@
-import 'swiper/scss';
 import 'swiper/scss/pagination';
-import 'swiper/scss/effect-fade';
 
 import { Variants } from 'framer-motion';
 import styled from 'styled-components';
@@ -12,12 +10,13 @@ import {
 	WrapperFetchedImage,
 } from '@/components/Layout';
 import { Ellipsis } from '@/components/Layout/Preloader/styled';
+import { SliderStyle, SliderWrapper } from '@/components/Slider/style';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
-	background-image: ${theme.colors.gradients.golden()};
+	background-color: ${theme.colors.solid.primary};
 	padding: 80px 0;
 
 	${Ellipsis} {
@@ -30,10 +29,14 @@ export const Wrapper = styled.div`
 		color: ${theme.colors.solid.disabled};
 	}
 
+	${media.lessThan('lg')`
+		padding: 40px 0;
+	`}
+
 	${media.lessThan('sm')`
 		padding: 0;
 		padding-top: 40px;
-
+	
 		${Container} {
 			padding: 0;
 		}
@@ -41,10 +44,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Info = styled.div`
+	position: relative;
 	display: flex;
 	width: 100%;
 	color: ${theme.colors.solid.brown};
-	overflow: hidden;
+	padding-bottom: 72px;
 
 	.swiper {
 		width: 100%;
@@ -79,8 +83,13 @@ export const Info = styled.div`
 		}
 	`}
 
+	${media.lessThan('md')`
+		margin-bottom: 20px;
+	`}
+
 	${media.lessThan('sm')`
-		padding: 20px;
+		padding-left: 20px;
+		padding-right: 20px;
 	`}
 `;
 
@@ -88,29 +97,27 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	position: relative;
 	display: grid;
 	grid-template-columns: 500px 1fr;
-	margin: 20px 0;
 	bottom: -4px;
 	width: 100%;
 	gap: 80px;
-
-	transition: opacity 0.3s;
 	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
+	transition: opacity 0.5s;
 
-	${WrapperFetchedImage} {
-		width: 100%;
-		height: 520px;
-		border-radius: ${theme.radius.blockRadius};
-		overflow: hidden;
+	${SliderWrapper} {
+		height: 450px;
+	}
 
-		${media.lessThan('lg')`
-			height: 450px;
-		`}
+	${SliderStyle} {
+		min-height: auto;
 
-		${media.lessThan('sm')`
+		${WrapperFetchedImage} {
+			width: 100%;
 			height: 100%;
-			min-height: 300px;
-			border-radius: 0;
-		`}
+
+			img {
+				object-fit: cover;
+			}
+		}
 	}
 
 	${media.lessThan('xl')`
@@ -123,15 +130,23 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	`}
 
 	${media.lessThan('md')`
-		grid-auto-flow: column;
-		grid-template-columns: 1fr;
-		grid-template-rows: 250px 1fr;
-		margin: 0;
-		gap: 20px;
+		display: block;
+		height:	auto;
+
+		${SliderStyle} {
+			height: calc(100% - 80px);
+		}
 	`}
 
 	${media.lessThan('sm')`
-		grid-template-rows: 350px 1fr;
+		${SliderWrapper} {
+			border-radius: 0;
+			height: auto;
+		}
+
+		${SliderStyle} {
+			height: 350px;
+		}
 	`}
 
 	.swiper {
@@ -141,7 +156,7 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 
 export const Controllers = styled.div`
 	position: absolute;
-	bottom: 10px;
+	bottom: 0;
 	left: 0;
 	right: 0;
 	height: 50px;
@@ -192,6 +207,10 @@ export const Controllers = styled.div`
 			background: ${theme.colors.solid.brown};
 		}
 	}
+
+	${media.lessThan('sm')`
+		padding: 0 20px;
+	`}
 `;
 
 export const animateTitle: Variants = {

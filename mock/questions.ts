@@ -1,4 +1,6 @@
-export const questions = [
+import { QuestionType } from '@/@types/types';
+
+export const questions: QuestionType[] = [
 	{
 		id: 'q1',
 		question: 'За какое время до мероприятия нужно бронировать зал?',

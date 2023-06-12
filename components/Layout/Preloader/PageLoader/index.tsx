@@ -1,8 +1,16 @@
-import { Preloader } from '..';
+import { FC } from 'react';
+
+import { Preloader } from '@/components/Layout/Preloader';
+
 import { Wrapper } from '../styled';
 
-export const PageLoader = () => (
-	<Wrapper>
+type PageLoaderProps = {
+	absolute?: boolean;
+	noDelay?: boolean;
+};
+
+export const PageLoader: FC<PageLoaderProps> = ({ absolute, noDelay }) => (
+	<Wrapper $absolute={absolute} $nodelay={noDelay}>
 		<Preloader />
 	</Wrapper>
 );

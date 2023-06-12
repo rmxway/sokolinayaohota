@@ -7,8 +7,7 @@ export const Wrapper = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
-	min-height: 900px;
-
+	
 	background-size: cover;
 	background-position: center;
 	color: ${theme.colors.solid.primary};
@@ -33,6 +32,7 @@ export const Wrapper = styled.div`
 
 	${media.lessThan('lg')`
 		min-height: auto;
+		padding: 40px 0;
 		
 		& > div {
 			font-size: 1.25em;
