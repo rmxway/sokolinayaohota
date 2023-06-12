@@ -85,6 +85,7 @@ export const FormBlock = styled.div`
 `;
 
 export const HallsPageWrapper = styled(Grid)`
+	position: relative;
 	grid-template-columns: 1fr 340px;
 	border-left: 1px solid silver;
 	padding-left: 40px;
@@ -135,7 +136,9 @@ export const BlockContent = styled.div`
 `;
 
 export const HallAdvantages = styled.div`
-	position: relative;
+	position: sticky;
+	top: 20px;
+	bottom: 20px;
 	padding: 40px;
 	width: 100%;
 	background-image: ${theme.colors.gradients.golden('-45deg')};
@@ -161,6 +164,12 @@ export const HallAdvantages = styled.div`
 			gap: 12px;
 		}
 	}
+
+	${media.lessThan('xl')`
+		position: relative;
+		top: 0;
+		bottom: 0;
+	`}
 
 	${media.lessThan('md')`
 		padding: 20px;

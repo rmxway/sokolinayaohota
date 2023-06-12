@@ -12,33 +12,31 @@ export type ImageCategory =
 	| 'all';
 
 export type GalleryImageType = {
-	id: number;
+	id?: number;
+	alt: string;
 	url: string;
-	type: ImageCategory;
-};
-
-export type CategoryType = {
-	name: string;
-	code: ImageCategory;
+	tag?: ImageCategory;
 };
 
 // Main Slider
 
 export type MainSliderType = {
 	title: string;
-	type: HallsTypes;
 	description: string;
+	tag: ImageCategory;
+	images: GalleryImageType[];
 };
 
 // Hall
 
 export type HallType = {
+	name: string;
 	advantages: string[];
 	description: string[];
-	title: string;
-	type: HallsTypes;
 	images?: GalleryImageType[];
-	video?: string;
+	video?: string[];
+	tag: HallsTypes;
+	isLoaded?: boolean;
 };
 
 // Advantage

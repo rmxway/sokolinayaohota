@@ -6,6 +6,7 @@ import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { GalleryImageType } from '@/@types/types';
 import { FetchedImage, Preloader } from '@/components/Layout';
+import { prefixImages } from '@/services/variable';
 import { jsBreakpoints } from '@/theme/media';
 
 import { Controls } from './Controls';
@@ -51,7 +52,7 @@ export const Slider: FC<SliderProps> = ({
 		},
 		onInit() {
 			setLoaded(true);
-		},		
+		},
 	};
 
 	const thumbsSwiperConfig: SwiperProps = {
@@ -85,14 +86,14 @@ export const Slider: FC<SliderProps> = ({
 				<SliderStyle>
 					<Swiper {...mainSwiperConfig}>
 						{images.map((image) => (
-							<SwiperSlide key={image.id}>
+							<SwiperSlide key={image.id || image.alt}>
 								<FetchedImage
 									width={1000}
 									height={1000}
 									sizes="100vw"
 									quality={50}
-									src={image.url}
-									alt={`image${image.id}`}
+									src={`${prefixImages}${image.url}`}
+									alt={image.alt}
 								/>
 							</SwiperSlide>
 						))}
@@ -102,13 +103,13 @@ export const Slider: FC<SliderProps> = ({
 				<ThumbnailsStyle>
 					<Swiper {...thumbsSwiperConfig}>
 						{images.map((image) => (
-							<SwiperSlide key={image.id}>
+							<SwiperSlide key={image.id || image.alt}>
 								<FetchedImage
 									width={200}
 									height={200}
 									quality={20}
-									src={image.url}
-									alt={`image${image.id}`}
+									src={`${prefixImages}${image.url}`}
+									alt={image.alt}
 								/>
 							</SwiperSlide>
 						))}

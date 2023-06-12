@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { FC, lazy, Suspense, useState } from 'react';
 
+import { GalleryImageType } from '@/@types/types';
+import { ErrorMessage } from '@/components/ErrorMessage';
 import {
 	Container,
 	FetchedImage,
@@ -8,18 +10,21 @@ import {
 	Title,
 } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
-import { galleryImages } from '@/mock/gallery';
+import { prefixImages } from '@/services/variable';
 
 import { GalleryImage, Grid, Wrapper } from './styled';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
-export const GalleryBlock: FC = () => {
+type GalleryBlockProps = {
+	data: GalleryImageType[] | undefined;
+	error?: string;
+};
+
+export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
-
-	const images = galleryImages.slice(0, 9);
 
 	const handleShowImageInModal = (id: number) => {
 		setSelectedId(id);
@@ -32,29 +37,35 @@ export const GalleryBlock: FC = () => {
 			<Container grid gap={40} direction="row" center>
 				<Title color="disabled">Галерея</Title>
 
-				<Grid>
-					{images.map((image, idx) => (
-						<GalleryImage
-							key={image.id}
-							className={idx === 0 ? 'big' : ''}
-							onClick={() => handleShowImageInModal(idx)}
-						>
-							<FetchedImage
-								src={image.url}
-								alt={`image${image.id}`}
-								width={400}
-								height={400}
-								quality={20}
-							/>
-						</GalleryImage>
-					))}
-				</Grid>
+				{data?.length ? (
+					<>
+						<Grid>
+							{data.map((image, idx) => (
+								<GalleryImage
+									key={image.alt}
+									className={idx === 0 ? 'big' : ''}
+									onClick={() => handleShowImageInModal(idx)}
+								>
+									<FetchedImage
+										src={`${prefixImages}${image.url}`}
+										alt={image.alt}
+										width={400}
+										height={400}
+										quality={20}
+									/>
+								</GalleryImage>
+							))}
+						</Grid>
 
-				<Link href="/gallery">
-					<ButtonUI primary mobile>
-						Больше фото
-					</ButtonUI>
-				</Link>
+						<Link href="/gallery">
+							<ButtonUI primary mobile>
+								Больше фото
+							</ButtonUI>
+						</Link>
+					</>
+				) : (
+					<ErrorMessage message={error} />
+				)}
 			</Container>
 
 			{suspended && (
@@ -62,7 +73,7 @@ export const GalleryBlock: FC = () => {
 					<ModalGallery
 						show={isOpen}
 						onClose={() => setOpen((prev) => !prev)}
-						gallery={images}
+						gallery={data || []}
 						currentId={selectedId}
 					/>
 				</Suspense>

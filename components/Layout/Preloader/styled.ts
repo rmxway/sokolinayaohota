@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import { defaultTheme as theme, fadeIn } from '@/theme';
 
-export const Wrapper = styled.div`
-	position: fixed;
+export const Wrapper = styled.div<{ $absolute?: boolean; $nodelay?: boolean }>`
+	position: ${(props) => (props.$absolute ? 'absolute' : 'fixed')};
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -11,12 +11,12 @@ export const Wrapper = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #ffffffaa;
+	background-color: #ffffffcc;
 	z-index: 100;
 
 	opacity: 0;
 	${fadeIn}
-	animation-delay: 0.5s;
+	animation-delay: ${(props) => (props.$nodelay ? '0.1s' : '0.5s')};
 `;
 
 export const Ellipsis = styled.div`

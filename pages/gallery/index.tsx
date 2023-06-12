@@ -2,7 +2,8 @@ import { LayoutGroup } from 'framer-motion';
 import { NextPage } from 'next';
 import { lazy, Suspense, useState } from 'react';
 
-import { ImageCategory } from '@/@types/types';
+import { GalleryImageType, ImageCategory } from '@/@types/types';
+import { ErrorMessage } from '@/components/ErrorMessage';
 import {
 	Container,
 	FetchedImage,
@@ -19,20 +20,64 @@ import {
 	GalleryImage,
 	galleryImageAnimation,
 } from '@/components/sections/main-page/GalleryBlock/styled';
-import { categories, galleryImages } from '@/mock/gallery';
+import { fetchApi, prefixImages } from '@/services/variable';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
-const GalleryPage: NextPage = () => {
+type CategoryItem = {
+	tag: ImageCategory;
+	name: string;
+};
+
+interface GalleryItem extends GalleryImageType {
+	id: number;
+}
+
+export const getServerSideProps = async () => {
+	const resp = fetch(fetchApi('gallery-page-data'));
+	let error = '';
+
+	const json = await resp
+		.then((res) => res.json())
+		.catch((e) => {
+			error = e.message;
+		});
+
+	const categories: CategoryItem[] = json?.categories || [];
+	categories.unshift({
+		tag: 'all',
+		name: 'Все',
+	});
+
+	const images: GalleryImageType[] = json?.images || [];
+
+	return {
+		props: {
+			categories,
+			images,
+			error,
+		},
+	};
+};
+
+type GalleryPageProps = {
+	categories: CategoryItem[];
+	images: GalleryItem[];
+	error: string;
+};
+
+const GalleryPage: NextPage<GalleryPageProps> = ({
+	categories,
+	images,
+	error,
+}) => {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
 	const [currentCategory, setCurrentCategory] =
 		useState<ImageCategory>('all');
-	const [filteredImages, setFilteredImages] = useState(galleryImages);
-	const existedCategory = [
-		...new Set(galleryImages.map((item) => item.type)),
-	];
+	const [filteredImages, setFilteredImages] = useState(images);
+	const existedCategory = [...new Set(images.map((item) => item.tag))];
 
 	const handleShowImageInModal = (id: number) => {
 		setSelectedId(id);
@@ -43,13 +88,11 @@ const GalleryPage: NextPage = () => {
 	const handleFilterGallery = (code: ImageCategory) => {
 		if (code === 'all') {
 			setCurrentCategory('all');
-			setFilteredImages(galleryImages);
+			setFilteredImages(images);
 			return;
 		}
 		setCurrentCategory(code);
-		setFilteredImages([
-			...galleryImages.filter((item) => item.type === code),
-		]);
+		setFilteredImages([...images.filter((item) => item.tag === code)]);
 	};
 
 	return (
@@ -58,18 +101,18 @@ const GalleryPage: NextPage = () => {
 				<Container grid gap={40} direction="row" center mt>
 					<Title>Галерея</Title>
 					<Flexbox>
-						{categories.map(
+						{categories?.map(
 							(category) =>
-								(existedCategory.includes(category.code) ||
-									category.code === 'all') && (
+								(existedCategory.includes(category.tag) ||
+									category.tag === 'all') && (
 									<CategoryButton
-										key={category.code}
+										key={category.tag}
 										type="button"
 										$active={
-											category.code === currentCategory
+											category.tag === currentCategory
 										}
 										onClick={() =>
-											handleFilterGallery(category.code)
+											handleFilterGallery(category.tag)
 										}
 									>
 										{category.name}
@@ -77,32 +120,38 @@ const GalleryPage: NextPage = () => {
 								)
 						)}
 					</Flexbox>
-					<Grid gap={20} direction="row" className="gallery-grid">
-						<LayoutGroup>
-							{filteredImages.map((image, idx) => (
-								<GalleryImage
-									layoutRoot
-									variants={galleryImageAnimation}
-									animate="end"
-									exit="start"
-									transition={{
-										duration: 0.1,
-										type: 'tween',
-									}}
-									key={image.id}
-									onClick={() => handleShowImageInModal(idx)}
-								>
-									<FetchedImage
-										src={image.url}
-										alt={`image${image.id}`}
-										width={400}
-										height={400}
-										quality={10}
-									/>
-								</GalleryImage>
-							))}
-						</LayoutGroup>
-					</Grid>
+					{filteredImages.length ? (
+						<Grid gap={20} direction="row" className="gallery-grid">
+							<LayoutGroup>
+								{filteredImages?.map((image, idx) => (
+									<GalleryImage
+										layoutRoot
+										variants={galleryImageAnimation}
+										animate="end"
+										exit="start"
+										transition={{
+											duration: 0.1,
+											type: 'tween',
+										}}
+										key={image.alt}
+										onClick={() =>
+											handleShowImageInModal(idx)
+										}
+									>
+										<FetchedImage
+											src={`${prefixImages}${image.url}`}
+											alt={image.alt}
+											width={400}
+											height={400}
+											quality={10}
+										/>
+									</GalleryImage>
+								))}
+							</LayoutGroup>
+						</Grid>
+					) : (
+						<ErrorMessage message={error || 'Нет картинок'} />
+					)}
 				</Container>
 			</WrapperGalleryPage>
 			{suspended && (

@@ -31,9 +31,9 @@ const AutoResetForm: FC<AutoResetFormProps> = ({
 	useEffect(() => {
 		const handlePageChange = (lastPath: string) => {
 			if (lastPath === router.asPath || !isComplete) return;
+			setIsComplete(false);
 			resetForm();
 			validateForm();
-			setIsComplete(false);
 		};
 		router.events.on('routeChangeStart', handlePageChange);
 
@@ -60,12 +60,16 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 
 		try {
 			if (fetchUrl) {
-				await fetch(fetchUrl, {
+				const resp = fetch(fetchUrl, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
 					},
 					body: JSON.stringify(data),
+				});
+
+				await resp.then((res) => {
+					if (!res.ok) setError(res.statusText);
 				});
 			}
 		} catch (e) {
@@ -78,6 +82,7 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 	const initialValues = {
 		name: '',
 		phone: '',
+		email: '',
 		event: '',
 		date: '',
 		countPeople: '',
@@ -136,6 +141,21 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 							onBlur={handleBlur}
 							value={values.phone}
 						/>
+						<InputUI
+							type="text"
+							id="email"
+							name="email"
+							icon="mail"
+							error={
+								touched.email && errors.email
+									? errors.email
+									: null
+							}
+							placeholder="Электронная почта"
+							onChange={handleChange}
+							onBlur={handleBlur}
+							value={values.email}
+						/>
 						<SelectUI
 							type="text"
 							id="event"
@@ -151,7 +171,7 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 							error={
 								touched.date && errors.date ? errors.date : null
 							}
-							placeholder="Дата"
+							placeholder="Дата *"
 							onChange={handleChange}
 							onBlur={handleBlur}
 							value={values.date}
@@ -171,13 +191,22 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 							onBlur={handleBlur}
 							value={values.countPeople}
 						/>
-						<ButtonUI danger type="submit" disabled={!isValid} w100>
-							Отправить
-						</ButtonUI>
-
-						<p>* Обязательное поле</p>
 					</Grid>
-
+					{!isComplete ? (
+						<>
+							<br />
+							<p>* Обязательное поле</p>
+							<ButtonUI
+								danger
+								type="submit"
+								disabled={!isValid}
+								icon="arrow"
+								w100
+							>
+								Отправить
+							</ButtonUI>
+						</>
+					) : null}
 					<AutoResetForm
 						setIsComplete={setIsComplete}
 						isComplete={isComplete}

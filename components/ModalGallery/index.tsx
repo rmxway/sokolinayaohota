@@ -22,7 +22,7 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 }) => (
 	<Modal show={show} onClose={onClose}>
 		<WrapperModalGallery>
-			{gallery.length ? (
+			{gallery?.length ? (
 				<Slider initialSlide={currentId} images={gallery} />
 			) : (
 				<ErrorMessage message="Gallery not found" flat />
