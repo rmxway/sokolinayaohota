@@ -13,6 +13,9 @@ import { fetchApi } from '@/services/variable';
 const ContactsBlock = lazy(
 	() => import('@/components/sections/main-page/ContactsBlock')
 );
+const InfoBlock = lazy(
+	() => import('@/components/sections/main-page/InfoBlock')
+);
 const DiscountBlock = lazy(
 	() => import('@/components/sections/main-page/DiscountBlock')
 );
@@ -65,6 +68,7 @@ export const getServerSideProps = async (): Promise<{
 
 export const MainPage: NextPage<MainPageProps> = ({ data, error }) => (
 	<Suspense fallback={<PageLoader />}>
+		<InfoBlock />
 		<SliderBlock data={data?.mainSlides} {...{ error }} />
 		<PresentBanner />
 		<WhyAreWe data={data?.advantages} {...{ error }} />

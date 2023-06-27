@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import { Container } from '@/components/Layout';
@@ -10,6 +11,7 @@ import { TopPanelItem, TopPanelType } from './TopPanelItem';
 export const TopPanelBlock = () => {
 	const { dispatch, state } = useStore();
 	const [content, setContent] = useState<TopPanelType>();
+	const router = useRouter();
 
 	const handleClick = (e: TopPanelType) => {
 		setContent(e);
@@ -18,7 +20,7 @@ export const TopPanelBlock = () => {
 	};
 
 	return (
-		<TopPanelSC>
+		<TopPanelSC $isMainPage={router.asPath === '/'}>
 			<InfoBlock
 				variants={contentAnimation}
 				initial="start"
