@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Container, Grid } from '@/components/Layout';
 import {
@@ -48,6 +48,12 @@ export const Sidebar = styled.div`
 		}
 	}
 
+	${media.lessThan('lg')`
+		a {
+			font-size: 1.25rem;
+		}
+	`}
+
 	${media.lessThan('md')`
 		position: relative;
 		top: 0;	
@@ -80,7 +86,11 @@ export const FormBlock = styled.div`
 		${Container} {		
 			grid-auto-flow: row;
 			grid-template-columns: 1fr;
-		}	
+		}
+
+		.info {
+			font-size: 1.15rem;
+		}
 	`}
 `;
 
@@ -116,7 +126,7 @@ export const HallsPageWrapper = styled(Grid)`
 		grid-template-columns: 1fr;
 	`}
 
-	${media.lessThan('lg')`
+	${media.lessThan('xl')`
 		gap: 20px;
 	`}
 
@@ -131,19 +141,54 @@ export const HallsPageWrapper = styled(Grid)`
 export const BlockContent = styled.div`
 	position: relative;
 	width: 100%;
+	height: 100%;
 	min-width: 1%;
-	font-size: 1.35rem;
+	font-size: 1.285rem;
+
+	${media.lessThan('lg')`
+		font-size: 1.15rem;
+	`}
 `;
 
-export const HallAdvantages = styled.div`
+export const RightBlock = styled.div`
 	position: sticky;
 	top: 20px;
 	bottom: 20px;
+	width: 100%;
+
+	${media.lessThan('xl')`
+		position: relative;
+		top: 0;
+		bottom: 0;
+	`}
+`;
+
+const CommonStyles = css`
+	${media.lessThan('lg')`
+		ul {
+			gap: 12px;
+		}
+	`}
+
+	& > .icofont {
+		position: absolute;
+		left: 40%;
+		top: 8px;
+		opacity: 0.1;
+		pointer-events: none;
+	}
+`;
+
+export const HallAdvantages = styled.div`
+	position: relative;
 	padding: 40px;
 	width: 100%;
 	background-image: ${theme.colors.gradients.golden('-45deg')};
 	border-radius: ${theme.radius.blockRadius};
 	color: ${theme.colors.solid.brown};
+	overflow: hidden;
+
+	${CommonStyles}
 
 	ul {
 		list-style: none;
@@ -165,17 +210,70 @@ export const HallAdvantages = styled.div`
 		}
 	}
 
-	${media.lessThan('xl')`
-		position: relative;
-		top: 0;
-		bottom: 0;
-	`}
+	${media.lessThan('lg')`
+		ul {
+			font-size: 1.25rem;
+			line-height: 1;
 
-	${media.lessThan('md')`
-		padding: 20px;
+			gap: 16px;
+		}
+	`}
+`;
+
+export const PhoneBlock = styled.div`
+	position: relative;
+	padding: 40px;
+	margin-top: 20px;
+	border-radius: ${theme.radius.blockRadius};
+	background-image: ${theme.colors.gradients.black('180deg')};
+	color: #fff;
+	overflow: hidden;
+
+	${CommonStyles}
+
+	div {
+		font-family: ${theme.layout.fonts.header};
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		line-height: 1.2;
+		margin-bottom: 8px;
+	}
+
+	p {
+		font-size: 1.2rem;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		a,
+		li {
+			font-size: 1.4rem;
+			font-weight: 500;
+			margin: 0 8px 4px 0;
+			color: #fff;
+		}
+	}
+
+	${media.lessThan('lg')`
+		div {
+			font-size: 1.25rem;
+		}
+
+		p {
+			font-size: 1rem;
+		}
 
 		ul {
-			gap: 12px;
+			a, li {
+				font-size: 1rem;
+				line-height: 1;
+				margin: 0 4px 4px 0;
+			}
 		}
 	`}
 `;

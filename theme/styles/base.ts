@@ -23,7 +23,6 @@ const base = css`
 	}
 
 	body {
-		background-color: #fff;
 		${ZenKakuFont.style}
 
 		display: block;
@@ -43,7 +42,6 @@ const base = css`
 	h4,
 	h5 {
 		${YanoneKaffeesatzFont.style}
-		letter-spacing: 1px;
 		line-height: 1;
 	}
 

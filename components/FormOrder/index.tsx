@@ -69,6 +69,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 						direction="row"
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
+						justify='stretch'
 						key="Flex"
 						gap={20}
 						layout

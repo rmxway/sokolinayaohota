@@ -19,7 +19,7 @@ interface GridTypes {
 
 const Grid = styled(motion.div)<GridTypes>`
 	display: grid;
-	justify-items: ${(props) => props.justify || 'start'};
+	justify-content: ${(props) => props.justify || 'start'};
 	align-items: ${(props) => props.align || 'start'};
 	grid-auto-flow: ${(props) => props.direction || 'column'};
 	gap: ${(props) => props.gap || 0}px;

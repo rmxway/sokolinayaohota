@@ -3,14 +3,9 @@ import 'swiper/scss/pagination';
 import { Variants } from 'framer-motion';
 import styled from 'styled-components';
 
-import {
-	Container,
-	Grid,
-	Title,
-	WrapperFetchedImage,
-} from '@/components/Layout';
+import { Container, Grid, Title } from '@/components/Layout';
 import { Ellipsis } from '@/components/Layout/Preloader/styled';
-import { SliderStyle, SliderWrapper } from '@/components/Slider/style';
+import { SliderWrapper } from '@/components/Slider/style';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -79,7 +74,7 @@ export const Info = styled.div`
 
 		p {
 			-webkit-line-clamp: 8;
-			font-size: 1.125rem;
+			font-size: 1.15rem;
 		}
 	`}
 
@@ -107,19 +102,6 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 		height: 450px;
 	}
 
-	${SliderStyle} {
-		min-height: auto;
-
-		${WrapperFetchedImage} {
-			width: 100%;
-			height: 100%;
-
-			img {
-				object-fit: cover;
-			}
-		}
-	}
-
 	${media.lessThan('xl')`
 		grid-template-columns: 400px 1fr;
 		gap: 40px;
@@ -133,19 +115,14 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 		display: block;
 		height:	auto;
 
-		${SliderStyle} {
-			height: calc(100% - 80px);
+		${SliderWrapper} {
+			height: auto;
 		}
 	`}
 
 	${media.lessThan('sm')`
 		${SliderWrapper} {
-			border-radius: 0;
-			height: auto;
-		}
-
-		${SliderStyle} {
-			height: 350px;
+			border-radius: 0;			
 		}
 	`}
 

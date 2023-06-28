@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { Container, Grid } from '@/components/Layout';
 import { defaultTheme as theme, fadeIn, media } from '@/theme';
 
-export const TopPanelSC = styled.div<{$isMainPage?: boolean}>`
+export const TopPanelSC = styled(motion.div)<{$isMainPage?: boolean}>`
 	position: relative;
 	background-color: rgba(255, 255, 255, 0.75);
 	font-weight: 500;
@@ -28,7 +28,7 @@ export const TopPanelSC = styled.div<{$isMainPage?: boolean}>`
 	}
 
 	${props => props.$isMainPage && css`
-		display: none;
+		display: none!important;
 	`}
 
 	${media.lessThan('md')`
@@ -36,10 +36,10 @@ export const TopPanelSC = styled.div<{$isMainPage?: boolean}>`
 		bottom: 0;
 		width: 100%;
 		background-color: rgba(245, 245, 245, 0.95);
-		display: block;
+		display: block!important;
 
 		height: auto;
-		padding: 8px 0;
+		padding: 16px 0;
 		font-size: 1rem;
 
 		${Container} {

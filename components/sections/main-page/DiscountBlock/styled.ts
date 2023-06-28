@@ -62,6 +62,7 @@ export const Discount = styled.div`
 	width: 128px;
 	height: 128px;
 	border-radius: 200px;
+	margin: auto;
 	background-color: ${theme.colors.solid.brown};
 
 	& > div {

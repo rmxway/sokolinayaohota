@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import styled from 'styled-components';
 
@@ -9,22 +10,23 @@ export const Wrapper = styled.div`
 	display: block;
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
 	${media.lessThan('md')`
 		padding-top: 88px;
 	`}
 `;
 
-export const Header = styled.header`
+export const Header = styled(motion.header)`
 	position: relative;
 	padding: 12px 0;
 	background: linear-gradient(
 		180deg,
-		rgba(255, 255, 255, 0.99) 0%,
-		#fff 42.71%,
-		rgba(255, 255, 255, 0.9) 76.04%,
-		rgba(255, 255, 255, 0.94) 82.29%
+		rgba(245, 245, 245, 1) 0%,
+		#fff 32.71%,
+		rgba(255, 255, 255, 0.97) 76.04%,
+		rgba(248, 248, 248, 0.96) 82.29%
 	);
+
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
 	display: flex;
 	flex-direction: row;
@@ -53,7 +55,7 @@ export const BannerImage = styled(Image)`
 	object-fit: cover;
 	object-position: bottom;
 	z-index: 0;
-	filter: blur(2px);
+	filter: blur(4px);
 `;
 
 export const Banner = styled.div`

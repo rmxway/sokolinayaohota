@@ -11,7 +11,7 @@ type LogoTypeProps = {
 };
 
 const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
-	<LogoWrapper href={href} scroll={false}>
+	<LogoWrapper href={href}>
 		<Grid align="center" gap={12}>
 			<Image
 				src={logoImage2x}

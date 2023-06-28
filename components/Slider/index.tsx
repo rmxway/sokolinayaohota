@@ -37,7 +37,7 @@ export const Slider: FC<SliderProps> = ({
 		modules: [Thumbs, Navigation],
 		speed: 800,
 		spaceBetween: 1,
-		lazyPreloadPrevNext: 1,
+		lazyPreloadPrevNext: 2,
 		slidesPerView: 1,
 		initialSlide,
 		thumbs: {

@@ -112,7 +112,6 @@ export const Halls: NextPage<HallsProps> = ({
 							gap={20}
 							direction="column"
 							align="center"
-							justify="center"
 						>
 							<Icon icon="secure" size={40} />
 							<Title color="primary">Бронирование</Title>
@@ -131,7 +130,7 @@ export const Halls: NextPage<HallsProps> = ({
 						</Grid>
 					</Grid>
 					<FormOrderHall
-						name={String(params.type)}
+						name={String(currentHall.name)}
 						fetchUrl={fetchApi('send-hall-request')}
 					/>
 				</Container>

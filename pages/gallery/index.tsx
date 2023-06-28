@@ -99,7 +99,7 @@ const GalleryPage: NextPage<GalleryPageProps> = ({
 		<>
 			<WrapperGalleryPage>
 				<Container grid gap={40} direction="row" center mt>
-					<Title>Галерея</Title>
+					<Title as="h1">Галерея</Title>
 					<Flexbox>
 						{categories?.map(
 							(category) =>

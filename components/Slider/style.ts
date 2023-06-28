@@ -5,7 +5,7 @@ import { Ellipsis } from '@/components/Layout/Preloader/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const SliderWrapper = styled.div`
-	position: relative;
+	position: sticky;
 	text-align: center;
 	background-color: ${theme.colors.gray.$1};
 	border-radius: 20px;
@@ -68,6 +68,8 @@ export const SliderStyle = styled.div`
 export const ThumbnailsStyle = styled.div`
 	position: relative;
 	height: 80px;
+	max-height: 80px;
+	min-height: 60px;
 	width: 100%;
 	z-index: 1;
 
@@ -105,4 +107,8 @@ export const ThumbnailsStyle = styled.div`
 			height: 100%;
 		}
 	}
+
+	${media.lessThan('sm')`
+		height: 20vw;
+	`}
 `;
