@@ -12,7 +12,6 @@ export interface InputTypes {
 export const InputBlockWrapper = styled.div`
 	position: relative;
 	width: 100%;
-	font-size: 1rem;
 	cursor: text;
 `;
 
@@ -48,6 +47,7 @@ export const InputWrapper = styled(motion.label)<InputTypes>`
 		width: 100%;
 		color: inherit;
 		font-size: 1rem;
+		font-weight: 500;
 		padding: 0;
 		margin: 0;
 		background: none;

@@ -6,6 +6,7 @@ import { HallsTypes, HallType } from '@/@types/types';
 import { Icon } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { FormOrderHall } from '@/components/FormOrderHall';
+import { getTitle, HeadPage } from '@/components/HeadPage';
 import { Container, Grid, Title } from '@/components/Layout';
 import { HallsPage } from '@/components/sections/halls';
 import {
@@ -15,9 +16,9 @@ import {
 } from '@/components/sections/halls/styled';
 import { fetchApi } from '@/services/variable';
 
-type PathType = {
+interface PathType {
 	type: HallsTypes | undefined;
-};
+}
 
 export const getServerSideProps = async ({ params }: { params: PathType }) => {
 	const resp = fetch(fetchApi('hall-page-data'));
@@ -51,6 +52,7 @@ export const getServerSideProps = async ({ params }: { params: PathType }) => {
 			titles,
 			currentHall,
 			error,
+			headTitle: `${getTitle('')} | ${currentHall.name}`,
 		},
 	};
 };
@@ -63,6 +65,7 @@ type HallsProps = {
 	}[];
 	currentHall: HallType;
 	error: string;
+	headTitle: string;
 };
 
 export const Halls: NextPage<HallsProps> = ({
@@ -70,6 +73,7 @@ export const Halls: NextPage<HallsProps> = ({
 	titles,
 	currentHall,
 	error,
+	headTitle,
 }) => {
 	const [isLoaded, setLoaded] = useState(false);
 
@@ -86,6 +90,7 @@ export const Halls: NextPage<HallsProps> = ({
 
 	return (
 		<>
+			<HeadPage title={headTitle} />
 			<MainBlock grid gap={40}>
 				<Sidebar>
 					<p>Все залы:</p>
@@ -108,11 +113,7 @@ export const Halls: NextPage<HallsProps> = ({
 			<FormBlock>
 				<Container grid direction="column" gap={40}>
 					<Grid gap={20} direction="row">
-						<Grid
-							gap={20}
-							direction="column"
-							align="center"
-						>
+						<Grid gap={20} direction="column" align="center">
 							<Icon icon="secure" size={40} />
 							<Title color="primary">Бронирование</Title>
 						</Grid>

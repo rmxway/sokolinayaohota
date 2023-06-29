@@ -8,6 +8,7 @@ interface Colors {
 		disabled: string;
 		brown: string;
 		white: string;
+		base: string;
 	};
 	gray: {
 		$1: string;

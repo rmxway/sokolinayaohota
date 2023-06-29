@@ -1,9 +1,10 @@
 import { LayoutGroup } from 'framer-motion';
-import { NextPage } from 'next';
+import { GetServerSidePropsContext, NextPage } from 'next';
 import { lazy, Suspense, useState } from 'react';
 
 import { GalleryImageType, ImageCategory } from '@/@types/types';
 import { ErrorMessage } from '@/components/ErrorMessage';
+import { getTitle, HeadPage } from '@/components/HeadPage';
 import {
 	Container,
 	FetchedImage,
@@ -33,7 +34,7 @@ interface GalleryItem extends GalleryImageType {
 	id: number;
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 	const resp = fetch(fetchApi('gallery-page-data'));
 	let error = '';
 
@@ -56,6 +57,7 @@ export const getServerSideProps = async () => {
 			categories,
 			images,
 			error,
+			title: getTitle(ctx.resolvedUrl),
 		},
 	};
 };
@@ -64,12 +66,14 @@ type GalleryPageProps = {
 	categories: CategoryItem[];
 	images: GalleryItem[];
 	error: string;
+	title: string;
 };
 
 const GalleryPage: NextPage<GalleryPageProps> = ({
 	categories,
 	images,
 	error,
+	title,
 }) => {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
@@ -97,6 +101,7 @@ const GalleryPage: NextPage<GalleryPageProps> = ({
 
 	return (
 		<>
+			<HeadPage title={title} />
 			<WrapperGalleryPage>
 				<Container grid gap={40} direction="row" center mt>
 					<Title as="h1">Галерея</Title>
