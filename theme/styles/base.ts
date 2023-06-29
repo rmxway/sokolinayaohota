@@ -23,9 +23,8 @@ const base = css`
 	}
 
 	body {
-		background-color: #fff;
-		${ZenKakuFont.style}
-
+		font-family: ${ZenKakuFont.style.fontFamily};
+		font-weight: 500;
 		display: block;
 		line-height: 1.25;
 		min-width: 360px;
@@ -42,8 +41,7 @@ const base = css`
 	h3,
 	h4,
 	h5 {
-		${YanoneKaffeesatzFont.style}
-		letter-spacing: 1px;
+		font-family: ${YanoneKaffeesatzFont.style.fontFamily};
 		line-height: 1;
 	}
 

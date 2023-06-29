@@ -68,7 +68,6 @@ export const InfoBlock = styled.div`
 	a {
 		color: ${theme.colors.solid.primary};
 		font-size: 1.25rem;
-		font-weight: 400;
 		line-height: 1.5;
 		display: block;
 	}

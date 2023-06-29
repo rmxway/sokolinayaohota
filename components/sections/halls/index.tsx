@@ -5,7 +5,13 @@ import { Icon } from '@/components/Icon';
 import { PageLoader, Title, VideoYouTube } from '@/components/Layout';
 import { Slider } from '@/components/Slider';
 
-import { BlockContent, HallAdvantages, HallsPageWrapper } from './styled';
+import {
+	BlockContent,
+	HallAdvantages,
+	HallsPageWrapper,
+	PhoneBlock,
+	RightBlock,
+} from './styled';
 
 const HallsPage: NextPage<HallType> = ({
 	advantages = [],
@@ -18,7 +24,7 @@ const HallsPage: NextPage<HallType> = ({
 	<HallsPageWrapper gap={40} $w100>
 		{isLoaded && <PageLoader absolute noDelay />}
 		<BlockContent>
-			<Title>{name}</Title>
+			<Title as="h1">{name}</Title>
 			<br />
 			{description.length
 				? description.map((info) => (
@@ -30,18 +36,33 @@ const HallsPage: NextPage<HallType> = ({
 				video.map((item) => <VideoYouTube key={item} src={item} />)}
 			{images && <Slider images={images} countThumbsPerView={5} />}
 		</BlockContent>
-		<HallAdvantages>
-			{advantages.length ? (
+		<RightBlock>
+			<HallAdvantages>
+				<Icon icon="star" size={270} />
+				{advantages.length ? (
+					<ul>
+						{advantages.map((advantage) => (
+							<li key={`${advantage.slice(0, 15)}`}>
+								<Icon icon="success" size={16} />
+								{advantage}
+							</li>
+						))}
+					</ul>
+				) : null}
+			</HallAdvantages>
+			<PhoneBlock>
+				<Icon icon="phone" size={270} />
+				<div>Если остались вопросы ?</div>
+				<p>Звоните с 10 до 22</p>
 				<ul>
-					{advantages.map((advantage) => (
-						<li key={`${advantage.slice(0, 15)}`}>
-							<Icon icon="success" size={16} />
-							{advantage}
-						</li>
-					))}
+					<li>+7 (499) 269-38-33</li>
+					<li>+7 (499) 268-23-59</li>
+					<li>+7 (499) 268-68-34</li>
+					<li>+7 (926) 163-63-04</li>
+					<li>+7 (926) 159-55-58</li>
 				</ul>
-			) : null}
-		</HallAdvantages>
+			</PhoneBlock>
+		</RightBlock>
 	</HallsPageWrapper>
 );
 

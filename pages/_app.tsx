@@ -11,15 +11,13 @@ import { defaultTheme, GlobalStyles } from '@/theme';
 export const App = ({ Component, pageProps }: AppProps) => (
 	<AppProvider>
 		<ThemeProvider theme={defaultTheme}>
+			<GlobalStyles />
 			<Head>
-				<title>Соколиная охота</title>
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=1"
 				/>
 			</Head>
-			<GlobalStyles />
-
 			<HeaderBlock />
 			<Component {...pageProps} />
 		</ThemeProvider>

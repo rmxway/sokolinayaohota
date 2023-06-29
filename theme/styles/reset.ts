@@ -132,9 +132,11 @@ const reset = css`
 	/* Custom */
 	button,
 	input {
+		appearance: none;
 		border: none;
 		outline: none;
 		background: none;
+		color: inherit;
 		font-family: inherit;
 	}
 	a {

@@ -26,8 +26,8 @@ export const Navbar: FC = () => {
 	const containerRef = useRef(null);
 
 	useEffect(() => {
-		if (show) {
-			disablePageScroll();
+		if (show && containerRef?.current) {
+			disablePageScroll(containerRef?.current);
 		}
 
 		return () => {
@@ -91,6 +91,7 @@ export const Navbar: FC = () => {
 							<Image
 								src={oldLogo}
 								alt="Logo navbar"
+								width={200}
 								quality={60}
 							/>
 						</MobileNav>

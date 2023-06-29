@@ -74,10 +74,10 @@ export const MobileNav = styled(motion.div)`
 	top: 0;
 	bottom: 0;
 	width: calc(100% - 90px);
+	overflow-y: auto;
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 
 	background-image: ${theme.colors.gradients.golden()};

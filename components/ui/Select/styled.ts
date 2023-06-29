@@ -8,6 +8,7 @@ export const SelectWrapper = styled.div<{ $opened: boolean }>`
 	display: flex;
 	align-items: center;
 	width: 100%;
+	color: ${theme.colors.solid.base};
 
 	& > button {
 		position: absolute;

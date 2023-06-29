@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { GetServerSidePropsContext, NextPage } from 'next';
 import { lazy, Suspense } from 'react';
 
 import {
@@ -7,11 +7,15 @@ import {
 	MainSliderType,
 	QuestionType,
 } from '@/@types/types';
+import { getTitle, HeadPage } from '@/components/HeadPage';
 import { PageLoader } from '@/components/Layout';
 import { fetchApi } from '@/services/variable';
 
 const ContactsBlock = lazy(
 	() => import('@/components/sections/main-page/ContactsBlock')
+);
+const InfoBlock = lazy(
+	() => import('@/components/sections/main-page/InfoBlock')
 );
 const DiscountBlock = lazy(
 	() => import('@/components/sections/main-page/DiscountBlock')
@@ -40,9 +44,12 @@ type ResponseData = {
 type MainPageProps = {
 	data?: ResponseData | undefined;
 	error?: string | undefined;
+	title?: string;
 };
 
-export const getServerSideProps = async (): Promise<{
+export const getServerSideProps = async (
+	ctx: GetServerSidePropsContext
+): Promise<{
 	props: MainPageProps;
 }> => {
 	let errorMessage: string | undefined = '';
@@ -59,20 +66,25 @@ export const getServerSideProps = async (): Promise<{
 		props: {
 			data,
 			error: errorMessage,
+			title: getTitle(ctx.resolvedUrl),
 		},
 	};
 };
 
-export const MainPage: NextPage<MainPageProps> = ({ data, error }) => (
-	<Suspense fallback={<PageLoader />}>
-		<SliderBlock data={data?.mainSlides} {...{ error }} />
-		<PresentBanner />
-		<WhyAreWe data={data?.advantages} {...{ error }} />
-		<GalleryBlock data={data?.galleryImages} {...{ error }} />
-		<DiscountBlock />
-		<Questions data={data?.faqs} {...{ error }} />
-		<ContactsBlock />
-	</Suspense>
+export const MainPage: NextPage<MainPageProps> = ({ data, error, title }) => (
+	<>
+		<HeadPage title={title} />
+		<Suspense fallback={<PageLoader />}>
+			<InfoBlock />
+			<SliderBlock data={data?.mainSlides} {...{ error }} />
+			<PresentBanner />
+			<WhyAreWe data={data?.advantages} {...{ error }} />
+			<GalleryBlock data={data?.galleryImages} {...{ error }} />
+			<DiscountBlock />
+			<Questions data={data?.faqs} {...{ error }} />
+			<ContactsBlock />
+		</Suspense>
+	</>
 );
 
 export default MainPage;
