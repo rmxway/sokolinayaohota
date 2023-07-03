@@ -5,23 +5,26 @@ import { defaultTheme as theme, media } from '@/theme';
 
 export const InfoBlockWrapper = styled.div`
 	position: relative;
-	padding: 80px 0;
+	padding: 40px 0;
+	border-top: 20px solid ${theme.colors.solid.brown}15;
 	border-bottom: 20px solid ${theme.colors.solid.primary}55;
+	overflow: hidden;
+
+	img {
+		opacity: 1;
+		transform: scale(-1, 1);
+	}
 
 	${Container} {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 
-	${media.lessThan('lg')`
-        padding: 40px 0;
-    `}
-
 	${media.lessThan('sm')`
         ${Container} {
-            gap: 40px;
             grid-auto-flow: row;
 			justify-content: center;
             grid-template-columns: auto;
+			gap: 40px;
         }
     `}
 `;
@@ -36,7 +39,6 @@ export const Item = styled.div<{ $border: boolean }>`
 	text-align: center;
 	font-size: 1.285rem;
 	width: 100%;
-	padding: 0 8px;
 
 	&,
 	* {
@@ -46,19 +48,19 @@ export const Item = styled.div<{ $border: boolean }>`
 	${(props) =>
 		props.$border &&
 		css`
-			border-left: 2px solid ${theme.colors.gray.$3};
-			border-right: 2px solid ${theme.colors.gray.$3};
+			border-left: 2px solid ${theme.colors.solid.brown}22;
+			border-right: 2px solid ${theme.colors.solid.brown}22;
 
 			${media.lessThan('sm')`
 					border: none;
-					padding: 20px 0;
-					border-top: 2px solid ${theme.colors.gray.$3};
-					border-bottom: 2px solid ${theme.colors.gray.$3};
+					padding: 40px 0;
+					border-top: 2px solid ${theme.colors.solid.brown}22;
+					border-bottom: 2px solid ${theme.colors.solid.brown}22;
 				`}
 		`}
 
-	span {
-		display: inline-block;
+	a {
+		display: block;
 	}
 
 	.icofont {

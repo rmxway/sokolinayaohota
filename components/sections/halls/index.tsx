@@ -38,7 +38,7 @@ const HallsPage: NextPage<HallType> = ({
 		</BlockContent>
 		<RightBlock>
 			<HallAdvantages>
-				<Icon icon="star" size={270} />
+				<Icon icon="star" />
 				{advantages.length ? (
 					<ul>
 						{advantages.map((advantage) => (
@@ -51,16 +51,14 @@ const HallsPage: NextPage<HallType> = ({
 				) : null}
 			</HallAdvantages>
 			<PhoneBlock>
-				<Icon icon="phone" size={270} />
+				<Icon icon="phone" />
 				<div>Если остались вопросы ?</div>
 				<p>Звоните с 10 до 22</p>
-				<ul>
-					<li>+7 (499) 269-38-33</li>
-					<li>+7 (499) 268-23-59</li>
-					<li>+7 (499) 268-68-34</li>
-					<li>+7 (926) 163-63-04</li>
-					<li>+7 (926) 159-55-58</li>
-				</ul>
+				<a href="tel:+74992693833">+7 (499) 269-38-33</a>
+				<a href="tel:+74992682359">+7 (499) 268-23-59</a>
+				<a href="tel:+74992686834">+7 (499) 268-68-34</a>
+				<a href="tel:+79261636304">+7 (926) 163-63-04</a>
+				<a href="tel:+79261595558">+7 (926) 159-55-58</a>
 			</PhoneBlock>
 		</RightBlock>
 	</HallsPageWrapper>
