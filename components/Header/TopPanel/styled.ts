@@ -7,7 +7,7 @@ import { defaultTheme as theme, fadeIn, media } from '@/theme';
 
 export const TopPanelSC = styled(motion.div)<{$isMainPage?: boolean}>`
 	position: relative;
-	background-color: rgba(255, 255, 255, 0.75);
+	background-color: #ffffffee;
 	font-weight: 500;
 	font-size: 1.125rem;
 	line-height: 1.2;

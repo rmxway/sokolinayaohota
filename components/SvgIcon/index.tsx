@@ -20,11 +20,12 @@ export const SvgIcon: FC<SVGType> = ({
 	inverse,
 	...propsComponent
 }) => {
+	const transform = `${inverse ? 'rotate(180deg)' : 'none'}` 
 	const props = {
 		fill: theme.colors.solid[color || 'disabled'],
 		style: {
 			maxWidth: width,
-			transform: `rotate(${inverse ? '180deg' : '0deg'})`,
+			transform,
 		},
 		...propsComponent,
 	};
