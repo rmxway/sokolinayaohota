@@ -54,7 +54,7 @@ const HeaderBlock: FC = () => {
 
 	return (
 		<>
-			<Wrapper id="header">
+			<Wrapper id="header" $isMainPage={isMainPage(router)}>
 				<TopPanelBlock show={showHeader} />
 				<Header
 					initial={{ top: 0 }}

@@ -176,7 +176,14 @@ const CommonStyles = css`
 		top: 8px;
 		opacity: 0.1;
 		pointer-events: none;
+		font-size: 300px;
 	}
+
+	${media.lessThan('xl')`
+		.icofont {
+			font-size: 350px;
+		}
+	`}
 `;
 
 export const HallAdvantages = styled.div`
@@ -243,20 +250,12 @@ export const PhoneBlock = styled.div`
 		font-size: 1.2rem;
 	}
 
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		padding: 0;
-		margin: 0;
-
-		a,
-		li {
-			font-size: 1.4rem;
-			font-weight: 500;
-			margin: 0 8px 4px 0;
-			color: #fff;
-		}
+	a {
+		display: block;
+		font-size: 1.4rem;
+		font-weight: 500;
+		margin: 0 8px 4px 0;
+		color: #fff;
 	}
 
 	${media.lessThan('lg')`
@@ -267,13 +266,11 @@ export const PhoneBlock = styled.div`
 		p {
 			font-size: 1rem;
 		}
-
-		ul {
-			a, li {
-				font-size: 1rem;
-				line-height: 1;
-				margin: 0 4px 4px 0;
-			}
+	
+		a {
+			font-size: 1rem;
+			line-height: 1;
+			margin: 0 4px 4px 0;
 		}
 	`}
 `;
