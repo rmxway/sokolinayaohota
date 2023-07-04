@@ -14,6 +14,7 @@ export const Wrapper = styled.div<{ $isMainPage: boolean }>`
 	background-image: ${theme.colors.gradients.black()};
 
 	${media.lessThan('md')`
+		background: #fff;
 		padding-top: 88px;
 	`}
 `;

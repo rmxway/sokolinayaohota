@@ -5,26 +5,10 @@ import { defaultTheme as theme, media } from '@/theme';
 
 export const InfoBlockWrapper = styled.div`
 	position: relative;
-	padding: 80px 0;
+	padding: 40px 0;
 	border-top: 20px solid ${theme.colors.solid.brown}15;
+	border-bottom: 20px solid ${theme.colors.solid.primary}55;
 	overflow: hidden;
-
-	background: linear-gradient(
-		180deg,
-		#f1f1f1aa 0%,
-		#fff8f5 45.71%,
-		#f8f1e8 50.04%,
-		#ffffff 100%
-	);
-
-	&:before {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		border-bottom: 20px solid ${theme.colors.solid.primary}55;
-	}
 
 	img {
 		opacity: 1;
