@@ -19,20 +19,12 @@ export const SliderWrapper = styled.div`
 	}
 `;
 
-export const LoadingWrapper = styled.div<{ $loaded: boolean }>`
-	display: ${(props) => (props.$loaded ? 'flex' : 'none')};
-	max-height: 100%;
-	opacity: ${(props) => (props.$loaded ? 1 : 0)};
-	// padding: ${(props) => (props.$loaded ? '0' : '40px')};
-	transition: 0.2s all;
-	flex-direction: column;
-`;
-
 export const SliderStyle = styled.div`
 	position: relative;
 	width: 100%;
 	display: flex;
 	min-height: 1px;
+	flex-grow: 1;
 
 	.swiper {
 		width: 100%;
@@ -110,4 +102,29 @@ export const ThumbnailsStyle = styled.div`
 	${media.lessThan('sm')`
 		height: 20vw;
 	`}
+`;
+
+export const LoadingWrapper = styled.div<{ $loaded: boolean }>`
+	display: ${(props) => (props.$loaded ? 'flex' : 'none')};
+	max-height: 100%;
+	height: 100%;
+	opacity: ${(props) => (props.$loaded ? 1 : 0)};
+	transition: 0.2s all;
+	flex-direction: column;
+
+	.btn-slider {
+		opacity: 0;
+	}
+
+	${SliderStyle}:hover {
+		.btn-slider {
+			opacity: 1;
+		}
+	}
+
+	${ThumbnailsStyle}:hover {
+		.btn-slider {
+			opacity: 1;
+		}
+	}
 `;

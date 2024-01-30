@@ -99,7 +99,7 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	transition: opacity 0.5s;
 
 	${SliderStyle} {
-		height: 450px;
+		max-height: 350px;
 	}
 
 	${media.lessThan('xl')`
@@ -113,9 +113,15 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 
 	${media.lessThan('md')`
 		display: block;
+		${SliderStyle} {
+			max-height: 400px;
+		}
 	`}
 
 	${media.lessThan('sm')`
+		${SliderStyle} {
+			height: 275px;		
+		}
 		${SliderWrapper} {
 			border-radius: 0;			
 		}

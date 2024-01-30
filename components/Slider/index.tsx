@@ -73,8 +73,8 @@ export const Slider: FC<SliderProps> = ({
 			},
 		},
 		navigation: {
-			nextEl: '.btn-thumbnails.btn-next',
-			prevEl: '.btn-thumbnails.btn-prev',
+			nextEl: '.btn-slider.btn-next',
+			prevEl: '.btn-slider.btn-prev',
 		},
 		onInit: (swiper) => {
 			swiper.navigation.update();
@@ -119,7 +119,7 @@ export const Slider: FC<SliderProps> = ({
 									/>
 								</SwiperSlide>
 							))}
-							{controls ? <Controls name="thumbnails" /> : null}
+							{controls ? <Controls name="slider" /> : null}
 						</Swiper>
 					</ThumbnailsStyle>
 				)}
