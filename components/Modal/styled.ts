@@ -1,6 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
+import { SliderWrapper } from '@/components/Slider/style';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -10,12 +11,11 @@ export const ModalWrapper = styled(motion.div)`
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #f3f0ecc2;
+	background-color: #15120fc2;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	z-index: 100;
-	padding: 8px;
 	touch-action: pan-y;
 	cursor: pointer;
 	overflow-y: auto;
@@ -24,6 +24,13 @@ export const ModalWrapper = styled(motion.div)`
 	${media.lessThan('sm')`
 		padding: 0;
 	`}
+
+	${SliderWrapper} {
+		background-image: none;
+		border: none;
+		border-radius: 0;
+		padding: 0;
+	}
 `;
 
 type ModalWindowTypes = {
@@ -61,11 +68,20 @@ export const ModalWindow = styled(motion.div)<ModalWindowTypes>`
 			justify-content: center;
 		`}
 
-	${media.lessThan('md')`
-		margin-top: 0;
-	`}
+	${(props) =>
+		props.$gallery &&
+		css`
+			background: none;
+			padding: 0;
+		`}
 
-	${media.lessThan('sm')`
+	${(props) =>
+		!props.$fullscreen &&
+		!props.$gallery &&
+		media.lessThan('md')`
+	margin-top: 0;
+	` &&
+		media.lessThan('sm')`
 		min-width: auto;
 		width: 100%;
 		min-height: 100%;
@@ -82,10 +98,13 @@ export const CloseButton = styled(motion.button)`
 	height: 32px;
 	width: 32px;
 	border-radius: 40px;
-	color: ${theme.colors.solid.disabled};
+	color: ${theme.colors.gray.$8};
 	cursor: pointer;
+	background-color: #ddddddaa;
 	transition: all 0.2s;
 	opacity: 0.8;
+	z-index: 10;
+	line-height: 16px;
 
 	&:hover {
 		opacity: 1;

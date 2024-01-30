@@ -34,7 +34,7 @@ const HallsPage: NextPage<HallType> = ({
 
 			{video &&
 				video.map((item) => <VideoYouTube key={item} src={item} />)}
-			{images && <Slider images={images} countThumbsPerView={5} />}
+			{images && <Slider images={images} countThumbsPerView={5} controls thumbs />}
 		</BlockContent>
 		<RightBlock>
 			<HallAdvantages>

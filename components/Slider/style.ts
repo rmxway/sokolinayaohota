@@ -5,12 +5,14 @@ import { Ellipsis } from '@/components/Layout/Preloader/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const SliderWrapper = styled.div`
-	position: sticky;
+	position: relative;
+	height: 100%;
 	text-align: center;
-	background-color: ${theme.colors.gray.$1};
+	background-image: ${theme.colors.gradients.black()};
 	border-radius: 20px;
 	border: 1px solid ${theme.colors.gray.$4};
 	overflow: hidden;
+	padding-top: 10px;
 
 	${Ellipsis} {
 		margin: auto;
@@ -18,21 +20,19 @@ export const SliderWrapper = styled.div`
 `;
 
 export const LoadingWrapper = styled.div<{ $loaded: boolean }>`
-	display: ${(props) => (props.$loaded ? 'block' : 'none')};
-	height: 100%;
+	display: ${(props) => (props.$loaded ? 'flex' : 'none')};
+	max-height: 100%;
 	opacity: ${(props) => (props.$loaded ? 1 : 0)};
-	padding: ${(props) => (props.$loaded ? '0' : '40px')};
+	// padding: ${(props) => (props.$loaded ? '0' : '40px')};
 	transition: 0.2s all;
+	flex-direction: column;
 `;
 
 export const SliderStyle = styled.div`
 	position: relative;
 	width: 100%;
 	display: flex;
-	grid-template-columns: 1fr;
-	height: calc(100% - 80px);
-	max-height: 70vh;
-	min-height: 200px;
+	min-height: 1px;
 
 	.swiper {
 		width: 100%;
@@ -44,15 +44,14 @@ export const SliderStyle = styled.div`
 		img {
 			height: 100%;
 			max-height: 100%;
-			object-fit: cover;
+			object-fit: contain;
 			object-position: center;
 		}
 	}
 
 	${media.lessThan('md')`
 		min-height: 0;
-		height: 50vw;
-
+		
 		.swiper-slide,
 		.swiper,
 		.swiper-wrapper {			

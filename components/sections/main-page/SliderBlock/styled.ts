@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Container, Grid, Title } from '@/components/Layout';
 import { Ellipsis } from '@/components/Layout/Preloader/styled';
-import { SliderWrapper } from '@/components/Slider/style';
+import { SliderStyle, SliderWrapper } from '@/components/Slider/style';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -98,7 +98,7 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
 	transition: opacity 0.5s;
 
-	${SliderWrapper} {
+	${SliderStyle} {
 		height: 450px;
 	}
 
@@ -113,11 +113,6 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 
 	${media.lessThan('md')`
 		display: block;
-		height:	auto;
-
-		${SliderWrapper} {
-			height: auto;
-		}
 	`}
 
 	${media.lessThan('sm')`

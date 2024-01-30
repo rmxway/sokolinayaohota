@@ -5,8 +5,6 @@ import { ErrorMessage } from '@/components/ErrorMessage';
 import { Modal } from '@/components/Modal';
 import { Slider } from '@/components/Slider';
 
-import { WrapperModalGallery } from './styled';
-
 interface ModalGalleryProps {
 	currentId: number;
 	show: boolean;
@@ -20,14 +18,12 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	gallery,
 	onClose,
 }) => (
-	<Modal show={show} onClose={onClose}>
-		<WrapperModalGallery>
-			{gallery?.length ? (
-				<Slider initialSlide={currentId} images={gallery} />
-			) : (
-				<ErrorMessage message="Gallery not found" flat />
-			)}
-		</WrapperModalGallery>
+	<Modal show={show} onClose={onClose} fullscreen gallery>
+		{gallery?.length ? (
+			<Slider initialSlide={currentId} images={gallery} controls />
+		) : (
+			<ErrorMessage message="Gallery not found" flat />
+		)}
 	</Modal>
 );
 
