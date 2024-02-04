@@ -76,7 +76,6 @@ const mixinButton = ($background = '#fff', $color = '#fff') => css`
 `;
 
 const propsMobile = css`
-	padding: 8px 16px;
 	height: 40px;
 	font-size: 1.125rem;
 
@@ -90,7 +89,7 @@ const Button = styled.button<ButtonProps>`
 	background: none;
 	border-radius: ${theme.radius.borderRadius};
 
-	padding: 16px 16px 13px;
+	padding: 2px 16px 0px;
 	height: 52px;
 
 	display: flex;
@@ -99,15 +98,15 @@ const Button = styled.button<ButtonProps>`
 	color: ${theme.colors.solid.brown};
 	font-family: ${theme.layout.fonts.header};
 	font-size: 1.25rem;
-	line-height: 1;
+	line-height: 0;
 	font-weight: 400;
 	text-transform: uppercase;
 	font-style: normal;
 	letter-spacing: 0.02em;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-	span {
-		margin-top: 3px;
+	.icofont {
+		margin-top: -4px;
 	}
 
 	${(props) =>
@@ -127,8 +126,12 @@ const Button = styled.button<ButtonProps>`
 				theme.colors.solid.brown
 			);
 		if (props?.brown)
-			return mixinButton(theme.colors.solid.brown, theme.colors.solid.primary);
-		if (props?.success) return mixinButton(theme.colors.solid.success, '#fff');
+			return mixinButton(
+				theme.colors.solid.brown,
+				theme.colors.solid.primary
+			);
+		if (props?.success)
+			return mixinButton(theme.colors.solid.success, '#fff');
 		if (props?.danger)
 			return mixinButton(theme.colors.gradients.rubin(), '#fff');
 		return null;

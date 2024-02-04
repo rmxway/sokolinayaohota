@@ -12,7 +12,6 @@ export const SliderWrapper = styled.div`
 	border-radius: 20px;
 	border: 1px solid ${theme.colors.gray.$4};
 	overflow: hidden;
-	padding-top: 10px;
 
 	${Ellipsis} {
 		margin: auto;

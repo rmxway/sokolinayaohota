@@ -52,7 +52,7 @@ const HallsPage: NextPage<HallType> = ({
 			</HallAdvantages>
 			<PhoneBlock>
 				<Icon icon="phone" />
-				<div>Если остались вопросы ?</div>
+				<div>Остались вопросы ?</div>
 				<p>Звоните с 10 до 22</p>
 				<a href="tel:+74992693833">+7 (499) 269-38-33</a>
 				<a href="tel:+74992682359">+7 (499) 268-23-59</a>
