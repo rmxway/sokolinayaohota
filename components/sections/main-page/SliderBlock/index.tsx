@@ -163,6 +163,8 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 								<SwiperSlide key={tag}>
 									<Slider
 										images={images}
+										controls
+										thumbs
 										countThumbsPerView={5}
 									/>
 								</SwiperSlide>

@@ -5,34 +5,26 @@ import { Ellipsis } from '@/components/Layout/Preloader/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const SliderWrapper = styled.div`
-	position: sticky;
+	position: relative;
+	height: 100%;
 	text-align: center;
-	background-color: ${theme.colors.gray.$1};
+	background-image: ${theme.colors.gradients.black()};
 	border-radius: 20px;
 	border: 1px solid ${theme.colors.gray.$4};
 	overflow: hidden;
+	padding-top: 10px;
 
 	${Ellipsis} {
 		margin: auto;
 	}
 `;
 
-export const LoadingWrapper = styled.div<{ $loaded: boolean }>`
-	display: ${(props) => (props.$loaded ? 'block' : 'none')};
-	height: 100%;
-	opacity: ${(props) => (props.$loaded ? 1 : 0)};
-	padding: ${(props) => (props.$loaded ? '0' : '40px')};
-	transition: 0.2s all;
-`;
-
 export const SliderStyle = styled.div`
 	position: relative;
 	width: 100%;
 	display: flex;
-	grid-template-columns: 1fr;
-	height: calc(100% - 80px);
-	max-height: 70vh;
-	min-height: 200px;
+	min-height: 1px;
+	flex-grow: 1;
 
 	.swiper {
 		width: 100%;
@@ -44,15 +36,14 @@ export const SliderStyle = styled.div`
 		img {
 			height: 100%;
 			max-height: 100%;
-			object-fit: cover;
+			object-fit: contain;
 			object-position: center;
 		}
 	}
 
 	${media.lessThan('md')`
 		min-height: 0;
-		height: 50vw;
-
+		
 		.swiper-slide,
 		.swiper,
 		.swiper-wrapper {			
@@ -111,4 +102,29 @@ export const ThumbnailsStyle = styled.div`
 	${media.lessThan('sm')`
 		height: 20vw;
 	`}
+`;
+
+export const LoadingWrapper = styled.div<{ $loaded: boolean }>`
+	display: ${(props) => (props.$loaded ? 'flex' : 'none')};
+	max-height: 100%;
+	height: 100%;
+	opacity: ${(props) => (props.$loaded ? 1 : 0)};
+	transition: 0.2s all;
+	flex-direction: column;
+
+	.btn-slider {
+		opacity: 0;
+	}
+
+	${SliderStyle}:hover {
+		.btn-slider {
+			opacity: 1;
+		}
+	}
+
+	${ThumbnailsStyle}:hover {
+		.btn-slider {
+			opacity: 1;
+		}
+	}
 `;
