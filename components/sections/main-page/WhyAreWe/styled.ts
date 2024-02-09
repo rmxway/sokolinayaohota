@@ -87,13 +87,16 @@ export const Item = styled.div`
 
 	& > div:not([class]) {
 		font-family: ${theme.layout.fonts.header};
-		font-size: 1.5rem;
+		font-size: 1.75rem;
 		font-weight: 600;
 		height: max-content;
-		line-height: 1;
-		letter-spacing: 0.5px;
-		text-transform: uppercase;
+		line-height: 0.9;
+		text-transform: lowercase;
 		color: ${theme.colors.solid.brown};
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
 	}
 
 	&:hover {
