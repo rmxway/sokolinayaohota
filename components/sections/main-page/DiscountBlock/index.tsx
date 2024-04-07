@@ -8,8 +8,8 @@ import { Discount, Wrapper } from './styled';
 
 export const DiscountBlock = () => (
 	<Wrapper>
-		<Container grid direction="row" gap={65} center>
-			<Grid align="center" justify="center" direction="row" gap={20}>
+		<Container $grid $direction="row" $gap={65} $center>
+			<Grid $align="center" $justify="center" $direction="row" $gap={20}>
 				<Title color="white">
 					Оставьте заявку
 					<br />

@@ -1,21 +1,16 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { LayoutGroup, motion } from 'framer-motion';
 import Link from 'next/link';
-import { FC, useState } from 'react';
-import { Navigation, Pagination, Swiper as TypeSwiper, Thumbs } from 'swiper';
+import { FC, memo, useRef, useState } from 'react';
+import { Swiper as TypeSwiper } from 'swiper';
+import { Navigation, Pagination, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { MainSliderType } from '@/@types/types';
 import { Icon } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
-import {
-	Container,
-	Flexbox,
-	Grid,
-	Preloader,
-	Title,
-} from '@/components/Layout';
+import { Container, Flexbox, Grid, Title } from '@/components/Layout';
 import { Slider } from '@/components/Slider';
-import { ButtonUI } from '@/components/ui';
+import { ButtonUI, Preloader } from '@/components/ui';
 
 import {
 	animateText,
@@ -31,11 +26,11 @@ type SliderBlockProps = {
 	error?: string;
 };
 
-export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
+export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
 	const [isLoaded, setLoaded] = useState(false);
-	const [currentPath, setCurrentPath] = useState('/halls/big-hall');
+	const currentPath = useRef<string>('/halls/big-hall');
 
 	const typesPath = data?.map((item) => item.tag);
 
@@ -61,10 +56,11 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 			nextEl: '.btn-next',
 			prevEl: '.btn-prev',
 		},
-		onSlideChangeTransitionEnd: (swiper) => {
+		onSlideChange: (swiper) => {
 			setSlideIndex(swiper.realIndex);
+
 			if (typesPath)
-				setCurrentPath(`/halls/${typesPath[swiper.realIndex]}`);
+				currentPath.current = `/halls/${typesPath[swiper.realIndex]}`;
 		},
 		onInit: () => {
 			setLoaded(true);
@@ -82,11 +78,11 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 		},
 	};
 
-	if (error)
+	if (error || !data)
 		return (
 			<Wrapper>
-				<Container grid>
-					<ErrorMessage message={error} />
+				<Container $grid>
+					<ErrorMessage message={!data ? 'Данные не найдены' : error} />
 				</Container>
 			</Wrapper>
 		);
@@ -100,34 +96,34 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 						<Swiper {...mainSwiperConfig}>
 							{data?.map(({ title, description }, index) => (
 								<SwiperSlide key={title}>
-									<Grid direction="row" gap={32}>
-										<AnimatePresence>
-											<>
-												<Title
-													variants={animateTitle}
-													initial="hidden"
-													animate={
-														slideIndex === index
-															? 'visible'
-															: 'hidden'
-													}
-													color="brown"
-												>
-													{title}
-												</Title>
-												<motion.p
-													variants={animateText}
-													initial="hidden"
-													animate={
-														slideIndex === index
-															? 'visible'
-															: 'hidden'
-													}
-												>
-													{description}
-												</motion.p>
-											</>
-										</AnimatePresence>
+									<Grid $direction="row" $gap={32}>
+										<LayoutGroup key={title}>
+											<Title
+												layout
+												variants={animateTitle}
+												initial="hidden"
+												animate={
+													slideIndex === index
+														? 'visible'
+														: 'hidden'
+												}
+												color="brown"
+											>
+												{title}
+											</Title>
+											<motion.p
+												layout
+												variants={animateText}
+												initial="hidden"
+												animate={
+													slideIndex === index
+														? 'visible'
+														: 'hidden'
+												}
+											>
+												{description}
+											</motion.p>
+										</LayoutGroup>
 									</Grid>
 								</SwiperSlide>
 							))}
@@ -150,8 +146,8 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 							<div>
 								<div className="slider-pagination" />
 							</div>
-							<Link href={currentPath}>
-								<ButtonUI brown icon="arrow">
+							<Link href={currentPath.current}>
+								<ButtonUI $brown $icon="arrow">
 									Подробнее
 								</ButtonUI>
 							</Link>
@@ -175,6 +171,6 @@ export const SliderBlock: FC<SliderBlockProps> = ({ data, error }) => {
 			</Container>
 		</Wrapper>
 	);
-};
+});
 
 export default SliderBlock;

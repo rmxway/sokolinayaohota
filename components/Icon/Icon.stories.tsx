@@ -1,70 +1,37 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { ArgTypes, Meta, StoryObj } from '@storybook/react';
 
-import { Icon } from './index';
+import { Flexbox } from '@/components/Layout/Flexbox';
+import icons from '@/public/assets/fonts/icofont/icofont.json';
+
+import { Icon } from '.';
+
+type IconStoryType = StoryObj<typeof Icon>;
 
 const meta: Meta<typeof Icon> = {
 	title: 'Icon',
 	component: Icon,
 	args: {
-		size: 58,
+		icon: 'heart',
+		as: 'i',
+		color: 'base',
 	},
 	tags: ['autodocs'],
 };
 
+const typedIcons = Object.keys(icons) as Array<keyof typeof icons>;
+
+export const AllIcons = (args: ArgTypes) => (
+	<Flexbox $gap={30}>
+		{typedIcons.map((icon) => (
+			<Icon key={icon} {...args} size={30} {...{ icon }} />
+		))}
+	</Flexbox>
+);
+
+export const OneIcon: IconStoryType = {
+	args: {
+		size: 58,
+	},
+};
+
 export default meta;
-
-type Story = StoryObj<typeof Icon>;
-
-export const IconArrow: Story = {
-	args: {
-		icon: 'arrow',
-	},
-};
-
-export const IconArrowSimple: Story = {
-	args: {
-		icon: 'arrow-simple',
-	},
-};
-
-export const IconClose: Story = {
-	args: {
-		icon: 'close',
-	},
-};
-
-export const IconError: Story = {
-	args: {
-		icon: 'error',
-	},
-};
-
-export const IconHeart: Story = {
-	args: {
-		icon: 'heart',
-	},
-};
-
-export const IconLocation: Story = {
-	args: {
-		icon: 'location',
-	},
-};
-
-export const IconMail: Story = {
-	args: {
-		icon: 'mail',
-	},
-};
-
-export const IconPhone: Story = {
-	args: {
-		icon: 'phone',
-	},
-};
-
-export const IcoSecurity: Story = {
-	args: {
-		icon: 'secure',
-	},
-};

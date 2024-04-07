@@ -21,7 +21,7 @@ export const TopPanelItem: FC<CommonType> = ({ icon, content, onSend }) => {
 	};
 
 	return (
-		<Grid gap={8} align="center" onClick={handleClick}>
+		<Grid $gap={8} $align="center" onClick={handleClick}>
 			<Icon
 				active
 				as="button"

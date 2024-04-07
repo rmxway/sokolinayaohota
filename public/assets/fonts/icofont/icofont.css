@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'icofont';
-    src: url(".//icofont.ttf?4ae12d16ff13d426d1f4f7c1d27f23ad") format("truetype"),
-url(".//icofont.woff?4ae12d16ff13d426d1f4f7c1d27f23ad") format("woff"),
-url(".//icofont.woff2?4ae12d16ff13d426d1f4f7c1d27f23ad") format("woff2");
+    src: url(".//icofont.ttf?49461d4a08a47745a490006d21e082c1") format("truetype"),
+url(".//icofont.woff?49461d4a08a47745a490006d21e082c1") format("woff"),
+url(".//icofont.woff2?49461d4a08a47745a490006d21e082c1") format("woff2");
 }
 
 i[class^='icofont-']:before, i[class*=' icofont-']:before {
@@ -17,39 +17,42 @@ i[class^='icofont-']:before, i[class*=' icofont-']:before {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icofont-arrow-simple:before {
+.icofont-time:before {
     content: '\f101';
 }
-.icofont-arrow:before {
+.icofont-success:before {
     content: '\f102';
 }
-.icofont-close:before {
+.icofont-star:before {
     content: '\f103';
 }
-.icofont-error:before {
+.icofont-secure:before {
     content: '\f104';
 }
-.icofont-heart:before {
+.icofont-phone:before {
     content: '\f105';
 }
-.icofont-location:before {
+.icofont-no-photo:before {
     content: '\f106';
 }
 .icofont-mail:before {
     content: '\f107';
 }
-.icofont-phone:before {
+.icofont-location:before {
     content: '\f108';
 }
-.icofont-secure:before {
+.icofont-heart:before {
     content: '\f109';
 }
-.icofont-star:before {
+.icofont-error:before {
     content: '\f10a';
 }
-.icofont-success:before {
+.icofont-close:before {
     content: '\f10b';
 }
-.icofont-time:before {
+.icofont-arrow:before {
     content: '\f10c';
+}
+.icofont-arrow-simple:before {
+    content: '\f10d';
 }

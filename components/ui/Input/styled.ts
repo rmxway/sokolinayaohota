@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components';
 
 import { defaultTheme as theme, media } from '@/theme';
 
-export interface InputTypes {
-	$success?: boolean;
-	$danger?: boolean;
-	$disabled?: boolean;
+interface InputTypes {
+	$success: boolean;
+	$danger: boolean;
+	$disabled: boolean;
 }
 
 export const InputBlockWrapper = styled.div`
@@ -15,7 +15,7 @@ export const InputBlockWrapper = styled.div`
 	cursor: text;
 `;
 
-export const InputWrapper = styled(motion.label)<InputTypes>`
+export const InputWrapper = styled(motion.label)<Partial<InputTypes>>`
 	position: relative;
 	padding: 0 16px;
 	height: 52px;

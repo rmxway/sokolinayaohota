@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
-import { SliderWrapper } from '@/components/Slider/style';
+import { SliderWrapper } from '@/components/Slider/styled';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 

@@ -20,7 +20,7 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 
 	return (
 		<Wrapper>
-			<Container grid gap={40} direction="row" center>
+			<Container $grid $gap={40} $direction="row" $center>
 				<SvgIcon
 					name="BarDecor"
 					color="primary"
@@ -32,10 +32,10 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 				</Title>
 				{additionalLayer}
 				<Grid
-					justify="space-between"
-					className="info-grid"
+					$justify="space-between"
 					$w100
-					gap={20}
+					$gap={20}
+					className="info-grid"
 				>
 					<InfoBlock>
 						<div>

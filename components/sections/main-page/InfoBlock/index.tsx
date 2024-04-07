@@ -5,7 +5,7 @@ import { InfoBlockWrapper } from './styled';
 
 export const InfoBlock = () => (
 	<InfoBlockWrapper>
-		<Container grid>
+		<Container $grid>
 			<InfoItem icon="location">
 				пр-д Сокольнического круга, <br />
 				д. 11

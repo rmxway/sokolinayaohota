@@ -4,8 +4,8 @@ import { Variants } from 'framer-motion';
 import styled from 'styled-components';
 
 import { Container, Grid, Title } from '@/components/Layout';
-import { Ellipsis } from '@/components/Layout/Preloader/styled';
-import { SliderStyle, SliderWrapper } from '@/components/Slider/style';
+import { SliderStyle, SliderWrapper } from '@/components/Slider/styled';
+import { Ellipsis } from '@/components/ui/Preloader/styled';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
@@ -41,7 +41,7 @@ export const Wrapper = styled.div`
 export const Info = styled.div`
 	position: relative;
 	display: flex;
-	width: 100%;
+	width: 500px;
 	color: ${theme.colors.solid.brown};
 	padding-bottom: 72px;
 
@@ -64,6 +64,8 @@ export const Info = styled.div`
 	}
 
 	${media.lessThan('lg')`
+		width: 350px;
+
 		${Grid} {
 			gap: 10px;
 		}
@@ -80,6 +82,7 @@ export const Info = styled.div`
 
 	${media.lessThan('md')`
 		margin-bottom: 20px;
+		width: 100%;
 	`}
 
 	${media.lessThan('sm')`
@@ -90,8 +93,8 @@ export const Info = styled.div`
 
 export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	position: relative;
-	display: grid;
-	grid-template-columns: 500px 1fr;
+	display: flex;
+	flex-wrap: nowrap;
 	bottom: -4px;
 	width: 100%;
 	gap: 80px;
@@ -99,22 +102,21 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 	transition: opacity 0.5s;
 
 	${SliderStyle} {
-		max-height: 350px;
+		height: 350px;
+	}
+
+	.swiper-slide {
+		height: auto;
 	}
 
 	${media.lessThan('xl')`
-		grid-template-columns: 400px 1fr;
 		gap: 40px;
 	`}
 
-	${media.lessThan('lg')`
-		grid-template-columns: 350px 1fr;		
-	`}
-
 	${media.lessThan('md')`
-		display: block;
+		flex-direction: column;
 		${SliderStyle} {
-			max-height: 400px;
+			height: 400px;
 		}
 	`}
 
@@ -207,7 +209,7 @@ export const animateTitle: Variants = {
 	},
 };
 
-export const animateText = {
+export const animateText: Variants = {
 	hidden: {
 		y: 20,
 		opacity: 0,

@@ -11,7 +11,7 @@
 		"noEmit": true,
 		"esModuleInterop": true,
 		"typeRoots": ["@types/declarations.d.ts", "./node_modules/@types"],
-		"module": "esnext", // ESNext
+		"module": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
@@ -25,12 +25,14 @@
 			"@/pages/*": ["./pages/*"],
 			"@/theme/*": ["./theme/*"],
 			"@/mock/*": ["./mock/*"]
-		},
+		}
 	},
 	"include": [
 		"next-env.d.ts",
 		"**/*.ts",
-		"**/*.tsx",		
+		"**/*.tsx",
+		".eslintrc.js",
+		"**/*.js"
 	],
 	"exclude": ["node_modules", ".vscode"]
 }

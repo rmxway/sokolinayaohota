@@ -1,78 +1,48 @@
 import styled, { css } from 'styled-components';
 
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
-import { defaultTheme as theme, media } from '@/theme';
+import { media } from '@/theme';
 
 interface CommonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	w100?: boolean;
-	inactive?: boolean;
-	margins?: boolean;
-	mobile?: boolean;
-	icon?: keyof typeof icofont;
+	$w100: boolean;
+	$inactive: boolean;
+	$margins: boolean;
+	$mobile: boolean;
+	$icon: keyof typeof icofont;
 	/** Style */
-	primary?: boolean;
+	$primary: boolean;
 	/** Style */
-	brown?: boolean;
+	$brown: boolean;
 	/** Style */
-	danger?: boolean;
+	$danger: boolean;
 	/** Style */
-	success?: boolean;
+	$success: boolean;
 }
 
-interface PrimaryButton extends CommonProps {
-	primary?: boolean;
-	brown?: never;
-	danger?: never;
-	success?: never;
-}
-
-interface BrownButton extends CommonProps {
-	primary?: never;
-	brown?: boolean;
-	danger?: never;
-	success?: never;
-}
-
-interface DangerButton extends CommonProps {
-	primary?: never;
-	brown?: never;
-	danger?: boolean;
-	success?: never;
-}
-
-interface SuccessButton extends CommonProps {
-	primary?: never;
-	brown?: never;
-	danger?: never;
-	success?: boolean;
-}
-
-export type ButtonProps =
-	| PrimaryButton
-	| BrownButton
-	| DangerButton
-	| SuccessButton;
+export type ButtonProps = Partial<CommonProps>;
 
 const mixinButton = ($background = '#fff', $color = '#fff') => css`
-	border-color: transparent;
-	background: ${$background};
-	color: ${$color};
+	${({ theme }) => css`
+		border-color: transparent;
+		background: ${$background};
+		color: ${$color};
 
-	&:hover {
-		opacity: 0.9;
-	}
+		&:hover {
+			opacity: 0.9;
+		}
 
-	&:active {
-		opacity: 0.8;
-	}
+		&:active {
+			opacity: 0.8;
+		}
 
-	&:disabled,
-	&:disabled:hover {
-		background: ${theme.colors.gradients.disabled()}!important;
-		color: ${theme.colors.solid.disabled};
-		pointer-events: none;
-		cursor: default;
-	}
+		&:disabled,
+		&:disabled:hover {
+			background: ${theme.colors.gradients.disabled()}!important;
+			color: ${theme.colors.solid.disabled};
+			pointer-events: none;
+			cursor: default;
+		}
+	`}
 `;
 
 const propsMobile = css`
@@ -85,78 +55,90 @@ const propsMobile = css`
 `;
 
 const Button = styled.button<ButtonProps>`
-	appearance: none;
-	background: none;
-	border-radius: ${theme.radius.borderRadius};
+	${({
+		theme,
+		$brown,
+		$danger,
+		$inactive,
+		$margins,
+		$mobile,
+		$primary,
+		$success,
+		$w100,
+	}) => css`
+		appearance: none;
+		background: none;
+		border-radius: ${theme.radius.borderRadius};
 
-	padding: 2px 16px 0px;
-	height: 52px;
+		padding: 2px 16px 0px;
+		height: 52px;
 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: ${theme.colors.solid.brown};
-	font-family: ${theme.layout.fonts.header};
-	font-size: 1.25rem;
-	line-height: 0;
-	font-weight: 400;
-	text-transform: uppercase;
-	font-style: normal;
-	letter-spacing: 0.02em;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: ${theme.colors.solid.brown};
+		font-family: ${theme.layout.fonts.header};
+		font-size: 1.25rem;
+		line-height: 0;
+		font-weight: 400;
+		text-transform: uppercase;
+		font-style: normal;
+		letter-spacing: 0.02em;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-	.icofont {
-		margin-top: -4px;
-	}
+		.icofont {
+			margin-top: -4px;
+		}
 
-	${(props) =>
-		props.margins &&
+		${$margins &&
 		css`
 			margin-bottom: 10px;
 			margin-right: 10px;
 		`}
 
-	cursor: pointer;
-	transition: 0.1s all;
+		cursor: pointer;
+		transition: 0.1s all;
 
-	${(props) => {
-		if (props?.primary)
-			return mixinButton(
-				theme.colors.gradients.golden(),
-				theme.colors.solid.brown
-			);
-		if (props?.brown)
-			return mixinButton(
-				theme.colors.solid.brown,
-				theme.colors.solid.primary
-			);
-		if (props?.success)
-			return mixinButton(theme.colors.solid.success, '#fff');
-		if (props?.danger)
-			return mixinButton(theme.colors.gradients.rubin(), '#fff');
-		return null;
-	}}
+		${() => {
+			if ($primary)
+				return mixinButton(
+					theme.colors.gradients.golden(),
+					theme.colors.solid.brown,
+				);
+			if ($brown)
+				return mixinButton(
+					theme.colors.solid.brown,
+					theme.colors.solid.primary,
+				);
+			if ($success)
+				return mixinButton(theme.colors.solid.success, '#fff');
+			if ($danger)
+				return mixinButton(theme.colors.gradients.rubin(), '#fff');
+			return null;
+		}}
 
-	${(props) => {
-		if (props?.w100)
-			return css`
-				width: 100%;
-			`;
-		if (props?.inactive)
-			return css`
-				pointer-events: none;
-			`;
-		return null;
-	}}
+		${() => {
+			if ($w100)
+				return css`
+					width: 100%;
+				`;
+			if ($inactive)
+				return css`
+					pointer-events: none;
+				`;
+			return null;
+		}}
 
-	.icofont {
-		font-size: 20px;
-		margin-left: 8px;
-		line-height: 24px;
-	}
+		.icofont {
+			font-size: 20px;
+			margin-left: 8px;
+			line-height: 24px;
+		}
 
-	${(props) => props.mobile && propsMobile}
-	${media.lessThan('lg')`${propsMobile}`}
+		${$mobile && propsMobile}
+
+		${media.lessThan('lg')`${propsMobile}`}
+	`}
 `;
 
 const textVar = {

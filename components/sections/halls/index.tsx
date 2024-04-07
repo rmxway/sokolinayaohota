@@ -2,8 +2,9 @@ import { NextPage } from 'next';
 
 import { HallType } from '@/@types/types';
 import { Icon } from '@/components/Icon';
-import { PageLoader, Title, VideoYouTube } from '@/components/Layout';
+import { Title, VideoYouTube } from '@/components/Layout';
 import { Slider } from '@/components/Slider';
+import { PageLoader } from '@/components/ui';
 
 import {
 	BlockContent,
@@ -21,7 +22,7 @@ const HallsPage: NextPage<HallType> = ({
 	images = [],
 	isLoaded,
 }) => (
-	<HallsPageWrapper gap={40} $w100>
+	<HallsPageWrapper $gap={40} $w100>
 		{isLoaded && <PageLoader absolute noDelay />}
 		<BlockContent>
 			<Title as="h1">{name}</Title>
@@ -29,12 +30,19 @@ const HallsPage: NextPage<HallType> = ({
 			{description.length
 				? description.map((info) => (
 						<p key={info.slice(0, 10)}>{info}</p>
-				  ))
+					))
 				: null}
 
 			{video &&
 				video.map((item) => <VideoYouTube key={item} src={item} />)}
-			{images && <Slider images={images} countThumbsPerView={5} controls thumbs />}
+			{images && (
+				<Slider
+					images={images}
+					countThumbsPerView={5}
+					controls
+					thumbs
+				/>
+			)}
 		</BlockContent>
 		<RightBlock>
 			<HallAdvantages>

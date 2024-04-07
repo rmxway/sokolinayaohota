@@ -15,10 +15,10 @@ type Props = {
 
 export const Questions: FC<Props> = ({ data, error }) => (
 	<Wrapper>
-		<Container grid direction="row" gap={40}>
+		<Container $grid $direction="row" $gap={40}>
 			<Title color="disabled">Частые вопросы</Title>
 			{data?.length ? (
-				<Flexbox direction="column">
+				<Flexbox $direction="column">
 					{data.map((question) => (
 						<Question
 							key={question.id}

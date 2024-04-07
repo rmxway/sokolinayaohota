@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { defaultTheme as theme } from '@/theme';
-import { media } from '@/theme/media';
+import { defaultTheme as theme, media } from '@/theme';
 
 type TitleType = {
 	color?: keyof typeof theme.colors.solid;

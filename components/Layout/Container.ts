@@ -2,65 +2,43 @@ import styled, { css } from 'styled-components';
 
 import { media } from '@/theme/media';
 
-type ContainerType = {
-	mt?: boolean;
-	grid?: boolean;
-	center?: boolean;
-	noPadding?: boolean;
-	spaceBetween?: boolean;
-	gap?: number;
-	direction?: 'row' | 'column';
+interface ContainerType {
+	$mt: boolean;
+	$grid: boolean;
+	$center: boolean;
+	$noPadding: boolean;
+	$spaceBetween: boolean;
+	$gap: number;
+	$direction: 'row' | 'column';
 };
 
-const Container = styled.div<ContainerType>`
-	position: relative;
-	padding: 0 ${(props) => (props.noPadding ? '0' : '20px')};
-	width: 100%;
-	max-width: 1360px;
-	margin: 0 auto;
-	grid-auto-flow: ${(props) => props.direction || 'column'};
-	justify-items: center;
+const Container = styled.div<Partial<ContainerType>>`
+	${({ $center, $direction, $gap, $grid, $mt, $noPadding, $spaceBetween }) => css`
+		position: relative;
+		padding: 0 ${$noPadding ? '0' : '20px'};
+		width: 100%;
+		max-width: 1360px;
+		margin: 0 auto;
+		grid-auto-flow: ${$direction || 'column'};
+		justify-items: center;
 
-	${(props) =>
-		props.gap &&
-		css`
-			gap: ${props.gap}px;
+		${$gap && css`gap: ${$gap}px;`}
+		${$mt && css`margin-top: 40px;`}
+		${$grid && css`display: grid;`}
+		${$center && css`align-items: center;`}
+		${$spaceBetween && css`justify-content: space-between;`}
+
+		${media.lessThan('xl')`
+			max-width: 1200px;
 		`}
 
-	${(props) =>
-		props.mt &&
-		css`
-			margin-top: 40px;
+		${media.lessThan('lg')`
+			max-width: 1000px;
 		`}
 
-	${(props) =>
-		props.grid &&
-		css`
-			display: grid;			
+		${media.lessThan('md')`
+			max-width: 770px;
 		`}
-
-	${(props) =>
-		props.center &&
-		css`
-			align-items: center;
-		`}
-
-	${(props) =>
-		props.spaceBetween &&
-		css`
-			justify-content: space-between;
-		`}
-
-	${media.lessThan('xl')`
-		max-width: 1200px;
-	`}
-
-	${media.lessThan('lg')`
-		max-width: 1000px;
-	`}
-
-	${media.lessThan('md')`
-		max-width: 770px;
 	`}
 `;
 

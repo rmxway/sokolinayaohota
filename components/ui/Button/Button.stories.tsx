@@ -1,72 +1,72 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { ButtonUI } from '@/components/ui/Button';
+
+type Button = StoryObj<typeof ButtonUI>;
 
 const meta: Meta<typeof ButtonUI> = {
 	title: 'Button',
 	component: ButtonUI,
 	args: {
 		children: 'Button',
-		w100: false,
-		mobile: false,
-		inactive: false,
-		margins: false,
+		$w100: false,
+		$mobile: false,
+		$inactive: false,
+		$margins: false,
 	},
 	tags: ['autodocs'],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof ButtonUI>;
-
-export const Primary: Story = {
+export const Primary: Button = {
 	args: {
-		primary: true,
+		$primary: true,
 		children: 'Primary',
 	},
 };
 
-export const Danger: Story = {
+export const Danger: Button = {
 	args: {
-		danger: true,
+		$danger: true,
 		children: 'Danger',
 	},
 };
 
-export const Success: Story = {
+export const Success: Button = {
 	args: {
-		success: true,
+		$success: true,
 		children: 'Success',
 	},
 };
 
-export const Brown: Story = {
+export const Brown: Button = {
 	args: {
-		brown: true,
+		$brown: true,
 		children: 'Brown',
 	},
 };
 
-export const ButtonIcon: Story = {
+export const ButtonIcon: Button = {
 	args: {
-		primary: true,
-		icon: 'heart',
+		$primary: true,
+		$icon: 'heart',
 		children: 'Button with icon',
 	},
 };
 
-export const Disable: Story = {
+export const Disable: Button = {
 	args: {
-		primary: true,
+		$primary: true,
 		children: 'Click to order',
 		disabled: true,
 	},
 };
 
-export const Mobile: Story = {
+export const Mobile: Button = {
 	args: {
-		primary: true,
-		mobile: true,
+		$primary: true,
+		$mobile: true,
 		children: 'Click to order',
 	},
 };

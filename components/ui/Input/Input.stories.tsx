@@ -1,8 +1,10 @@
-import { StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { InputUI } from '@/components/ui/Input';
 
-export default {
+type Input = StoryObj<typeof InputUI>;
+
+const meta: Meta<typeof InputUI> = {
 	title: 'Input',
 	component: InputUI,
 	args: {
@@ -11,15 +13,15 @@ export default {
 	tags: ['autodocs'],
 };
 
-type Story = StoryObj<typeof InputUI>;
+export default meta;
 
-export const Default: Story = {
+export const Default: Input = {
 	args: {
 		placeholder: 'Placeholder',
 	},
 };
 
-export const Simple: Story = {
+export const Simple: Input = {
 	args: {
 		...Default.args,
 		name: 'simple',
@@ -27,7 +29,7 @@ export const Simple: Story = {
 	},
 };
 
-export const Success: Story = {
+export const Success: Input = {
 	args: {
 		...Simple.args,
 		name: 'success',
@@ -36,7 +38,7 @@ export const Success: Story = {
 	},
 };
 
-export const DangerWithError: Story = {
+export const DangerWithError: Input = {
 	args: {
 		...Simple.args,
 		name: 'danger',
@@ -46,7 +48,7 @@ export const DangerWithError: Story = {
 	},
 };
 
-export const WithIconDisabled: Story = {
+export const WithIconDisabled: Input = {
 	args: {
 		...Simple.args,
 		name: 'disabled',
