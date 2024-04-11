@@ -14,7 +14,7 @@ export default function Error() {
 			<SvgIcon name="BarDecor" width="200" />
 			Страница не найдена
 			<Link href="/">
-				<ButtonUI $brown>Перейти на главную</ButtonUI>
+				<ButtonUI $secondary>Перейти на главную</ButtonUI>
 			</Link>
 		</ErrorWrapper>
 	);

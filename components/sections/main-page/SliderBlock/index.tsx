@@ -146,7 +146,7 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 								<div className="slider-pagination" />
 							</div>
 							<Link href={currentPath.current}>
-								<ButtonUI $brown $icon="arrow">
+								<ButtonUI $secondary $icon="arrow">
 									Подробнее
 								</ButtonUI>
 							</Link>
