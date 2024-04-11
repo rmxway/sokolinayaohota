@@ -1,5 +1,5 @@
 import { LayoutGroup } from 'framer-motion';
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { lazy, Suspense, useState } from 'react';
 
 import { GalleryImageType, ImageCategory } from '@/@types/types';
@@ -10,7 +10,6 @@ import {
 	FetchedImage,
 	Flexbox,
 	Grid,
-	PageLoader,
 	Title,
 } from '@/components/Layout';
 import {
@@ -21,6 +20,7 @@ import {
 	GalleryImage,
 	galleryImageAnimation,
 } from '@/components/sections/main-page/GalleryBlock/styled';
+import { PageLoader } from '@/components/ui';
 import { fetchApi, prefixImages } from '@/services/variable';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
@@ -69,12 +69,12 @@ type GalleryPageProps = {
 	title: string;
 };
 
-const GalleryPage: NextPage<GalleryPageProps> = ({
+export default function GalleryPage({
 	categories,
 	images,
 	error,
 	title,
-}) => {
+}: GalleryPageProps) {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
@@ -103,7 +103,7 @@ const GalleryPage: NextPage<GalleryPageProps> = ({
 		<>
 			<HeadPage title={title} />
 			<WrapperGalleryPage>
-				<Container grid gap={40} direction="row" center mt>
+				<Container $grid $gap={40} $direction="row" $center $mt>
 					<Title as="h1">Галерея</Title>
 					<Flexbox>
 						{categories?.map(
@@ -122,11 +122,15 @@ const GalleryPage: NextPage<GalleryPageProps> = ({
 									>
 										{category.name}
 									</CategoryButton>
-								)
+								),
 						)}
 					</Flexbox>
 					{filteredImages.length ? (
-						<Grid gap={20} direction="row" className="gallery-grid">
+						<Grid
+							$gap={20}
+							$direction="row"
+							className="gallery-grid"
+						>
 							<LayoutGroup>
 								{filteredImages?.map((image, idx) => (
 									<GalleryImage
@@ -171,7 +175,4 @@ const GalleryPage: NextPage<GalleryPageProps> = ({
 			)}
 		</>
 	);
-};
-
-export { GalleryPage };
-export default GalleryPage;
+}

@@ -3,13 +3,8 @@ import { FC, lazy, Suspense, useState } from 'react';
 
 import { GalleryImageType } from '@/@types/types';
 import { ErrorMessage } from '@/components/ErrorMessage';
-import {
-	Container,
-	FetchedImage,
-	PageLoader,
-	Title,
-} from '@/components/Layout';
-import { ButtonUI } from '@/components/ui';
+import { Container, FetchedImage, Title } from '@/components/Layout';
+import { ButtonUI, PageLoader } from '@/components/ui';
 import { prefixImages } from '@/services/variable';
 
 import { GalleryImage, Grid, Wrapper } from './styled';
@@ -34,7 +29,7 @@ export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 
 	return (
 		<Wrapper>
-			<Container grid gap={40} direction="row" center>
+			<Container $grid $gap={40} $direction="row" $center>
 				<Title color="disabled">Галерея</Title>
 
 				{data?.length ? (
@@ -58,7 +53,7 @@ export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 						</Grid>
 
 						<Link href="/gallery">
-							<ButtonUI brown mobile>
+							<ButtonUI $brown $mobile>
 								Больше фото
 							</ButtonUI>
 						</Link>

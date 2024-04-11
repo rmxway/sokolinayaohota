@@ -109,8 +109,8 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 					name={name}
 				>
 					<Grid
-						direction="row"
-						gap={20}
+						$direction="row"
+						$gap={20}
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
 					>
@@ -197,11 +197,11 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 							<br />
 							<p>* Обязательное поле</p>
 							<ButtonUI
-								danger
+								$danger
+								$w100
+								$icon="arrow"
 								type="submit"
 								disabled={!isValid}
-								icon="arrow"
-								w100
 							>
 								Отправить
 							</ButtonUI>

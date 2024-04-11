@@ -1,14 +1,15 @@
 {
-    "arrow-simple": 61697,
-    "arrow": 61698,
-    "close": 61699,
-    "error": 61700,
-    "heart": 61701,
-    "location": 61702,
+    "time": 61697,
+    "success": 61698,
+    "star": 61699,
+    "secure": 61700,
+    "phone": 61701,
+    "no-photo": 61702,
     "mail": 61703,
-    "phone": 61704,
-    "secure": 61705,
-    "star": 61706,
-    "success": 61707,
-    "time": 61708
+    "location": 61704,
+    "heart": 61705,
+    "error": 61706,
+    "close": 61707,
+    "arrow": 61708,
+    "arrow-simple": 61709
 }

@@ -1,11 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { Container, Grid } from '@/components/Layout';
-import {
-	SliderStyle,
-	SliderWrapper,
-	ThumbnailsStyle,
-} from '@/components/Slider/style';
+import { Container, Flexbox } from '@/components/Layout';
+import { SliderStyle, SliderWrapper } from '@/components/Slider/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const MainBlock = styled(Container)`
@@ -44,7 +40,7 @@ export const Sidebar = styled.div`
 
 		&:hover,
 		&.active {
-			color: ${theme.colors.solid.brown};
+			color: ${theme.colors.solid.secondary};
 		}
 	}
 
@@ -94,39 +90,22 @@ export const FormBlock = styled.div`
 	`}
 `;
 
-export const HallsPageWrapper = styled(Grid)`
+export const HallsPageWrapper = styled(Flexbox)`
 	position: relative;
-	grid-template-columns: 1fr 340px;
+	flex-wrap: nowrap;
+	min-width: 1px;
 	border-left: 1px solid silver;
 	padding-left: 40px;
 
 	${SliderWrapper} {
-		padding-bottom: 65%;
-		height: auto;
-
-		${SliderStyle} {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: calc(100% - 80px);
-			min-height: auto;
-			max-height: 100%;
-		}
-
-		${ThumbnailsStyle} {
-			position: absolute;
-			left: 0;
-			bottom: 0;
+		${SliderStyle}, .error-message {
+			height: 50dvw;
+			max-height: 400px;
 		}
 	}
 
 	${media.lessThan('xl')`	
-		grid-auto-flow: row;
-		grid-template-columns: 1fr;
-	`}
-
-	${media.lessThan('xl')`
+		flex-direction: column;
 		gap: 20px;
 	`}
 
@@ -135,6 +114,10 @@ export const HallsPageWrapper = styled(Grid)`
 		border-top: 1px solid silver;
 		padding-left: 0;
 		padding-top: 40px;
+
+		${SliderWrapper} {
+			min-height: auto;
+		}	
 	`}
 `;
 
@@ -154,10 +137,11 @@ export const RightBlock = styled.div`
 	position: sticky;
 	top: 20px;
 	bottom: 20px;
-	width: 100%;
+	width: 400px;
 
 	${media.lessThan('xl')`
-		position: relative;
+		position: relative;		
+		width: 100%;
 		top: 0;
 		bottom: 0;
 	`}
@@ -192,7 +176,7 @@ export const HallAdvantages = styled.div`
 	width: 100%;
 	background-image: ${theme.colors.gradients.golden('-45deg')};
 	border-radius: ${theme.radius.blockRadius};
-	color: ${theme.colors.solid.brown};
+	color: ${theme.colors.solid.secondary};
 	overflow: hidden;
 
 	${CommonStyles}

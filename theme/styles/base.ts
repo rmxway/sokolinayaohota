@@ -28,7 +28,7 @@ const base = css`
 		display: block;
 		line-height: 1.25;
 		min-width: 360px;
-		color: #222;
+		color: #333;
 		overflow-y: scroll;
 	}
 	code {

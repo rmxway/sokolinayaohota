@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { GetServerSidePropsContext } from 'next';
 
 import { getTitle, HeadPage } from '@/components/HeadPage';
 import { ContactsBlock } from '@/components/sections/main-page/ContactsBlock';
@@ -9,12 +9,11 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => ({
 	},
 });
 
-const ContactsPage: NextPage<{ title: string }> = ({ title }) => (
-	<>
-		<HeadPage title={title} />
-		<ContactsBlock />
-	</>
-);
-
-export { ContactsPage };
-export default ContactsPage;
+export default function ContactsPage({ title }: { title: string }) {
+	return (
+		<>
+			<HeadPage title={title} />
+			<ContactsBlock />
+		</>
+	);
+}

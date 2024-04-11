@@ -2,9 +2,9 @@ $icofont-font: 'icofont';
 
 @font-face {
     font-family: $icofont-font;
-    src: url(".//icofont.ttf?4ae12d16ff13d426d1f4f7c1d27f23ad") format("truetype"),
-url(".//icofont.woff?4ae12d16ff13d426d1f4f7c1d27f23ad") format("woff"),
-url(".//icofont.woff2?4ae12d16ff13d426d1f4f7c1d27f23ad") format("woff2");
+    src: url(".//icofont.ttf?49461d4a08a47745a490006d21e082c1") format("truetype"),
+url(".//icofont.woff?49461d4a08a47745a490006d21e082c1") format("woff"),
+url(".//icofont.woff2?49461d4a08a47745a490006d21e082c1") format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -23,53 +23,57 @@ url(".//icofont.woff2?4ae12d16ff13d426d1f4f7c1d27f23ad") format("woff2");
 }
 
 $icofont-map: (
-    'arrow-simple': '\f101',
-    'arrow': '\f102',
-    'close': '\f103',
-    'error': '\f104',
-    'heart': '\f105',
-    'location': '\f106',
+    'time': '\f101',
+    'success': '\f102',
+    'star': '\f103',
+    'secure': '\f104',
+    'phone': '\f105',
+    'no-photo': '\f106',
     'mail': '\f107',
-    'phone': '\f108',
-    'secure': '\f109',
-    'star': '\f10a',
-    'success': '\f10b',
-    'time': '\f10c',
+    'location': '\f108',
+    'heart': '\f109',
+    'error': '\f10a',
+    'close': '\f10b',
+    'arrow': '\f10c',
+    'arrow-simple': '\f10d',
 );
 
-.icofont-arrow-simple:before {
-    content: map-get($icofont-map, 'arrow-simple');
-}
-.icofont-arrow:before {
-    content: map-get($icofont-map, 'arrow');
-}
-.icofont-close:before {
-    content: map-get($icofont-map, 'close');
-}
-.icofont-error:before {
-    content: map-get($icofont-map, 'error');
-}
-.icofont-heart:before {
-    content: map-get($icofont-map, 'heart');
-}
-.icofont-location:before {
-    content: map-get($icofont-map, 'location');
-}
-.icofont-mail:before {
-    content: map-get($icofont-map, 'mail');
-}
-.icofont-phone:before {
-    content: map-get($icofont-map, 'phone');
-}
-.icofont-secure:before {
-    content: map-get($icofont-map, 'secure');
-}
-.icofont-star:before {
-    content: map-get($icofont-map, 'star');
+.icofont-time:before {
+    content: map-get($icofont-map, 'time');
 }
 .icofont-success:before {
     content: map-get($icofont-map, 'success');
 }
-.icofont-time:before {
-    content: map-get($icofont-map, 'time');
+.icofont-star:before {
+    content: map-get($icofont-map, 'star');
+}
+.icofont-secure:before {
+    content: map-get($icofont-map, 'secure');
+}
+.icofont-phone:before {
+    content: map-get($icofont-map, 'phone');
+}
+.icofont-no-photo:before {
+    content: map-get($icofont-map, 'no-photo');
+}
+.icofont-mail:before {
+    content: map-get($icofont-map, 'mail');
+}
+.icofont-location:before {
+    content: map-get($icofont-map, 'location');
+}
+.icofont-heart:before {
+    content: map-get($icofont-map, 'heart');
+}
+.icofont-error:before {
+    content: map-get($icofont-map, 'error');
+}
+.icofont-close:before {
+    content: map-get($icofont-map, 'close');
+}
+.icofont-arrow:before {
+    content: map-get($icofont-map, 'arrow');
+}
+.icofont-arrow-simple:before {
+    content: map-get($icofont-map, 'arrow-simple');
 }

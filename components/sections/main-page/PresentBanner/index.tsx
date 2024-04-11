@@ -14,7 +14,7 @@ export const PresentBanner: FC = () => {
 
 	return (
 		<Wrapper>
-			<Container grid direction="row" center gap={40}>
+			<Container $grid $direction="row" $center $gap={40}>
 				<MainText>
 					<div>Ресторан «Соколиная охота»</div>
 					это прекрасное место для комфортного отдыха даже самых
@@ -31,10 +31,10 @@ export const PresentBanner: FC = () => {
 					</p>
 					<p>Принимаем заказы на все залы!</p>
 				</div>
-				<SvgIcon name="BarDecor" color="primary" width="150px" />
+				<SvgIcon name="BarDecor" color="disabled" width="150px" />
 				<ButtonUI
-					danger
-					icon="arrow"
+					$danger
+					$icon="arrow"
 					onClick={() => dispatch(actionChangeModal('order'))}
 				>
 					Заказать зал

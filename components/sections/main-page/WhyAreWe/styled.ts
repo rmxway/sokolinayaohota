@@ -49,7 +49,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ItemDescription = styled.div`
-	color: ${theme.colors.solid.disabled}bb;
+	color: ${theme.colors.gray.$7};
 	font-size: 1.125rem;
 	line-height: 1.2;
 	font-weight: 400;
@@ -87,12 +87,12 @@ export const Item = styled.div`
 
 	& > div:not([class]) {
 		font-family: ${theme.layout.fonts.header};
-		font-size: 1.75rem;
+		font-size: 1.6rem;
 		font-weight: 600;
 		height: max-content;
 		line-height: 0.9;
 		text-transform: lowercase;
-		color: ${theme.colors.solid.brown};
+		color: ${theme.colors.solid.secondary};
 
 		&::first-letter {
 			text-transform: uppercase;
@@ -117,10 +117,10 @@ export const IconWrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	background-color: ${theme.colors.solid.brown}11;
+	background-image: ${theme.colors.gradients.golden()};
 
 	.icofont {
-		color: ${theme.colors.solid.brown};
+		color: ${theme.colors.solid.secondary}cc;
 		font-size: 2.5rem;
 	}
 
@@ -129,7 +129,7 @@ export const IconWrapper = styled.div`
 		height: 72px;
 
 		.icofont {
-			color: ${theme.colors.solid.brown};
+			color: ${theme.colors.solid.secondary};
 			font-size: 2rem;
 		}
 	`}

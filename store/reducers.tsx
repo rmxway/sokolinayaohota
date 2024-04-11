@@ -11,6 +11,7 @@ import { CHANGE_MODAL, CHANGE_TOP_PANEL } from './actions';
 export type InitialStateType = {
 	modal: string | null;
 	topPanel: string;
+	year: number;
 };
 
 export type DispatchType = React.Dispatch<{ type: string; payload: string }>;
@@ -18,6 +19,7 @@ export type DispatchType = React.Dispatch<{ type: string; payload: string }>;
 export const initialState = {
 	modal: '',
 	topPanel: '',
+	year: 2024,
 };
 
 type InitialContextType = {

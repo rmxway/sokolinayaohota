@@ -66,12 +66,12 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 					name={name}
 				>
 					<Grid
-						direction="row"
+						$direction="row"
+						$justify='stretch'
+						$gap={20}
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
-						justify='stretch'
 						key="Flex"
-						gap={20}
 						layout
 					>
 						<InputUI
@@ -116,7 +116,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 							onBlur={handleBlur}
 							value={values.email}
 						/>
-						<ButtonUI danger type="submit" disabled={!isValid} w100>
+						<ButtonUI $danger type="submit" disabled={!isValid} $w100>
 							Отправить
 						</ButtonUI>
 					</Grid>

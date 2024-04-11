@@ -34,7 +34,7 @@ export const BurgerButton = styled.button<{ $open: boolean }>`
 		width: 100%;
 		height: 2px;
 		border-radius: 10px;
-		background-color: ${theme.colors.solid.brown};
+		background-color: ${theme.colors.solid.secondary};
 		transition: all 0.25s ease-in-out;
 		transform-origin: 50%;
 	}
@@ -171,11 +171,11 @@ export const NavbarItem = styled(motion.div)<{ $active?: boolean }>`
 	${(props) =>
 		props.$active &&
 		css`
-			color: ${props.theme.colors.solid.brown};
+			color: ${props.theme.colors.solid.secondary};
 		`}
 
 	&:hover {
-		color: ${(props) => props.theme.colors.solid.brown};
+		color: ${(props) => props.theme.colors.solid.secondary};
 	}
 
 	&:last-child {

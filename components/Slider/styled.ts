@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout';
-import { Ellipsis } from '@/components/Layout/Preloader/styled';
+import { Ellipsis } from '@/components/ui/Preloader/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const SliderWrapper = styled.div`
@@ -10,7 +10,6 @@ export const SliderWrapper = styled.div`
 	text-align: center;
 	background-image: ${theme.colors.gradients.black()};
 	border-radius: 20px;
-	border: 1px solid ${theme.colors.gray.$4};
 	overflow: hidden;
 
 	${Ellipsis} {

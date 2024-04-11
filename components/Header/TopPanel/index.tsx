@@ -40,7 +40,7 @@ export const TopPanelBlock = ({ show }: { show?: boolean }) => {
 			>
 				<div>{content && content.content}</div>
 			</InfoBlock>
-			<Container grid gap={8} spaceBetween center>
+			<Container $grid $gap={8} $spaceBetween $center>
 				<TopPanelItem
 					onSend={handleClick}
 					icon="location"

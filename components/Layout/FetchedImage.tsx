@@ -1,9 +1,9 @@
 import Image, { ImageProps } from 'next/image';
-import { FC, useState } from 'react';
+import { FC, UIEvent, useState } from 'react';
 import styled from 'styled-components';
 
-import { Preloader } from '@/components/Layout/Preloader';
-import { Ellipsis } from '@/components/Layout/Preloader/styled';
+import { Preloader } from '@/components/ui/Preloader';
+import { Ellipsis } from '@/components/ui/Preloader/styled';
 
 export const WrapperFetchedImage = styled.div`
 	position: relative;
@@ -31,23 +31,24 @@ const ImageStyled = styled(Image)`
 	}
 `;
 
-export const FetchedImage: FC<ImageProps> = ({ className, ...props }) => {
+export const FetchedImage: FC<ImageProps & { light?: boolean }> = ({
+	className,
+	light,
+	...props
+}) => {
 	const [loaded, setLoaded] = useState(false);
 
-	const eventLoaded = (image: HTMLImageElement) => {
+	const eventLoaded = (e: UIEvent<HTMLImageElement>) => {
+		const image = e.currentTarget;
+
 		image.classList.add('loaded');
 		setLoaded((prev) => !prev);
 	};
 
 	return (
 		<WrapperFetchedImage {...{ className }}>
-			{!loaded && <Preloader />}
-			<ImageStyled
-				{...props}
-				placeholder="empty"
-				loading="lazy"
-				onLoadingComplete={eventLoaded}
-			/>
+			{!loaded && <Preloader {...{ light }} />}
+			<ImageStyled {...props} onLoad={eventLoaded} />
 		</WrapperFetchedImage>
 	);
 };

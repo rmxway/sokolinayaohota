@@ -1,8 +1,11 @@
 import 'styled-components';
 
+type Gradient = (deg?: string) => string;
+
 interface Colors {
 	solid: {
 		primary: string;
+		secondary: string;
 		success: string;
 		danger: string;
 		disabled: string;
@@ -22,11 +25,12 @@ interface Colors {
 		$9: string;
 	};
 	gradients: {
-		golden: (deg?: string) => string;
-		brown: (deg?: string) => string;
-		rubin: (deg?: string) => string;
-		disabled: (deg?: string) => string;
-		black: (deg?: string) => string;
+		golden: Gradient;
+		brown: Gradient;
+		rubin: Gradient;
+		disabled: Gradient;
+		black: Gradient;
+		black2: Gradient;
 	};
 }
 

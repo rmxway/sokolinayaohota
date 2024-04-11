@@ -24,7 +24,7 @@ export const TopPanelSC = styled(motion.div)<{$isMainPage?: boolean}>`
 
 	a,
 	& {
-		color: ${theme.colors.solid.brown};
+		color: ${theme.colors.solid.secondary};
 	}
 
 	${props => props.$isMainPage && css`

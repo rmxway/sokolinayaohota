@@ -7,13 +7,13 @@ module.exports = {
 	extends: [
 		'airbnb',
 		'plugin:import/recommended',
+		'plugin:@next/next/recommended',
 		'plugin:import/typescript',
 		'plugin:@typescript-eslint/eslint-recommended',
 		'plugin:@typescript-eslint/recommended',
 		'prettier',
 		'plugin:react/recommended',
 		'plugin:react-hooks/recommended',
-		'next/core-web-vitals',
 		'plugin:storybook/recommended',
 	],
 	plugins: [
@@ -22,7 +22,6 @@ module.exports = {
 		'simple-import-sort',
 		'prettier',
 		'react',
-		'react-hooks',
 		'import',
 	],
 	globals: {
@@ -30,6 +29,8 @@ module.exports = {
 		SharedArrayBuffer: 'readonly',
 	},
 	parserOptions: {
+		project: true,
+		tsconfigRootDir: __dirname,
 		ecmaFeatures: {
 			jsx: true,
 		},
@@ -41,9 +42,10 @@ module.exports = {
 		'no-shadow': 'off',
 		'no-plusplus': 'off',
 		'no-new': 'off',
-		camelcase: 'off',
+		camelcase: 1,
+		'no-console': 1,
 		'react/react-in-jsx-scope': 'off',
-		'react/display-name': 'error',
+		'react/display-name': 'off',
 		'no-underscore-dangle': 'off',
 		'simple-import-sort/imports': 'error',
 		'simple-import-sort/exports': 'error',
@@ -57,7 +59,18 @@ module.exports = {
 				devDependencies: true,
 			},
 		],
+		'import/no-named-as-default': 'error',
+		'import/extensions': [
+			'error',
+			'ignorePackages',
+			{
+				ts: 'never',
+				tsx: 'never',
+			},
+		],
+		'import/prefer-default-export': 'off',
 		'@typescript-eslint/no-shadow': 'error',
+		'@typescript-eslint/await-thenable': 1,
 		'unused-imports/no-unused-imports': 'error',
 		'unused-imports/no-unused-vars': [
 			'warn',
@@ -68,13 +81,11 @@ module.exports = {
 				argsIgnorePattern: '^_',
 			},
 		],
-		'import/no-named-as-default': 'error',
-		'import/extensions': [
+		'prefer-destructuring': [
 			'error',
-			'ignorePackages',
 			{
-				ts: 'never',
-				tsx: 'never',
+				object: true,
+				array: false,
 			},
 		],
 		'react/jsx-filename-extension': [
@@ -84,7 +95,7 @@ module.exports = {
 			},
 		],
 		'react/function-component-definition': [
-			'error',
+			'off',
 			{
 				namedComponents: 'arrow-function',
 				unnamedComponents: 'arrow-function',
@@ -92,6 +103,7 @@ module.exports = {
 		],
 		'react/jsx-props-no-spreading': 'off',
 		'react/require-default-props': 'off',
+		'react/prop-types': 'off',
 	},
 	settings: {
 		'import/resolver': {

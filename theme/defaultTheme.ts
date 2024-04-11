@@ -10,20 +10,21 @@ const defaultTheme: DefaultTheme = {
 	name: 'default',
 	colors: {
 		solid: {
-			primary: '#FFDE7D',
+			primary: '#FFDB70',
+			secondary: '#26221C',
 			success: '#079404',
 			danger: '#FF4773',
-			disabled: '#958888',
+			disabled: '#8C8882',
 			brown: '#42210B',
 			white: '#FFFFFF',
-			base: '#222',
+			base: '#26221C',
 		},
 		gray: {
-			$1: '#f7f7f7',
-			$2: '#ececec',
-			$3: '#cdcdcd',
-			$4: '#bebebe',
-			$5: '#a5a5a5',
+			$1: '#F7F7F7',
+			$2: '#ECECEC',
+			$3: '#CDCDCD',
+			$4: '#BEBEBE',
+			$5: '#A5A5A5',
 			$6: '#747474',
 			$7: '#595959',
 			$8: '#434343',
@@ -31,15 +32,17 @@ const defaultTheme: DefaultTheme = {
 		},
 		gradients: {
 			golden: (deg = '180deg') =>
-				`linear-gradient(${deg}, #FFDE7D, #EDB97C)`,
+				`linear-gradient(${deg}, #FFDE7D, #FDC087)`,
 			brown: (deg = '180deg') =>
 				`linear-gradient(${deg}, #42210B, #5E361B)`,
 			rubin: (deg = '180deg') =>
 				`linear-gradient(${deg}, #FF4773 0%, #F22E13 100%)`,
 			disabled: (deg = '180deg') =>
-				`linear-gradient(${deg}, #e8e8e8 0%, #cbc8c8 100%)`,
+				`linear-gradient(${deg}, #E8E8E8 0%, #CBC8C8 100%)`,
 			black: (deg = '180deg') =>
-				`linear-gradient(${deg}, #3b2d26 0%, #544740 100%)`,
+				`linear-gradient(${deg}, #1B1913 0%, #433F38 100%)`,
+			black2: (deg = '180deg') =>
+				`linear-gradient(${deg}, #34302D, #615E5C)`,
 		},
 	},
 	layout: {

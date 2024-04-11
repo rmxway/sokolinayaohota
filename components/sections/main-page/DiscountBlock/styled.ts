@@ -63,7 +63,7 @@ export const Discount = styled.div`
 	height: 128px;
 	border-radius: 200px;
 	margin: auto;
-	background-color: ${theme.colors.solid.brown};
+	background-image: ${theme.colors.gradients.black()};
 
 	& > div {
 		font-size: 3.5rem;

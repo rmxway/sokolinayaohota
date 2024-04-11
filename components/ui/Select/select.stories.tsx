@@ -1,21 +1,42 @@
-import { StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
+import { Formik } from 'formik';
 
 import { SelectUI } from '@/components/ui/Select';
 
-export default {
+const meta: Meta<typeof SelectUI> = {
 	title: 'Select',
 	component: SelectUI,
 	args: {
 		name: 'default',
-        values: ['Moscow', 'St. Petersburg', 'Voronezh'],
+		values: ['Moscow', 'St. Petersburg', 'Voronezh'],
 	},
 	tags: ['autodocs'],
 };
 
-type Story = StoryObj<typeof SelectUI>;
+export default meta;
 
-export const Default: Story = {
+type Select = StoryObj<typeof SelectUI>;
+
+export const Default: Select = {
 	args: {
 		placeholder: 'Placeholder',
 	},
+	decorators: [
+		(Story) => (
+			<div style={{ height: '150px' }}>
+				<Story />
+			</div>
+		),
+	],
+	render: () => (
+		<Formik initialValues={{ event: '' }} onSubmit={() => undefined}>
+			<SelectUI
+				type="text"
+				id="event"
+				name="event"
+				values={['Свадьба', 'День рождения', 'Вечеринка']}
+				placeholder="Событие *"
+			/>
+		</Formik>
+	),
 };

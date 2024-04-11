@@ -1,6 +1,6 @@
 import { useScroll } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 
 import { SvgIcon } from '@/components';
 import { Container, Grid, Title } from '@/components/Layout';
@@ -18,32 +18,33 @@ import { Banner, BannerImage, Header, Wrapper } from './styled';
 import { TopPanelBlock } from './TopPanel';
 
 const HeaderBlock: FC = () => {
-	const { state, dispatch } = useStore();
+	const [showHeader, setShowHeader] = useState(true);
+	const prevScrollY = useRef<number>(0);
 	const router = useRouter();
 	const { scrollY } = useScroll();
-	const [showHeader, setShowHeader] = useState(true);
-	const [prevScrollY, setPrevScrollY] = useState(0);
+	const { state, dispatch } = useStore();
 
 	useEffect(() => {
 		const documentScrollY = () => {
 			const current = Number(scrollY.get());
-			setPrevScrollY(Number(scrollY.get()));
 
 			if (
-				prevScrollY > 300 &&
+				prevScrollY.current > 300 &&
 				window?.outerWidth <= Number(jsBreakpoints.md)
 			) {
-				setShowHeader(prevScrollY > current);
+				setShowHeader(prevScrollY.current > current);
 			} else {
 				setShowHeader(true);
 			}
+
+			prevScrollY.current = current;
 		};
 		document.addEventListener('scroll', documentScrollY);
 
 		return () => {
 			document.removeEventListener('scroll', documentScrollY);
 		};
-	}, [scrollY, prevScrollY]);
+	}, [scrollY]);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -67,13 +68,13 @@ const HeaderBlock: FC = () => {
 						},
 					}}
 				>
-					<Container grid center spaceBetween>
+					<Container $grid $center $spaceBetween>
 						<Logo />
-						<Grid align="center" justify="space-between" $w100>
+						<Grid $align="center" $justify="space-between" $w100>
 							<Navbar />
 							<ButtonUI
-								danger
-								mobile
+								$danger
+								$mobile
 								onClick={() =>
 									dispatch(actionChangeModal('order'))
 								}
@@ -87,7 +88,7 @@ const HeaderBlock: FC = () => {
 				{isMainPage(router) ? (
 					<>
 						<Banner>
-							<Container grid gap={40} direction="row" center>
+							<Container $grid $gap={40} $direction="row" $center>
 								<Title color="white">
 									Роскошные банкетные залы <br />
 									для проведения вашего мероприятия
@@ -105,10 +106,11 @@ const HeaderBlock: FC = () => {
 						<BannerImage
 							src={bannerImage}
 							alt="banner-image"
-							fill
-							quality={isMainPage(router) ? 20 : 1}
+							quality={20}
 							placeholder="blur"
-							priority={isMainPage(router)}
+							blurDataURL={bannerImage.blurDataURL}
+							priority
+							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 						/>
 					</>
 				) : null}

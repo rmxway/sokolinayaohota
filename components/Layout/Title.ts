@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { defaultTheme as theme } from '@/theme';
-import { media } from '@/theme/media';
+import { defaultTheme as theme, media } from '@/theme';
 
 type TitleType = {
 	color?: keyof typeof theme.colors.solid;
@@ -18,7 +17,7 @@ export const Title = styled(motion.div)<TitleType>`
 	font-weight: 600;
 	line-height: 1;
 	font-size: ${(props) => props.size || '3.5rem'};
-	color: ${(props) => theme.colors.solid[props.color || 'brown']};
+	color: ${(props) => theme.colors.solid[props.color || 'secondary']};
 	margin: 0;
 
 	span {

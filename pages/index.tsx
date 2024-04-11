@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { lazy, Suspense } from 'react';
 
 import {
@@ -8,29 +8,29 @@ import {
 	QuestionType,
 } from '@/@types/types';
 import { getTitle, HeadPage } from '@/components/HeadPage';
-import { PageLoader } from '@/components/Layout';
+import { PageLoader } from '@/components/ui';
 import { fetchApi } from '@/services/variable';
 
 const ContactsBlock = lazy(
-	() => import('@/components/sections/main-page/ContactsBlock')
+	() => import('@/components/sections/main-page/ContactsBlock'),
 );
 const InfoBlock = lazy(
-	() => import('@/components/sections/main-page/InfoBlock')
+	() => import('@/components/sections/main-page/InfoBlock'),
 );
 const DiscountBlock = lazy(
-	() => import('@/components/sections/main-page/DiscountBlock')
+	() => import('@/components/sections/main-page/DiscountBlock'),
 );
 const GalleryBlock = lazy(
-	() => import('@/components/sections/main-page/GalleryBlock')
+	() => import('@/components/sections/main-page/GalleryBlock'),
 );
 const PresentBanner = lazy(
-	() => import('@/components/sections/main-page/PresentBanner')
+	() => import('@/components/sections/main-page/PresentBanner'),
 );
 const Questions = lazy(
-	() => import('@/components/sections/main-page/Questions')
+	() => import('@/components/sections/main-page/Questions'),
 );
 const SliderBlock = lazy(
-	() => import('@/components/sections/main-page/SliderBlock')
+	() => import('@/components/sections/main-page/SliderBlock'),
 );
 const WhyAreWe = lazy(() => import('@/components/sections/main-page/WhyAreWe'));
 
@@ -48,16 +48,14 @@ type MainPageProps = {
 };
 
 export const getServerSideProps = async (
-	ctx: GetServerSidePropsContext
-): Promise<{
-	props: MainPageProps;
-}> => {
+	ctx: GetServerSidePropsContext,
+): Promise<{ props: MainPageProps }> => {
 	let errorMessage: string | undefined = '';
 
 	const mainPageData = fetch(fetchApi('main-page-data'));
 
 	const data = await mainPageData
-		.then((resp) => resp.json())
+		.then((resp) => resp?.json())
 		.catch((e) => {
 			errorMessage = e.message;
 		});
@@ -71,20 +69,20 @@ export const getServerSideProps = async (
 	};
 };
 
-export const MainPage: NextPage<MainPageProps> = ({ data, error, title }) => (
-	<>
-		<HeadPage title={title} />
-		<Suspense fallback={<PageLoader />}>
-			<InfoBlock />
-			<SliderBlock data={data?.mainSlides} {...{ error }} />
-			<PresentBanner />
-			<WhyAreWe data={data?.advantages} {...{ error }} />
-			<GalleryBlock data={data?.galleryImages} {...{ error }} />
-			<DiscountBlock />
-			<Questions data={data?.faqs} {...{ error }} />
-			<ContactsBlock />
-		</Suspense>
-	</>
-);
-
-export default MainPage;
+export default function Page({ data, error, title }: MainPageProps) {
+	return (
+		<>
+			<HeadPage title={title} />
+			<Suspense fallback={<PageLoader />}>
+				<InfoBlock />
+				<SliderBlock data={data?.mainSlides} {...{ error }} />
+				<PresentBanner />
+				<WhyAreWe data={data?.advantages} {...{ error }} />
+				<GalleryBlock data={data?.galleryImages} {...{ error }} />
+				<DiscountBlock />
+				<Questions data={data?.faqs} {...{ error }} />
+				<ContactsBlock />
+			</Suspense>
+		</>
+	);
+}

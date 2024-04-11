@@ -1,4 +1,3 @@
-import { NextPage } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -37,7 +36,7 @@ export const getServerSideProps = async ({ params }: { params: PathType }) => {
 		})) || [];
 
 	const currentHall: HallType | undefined = json?.halls.find(
-		(hall) => params.type === hall.tag
+		(hall) => params.type === hall.tag,
 	);
 
 	if (!currentHall) {
@@ -57,7 +56,7 @@ export const getServerSideProps = async ({ params }: { params: PathType }) => {
 	};
 };
 
-type HallsProps = {
+interface HallsProps {
 	params: PathType;
 	titles: {
 		title: string;
@@ -66,15 +65,15 @@ type HallsProps = {
 	currentHall: HallType;
 	error: string;
 	headTitle: string;
-};
+}
 
-export const Halls: NextPage<HallsProps> = ({
+export default function Halls({
 	params,
 	titles,
 	currentHall,
 	error,
 	headTitle,
-}) => {
+}: HallsProps) {
 	const [isLoaded, setLoaded] = useState(false);
 
 	useEffect(() => {
@@ -83,7 +82,7 @@ export const Halls: NextPage<HallsProps> = ({
 
 	if (error)
 		return (
-			<Container grid mt>
+			<Container $grid $mt>
 				<ErrorMessage message={error} />
 			</Container>
 		);
@@ -91,11 +90,11 @@ export const Halls: NextPage<HallsProps> = ({
 	return (
 		<>
 			<HeadPage title={headTitle} />
-			<MainBlock grid gap={40}>
+			<MainBlock $grid $gap={40}>
 				<Sidebar>
 					<p>Все залы:</p>
 
-					<Grid direction="row" gap={12}>
+					<Grid $direction="row" $gap={12}>
 						{titles?.map(({ title, tag }) => (
 							<Link
 								href={`/halls/${tag}`}
@@ -111,13 +110,13 @@ export const Halls: NextPage<HallsProps> = ({
 				<HallsPage {...currentHall} {...{ isLoaded }} />
 			</MainBlock>
 			<FormBlock>
-				<Container grid direction="column" gap={40}>
-					<Grid gap={20} direction="row">
-						<Grid gap={20} direction="column" align="center">
+				<Container $grid $direction="column" $gap={40}>
+					<Grid $gap={20} $direction="row">
+						<Grid $gap={20} $direction="column" $align="center">
 							<Icon icon="secure" size={40} />
 							<Title color="primary">Бронирование</Title>
 						</Grid>
-						<Grid gap={20} direction="row">
+						<Grid $gap={20} $direction="row">
 							<span className="info">
 								Отправьте заявку на проведение мероприятия, и
 								наши специалисты подберут для вас самые лучшие
@@ -138,6 +137,4 @@ export const Halls: NextPage<HallsProps> = ({
 			</FormBlock>
 		</>
 	);
-};
-
-export default Halls;
+}

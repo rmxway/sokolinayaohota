@@ -6,18 +6,18 @@ import logoImage2x from '@/public/assets/img/logo-2x.png';
 
 import { LogoText, LogoWrapper } from './styled';
 
-type LogoTypeProps = {
+interface LogoTypeProps {
 	href?: string;
-};
+}
 
 const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
 	<LogoWrapper href={href}>
-		<Grid align="center" gap={12}>
+		<Grid $align="center" $gap={12}>
 			<Image
 				src={logoImage2x}
 				quality={70}
 				alt="Logo"
-				priority
+				placeholder="empty"
 			/>
 			<LogoText>
 				Соколиная охота

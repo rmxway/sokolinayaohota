@@ -38,7 +38,7 @@ export const CategoryButton = styled.button<{ $active: boolean }>`
 	color: ${(props) =>
 		!props.$active
 			? theme.colors.solid.disabled
-			: theme.colors.solid.brown};
+			: theme.colors.solid.secondary};
 	cursor: pointer;
 	transition: all 0.2s;
 `;

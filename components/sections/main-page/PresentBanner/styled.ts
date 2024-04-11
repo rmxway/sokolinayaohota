@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 	
 	background-size: cover;
 	background-position: center;
-	color: ${theme.colors.solid.primary};
+	color: ${theme.colors.solid.white};
 	text-align: center;
 	padding: 80px 0;
 
@@ -21,8 +21,8 @@ export const Wrapper = styled.div`
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: ${theme.colors.solid.brown};
-		opacity: 0.83;
+		background-image: ${theme.colors.gradients.black('130deg')};
+		opacity: .93;
 	}
 
 	& > div {

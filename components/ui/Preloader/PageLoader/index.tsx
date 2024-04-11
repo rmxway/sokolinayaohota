@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Preloader } from '@/components/Layout/Preloader';
+import { Preloader } from '@/components/ui/Preloader';
 
 import { Wrapper } from '../styled';
 

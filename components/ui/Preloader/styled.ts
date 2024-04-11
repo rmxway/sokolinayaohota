@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { defaultTheme as theme, fadeIn } from '@/theme';
+import { fadeIn } from '@/theme';
 
 export const Wrapper = styled.div<{ $absolute?: boolean; $nodelay?: boolean }>`
 	position: ${(props) => (props.$absolute ? 'absolute' : 'fixed')};
@@ -19,7 +19,7 @@ export const Wrapper = styled.div<{ $absolute?: boolean; $nodelay?: boolean }>`
 	animation-delay: ${(props) => (props.$nodelay ? '0.1s' : '0.5s')};
 `;
 
-export const Ellipsis = styled.div`
+export const Ellipsis = styled.div<{ $light?: boolean }>`
 	display: inline-block;
 	position: relative;
 	width: 80px;
@@ -36,7 +36,8 @@ export const Ellipsis = styled.div`
 		width: 12px;
 		height: 12px;
 		border-radius: 50%;
-		background: ${theme.colors.solid.brown};
+		background: ${({ theme, $light }) =>
+			$light ? theme.colors.solid.primary : theme.colors.solid.secondary};
 		animation-timing-function: cubic-bezier(0, 1, 1, 0);
 
 		&:nth-child(1) {
