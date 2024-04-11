@@ -31,7 +31,7 @@ export const PresentBanner: FC = () => {
 					</p>
 					<p>Принимаем заказы на все залы!</p>
 				</div>
-				<SvgIcon name="BarDecor" color="primary" width="150px" />
+				<SvgIcon name="BarDecor" color="disabled" width="150px" />
 				<ButtonUI
 					$danger
 					$icon="arrow"

@@ -8,7 +8,7 @@ const meta: Meta<typeof SvgIcon> = {
 	title: 'SvgIcon',
 	component: SvgIcon,
 	args: {
-		color: 'brown',
+		color: 'secondary',
 		width: '400px',
 		inverse: false,
 	},

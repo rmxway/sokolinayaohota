@@ -18,7 +18,7 @@ export const Question: FC<QuestionType> = ({ answer, question, id }) => {
 			/>
 
 			<Grid $direction="column" $gap={20} $justify='space-between'>
-				<Title color="brown">{question}</Title>
+				<Title>{question}</Title>
 				<PlusMinus />
 			</Grid>
 			<Answer

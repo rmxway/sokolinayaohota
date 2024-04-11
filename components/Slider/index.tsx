@@ -106,8 +106,7 @@ export const Slider: FC<SliderProps> = memo(
 						<Icon icon="no-photo" size={55} color="disabled" />
 						<br />
 						<Title color="disabled" size="24px">
-							В данный момент изображений нет. <br />
-							Скоро появятся.
+							Фотографии временно не доступны
 						</Title>
 					</Flexbox>
 				)}

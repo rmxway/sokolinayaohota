@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { desaturate } from 'polished';
 import styled from 'styled-components';
 
 import { LogoText } from '@/components/Header/Logo/styled';
@@ -13,12 +12,8 @@ export const Wrapper = styled.div`
 	align-items: center;
 	gap: 40px;
 	text-align: center;
-	background-image: linear-gradient(
-		0deg,
-		${desaturate(0.35, theme.colors.solid.brown)} 0%,
-		#1c1c1c 95%
-	);
-	background-color: ${theme.colors.solid.brown};
+	background-image: ${theme.colors.gradients.black()};
+	background-color: ${theme.colors.solid.secondary};
 
 	color: white;
 	font-size: 1.25rem;

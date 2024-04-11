@@ -42,7 +42,7 @@ export const Info = styled.div`
 	position: relative;
 	display: flex;
 	width: 500px;
-	color: ${theme.colors.solid.brown};
+	color: ${theme.colors.solid.secondary};
 	padding-bottom: 72px;
 
 	.swiper {
@@ -180,11 +180,11 @@ export const Controllers = styled.div`
 			height: 10px;
 			opacity: 1;
 			background: none;
-			border: 1px solid ${theme.colors.solid.brown};
+			border: 1px solid ${theme.colors.solid.secondary};
 		}
 
 		.swiper-pagination-bullet-active {
-			background: ${theme.colors.solid.brown};
+			background: ${theme.colors.solid.secondary};
 		}
 	}
 

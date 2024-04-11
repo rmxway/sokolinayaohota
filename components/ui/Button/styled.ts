@@ -12,6 +12,8 @@ interface CommonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	/** Style */
 	$primary: boolean;
 	/** Style */
+	$secondary: boolean;
+	/** Style */
 	$brown: boolean;
 	/** Style */
 	$danger: boolean;
@@ -63,6 +65,7 @@ const Button = styled.button<ButtonProps>`
 		$margins,
 		$mobile,
 		$primary,
+		$secondary,
 		$success,
 		$w100,
 	}) => css`
@@ -76,7 +79,7 @@ const Button = styled.button<ButtonProps>`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: ${theme.colors.solid.brown};
+		color: ${theme.colors.solid.secondary};
 		font-family: ${theme.layout.fonts.header};
 		font-size: 1.25rem;
 		line-height: 0;
@@ -104,6 +107,11 @@ const Button = styled.button<ButtonProps>`
 				return mixinButton(
 					theme.colors.gradients.golden(),
 					theme.colors.solid.brown,
+				);
+			if ($secondary)
+				return mixinButton(
+					theme.colors.gradients.black(),
+					theme.colors.solid.white,
 				);
 			if ($brown)
 				return mixinButton(

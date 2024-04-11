@@ -40,7 +40,7 @@ export const Sidebar = styled.div`
 
 		&:hover,
 		&.active {
-			color: ${theme.colors.solid.brown};
+			color: ${theme.colors.solid.secondary};
 		}
 	}
 
@@ -176,7 +176,7 @@ export const HallAdvantages = styled.div`
 	width: 100%;
 	background-image: ${theme.colors.gradients.golden('-45deg')};
 	border-radius: ${theme.radius.blockRadius};
-	color: ${theme.colors.solid.brown};
+	color: ${theme.colors.solid.secondary};
 	overflow: hidden;
 
 	${CommonStyles}

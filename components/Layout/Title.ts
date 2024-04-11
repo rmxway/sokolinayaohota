@@ -17,7 +17,7 @@ export const Title = styled(motion.div)<TitleType>`
 	font-weight: 600;
 	line-height: 1;
 	font-size: ${(props) => props.size || '3.5rem'};
-	color: ${(props) => theme.colors.solid[props.color || 'brown']};
+	color: ${(props) => theme.colors.solid[props.color || 'secondary']};
 	margin: 0;
 
 	span {

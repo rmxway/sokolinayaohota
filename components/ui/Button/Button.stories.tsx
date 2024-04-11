@@ -26,6 +26,13 @@ export const Primary: Button = {
 	},
 };
 
+export const Secondary: Button = {
+	args: {
+		$secondary: true,
+		children: 'Secondary',
+	},
+};
+
 export const Danger: Button = {
 	args: {
 		$danger: true,

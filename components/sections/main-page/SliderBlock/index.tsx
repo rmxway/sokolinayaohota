@@ -107,7 +107,6 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 														? 'visible'
 														: 'hidden'
 												}
-												color="brown"
 											>
 												{title}
 											</Title>

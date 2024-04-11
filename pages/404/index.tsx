@@ -11,7 +11,7 @@ export default function Error() {
 	return (
 		<ErrorWrapper>
 			<span>404</span>
-			<SvgIcon name="BarDecor" width="200" color="brown" />
+			<SvgIcon name="BarDecor" width="200" />
 			Страница не найдена
 			<Link href="/">
 				<ButtonUI $brown>Перейти на главную</ButtonUI>

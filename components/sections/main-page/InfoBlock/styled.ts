@@ -6,7 +6,7 @@ import { defaultTheme as theme, media } from '@/theme';
 export const InfoBlockWrapper = styled.div`
 	position: relative;
 	padding: 40px 0;
-	border-top: 20px solid ${theme.colors.solid.brown}15;
+	border-top: 20px solid ${theme.colors.solid.secondary}15;
 	border-bottom: 20px solid ${theme.colors.solid.primary}55;
 	overflow: hidden;
 
@@ -42,20 +42,20 @@ export const Item = styled.div<{ $border: boolean }>`
 
 	&,
 	* {
-		color: ${theme.colors.solid.brown};
+		color: ${theme.colors.solid.secondary};
 	}
 
 	${(props) =>
 		props.$border &&
 		css`
-			border-left: 2px solid ${theme.colors.solid.brown}22;
-			border-right: 2px solid ${theme.colors.solid.brown}22;
+			border-left: 2px solid ${theme.colors.solid.secondary}22;
+			border-right: 2px solid ${theme.colors.solid.secondary}22;
 
 			${media.lessThan('sm')`
 					border: none;
 					padding: 40px 0;
-					border-top: 2px solid ${theme.colors.solid.brown}22;
-					border-bottom: 2px solid ${theme.colors.solid.brown}22;
+					border-top: 2px solid ${theme.colors.solid.secondary}22;
+					border-bottom: 2px solid ${theme.colors.solid.secondary}22;
 				`}
 		`}
 
