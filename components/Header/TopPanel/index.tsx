@@ -24,7 +24,7 @@ export const TopPanelBlock = ({ show }: { show?: boolean }) => {
 		<TopPanelSC
 			$isMainPage={isMainPage(router)}
 			animate={{
-				bottom: show ? 0 : '-100px',
+				bottom: show ? 0 : '-120px',
 				transition: {
 					type: 'tween',
 					delay: 0.2,

@@ -1,4 +1,4 @@
-import { Icon, SvgIcon } from '@/components';
+import { Icon } from '@/components';
 import { Logo } from '@/components/Header/Logo';
 import { Container, Grid, Title } from '@/components/Layout';
 import { useStore } from '@/hooks';
@@ -21,12 +21,6 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 	return (
 		<Wrapper>
 			<Container $grid $gap={40} $direction="row" $center>
-				<SvgIcon
-					name="BarDecor"
-					color="primary"
-					width="150px"
-					inverse
-				/>
 				<Title color="primary">
 					Как с нами <span>связаться ?</span>
 				</Title>
@@ -74,10 +68,7 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 				</MapWrapper>
 
 				<Logo />
-				<Copyright>
-					sokolinayaohota.ru ®{' '}
-					{state.year || new Date().getFullYear()}
-				</Copyright>
+				<Copyright>sokolinayaohota.ru ® {state?.year}</Copyright>
 			</Container>
 		</Wrapper>
 	);

@@ -82,7 +82,7 @@ const Button = styled.button<ButtonProps>`
 		color: ${theme.colors.solid.secondary};
 		font-family: ${theme.layout.fonts.header};
 		font-size: 1.25rem;
-		line-height: 0;
+		line-height: 1;
 		font-weight: 400;
 		text-transform: uppercase;
 		font-style: normal;

@@ -17,9 +17,9 @@ export type InitialStateType = {
 export type DispatchType = React.Dispatch<{ type: string; payload: string }>;
 
 export const initialState = {
-	modal: '',
+	modal: '',	
 	topPanel: '',
-	year: 2024,
+	year: new Date().getFullYear(),
 };
 
 type InitialContextType = {
