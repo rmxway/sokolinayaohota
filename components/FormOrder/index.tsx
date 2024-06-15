@@ -1,3 +1,5 @@
+'use client';
+
 import { Formik, FormikValues } from 'formik';
 import { FC, useState } from 'react';
 
@@ -67,7 +69,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 				>
 					<Grid
 						$direction="row"
-						$justify='stretch'
+						$justify="stretch"
 						$gap={20}
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
@@ -116,7 +118,12 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 							onBlur={handleBlur}
 							value={values.email}
 						/>
-						<ButtonUI $danger type="submit" disabled={!isValid} $w100>
+						<ButtonUI
+							$danger
+							type="submit"
+							disabled={!isValid}
+							$w100
+						>
 							Отправить
 						</ButtonUI>
 					</Grid>

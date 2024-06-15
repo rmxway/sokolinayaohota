@@ -2,7 +2,7 @@ import { ImageBackground } from '@/components';
 import { FormOrder } from '@/components/FormOrder';
 import { Container, Grid, Title } from '@/components/Layout';
 import imageBack from '@/public/assets/img/discount-2.webp';
-import { fetchApi } from '@/services/variable';
+import { apiUrl } from '@/services/variable';
 
 import { Discount, Wrapper } from './styled';
 
@@ -23,7 +23,7 @@ export const DiscountBlock = () => (
 			</Grid>
 			<FormOrder
 				name="discount-form"
-				fetchUrl={fetchApi('send-user-request')}
+				fetchUrl={apiUrl('send-user-request')}
 			/>
 		</Container>
 		<ImageBackground image={imageBack} quality={50} />

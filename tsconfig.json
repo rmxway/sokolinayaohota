@@ -20,19 +20,26 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./*"],
+			"@/app/*": ["./app/*"],
 			"@/public/*": ["./public/*"],
 			"@/components/*": ["./components/*"],
-			"@/pages/*": ["./pages/*"],
 			"@/theme/*": ["./theme/*"],
+			"@/lib/*": ["./lib/*"],
 			"@/mock/*": ["./mock/*"]
-		}
+		},
+		"plugins": [
+			{
+				"name": "next"
+			}
+		]
 	},
 	"include": [
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		".eslintrc.js",
-		"**/*.js"
+		"**/*.js",
+		".next/types/**/*.ts"
 	],
 	"exclude": ["node_modules", ".vscode"]
 }

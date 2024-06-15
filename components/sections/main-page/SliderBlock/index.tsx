@@ -1,3 +1,5 @@
+'use client';
+
 import { LayoutGroup, motion } from 'framer-motion';
 import Link from 'next/link';
 import { FC, memo, useRef, useState } from 'react';

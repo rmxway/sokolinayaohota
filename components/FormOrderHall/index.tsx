@@ -1,6 +1,5 @@
-import { Formik, FormikValues, useFormikContext } from 'formik';
-import { useRouter } from 'next/router';
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
+import { Formik, FormikValues } from 'formik';
+import { useState } from 'react';
 
 import { Grid } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
@@ -14,35 +13,6 @@ import { validationSchema } from './validationSchema';
 type FormOrderProps = {
 	fetchUrl?: string;
 	name: string;
-};
-
-type AutoResetFormProps = {
-	setIsComplete: Dispatch<SetStateAction<boolean>>;
-	isComplete: boolean;
-};
-
-const AutoResetForm: FC<AutoResetFormProps> = ({
-	setIsComplete,
-	isComplete,
-}) => {
-	const router = useRouter();
-	const { resetForm, validateForm } = useFormikContext();
-
-	useEffect(() => {
-		const handlePageChange = (lastPath: string) => {
-			if (lastPath === router.asPath || !isComplete) return;
-			setIsComplete(false);
-			resetForm();
-			validateForm();
-		};
-		router.events.on('routeChangeStart', handlePageChange);
-
-		return () => {
-			router.events.off('routeChangeStart', handlePageChange);
-		};
-	}, [isComplete, resetForm, router, setIsComplete, validateForm]);
-
-	return null;
 };
 
 export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
@@ -207,10 +177,10 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 							</ButtonUI>
 						</>
 					) : null}
-					<AutoResetForm
+					{/* <AutoResetForm
 						setIsComplete={setIsComplete}
 						isComplete={isComplete}
-					/>
+					/> */}
 
 					{isComplete && (
 						<FinalText

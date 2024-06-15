@@ -1,3 +1,5 @@
+'use client';
+
 import Image, { ImageProps } from 'next/image';
 import { FC, UIEvent, useState } from 'react';
 import styled from 'styled-components';

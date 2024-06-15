@@ -1,5 +1,7 @@
+'use client';
+
 import { useMotionValueEvent, useScroll } from 'framer-motion';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { FC, useRef, useState } from 'react';
 
 import { SvgIcon } from '@/components';
@@ -20,7 +22,7 @@ import { TopPanelBlock } from './TopPanel';
 const HeaderBlock: FC = () => {
 	const [showHeader, setShowHeader] = useState(true);
 	const prevScrollY = useRef<number>(0);
-	const router = useRouter();
+	const path = usePathname() || '';
 	const { scrollY } = useScroll();
 	const { state, dispatch } = useStore();
 
@@ -39,7 +41,7 @@ const HeaderBlock: FC = () => {
 
 	return (
 		<>
-			<Wrapper id="header" $isMainPage={isMainPage(router)}>
+			<Wrapper id="header" $isMainPage={isMainPage(path)}>
 				<TopPanelBlock show={showHeader} />
 				<Header
 					initial={{ top: 0 }}
@@ -69,7 +71,7 @@ const HeaderBlock: FC = () => {
 					</Container>
 				</Header>
 
-				{isMainPage(router) ? (
+				{isMainPage(path) ? (
 					<>
 						<Banner>
 							<Container $grid $gap={40} $direction="row" $center>

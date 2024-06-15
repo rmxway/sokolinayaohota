@@ -1,3 +1,5 @@
+'use client';
+
 import { FC, useState } from 'react';
 
 import { QuestionType } from '@/@types/types';
@@ -17,7 +19,7 @@ export const Question: FC<QuestionType> = ({ answer, question, id }) => {
 				onChange={() => setChecked((prev) => !prev)}
 			/>
 
-			<Grid $direction="column" $gap={20} $justify='space-between'>
+			<Grid $direction="column" $gap={20} $justify="space-between">
 				<Title>{question}</Title>
 				<PlusMinus />
 			</Grid>
