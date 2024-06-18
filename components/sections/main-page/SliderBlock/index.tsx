@@ -84,7 +84,9 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 		return (
 			<Wrapper>
 				<Container $grid>
-					<ErrorMessage message={!data ? 'Данные не найдены' : error} />
+					<ErrorMessage
+						message={!data ? 'Данные не найдены' : error}
+					/>
 				</Container>
 			</Wrapper>
 		);

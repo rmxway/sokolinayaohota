@@ -4,7 +4,7 @@ export const isDev = process.env.NODE_ENV === 'development';
 
 export const isProd = !isDev;
 
-export const prefixImages = 'img/';
+export const prefixImages = '';
 
 export const isMainPage = (path: string) => path.search(regexpPath) === -1;
 

@@ -22,6 +22,7 @@ export type GalleryImageType = {
 
 export type MainSliderType = {
 	title: string;
+	order: number;
 	description: string;
 	tag: ImageCategory;
 	images: GalleryImageType[];
@@ -31,10 +32,11 @@ export type MainSliderType = {
 
 export type HallType = {
 	name: string;
+	order: number;
 	advantages: string[];
 	description: string[];
 	images?: GalleryImageType[];
-	video?: string[];
+	video?: string[] | null;
 	tag: HallsTypes;
 	isLoaded?: boolean;
 };
@@ -55,7 +57,7 @@ export type AdvantageType = {
 // Question
 
 export type QuestionType = {
-	id?: string;
+	id?: number;
 	question?: string;
 	answer?: string;
 };

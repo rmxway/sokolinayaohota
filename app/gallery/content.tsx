@@ -30,13 +30,9 @@ export type CategoryItem = {
 	name: string;
 };
 
-export interface GalleryItem extends GalleryImageType {
-	id: number;
-}
-
 export interface GalleryPageProps {
 	categories: CategoryItem[];
-	images: GalleryItem[];
+	images: GalleryImageType[];
 	error: string;
 }
 

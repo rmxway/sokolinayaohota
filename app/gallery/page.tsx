@@ -1,13 +1,9 @@
 import { Metadata } from 'next';
 
+import { GalleryImageType } from '@/@types/types';
 import { apiUrl } from '@/services/variable';
 
-import {
-	CategoryItem,
-	GalleryContent,
-	GalleryItem,
-	GalleryPageProps,
-} from './content';
+import { CategoryItem, GalleryContent, GalleryPageProps } from './content';
 
 export const metadata: Metadata = {
 	title: 'Gallery',
@@ -24,12 +20,7 @@ export const getImages = async (): Promise<GalleryPageProps> => {
 		});
 
 	const categories: CategoryItem[] = json?.categories || [];
-	categories.unshift({
-		tag: 'all',
-		name: 'Все',
-	});
-
-	const images: GalleryItem[] = json?.images || [];
+	const images: GalleryImageType[] = json?.images || [];
 
 	return {
 		categories,
