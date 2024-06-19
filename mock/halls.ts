@@ -4,31 +4,138 @@ export const halls: HallType[] = [
 	{
 		name: 'Большой зал',
 		tag: 'big-hall',
+		order: 1,
 		advantages: [
 			'Вместительный зал до 200 посадочных мест',
 			'Оборудованная сцена, свет, звук',
 			'Свадебный трон',
 			'Подходит для крупномасштабного мероприятия',
+			'Бесплатная парковка',
 		],
 		description: [
-			'Dolor sit amet, consectetur adipisicing elit. Odit obcaecati id alias inventore facilis explicabo magnam labore reprehenderit, laboriosam itaque, modi nulla expedita adipisci non ex consequatur iusto, sequi aperiam.',
-			'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit obcaecati id alias inventore facilis explicabo magnam labore reprehenderit, laboriosam itaque, modi nulla expedita adipisci non ex consequatur iusto, sequi aperiam.',
+			'Большой зал - самый вместительный зал ресторана Соколиная охота позволяющий с комфортом разместить до 200 гостей для банкета. Замечательно подходит для организации средних и крупных мероприятий, для организации свадеб, банкетов, корпоративных мероприятий. К услугам гостей предлагается широкий выбор блюд русской, азербайджанской, грузинской и европейской кухонь.',
+			'Есть всё необходимое для организации праздничного выступления - своя оборудованная сцена, свет, звук. Во всех залах комплекса Соколиная охота проведен капитальный ремонт и обновление в 2023 году. ',
 		],
-		video: ['https://video-on-youtube'],
+		images: [
+			{
+				id: 6,
+				alt: '6',
+				url: '/assets/img/gallery/big-hall/1.jpg',
+				tag: 'big-hall',
+			},
+			{
+				id: 7,
+				alt: '7',
+				url: '/assets/img/gallery/big-hall/2.jpg',
+				tag: 'big-hall',
+			},
+			{
+				id: 8,
+				alt: '8',
+				url: '/assets/img/gallery/big-hall/3.jpg',
+				tag: 'big-hall',
+			},
+			{
+				id: 9,
+				alt: '9',
+				url: '/assets/img/gallery/big-hall/4.jpg',
+				tag: 'big-hall',
+			},
+		],
+		video: null,
 	},
 	{
 		name: 'Малый зал',
 		tag: 'small-hall',
+		order: 2,
 		advantages: [
-			'Оборудованная сцена, свет, звук',
-			'Свадебный трон',
-			'Подходит для крупномасштабного мероприятия',
-			'Вместительный зал до 200 посадочных мест',
+			'Вместительность до 120 посадочных мест',
+			'Звуковое оборудование',
+			'Отдельный вход и гардероб',
+			'Бесплатная парковка',
 		],
 		description: [
-			'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit obcaecati id alias inventore facilis explicabo magnam labore reprehenderit, laboriosam itaque, modi nulla expedita adipisci non ex consequatur iusto, sequi aperiam.',
-			'Dolor sit amet, consectetur adipisicing elit. Odit obcaecati id alias inventore facilis explicabo magnam labore reprehenderit, laboriosam itaque, modi nulla expedita adipisci non ex consequatur iusto, sequi aperiam.',
+			'Малый зал имеет совсем не маленькие размеры и готов принять до 120 персон для проведения банкета. Зал имеет отдельный вход и гардероб. Предоставляется бесплатная парковка.',
+			'Во всех залах комплекса Соколиная охота проведен капитальный ремонт и обновление в 2023 году.',
 		],
+		images: [
+			{
+				id: 10,
+				alt: '10',
+				url: '/assets/img/gallery/small-hall/1.jpg',
+				tag: 'small-hall',
+			},
+			{
+				id: 11,
+				alt: '11',
+				url: '/assets/img/gallery/small-hall/2.jpg',
+				tag: 'small-hall',
+			},
+			{
+				id: 12,
+				alt: '12',
+				url: '/assets/img/gallery/small-hall/3.jpg',
+				tag: 'small-hall',
+			},
+			{
+				id: 13,
+				alt: '13',
+				url: '/assets/img/gallery/small-hall/4.jpg',
+				tag: 'small-hall',
+			},
+			{
+				id: 14,
+				alt: '14',
+				url: '/assets/img/gallery/small-hall/5.jpg',
+				tag: 'small-hall',
+			},
+		],
+		video: null,
+	},
+	{
+		name: 'Соколиный дворик',
+		tag: 'falcon-yard',
+		order: 3,
+		advantages: [
+			'Вместительность до 70 посадочных мест в помещении',
+			'Собственный дворик на улице',
+			'Звуковое оборудование',
+			'Отдельный вход и гардероб',
+			'Бесплатная парковка',
+		],
+		description: [
+			'Соколиный дворик - зал с собственным внутренним двориком, со своим водопадом. Собственный дворик позволит разместить больше гостей и разнообразить отдых. В летнее время на территории дворика гости могут насладиться свежим воздухом, красотой и атмосферой парка Сокольники.',
+			'По Вашему желанию повара могут приготовить любое блюдо. Хорошее обслуживание и приветливый персонал создадут приятную атмосферу, будь то день рождения, семейный праздник или просто отдых после прогулки по парку. Предоставляется парковка.',
+			'Во всех залах комплекса Соколиная охота проведен капитальный ремонт и обновление в 2023 году.',
+		],
+		images: [
+			{
+				alt: '1',
+				url: '/assets/img/gallery/falcon-yard/1.jpg',
+				tag: 'falcon-yard',
+			},
+			{
+				alt: '2',
+				url: '/assets/img/gallery/falcon-yard/2.jpg',
+				tag: 'falcon-yard',
+			},
+			{
+				alt: '3',
+				url: '/assets/img/gallery/falcon-yard/3.jpg',
+				tag: 'falcon-yard',
+			},
+			{
+				alt: '4',
+				url: '/assets/img/gallery/falcon-yard/4.jpg',
+				tag: 'falcon-yard',
+			},
+			{
+				alt: '5',
+				url: '/assets/img/gallery/falcon-yard/5.jpg',
+				tag: 'falcon-yard',
+			},
+		],
+		video: ['https://www.youtube.com/embed/FD6WYalDMck'],
 	},
 ];
 

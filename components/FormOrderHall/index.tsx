@@ -1,6 +1,5 @@
-import { Formik, FormikValues, useFormikContext } from 'formik';
-import { useRouter } from 'next/router';
-import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
+import { Formik } from 'formik';
+import { useState } from 'react';
 
 import { Grid } from '@/components/Layout';
 import { ButtonUI, InputUI } from '@/components/ui';
@@ -16,45 +15,29 @@ type FormOrderProps = {
 	name: string;
 };
 
-type AutoResetFormProps = {
-	setIsComplete: Dispatch<SetStateAction<boolean>>;
-	isComplete: boolean;
-};
+interface FormHall {
+	name: string;
+	phone: string;
+	email: string;
+	event: string;
+	date: string;
+	countPeople: string;
+}
 
-const AutoResetForm: FC<AutoResetFormProps> = ({
-	setIsComplete,
-	isComplete,
-}) => {
-	const router = useRouter();
-	const { resetForm, validateForm } = useFormikContext();
-
-	useEffect(() => {
-		const handlePageChange = (lastPath: string) => {
-			if (lastPath === router.asPath || !isComplete) return;
-			setIsComplete(false);
-			resetForm();
-			validateForm();
-		};
-		router.events.on('routeChangeStart', handlePageChange);
-
-		return () => {
-			router.events.off('routeChangeStart', handlePageChange);
-		};
-	}, [isComplete, resetForm, router, setIsComplete, validateForm]);
-
-	return null;
-};
+export interface DataHall extends FormHall {
+	hall: string;
+}
 
 export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 	const [error, setError] = useState('');
 	const [isComplete, setIsComplete] = useState(false);
 
-	const onSubmit = async (values: FormikValues) => {
+	const onSubmit = async (values: FormHall) => {
 		const { phone } = values;
 
-		const data = {
-			phone: phone.replace(regexpFilterNumber, ''),
+		const data: DataHall = {
 			...values,
+			phone: phone.replace(regexpFilterNumber, ''),
 			hall: name,
 		};
 
@@ -206,13 +189,7 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 								Отправить
 							</ButtonUI>
 						</>
-					) : null}
-					<AutoResetForm
-						setIsComplete={setIsComplete}
-						isComplete={isComplete}
-					/>
-
-					{isComplete && (
+					) : (
 						<FinalText
 							variants={fadeInOut}
 							initial="start"

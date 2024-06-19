@@ -2,11 +2,11 @@ import { FC } from 'react';
 
 import { FormOrder } from '@/components/FormOrder';
 import { Modal, ModalProps } from '@/components/Modal';
-import { fetchApi } from '@/services/variable';
+import { apiUrl } from '@/services/variable';
 
 export const ModalFormOrder: FC<ModalProps> = ({ show, onClose }) => (
 	<Modal show={show} onClose={onClose} header="Заказать зал">
-		<FormOrder name="order-form" fetchUrl={fetchApi('send-user-request')} />
+		<FormOrder name="order-form" fetchUrl={apiUrl('send-user-request')} />
 	</Modal>
 );
 

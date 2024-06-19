@@ -1,3 +1,5 @@
+'use client';
+
 import {
 	createContext,
 	FC,
@@ -19,7 +21,7 @@ export type DispatchType = React.Dispatch<{ type: string; payload: string }>;
 export const initialState = {
 	modal: '',
 	topPanel: '',
-	year: 2024,
+	year: new Date().getFullYear(),
 };
 
 type InitialContextType = {
@@ -34,7 +36,7 @@ export const AppContext = createContext<InitialContextType>({
 
 export const reducer = (
 	state: InitialStateType,
-	action: { type: string; payload: string }
+	action: { type: string; payload: string },
 ) => {
 	switch (action.type) {
 		case CHANGE_MODAL:

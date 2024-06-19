@@ -4,6 +4,7 @@ import { Icon } from '@/components';
 import { Grid } from '@/components/Layout';
 import { useStore } from '@/hooks';
 import icofont from '@/public/assets/fonts/icofont/icofont.json';
+import { actionChangeTopPanel } from '@/store/actions';
 
 export interface TopPanelType {
 	icon: keyof typeof icofont;
@@ -15,13 +16,18 @@ interface CommonType extends TopPanelType {
 }
 
 export const TopPanelItem: FC<CommonType> = ({ icon, content, onSend }) => {
-	const { state } = useStore();
+	const { state, dispatch } = useStore();
 	const handleClick = () => {
 		if (onSend) onSend({ icon, content });
 	};
 
 	return (
-		<Grid $gap={8} $align="center" onClick={handleClick}>
+		<Grid
+			$gap={8}
+			$align="center"
+			onClick={handleClick}
+			onMouseLeave={() => dispatch(actionChangeTopPanel(''))}
+		>
 			<Icon
 				active
 				as="button"

@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 	gap: 20px;
 	text-align: center;
 	padding: 80px 0;
+	background-color: ${theme.colors.solid.base}55;
 
 	${Title} {
 		font-size: 4rem;
@@ -63,12 +64,12 @@ export const Discount = styled.div`
 	height: 128px;
 	border-radius: 200px;
 	margin: auto;
-	background-image: ${theme.colors.gradients.black()};
+	background-image: ${theme.colors.gradients.disabled()};
 
 	& > div {
 		font-size: 3.5rem;
 		font-family: ${theme.layout.fonts.header};
-		color: ${theme.colors.solid.primary};
+		color: ${theme.colors.solid.disabled};
 	}
 
 	${media.lessThan('lg')`

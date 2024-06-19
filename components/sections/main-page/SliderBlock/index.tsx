@@ -1,3 +1,5 @@
+'use client';
+
 import { LayoutGroup, motion } from 'framer-motion';
 import Link from 'next/link';
 import { FC, memo, useRef, useState } from 'react';
@@ -82,7 +84,9 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 		return (
 			<Wrapper>
 				<Container $grid>
-					<ErrorMessage message={!data ? 'Данные не найдены' : error} />
+					<ErrorMessage
+						message={!data ? 'Данные не найдены' : error}
+					/>
 				</Container>
 			</Wrapper>
 		);
@@ -146,7 +150,7 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 								<div className="slider-pagination" />
 							</div>
 							<Link href={currentPath.current}>
-								<ButtonUI $brown $icon="arrow">
+								<ButtonUI $secondary $icon="arrow">
 									Подробнее
 								</ButtonUI>
 							</Link>

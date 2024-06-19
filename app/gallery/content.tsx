@@ -1,10 +1,10 @@
+'use client';
+
 import { LayoutGroup } from 'framer-motion';
-import { GetServerSidePropsContext } from 'next';
 import { lazy, Suspense, useState } from 'react';
 
 import { GalleryImageType, ImageCategory } from '@/@types/types';
 import { ErrorMessage } from '@/components/ErrorMessage';
-import { getTitle, HeadPage } from '@/components/HeadPage';
 import {
 	Container,
 	FetchedImage,
@@ -21,60 +21,26 @@ import {
 	galleryImageAnimation,
 } from '@/components/sections/main-page/GalleryBlock/styled';
 import { PageLoader } from '@/components/ui';
-import { fetchApi, prefixImages } from '@/services/variable';
+import { prefixImages } from '@/services/variable';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
-type CategoryItem = {
+export type CategoryItem = {
 	tag: ImageCategory;
 	name: string;
 };
 
-interface GalleryItem extends GalleryImageType {
-	id: number;
+export interface GalleryPageProps {
+	categories: CategoryItem[];
+	images: GalleryImageType[];
+	error: string;
 }
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-	const resp = fetch(fetchApi('gallery-page-data'));
-	let error = '';
-
-	const json = await resp
-		.then((res) => res.json())
-		.catch((e) => {
-			error = e.message;
-		});
-
-	const categories: CategoryItem[] = json?.categories || [];
-	categories.unshift({
-		tag: 'all',
-		name: 'Все',
-	});
-
-	const images: GalleryImageType[] = json?.images || [];
-
-	return {
-		props: {
-			categories,
-			images,
-			error,
-			title: getTitle(ctx.resolvedUrl),
-		},
-	};
-};
-
-type GalleryPageProps = {
-	categories: CategoryItem[];
-	images: GalleryItem[];
-	error: string;
-	title: string;
-};
-
-export default function GalleryPage({
+export const GalleryContent = ({
 	categories,
 	images,
 	error,
-	title,
-}: GalleryPageProps) {
+}: GalleryPageProps) => {
 	const [selectedId, setSelectedId] = useState<number>(1);
 	const [isOpen, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
@@ -101,7 +67,6 @@ export default function GalleryPage({
 
 	return (
 		<>
-			<HeadPage title={title} />
 			<WrapperGalleryPage>
 				<Container $grid $gap={40} $direction="row" $center $mt>
 					<Title as="h1">Галерея</Title>
@@ -175,4 +140,4 @@ export default function GalleryPage({
 			)}
 		</>
 	);
-}
+};

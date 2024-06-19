@@ -1,6 +1,8 @@
-import { useScroll } from 'framer-motion';
-import { useRouter } from 'next/router';
-import { FC, useEffect, useRef, useState } from 'react';
+'use client';
+
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { FC, useRef, useState } from 'react';
 
 import { SvgIcon } from '@/components';
 import { Container, Grid, Title } from '@/components/Layout';
@@ -20,42 +22,26 @@ import { TopPanelBlock } from './TopPanel';
 const HeaderBlock: FC = () => {
 	const [showHeader, setShowHeader] = useState(true);
 	const prevScrollY = useRef<number>(0);
-	const router = useRouter();
+	const path = usePathname() || '';
 	const { scrollY } = useScroll();
 	const { state, dispatch } = useStore();
 
-	useEffect(() => {
-		const documentScrollY = () => {
-			const current = Number(scrollY.get());
-
-			if (
-				prevScrollY.current > 300 &&
-				window?.outerWidth <= Number(jsBreakpoints.md)
-			) {
-				setShowHeader(prevScrollY.current > current);
-			} else {
-				setShowHeader(true);
-			}
-
-			prevScrollY.current = current;
-		};
-		document.addEventListener('scroll', documentScrollY);
-
-		return () => {
-			document.removeEventListener('scroll', documentScrollY);
-		};
-	}, [scrollY]);
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
+	useMotionValueEvent(scrollY, 'change', (latest) => {
+		if (
+			prevScrollY.current > 300 &&
+			window?.outerWidth <= Number(jsBreakpoints.md)
+		) {
+			setShowHeader(prevScrollY.current > latest);
+		} else {
 			setShowHeader(true);
-			clearTimeout(timer);
-		}, 0);
-	}, [router]);
+		}
+
+		prevScrollY.current = latest;
+	});
 
 	return (
 		<>
-			<Wrapper id="header" $isMainPage={isMainPage(router)}>
+			<Wrapper id="header" $isMainPage={isMainPage(path)}>
 				<TopPanelBlock show={showHeader} />
 				<Header
 					initial={{ top: 0 }}
@@ -85,7 +71,7 @@ const HeaderBlock: FC = () => {
 					</Container>
 				</Header>
 
-				{isMainPage(router) ? (
+				{isMainPage(path) ? (
 					<>
 						<Banner>
 							<Container $grid $gap={40} $direction="row" $center>

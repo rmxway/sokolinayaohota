@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { FC, useEffect, useRef, useState } from 'react';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
@@ -21,7 +21,7 @@ import {
 } from './styled';
 
 export const Navbar: FC = () => {
-	const router = useRouter();
+	const path = usePathname() || '';
 	const [show, setShow] = useState(false);
 	const containerRef = useRef(null);
 
@@ -41,7 +41,7 @@ export const Navbar: FC = () => {
 
 	const activeLink = (url: string): boolean => {
 		const active = url.split('/');
-		return active[1] === router.asPath.split('/')[1];
+		return active[1] === path.split('/')[1];
 	};
 
 	return (

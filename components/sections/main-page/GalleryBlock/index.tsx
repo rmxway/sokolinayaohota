@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { FC, lazy, Suspense, useState } from 'react';
 
@@ -53,7 +55,7 @@ export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 						</Grid>
 
 						<Link href="/gallery">
-							<ButtonUI $brown $mobile>
+							<ButtonUI $secondary $mobile>
 								Больше фото
 							</ButtonUI>
 						</Link>

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { Container } from '@/components/Layout';
@@ -12,7 +12,7 @@ import { TopPanelItem, TopPanelType } from './TopPanelItem';
 export const TopPanelBlock = ({ show }: { show?: boolean }) => {
 	const { dispatch, state } = useStore();
 	const [content, setContent] = useState<TopPanelType>();
-	const router = useRouter();
+	const path = usePathname() || '';
 
 	const handleClick = (e: TopPanelType) => {
 		setContent(e);
@@ -22,9 +22,9 @@ export const TopPanelBlock = ({ show }: { show?: boolean }) => {
 
 	return (
 		<TopPanelSC
-			$isMainPage={isMainPage(router)}
+			$isMainPage={isMainPage(path)}
 			animate={{
-				bottom: show ? 0 : '-100px',
+				bottom: show ? 0 : '-120px',
 				transition: {
 					type: 'tween',
 					delay: 0.2,
