@@ -1,6 +1,6 @@
 'use client';
 
-import { Formik, FormikValues } from 'formik';
+import { Formik } from 'formik';
 import { FC, useState } from 'react';
 
 import { Grid } from '@/components/Layout';
@@ -16,14 +16,20 @@ type FormOrderProps = {
 	name: string;
 };
 
+export interface FormData {
+	name: string;
+	email: string;
+	phone: string;
+}
+
 export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 	const [error, setError] = useState('');
 	const [isComplete, setIsComplete] = useState(false);
 
-	const onSubmit = async (values: FormikValues) => {
+	const onSubmit = async (values: FormData) => {
 		const { phone } = values;
 
-		const data = {
+		const data: FormData = {
 			...values,
 			phone: phone.replace(regexpFilterNumber, ''),
 		};

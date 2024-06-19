@@ -1,4 +1,4 @@
-import { Formik, FormikValues } from 'formik';
+import { Formik } from 'formik';
 import { useState } from 'react';
 
 import { Grid } from '@/components/Layout';
@@ -15,16 +15,29 @@ type FormOrderProps = {
 	name: string;
 };
 
+interface FormHall {
+	name: string;
+	phone: string;
+	email: string;
+	event: string;
+	date: string;
+	countPeople: string;
+}
+
+export interface DataHall extends FormHall {
+	hall: string;
+}
+
 export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 	const [error, setError] = useState('');
 	const [isComplete, setIsComplete] = useState(false);
 
-	const onSubmit = async (values: FormikValues) => {
+	const onSubmit = async (values: FormHall) => {
 		const { phone } = values;
 
-		const data = {
-			phone: phone.replace(regexpFilterNumber, ''),
+		const data: DataHall = {
 			...values,
+			phone: phone.replace(regexpFilterNumber, ''),
 			hall: name,
 		};
 
@@ -176,13 +189,7 @@ export const FormOrderHall = ({ fetchUrl, name }: FormOrderProps) => {
 								Отправить
 							</ButtonUI>
 						</>
-					) : null}
-					{/* <AutoResetForm
-						setIsComplete={setIsComplete}
-						isComplete={isComplete}
-					/> */}
-
-					{isComplete && (
+					) : (
 						<FinalText
 							variants={fadeInOut}
 							initial="start"

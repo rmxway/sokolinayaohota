@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { regexpEmail, regexpNumber, regexpWords } from '@/services/regexp';
+import { regexpNumber, regexpWords } from '@/services/regexp';
 
 export const validationSchema = Yup.object().shape({
 	name: Yup.string()
@@ -8,7 +8,7 @@ export const validationSchema = Yup.object().shape({
 		.min(4, 'Очень короткое имя')
 		.max(25, 'Должно быть не больше 25 символов')
 		.required('Обязательно для заполнения'),
-	email: Yup.string().matches(regexpEmail, 'Неправильный email'),
+	email: Yup.string().email('Неправильный email'),
 	phone: Yup.string()
 		.matches(regexpNumber, 'Неправильный номер телефона')
 		.required('Обязательно для заполнения')
