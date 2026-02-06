@@ -1,4 +1,4 @@
-import { StoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react';
 
 import { Preloader } from '@/components/ui/Preloader';
 import { defaultTheme as theme } from '@/theme';

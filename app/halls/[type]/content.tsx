@@ -39,7 +39,8 @@ export function ContentHalls({
 	const [isLoaded, setLoaded] = useState(false);
 
 	useEffect(() => {
-		setLoaded(false);
+		const t = setTimeout(() => setLoaded(false), 0);
+		return () => clearTimeout(t);
 	}, [params]);
 
 	if (error)

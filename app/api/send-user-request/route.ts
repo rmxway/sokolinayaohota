@@ -8,7 +8,5 @@ export async function POST(req: NextRequest) {
 		return NextResponse.json({ status: 'Error' });
 	}
 
-	console.log(body);
-
-	return NextResponse.json({ status: 'Success' });
+	return NextResponse.json({ body, status: 'Success' });
 }

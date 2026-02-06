@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $icofont-font: 'icofont';
 
 @font-face {
@@ -39,41 +41,41 @@ $icofont-map: (
 );
 
 .icofont-time:before {
-    content: map-get($icofont-map, 'time');
+    content: map.get($icofont-map, 'time');
 }
 .icofont-success:before {
-    content: map-get($icofont-map, 'success');
+    content: map.get($icofont-map, 'success');
 }
 .icofont-star:before {
-    content: map-get($icofont-map, 'star');
+    content: map.get($icofont-map, 'star');
 }
 .icofont-secure:before {
-    content: map-get($icofont-map, 'secure');
+    content: map.get($icofont-map, 'secure');
 }
 .icofont-phone:before {
-    content: map-get($icofont-map, 'phone');
+    content: map.get($icofont-map, 'phone');
 }
 .icofont-no-photo:before {
-    content: map-get($icofont-map, 'no-photo');
+    content: map.get($icofont-map, 'no-photo');
 }
 .icofont-mail:before {
-    content: map-get($icofont-map, 'mail');
+    content: map.get($icofont-map, 'mail');
 }
 .icofont-location:before {
-    content: map-get($icofont-map, 'location');
+    content: map.get($icofont-map, 'location');
 }
 .icofont-heart:before {
-    content: map-get($icofont-map, 'heart');
+    content: map.get($icofont-map, 'heart');
 }
 .icofont-error:before {
-    content: map-get($icofont-map, 'error');
+    content: map.get($icofont-map, 'error');
 }
 .icofont-close:before {
-    content: map-get($icofont-map, 'close');
+    content: map.get($icofont-map, 'close');
 }
 .icofont-arrow:before {
-    content: map-get($icofont-map, 'arrow');
+    content: map.get($icofont-map, 'arrow');
 }
 .icofont-arrow-simple:before {
-    content: map-get($icofont-map, 'arrow-simple');
+    content: map.get($icofont-map, 'arrow-simple');
 }

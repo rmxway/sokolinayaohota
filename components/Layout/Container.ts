@@ -10,10 +10,18 @@ interface ContainerType {
 	$spaceBetween: boolean;
 	$gap: number;
 	$direction: 'row' | 'column';
-};
+}
 
 const Container = styled.div<Partial<ContainerType>>`
-	${({ $center, $direction, $gap, $grid, $mt, $noPadding, $spaceBetween }) => css`
+	${({
+		$center,
+		$direction,
+		$gap,
+		$grid,
+		$mt,
+		$noPadding,
+		$spaceBetween,
+	}) => css`
 		position: relative;
 		padding: 0 ${$noPadding ? '0' : '20px'};
 		width: 100%;
@@ -22,11 +30,26 @@ const Container = styled.div<Partial<ContainerType>>`
 		grid-auto-flow: ${$direction || 'column'};
 		justify-items: center;
 
-		${$gap && css`gap: ${$gap}px;`}
-		${$mt && css`margin-top: 40px;`}
-		${$grid && css`display: grid;`}
-		${$center && css`align-items: center;`}
-		${$spaceBetween && css`justify-content: space-between;`}
+		${$gap &&
+		css`
+			gap: ${$gap}px;
+		`}
+		${$mt &&
+		css`
+			margin-top: 40px;
+		`}
+		${$grid &&
+		css`
+			display: grid;
+		`}
+		${$center &&
+		css`
+			align-items: center;
+		`}
+		${$spaceBetween &&
+		css`
+			justify-content: space-between;
+		`}
 
 		${media.lessThan('xl')`
 			max-width: 1200px;

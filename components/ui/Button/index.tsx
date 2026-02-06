@@ -13,16 +13,18 @@ import { Button, ButtonProps } from './styled';
 
  * @example <ButtonUI mobile icon="phone">Телефон</ButtonUI>
  */
-const ButtonUI = forwardRef<HTMLButtonElement, ButtonProps>(({ children, $icon, ...props }, ref) => {
-	const itemIcon = $icon ? <Icon icon={$icon} /> : null;
+const ButtonUI = forwardRef<HTMLButtonElement, ButtonProps>(
+	({ children, $icon, ...props }, ref) => {
+		const itemIcon = $icon ? <Icon icon={$icon} /> : null;
 
-	return (
-		<Button {...props} {...{ref}}>
-			<span>{children}</span>
-			{itemIcon}
-		</Button>
-	);
-});
+		return (
+			<Button {...props} {...{ ref }}>
+				<span>{children}</span>
+				{itemIcon}
+			</Button>
+		);
+	},
+);
 
 ButtonUI.displayName = 'ButtonUI';
 

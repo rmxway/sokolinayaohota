@@ -1,6 +1,6 @@
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
 
-import styles from './styles.module.scss';
+import { ImageStyled } from './styled';
 
 type ImageBackgroundType = {
 	image: StaticImageData;
@@ -12,12 +12,11 @@ export const ImageBackground = ({
 	quality = 70,
 	...props
 }: ImageBackgroundType) => (
-	<Image
+	<ImageStyled
 		src={image}
 		quality={quality}
 		placeholder="blur"
 		alt="image background"
-		className={styles.imageBackground}
 		fill
 		{...props}
 	/>

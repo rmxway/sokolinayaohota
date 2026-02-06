@@ -1,8 +1,10 @@
+/* eslint-disable camelcase -- имена экспортов из next/font/google */
 import {
 	Ledger,
 	Yanone_Kaffeesatz,
 	Zen_Kaku_Gothic_Antique,
 } from 'next/font/google';
+/* eslint-enable camelcase */
 
 export const YanoneKaffeesatzFont = Yanone_Kaffeesatz({
 	subsets: ['cyrillic'],

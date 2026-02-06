@@ -1,4 +1,4 @@
-import 'swiper/scss/pagination';
+import 'swiper/css/pagination';
 
 import { Variants } from 'framer-motion';
 import styled from 'styled-components';
@@ -220,7 +220,8 @@ export const animateText: Variants = {
 		transition: {
 			delay: 0.3,
 			duration: 0.6,
-			type: 'easy',
+			type: 'tween',
+			ease: 'easeOut',
 		},
 	},
 };

@@ -1,11 +1,10 @@
-import Image from 'next/image';
 import { FC } from 'react';
 
 import { AdvantageType } from '@/@types/types';
-import { Icon } from '@/components';
+import { Icon, ImageBackground } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
-import imageStyle from '@/components/ImageBackground/styles.module.scss';
 import { Container, Grid, Title } from '@/components/Layout';
+import image from '@/public/assets/img/why-we-are.jpg';
 
 import { IconWrapper, Item, ItemDescription, Wrapper } from './styled';
 
@@ -55,12 +54,7 @@ export const WhyAreWe: FC<WhyAreWeProps> = ({ data, error }) => (
 			)}
 		</Container>
 
-		<Image
-			src="/assets/img/why-we-are.svg"
-			className={imageStyle.imageBackground}
-			fill
-			alt="image"
-		/>
+		<ImageBackground image={image} />
 	</Wrapper>
 );
 

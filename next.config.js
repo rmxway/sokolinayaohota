@@ -1,23 +1,24 @@
 // @ts-check
 
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
 
-module.exports = {
-	reactStrictMode: true,
+const nextConfig = {
+	reactStrictMode: process.env.NODE_ENV === 'production',
 	images: {
+		unoptimized: true,
+		qualities: [5, 20, 50, 70, 75],
 		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
 		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-		remotePatterns: [
-			{
-				protocol: 'http',
-				hostname: 'sokolinayaohota.ru',
-			},
-		],
 	},
 	compiler: {
 		styledComponents: true,
 	},
-	output: 'standalone',
+	experimental: {
+		turbopackFileSystemCacheForDev: false,
+	},
+	turbopack: {},
 	webpack: (config) => {
 		config.resolve.fallback = {
 			...config.resolve.fallback,
@@ -32,3 +33,5 @@ module.exports = {
 		return config;
 	},
 };
+
+module.exports = nextConfig;

@@ -53,7 +53,10 @@ export const ContentLayout = (props: MainPageProps) => {
 			<SliderBlock data={data?.mainSlides} {...{ error }} />
 			<PresentBanner />
 			<WhyAreWe data={data?.advantages} {...{ error }} />
-			<GalleryBlock data={data?.galleryImages.slice(0, 9)} {...{ error }} />
+			<GalleryBlock
+				data={data?.galleryImages.slice(0, 9)}
+				{...{ error }}
+			/>
 			<DiscountBlock />
 			<Questions data={data?.faqs} {...{ error }} />
 			<ContactsBlock />

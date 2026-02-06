@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Formik } from 'formik';
 
 import { SelectUI } from '@/components/ui/Select';
