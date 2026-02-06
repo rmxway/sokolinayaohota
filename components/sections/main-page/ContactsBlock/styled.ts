@@ -98,7 +98,8 @@ export const Map = styled(Image)`
 	object-fit: cover;
 	object-position: center;
 	border-radius: ${theme.radius.blockRadius};
-	box-shadow: ${theme.layout.shadow.basic}, ${theme.layout.shadow.big},
+	box-shadow:
+		${theme.layout.shadow.basic}, ${theme.layout.shadow.big},
 		${theme.layout.shadow.big};
 `;
 

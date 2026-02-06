@@ -12,10 +12,10 @@
 		"esModuleInterop": true,
 		"typeRoots": ["@types/declarations.d.ts", "./node_modules/@types"],
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"jsx": "preserve",
+		"jsx": "react-jsx",
 		"incremental": true,
 		"baseUrl": ".",
 		"paths": {
@@ -39,7 +39,11 @@
 		"**/*.tsx",
 		".eslintrc.js",
 		"**/*.js",
-		".next/types/**/*.ts"
+		".next/types/**/*.ts",
+		".next/dev/types/**/*.ts",
+		".storybook/**/*.ts",
+		".storybook/**/*.tsx",
+		".storybook/**/*.js"
 	],
 	"exclude": ["node_modules", ".vscode"]
 }

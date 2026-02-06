@@ -1,4 +1,4 @@
-import 'swiper/scss';
+import 'swiper/css';
 
 import { FC, memo, useEffect, useState } from 'react';
 import { Swiper as TypeSwiper } from 'swiper';
@@ -89,8 +89,12 @@ export const Slider: FC<SliderProps> = memo(
 		};
 
 		useEffect(() => {
-			if (images.length === 0) setLoaded(true);
-		}, [setLoaded, images]);
+			if (images.length === 0) {
+				const t = setTimeout(() => setLoaded(true), 0);
+				return () => clearTimeout(t);
+			}
+			return undefined;
+		}, [images]);
 
 		return (
 			<SliderWrapper>

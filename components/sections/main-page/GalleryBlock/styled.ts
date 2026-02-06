@@ -1,4 +1,4 @@
-import 'swiper/scss';
+import 'swiper/css';
 
 import { motion, Variants } from 'framer-motion';
 import styled from 'styled-components';

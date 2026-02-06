@@ -26,7 +26,7 @@ export const Header = styled(motion.header)`
 		180deg,
 		rgba(255, 255, 255, 1) 0%,
 		#fff 32.71%,
-		rgba(255, 255, 255, .9) 65.04%,
+		rgba(255, 255, 255, 0.9) 65.04%,
 		rgba(248, 248, 248, 0.98) 82.29%
 	);
 

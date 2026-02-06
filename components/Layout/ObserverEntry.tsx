@@ -16,7 +16,7 @@ export const ObserverEntry = forwardRef(
 				</div>
 			);
 		return null;
-	}
+	},
 );
 
 ObserverEntry.displayName = 'Observer';

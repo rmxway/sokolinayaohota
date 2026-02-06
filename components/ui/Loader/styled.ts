@@ -35,7 +35,8 @@ export const StyledLoader = styled.div`
 			background: ${(props) => props.theme.colors.solid.primary};
 		}
 		66% {
-			background: ${(props) => darken(0.05, props.theme.colors.solid.primary)};
+			background: ${(props) =>
+				darken(0.05, props.theme.colors.solid.primary)};
 		}
 		100% {
 			background: ${(props) => props.theme.colors.solid.primary};

@@ -1,13 +1,14 @@
-import React from 'react';
-
-import type { Preview } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
-import { defaultTheme, GlobalStyles } from '../theme';
-
 import '../public/assets/fonts/icofont/icofont.scss';
 import './fonts.scss';
 
+import type { Preview } from '@storybook/react';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+
+import { defaultTheme, GlobalStyles } from '../theme';
+
 const preview: Preview = {
+	tags: ['autodocs'],
 	parameters: {
 		actions: { argTypesRegex: '^on[A-Z].*' },
 		controls: {

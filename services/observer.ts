@@ -1,6 +1,6 @@
 export const createObserver = (
 	target: Element,
-	callback: (entry: IntersectionObserverEntry) => void
+	callback: (entry: IntersectionObserverEntry) => void,
 ) => {
 	const sectionCallback: IntersectionObserverCallback = (entries) => {
 		entries.forEach((entry) => {
@@ -12,7 +12,7 @@ export const createObserver = (
 		sectionCallback,
 		{
 			root: null,
-		}
+		},
 	);
 
 	observer.observe(target);

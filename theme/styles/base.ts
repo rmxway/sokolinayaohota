@@ -32,8 +32,9 @@ const base = css`
 		overflow-y: scroll;
 	}
 	code {
-		font-family: 'source-code-pro', 'Menlo', 'Monaco', 'Consolas',
-			'Courier New', monospace;
+		font-family:
+			'source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New',
+			monospace;
 	}
 
 	h1,

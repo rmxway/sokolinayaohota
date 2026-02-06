@@ -16,4 +16,5 @@ type FetchApiType =
 	| 'send-hall-request'
 	| 'error-test';
 
-export const apiUrl = (type: FetchApiType) => `http://localhost:3000/api/${type}`;
+export const apiUrl = (type: FetchApiType) =>
+	`http://localhost:3000/api/${type}`;

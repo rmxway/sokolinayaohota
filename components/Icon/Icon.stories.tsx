@@ -1,4 +1,4 @@
-import { ArgTypes, Meta, StoryObj } from '@storybook/react';
+import type { ArgTypes, Meta, StoryObj } from '@storybook/react';
 
 import { Flexbox } from '@/components/Layout/Flexbox';
 import icons from '@/public/assets/fonts/icofont/icofont.json';

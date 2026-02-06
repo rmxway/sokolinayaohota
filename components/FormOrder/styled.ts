@@ -28,7 +28,9 @@ export const FinalText = styled(motion.div)<{ $valid: boolean }>`
 	z-index: 0;
 	font-family: ${(props) => props.theme.layout.fonts.header};
 	color: ${(props) =>
-		!props.$valid ? props.theme.colors.solid.success : props.theme.colors.solid.danger};
+		!props.$valid
+			? props.theme.colors.solid.success
+			: props.theme.colors.solid.danger};
 	font-size: 28px;
 `;
 
