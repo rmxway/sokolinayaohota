@@ -1,58 +1,48 @@
-# Docker команды
+# Sokolinaya Ohota
 
-### Создание образа проекта
+Фронтенд сайта «Соколиная охота» на Next.js (App Router).
+
+## Стек
+
+- **Next.js** 16 (App Router)
+- **React** 19
+- **TypeScript**
+- **styled-components**, **Sass**
+- **Formik**, **Yup** — формы и валидация
+- **Swiper** — слайдеры
+- **Storybook** 8 — разработка и документация компонентов
+
+## Требования
+
+- Node.js
+- Yarn 4 (указан в `packageManager`)
+
+## Установка
+
 ```bash
-bash ./docker/create-image.sh
+yarn
 ```
 
-### Запустить образ на сервере
-```bash
-bash ./docker/start-docker.sh
-```
+## Скрипты
 
-# Scripts проекта
+| Команда | Описание |
+|--------|----------|
+| `yarn dev` | Режим разработки — [http://localhost:3000](http://localhost:3000) |
+| `yarn build` | Линт + сборка проекта |
+| `yarn start` | Запуск production-сборки локально |
+| `yarn lint` | Проверка кода (ESLint) |
+| `yarn lint:fix` | Автоисправление по правилам ESLint |
+| `yarn pretty` | Форматирование кода (Prettier) |
+| `yarn icofont` | Сборка шрифта иконок (Fantasticon) |
+| `yarn storybook` | Запуск Storybook — [http://localhost:4006](http://localhost:4006) |
+| `yarn build-storybook` | Сборка Storybook для деплоя |
 
-### Запуск дев разработки (локальный сервер) 
-```bash
-yarn dev
-```
+## Структура проекта
 
-### Сборка проекта
-```bash
-yarn build
-```
-### Запуск сборки на локальном сервере
-```bash
-yarn start
-```
-
-### Проверка скриптов(JS) через ESLint
-```bash
-yarn lint
-```
-
-### Сборка шрифта иконок Icofont
-```bash
-yarn icofont
-```
-
-# Getting Started
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `app/` — страницы и API routes (Next.js App Router)
+- `components/` — переиспользуемые компоненты и UI
+- `theme/` — тема, глобальные стили, анимации
+- `services/`, `store/`, `lib/` — утилиты и общая логика
+- `mock/` — мок-данные для разработки
+- `fantasticon/` — исходники иконок для шрифта Icofont
+- `public/assets/` — статика (шрифты, изображения, SVG)
