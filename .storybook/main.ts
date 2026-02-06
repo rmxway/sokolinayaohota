@@ -88,6 +88,7 @@ const config: StorybookConfig = {
 			use: {
 				loader: require.resolve('babel-loader'),
 				options: {
+					compact: true,
 					presets: [
 						require.resolve('@babel/preset-env'),
 						[

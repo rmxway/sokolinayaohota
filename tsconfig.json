@@ -45,5 +45,5 @@
 		".storybook/**/*.tsx",
 		".storybook/**/*.js"
 	],
-	"exclude": ["node_modules", ".vscode"]
+	"exclude": ["node_modules", ".vscode", "storybook-static"]
 }
