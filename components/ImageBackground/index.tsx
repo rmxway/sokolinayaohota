@@ -3,7 +3,7 @@ import { StaticImageData } from 'next/image';
 import { ImageStyled } from './styled';
 
 type ImageBackgroundType = {
-	image: StaticImageData;
+	image: StaticImageData | string;
 	quality?: number;
 };
 
