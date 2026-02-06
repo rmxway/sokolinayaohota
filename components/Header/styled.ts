@@ -9,6 +9,7 @@ export const Wrapper = styled.div<{ $isMainPage: boolean }>`
 	position: relative;
 	display: block;
 	display: flex;
+	width: 100%;
 	flex-direction: column;
 	overflow: ${(props) => (props.$isMainPage ? 'hidden' : 'visible')};
 	background-image: ${theme.colors.gradients.black()};

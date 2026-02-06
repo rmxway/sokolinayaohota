@@ -5,6 +5,7 @@ import { defaultTheme as theme, media } from '@/theme';
 
 export const WrapperGalleryPage = styled.div`
 	padding-bottom: 40px;
+	width: 100%;
 	.gallery-grid {
 		grid-template-columns: repeat(3, 1fr);
 		width: 100%;

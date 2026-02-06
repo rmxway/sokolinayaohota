@@ -18,7 +18,14 @@ const nextConfig = {
 	experimental: {
 		turbopackFileSystemCacheForDev: false,
 	},
-	turbopack: {},
+	turbopack: {
+		rules: {
+			'*.svg': {
+				loaders: ['@svgr/webpack'],
+				as: '*.js',
+			},
+		},
+	},
 	webpack: (config) => {
 		config.resolve.fallback = {
 			...config.resolve.fallback,

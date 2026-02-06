@@ -42,11 +42,7 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 							<Icon icon="phone" /> Телефон:
 						</div>
 						<span>
-							<a href="tel:+74992693833">+7 (499) 269-38-33</a>
-							<a href="tel:+74992682359">+7 (499) 268-23-59</a>
 							<a href="tel:+74992686834">+7 (499) 268-68-34</a>
-							<a href="tel:+79261636304">+7 (926) 163-63-04</a>
-							<a href="tel:+79261595558">+7 (926) 159-55-58</a>
 						</span>
 					</InfoBlock>
 					<InfoBlock>
@@ -68,7 +64,7 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 				</MapWrapper>
 
 				<Logo />
-				<Copyright>sokolinayaohota.ru ® {state?.year}</Copyright>
+				<Copyright>{state?.year}</Copyright>
 			</Container>
 		</Wrapper>
 	);

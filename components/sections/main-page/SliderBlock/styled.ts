@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 	position: relative;
 	background-color: ${theme.colors.solid.primary};
 	padding: 80px 0;
+	width: 100%;
 
 	${Ellipsis} {
 		position: absolute;
