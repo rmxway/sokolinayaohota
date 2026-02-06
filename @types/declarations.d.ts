@@ -4,12 +4,23 @@ declare module '*.scss' {
 }
 
 declare module '*.jpg' {
-	const content: string;
+	import type { StaticImageData } from 'next/image';
+
+	const content: StaticImageData;
 	export default content;
 }
 
 declare module '*.png' {
-	const content: string;
+	import type { StaticImageData } from 'next/image';
+
+	const content: StaticImageData;
+	export default content;
+}
+
+declare module '*.webp' {
+	import type { StaticImageData } from 'next/image';
+
+	const content: StaticImageData;
 	export default content;
 }
 
