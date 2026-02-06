@@ -1,13 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import { ResponseData } from '@/app/content';
-import { advantages, galleryImages, mainSlider, questions } from '@/mock';
+import { getMainPageData } from '@/lib/pageData';
 
 export async function GET() {
-	return NextResponse.json<ResponseData>({
-		advantages,
-		faqs: questions,
-		galleryImages,
-		mainSlides: mainSlider,
-	});
+	return NextResponse.json<ResponseData>(getMainPageData());
 }
