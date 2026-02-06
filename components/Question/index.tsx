@@ -11,10 +11,10 @@ export const Question: FC<QuestionType> = ({ answer, question, id }) => {
 	const [checked, setChecked] = useState(false);
 
 	return (
-		<Wrapper htmlFor={id} layout>
+		<Wrapper htmlFor={String(id)} layout>
 			<input
 				name="questions"
-				id={id}
+				id={String(id)}
 				type="checkbox"
 				onChange={() => setChecked((prev) => !prev)}
 			/>

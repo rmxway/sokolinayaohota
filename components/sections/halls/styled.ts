@@ -137,7 +137,7 @@ export const RightBlock = styled.div`
 	position: sticky;
 	top: 20px;
 	bottom: 20px;
-	width: 400px;
+	width: 500px;
 
 	${media.lessThan('xl')`
 		position: relative;		

@@ -6,7 +6,7 @@ import {
 	ZenKakuFont,
 } from '@/services/fonts';
 
-const defaultTheme: DefaultTheme = {
+export const defaultTheme: DefaultTheme = {
 	name: 'default',
 	colors: {
 		solid: {
@@ -64,5 +64,4 @@ const defaultTheme: DefaultTheme = {
 	},
 };
 
-export { defaultTheme };
 export default defaultTheme;
