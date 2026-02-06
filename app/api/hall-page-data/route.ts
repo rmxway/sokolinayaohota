@@ -1,10 +1,7 @@
 import { NextResponse } from 'next/server';
 
-import { HallType } from '@/@types/types';
-import { halls } from '@/mock';
+import { getHallPageData } from '@/lib/pageData';
 
 export async function GET() {
-	return NextResponse.json<{ halls: HallType[] }>({
-		halls,
-	});
+	return NextResponse.json(getHallPageData());
 }

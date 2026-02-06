@@ -1,25 +1,18 @@
-import { apiUrl } from '@/services/variable';
+import { getMainPageData } from '@/lib/pageData';
 
 import { ContentLayout, MainPageProps } from './content';
 
-const fetchData = async (): Promise<MainPageProps> => {
-	let errorMessage: string | undefined = '';
-
-	const mainPageData = fetch(apiUrl('main-page-data'));
-	const data = await mainPageData
-		.then((res) => res?.json())
-		.catch((e) => {
-			errorMessage = e.message;
-		});
-
-	return {
-		data,
-		error: errorMessage,
-	};
+const getData = (): MainPageProps => {
+	try {
+		const data = getMainPageData();
+		return { data };
+	} catch (e) {
+		return { error: e instanceof Error ? e.message : String(e) };
+	}
 };
 
-export default async function Page() {
-	const resp = await fetchData();
+export default function Page() {
+	const resp = getData();
 
 	return <ContentLayout {...resp} />;
 }
