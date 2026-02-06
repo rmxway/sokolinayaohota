@@ -2,7 +2,7 @@
 
 import { LayoutGroup, motion } from 'framer-motion';
 import Link from 'next/link';
-import { FC, memo, useRef, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { Swiper as TypeSwiper } from 'swiper';
 import { Navigation, Pagination, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
@@ -32,9 +32,11 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
 	const [isLoaded, setLoaded] = useState(false);
-	const currentPath = useRef<string>('/halls/big-hall');
 
 	const typesPath = data?.map((item) => item.tag);
+	const currentPath = typesPath?.[slideIndex]
+		? `/halls/${typesPath[slideIndex]}`
+		: '/halls/big-hall';
 
 	const mainSwiperConfig: SwiperProps = {
 		speed: 300,
@@ -60,9 +62,6 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 		},
 		onSlideChange: (swiper) => {
 			setSlideIndex(swiper.realIndex);
-
-			if (typesPath)
-				currentPath.current = `/halls/${typesPath[swiper.realIndex]}`;
 		},
 		onInit: () => {
 			setLoaded(true);
@@ -149,7 +148,7 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 							<div>
 								<div className="slider-pagination" />
 							</div>
-							<Link href={currentPath.current}>
+							<Link href={currentPath}>
 								<ButtonUI $secondary $icon="arrow">
 									Подробнее
 								</ButtonUI>
