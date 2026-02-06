@@ -19,6 +19,8 @@ declare module '*.json' {
 }
 
 declare module '*.svg' {
-	const content: string;
-	export default content;
+	import { FC, SVGProps } from 'react';
+
+	const ReactComponent: FC<SVGProps<SVGSVGElement>>;
+	export default ReactComponent;
 }

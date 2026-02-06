@@ -5,13 +5,10 @@ import { LogoText } from '@/components/Header/Logo/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.div`
+	flex-grow: 1;
 	position: relative;
-	padding: 80px 0 20px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 40px;
-	text-align: center;
+	width: 100%;
+	padding: 80px 0 20px;	
 	background-image: ${theme.colors.gradients.black()};
 	background-color: ${theme.colors.solid.secondary};
 

@@ -18,7 +18,14 @@ interface FlexboxTypes {
 	$gap?: number | string;
 	$w100?: boolean;
 	$h100?: boolean;
+	$h100vh?: boolean;
 }
+
+const getHeight = ($h100?: boolean, $h100vh?: boolean) => {
+	if ($h100vh) return '100vh';
+	if ($h100) return '100%';
+	return 'auto';
+};
 
 const Flexbox = styled(motion.div)<FlexboxTypes>`
 	${({
@@ -30,6 +37,7 @@ const Flexbox = styled(motion.div)<FlexboxTypes>`
 		$noWrap,
 		$w100,
 		$h100,
+		$h100vh,
 	}) => css`
 		display: flex;
 		flex-wrap: ${$noWrap ? 'nowrap' : 'wrap'};
@@ -39,7 +47,7 @@ const Flexbox = styled(motion.div)<FlexboxTypes>`
 		flex-direction: ${$direction || 'row'};
 		gap: ${$gap || 0}px;
 		width: ${$w100 ? '100%' : 'auto'};
-		height: ${$h100 ? '100%' : 'auto'};
+		height: ${getHeight($h100, $h100vh)};
 	`}
 `;
 

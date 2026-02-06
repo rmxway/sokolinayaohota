@@ -61,6 +61,7 @@ export const FormBlock = styled.div`
 	position: relative;
 	min-height: 40vh;
 	padding: 80px 0;
+	width: 100%;
 	background-image: ${theme.colors.gradients.black('-160deg')};
 	color: ${theme.colors.solid.primary};
 

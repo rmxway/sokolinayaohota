@@ -19,6 +19,35 @@ const config: StorybookConfig = {
 		options: {},
 	},
 	webpackFinal: async (webpackConfig) => {
+		const basePath = process.env.BASE_PATH ?? '/';
+		const isDeployBuild =
+			process.env.NODE_ENV !== 'development' && basePath !== '/';
+		if (isDeployBuild) {
+			webpackConfig.output = webpackConfig.output ?? {};
+			webpackConfig.output.publicPath = './';
+		}
+
+		// Меньшие чанки — укладываемся в лимит 244 KiB и улучшаем кэширование
+		webpackConfig.optimization = {
+			...webpackConfig.optimization,
+			splitChunks: {
+				...webpackConfig.optimization?.splitChunks,
+				chunks: 'all',
+				maxSize: 244 * 1024, // 244 KiB — рекомендуемый лимит Storybook
+				cacheGroups: {
+					...(webpackConfig.optimization?.splitChunks as { cacheGroups?: object })
+						?.cacheGroups,
+					vendor: {
+						test: /[\\/]node_modules[\\/]/,
+						name: 'vendor',
+					},
+				},
+			},
+		};
+
+		// Отключаем предупреждения о размере: отдельные библиотеки не делятся, gzip на сервере уменьшает трафик
+		webpackConfig.performance = { hints: false };
+
 		if (!webpackConfig.module) {
 			webpackConfig.module = { rules: [] };
 		}

@@ -5,6 +5,7 @@ import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
+	width: 100%;
 	display: flex;
 	text-align: center;
 	align-items: center;

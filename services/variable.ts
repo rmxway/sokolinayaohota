@@ -16,5 +16,15 @@ type FetchApiType =
 	| 'send-hall-request'
 	| 'error-test';
 
+const getBaseUrl = () => {
+	if (typeof window !== 'undefined') {
+		return '';
+	}
+	if (process.env.VERCEL_URL) {
+		return `https://${process.env.VERCEL_URL}`;
+	}
+	return `http://localhost:${process.env.PORT ?? 3000}`;
+};
+
 export const apiUrl = (type: FetchApiType) =>
-	`http://localhost:3000/api/${type}`;
+	`${getBaseUrl()}/api/${type}`;

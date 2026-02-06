@@ -9,6 +9,7 @@ export const InfoBlockWrapper = styled.div`
 	border-top: 20px solid ${theme.colors.solid.secondary}15;
 	border-bottom: 20px solid ${theme.colors.solid.primary}55;
 	overflow: hidden;
+	width: 100%;
 
 	img {
 		opacity: 1;

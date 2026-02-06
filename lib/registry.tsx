@@ -17,7 +17,7 @@ export function StyledComponentsRegistry({
 }: StyledRegistryProps) {
 	const [sheet] = useState(() => new ServerStyleSheet());
 
-	const Tag = isJest ? 'div' : Template;
+	const Tag = isJest ? React.Fragment : Template;
 
 	try {
 		useServerInsertedHTML(() => {
