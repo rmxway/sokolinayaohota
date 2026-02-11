@@ -58,6 +58,7 @@ export const Slider: FC<SliderProps> = memo(
 			},
 			onSwiper(swiper) {
 				swiper.update();
+				swiper.slideTo(initialSlide, 0);
 			},
 			onInit() {
 				setLoaded(true);

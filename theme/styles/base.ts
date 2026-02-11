@@ -18,10 +18,6 @@ const base = css`
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-	[data-scroll-lock-locked] {
-		height: 100vh;
-	}
-
 	body {
 		font-family: ${ZenKakuFont.style.fontFamily};
 		font-weight: 500;
@@ -30,6 +26,11 @@ const base = css`
 		min-width: 360px;
 		color: #333;
 		overflow-y: scroll;
+	}
+
+	body.scroll-locked {
+		overflow: hidden;
+		overscroll-behavior: contain;
 	}
 	code {
 		font-family:

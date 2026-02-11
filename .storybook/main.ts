@@ -35,8 +35,11 @@ const config: StorybookConfig = {
 				chunks: 'all',
 				maxSize: 244 * 1024, // 244 KiB — рекомендуемый лимит Storybook
 				cacheGroups: {
-					...(webpackConfig.optimization?.splitChunks as { cacheGroups?: object })
-						?.cacheGroups,
+					...(
+						webpackConfig.optimization?.splitChunks as {
+							cacheGroups?: object;
+						}
+					)?.cacheGroups,
 					vendor: {
 						test: /[\\/]node_modules[\\/]/,
 						name: 'vendor',

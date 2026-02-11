@@ -29,23 +29,26 @@ export const SelectUI: FC<SelectProps> = ({
 				error={meta.touched && meta.error ? meta.error : null}
 				{...field}
 			/>
-			<button type="button" onClick={() => setOpen((prev) => !prev)}>
+			<button
+				data-testid="select-toggle-button"
+				type="button"
+				onClick={() => setOpen((prev) => !prev)}
+			>
 				<Icon icon="arrow-simple" />
 			</button>
 
 			{isOpen && (
 				<ul>
-					{selectValues.length &&
-						selectValues.map((val) => (
-							<li key={val}>
-								<button
-									type="button"
-									onClick={() => handleOpen(val)}
-								>
-									{val}
-								</button>
-							</li>
-						))}
+					{selectValues.map((val) => (
+						<li key={val}>
+							<button
+								type="button"
+								onClick={() => handleOpen(val)}
+							>
+								{val}
+							</button>
+						</li>
+					))}
 				</ul>
 			)}
 		</SelectWrapper>

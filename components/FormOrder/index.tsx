@@ -80,7 +80,6 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 						variants={fadeInOut}
 						animate={isComplete ? 'start' : 'end'}
 						key="Flex"
-						layout
 					>
 						<InputUI
 							type="text"

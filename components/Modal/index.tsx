@@ -1,9 +1,9 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { FC, ReactNode, useEffect, useRef } from 'react';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import React, { FC, ReactNode, useRef } from 'react';
 
 import { Icon } from '@/components';
 import { Title } from '@/components/Layout';
+import { useScrollLock } from '@/hooks';
 
 import {
 	animationWindow,
@@ -33,15 +33,7 @@ export const Modal: FC<ModalProps> = ({
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
 
-	useEffect(() => {
-		if (show && wrapperRef.current) {
-			disablePageScroll(wrapperRef.current);
-		}
-
-		return () => {
-			enablePageScroll();
-		};
-	}, [show]);
+	useScrollLock(show);
 
 	const handleClose = (e: React.MouseEvent) => {
 		const { target } = e;
@@ -56,6 +48,7 @@ export const Modal: FC<ModalProps> = ({
 		<AnimatePresence>
 			{show && (
 				<ModalWrapper
+					data-testid="modal-wrapper"
 					variants={animationWrapper}
 					initial="start"
 					animate="end"
@@ -64,6 +57,7 @@ export const Modal: FC<ModalProps> = ({
 					ref={wrapperRef}
 				>
 					<ModalWindow
+						data-testid="modal-window"
 						variants={animationWindow}
 						$fullscreen={fullscreen}
 						$gallery={gallery}
@@ -73,7 +67,10 @@ export const Modal: FC<ModalProps> = ({
 								{header}
 							</Title>
 						)}
-						<CloseButton ref={closeRef}>
+						<CloseButton
+							data-testid="modal-close-button"
+							ref={closeRef}
+						>
 							<Icon icon="close" size={10} />
 						</CloseButton>
 

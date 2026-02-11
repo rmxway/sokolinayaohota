@@ -34,7 +34,7 @@ export const SliderStyle = styled.div`
 		img {
 			height: 100%;
 			max-height: 100%;
-			object-fit: contain;
+			object-fit: cover;
 			object-position: center;
 		}
 	}

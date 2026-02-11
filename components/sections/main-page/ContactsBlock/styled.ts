@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 	flex-grow: 1;
 	position: relative;
 	width: 100%;
-	padding: 80px 0 20px;	
+	padding: 80px 0 20px;
 	background-image: ${theme.colors.gradients.black()};
 	background-color: ${theme.colors.solid.secondary};
 

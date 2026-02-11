@@ -51,4 +51,19 @@ export default [
 			'@typescript-eslint/no-require-imports': 'off',
 		},
 	},
+	{
+		files: ['jest.config.js', 'jest.setup.js'],
+		languageOptions: {
+			globals: {
+				jest: 'readonly',
+			},
+		},
+		rules: {
+			'@typescript-eslint/no-require-imports': 'off',
+			'@typescript-eslint/no-shadow': 'off',
+			'no-undef': 'off',
+			'global-require': 'off',
+			'react/jsx-filename-extension': 'off',
+		},
+	},
 ];

@@ -41,7 +41,7 @@ export const GalleryContent = ({
 	images,
 	error,
 }: GalleryPageProps) => {
-	const [selectedId, setSelectedId] = useState<number>(1);
+	const [selectedId, setSelectedId] = useState<number>(0);
 	const [isOpen, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
 	const [currentCategory, setCurrentCategory] =
@@ -59,10 +59,11 @@ export const GalleryContent = ({
 		if (code === 'all') {
 			setCurrentCategory('all');
 			setFilteredImages(images);
-			return;
+		} else {
+			setCurrentCategory(code);
+			setFilteredImages([...images.filter((item) => item.tag === code)]);
 		}
-		setCurrentCategory(code);
-		setFilteredImages([...images.filter((item) => item.tag === code)]);
+		setSelectedId(0);
 	};
 
 	return (
@@ -131,6 +132,7 @@ export const GalleryContent = ({
 			{suspended && (
 				<Suspense key="GalleryPage" fallback={<PageLoader />}>
 					<ModalGallery
+						key={`modal-${selectedId}`}
 						show={isOpen}
 						onClose={() => setOpen((prev) => !prev)}
 						gallery={filteredImages}
