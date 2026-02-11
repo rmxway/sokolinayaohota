@@ -135,7 +135,6 @@ export const halls: HallType[] = [
 				tag: 'falcon-yard',
 			},
 		],
-		video: ['https://www.youtube.com/embed/FD6WYalDMck'],
 	},
 ];
 
