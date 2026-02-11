@@ -11,7 +11,7 @@ export const InfoBlock = () => (
 				д. 11
 			</InfoItem>
 			<InfoItem icon="phone" border>
-				<a href="tel:+74992686834">+7 (499) 268-68-34</a>				
+				<a href="tel:+74992686834">+7 (499) 268-68-34</a>
 			</InfoItem>
 			<InfoItem icon="time">
 				Часы работы: <br />
