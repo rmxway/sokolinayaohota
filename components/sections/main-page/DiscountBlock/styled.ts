@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 import { FinalText, FormStyled } from '@/components/FormOrder/styled';
-import { Title } from '@/components/Layout';
+import { Container, Grid , Title } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
 	width: 100%;
-	display: grid;
-	grid-auto-flow: row;
-	gap: 20px;
+	display: flex;
+	flex-direction: column;
 	text-align: center;
 	padding: 80px 0;
 	background-color: ${theme.colors.solid.base}55;
+	min-height: fit-content;
 
 	${Title} {
 		font-size: 4rem;
@@ -40,6 +40,14 @@ export const Wrapper = styled.div`
 	${media.lessThan('lg')`
 		padding: 40px 0;
 
+		${Container} {
+			grid-template-columns: 1fr;
+		}
+
+		${Grid} {
+			grid-template-columns: 1fr;
+		}
+
 		${Title} {
 			font-size: 3.25rem;	
 
@@ -48,11 +56,16 @@ export const Wrapper = styled.div`
 				letter-spacing: 0.5px;
 			}
 		}
-	`}
 
-	${media.lessThan('lg')`
 		${FormStyled} {
 			max-width: 320px;
+		}
+	`}
+
+	${media.lessThan('md')`
+		${FormStyled} {
+			max-width: 100%;
+			width: 100%;
 		}
 	`}
 `;

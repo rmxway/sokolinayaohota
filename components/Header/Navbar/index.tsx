@@ -2,10 +2,10 @@ import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FC, useEffect, useRef, useState } from 'react';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import { FC, useRef, useState } from 'react';
 
 import { Space } from '@/components/Layout';
+import { useScrollLock } from '@/hooks';
 import { navbarItems } from '@/mock/navbar';
 import oldLogo from '@/public/assets/img/old-logo.png';
 
@@ -25,15 +25,7 @@ export const Navbar: FC = () => {
 	const [show, setShow] = useState(false);
 	const containerRef = useRef(null);
 
-	useEffect(() => {
-		if (show && containerRef?.current) {
-			disablePageScroll(containerRef?.current);
-		}
-
-		return () => {
-			enablePageScroll();
-		};
-	}, [show]);
+	useScrollLock(show);
 
 	const toggleNavbar = (e: React.MouseEvent) => {
 		if (e.target !== containerRef.current) setShow((prev) => !prev);

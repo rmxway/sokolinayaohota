@@ -1,9 +1,9 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { FC, ReactNode, useEffect, useRef } from 'react';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import React, { FC, ReactNode, useRef } from 'react';
 
 import { Icon } from '@/components';
 import { Title } from '@/components/Layout';
+import { useScrollLock } from '@/hooks';
 
 import {
 	animationWindow,
@@ -33,15 +33,7 @@ export const Modal: FC<ModalProps> = ({
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
 
-	useEffect(() => {
-		if (show && wrapperRef.current) {
-			disablePageScroll(wrapperRef.current);
-		}
-
-		return () => {
-			enablePageScroll();
-		};
-	}, [show]);
+	useScrollLock(show);
 
 	const handleClose = (e: React.MouseEvent) => {
 		const { target } = e;
