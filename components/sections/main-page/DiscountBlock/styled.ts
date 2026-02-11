@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { FinalText, FormStyled } from '@/components/FormOrder/styled';
-import { Container, Grid , Title } from '@/components/Layout';
+import { Container, Grid, Title } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
 

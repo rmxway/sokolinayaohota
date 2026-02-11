@@ -1,11 +1,14 @@
-/**
- * Возвращает текущий хост (hostname:port).
- * На клиенте — из window.location, на сервере — из env (VERCEL_URL или localhost:PORT).
- */
 export const getHost = (): string => {
-	if (typeof window !== 'undefined') {
-		return window.location.host;
+	const win =
+		typeof globalThis !== 'undefined'
+			? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+				(globalThis as any).window
+			: undefined;
+
+	if (win?.location?.host) {
+		return win.location.host;
 	}
+
 	if (process.env.VERCEL_URL) {
 		return process.env.VERCEL_URL;
 	}

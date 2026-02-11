@@ -1,6 +1,12 @@
 import { GalleryImageType, ImageCategory } from '@/@types/types';
 import { ResponseData } from '@/app/content';
-import { advantages, galleryImages, halls, mainSlider, questions } from '@/mock';
+import {
+	advantages,
+	galleryImages,
+	halls,
+	mainSlider,
+	questions,
+} from '@/mock';
 
 const galleryCategories: { name: string; tag: ImageCategory }[] = [
 	{ tag: 'all', name: 'Все' },

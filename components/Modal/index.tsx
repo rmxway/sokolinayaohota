@@ -48,6 +48,7 @@ export const Modal: FC<ModalProps> = ({
 		<AnimatePresence>
 			{show && (
 				<ModalWrapper
+					data-testid="modal-wrapper"
 					variants={animationWrapper}
 					initial="start"
 					animate="end"
@@ -56,6 +57,7 @@ export const Modal: FC<ModalProps> = ({
 					ref={wrapperRef}
 				>
 					<ModalWindow
+						data-testid="modal-window"
 						variants={animationWindow}
 						$fullscreen={fullscreen}
 						$gallery={gallery}
@@ -65,7 +67,10 @@ export const Modal: FC<ModalProps> = ({
 								{header}
 							</Title>
 						)}
-						<CloseButton ref={closeRef}>
+						<CloseButton
+							data-testid="modal-close-button"
+							ref={closeRef}
+						>
 							<Icon icon="close" size={10} />
 						</CloseButton>
 

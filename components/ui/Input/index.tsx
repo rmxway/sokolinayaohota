@@ -63,10 +63,12 @@ const InputUI = ({
 		>
 			<input
 				// mask={mask()}
+				name={name}
 				value={value}
 				onChange={onChange}
 				onBlur={onBlur}
 				id={name}
+				disabled={disabled}
 				autoComplete="off"
 				{...props}
 			/>

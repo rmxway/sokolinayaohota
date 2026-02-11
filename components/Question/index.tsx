@@ -11,7 +11,7 @@ export const Question: FC<QuestionType> = ({ answer, question, id }) => {
 	const [checked, setChecked] = useState(false);
 
 	return (
-		<Wrapper htmlFor={String(id)} layout>
+		<Wrapper htmlFor={String(id)}>
 			<input
 				name="questions"
 				id={String(id)}

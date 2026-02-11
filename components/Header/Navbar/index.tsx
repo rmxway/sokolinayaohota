@@ -49,13 +49,18 @@ export const Navbar: FC = () => {
 			</BurgerButton>
 			<DesktopNav>
 				{navbarItems.map((item) => (
-					<NavbarItem key={item.title} $active={activeLink(item.url)}>
+					<NavbarItem
+						key={item.title}
+						data-testid={`navbar-item-${item.title.toLowerCase()}`}
+						$active={activeLink(item.url)}
+					>
 						<Link href={item.url} aria-label={item.title} />
 						{item.title}
 					</NavbarItem>
 				))}
 			</DesktopNav>
 			<Wrapper
+				data-testid="navbar-overlay"
 				variants={wrapperVariant}
 				animate={show ? 'end' : 'start'}
 				onClick={toggleNavbar}
@@ -63,6 +68,7 @@ export const Navbar: FC = () => {
 				<AnimatePresence>
 					{show && (
 						<MobileNav
+							data-testid="mobile-nav"
 							ref={containerRef}
 							variants={mobileNavVariant}
 							initial="start"
@@ -73,6 +79,7 @@ export const Navbar: FC = () => {
 								<NavbarItem
 									variants={navbarItemVariant}
 									key={item.title}
+									data-testid={`navbar-item-${item.title.toLowerCase()}`}
 									$active={activeLink(item.url)}
 								>
 									<Link href={item.url} />
