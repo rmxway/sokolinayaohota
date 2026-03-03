@@ -36,7 +36,7 @@ export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 
 				{data?.length ? (
 					<>
-						<Grid>
+						<Grid $gap={20}>
 							{data.map((image, idx) => (
 								<GalleryImage
 									key={image.alt}

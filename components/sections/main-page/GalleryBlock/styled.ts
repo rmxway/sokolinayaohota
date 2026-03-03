@@ -1,7 +1,7 @@
 import 'swiper/css';
 
 import { motion, Variants } from 'framer-motion';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout/FetchedImage';
 import { defaultTheme as theme } from '@/theme/defaultTheme';
@@ -19,21 +19,23 @@ export const Wrapper = styled.div`
 	`}
 `;
 
-export const Grid = styled.div`
-	display: grid;
-	gap: 40px;
-	grid-template-columns: 2fr repeat(4, 1fr);
-	grid-template-rows: 150px 150px;
+export const Grid = styled.div<{ $gap?: number }>`
+	${({ $gap }) => css`
+		display: grid;
+		gap: ${$gap ?? 40}px;
+		grid-template-columns: 2fr repeat(4, 1fr);
+		grid-template-rows: 150px 150px;
 
-	${media.lessThan('lg')`
-		gap: 24px;
-		grid-template-rows: 130px 130px;
-	`}
+		${media.lessThan('lg')`
+			gap: ${$gap ? $gap - 6 : 24}px;
+			grid-template-rows: 130px 130px;
+		`}
 
-	${media.lessThan('md')`
-		gap: 20px;
-		grid-template-columns: repeat(3, 1fr);		
-		grid-template-rows: repeat(3, 20vw);
+		${media.lessThan('md')`
+			gap: ${$gap ? $gap - 10 : 20}px;
+			grid-template-columns: repeat(3, 1fr);		
+			grid-template-rows: repeat(3, 20vw);
+		`}
 	`}
 `;
 
