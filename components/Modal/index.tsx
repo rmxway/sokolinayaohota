@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { FC, ReactNode, useRef } from 'react';
+import React, { FC, ReactNode, useEffect, useRef } from 'react';
 
 import { Icon } from '@/components';
 import { Title } from '@/components/Layout';
@@ -34,6 +34,19 @@ export const Modal: FC<ModalProps> = ({
 	const closeRef = useRef<HTMLButtonElement>(null);
 
 	useScrollLock(show);
+
+	useEffect(() => {
+		if (!show) return () => undefined;
+
+		const handleEscape = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				onClose?.();
+			}
+		};
+
+		document.addEventListener('keydown', handleEscape);
+		return () => document.removeEventListener('keydown', handleEscape);
+	}, [show, onClose]);
 
 	const handleClose = (e: React.MouseEvent) => {
 		const { target } = e;

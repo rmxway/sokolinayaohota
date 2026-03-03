@@ -7,7 +7,7 @@ const base = css`
 		scroll-snap-align: inherit;
 		scroll-snap-type: mandatory;
 		scroll-behavior: smooth;
-		font-size: 14px;
+		font-size: 16px;
 	}
 
 	*,
