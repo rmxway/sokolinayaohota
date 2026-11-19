@@ -1,7 +1,7 @@
 'use client';
 
 import { LayoutGroup } from 'framer-motion';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 
 import { GalleryImageType, ImageCategory } from '@/@types/types';
 import { ErrorMessage } from '@/components/ErrorMessage';
@@ -42,7 +42,7 @@ export const GalleryContent = ({
 	error,
 }: GalleryPageProps) => {
 	const [selectedId, setSelectedId] = useState<number>(0);
-	const [isOpen, setOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
 	const [currentCategory, setCurrentCategory] =
 		useState<ImageCategory>('all');
@@ -51,20 +51,25 @@ export const GalleryContent = ({
 
 	const handleShowImageInModal = (id: number) => {
 		setSelectedId(id);
-		setOpen((prev) => !prev);
+		setOpen(true);
 		if (!suspended) setSuspended(true);
 	};
 
-	const handleFilterGallery = (code: ImageCategory) => {
-		if (code === 'all') {
-			setCurrentCategory('all');
-			setFilteredImages(images);
-		} else {
-			setCurrentCategory(code);
-			setFilteredImages([...images.filter((item) => item.tag === code)]);
-		}
-		setSelectedId(0);
-	};
+	const handleFilterGallery = useCallback(
+		(code: ImageCategory) => {
+			if (code === 'all') {
+				setCurrentCategory('all');
+				setFilteredImages(images);
+			} else {
+				setCurrentCategory(code);
+				setFilteredImages([
+					...images.filter((item) => item.tag === code),
+				]);
+			}
+			setSelectedId(0);
+		},
+		[images],
+	);
 
 	return (
 		<>
@@ -119,6 +124,7 @@ export const GalleryContent = ({
 											width={400}
 											height={400}
 											quality={10}
+											loading="eager"
 										/>
 									</GalleryImage>
 								))}
@@ -133,8 +139,8 @@ export const GalleryContent = ({
 				<Suspense key="GalleryPage" fallback={<PageLoader />}>
 					<ModalGallery
 						key={`modal-${selectedId}`}
-						show={isOpen}
-						onClose={() => setOpen((prev) => !prev)}
+						show={open}
+						onClose={() => setOpen(false)}
 						gallery={filteredImages}
 						currentId={selectedId}
 					/>

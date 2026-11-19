@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 	flex-grow: 1;
 	position: relative;
 	width: 100%;
-	padding: 80px 0 20px;
+	padding: 80px 0;
 	background-image: ${theme.colors.gradients.black()};
 	background-color: ${theme.colors.solid.secondary};
 
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
 	}
 
 	${media.lessThan('lg')`
-		padding: 40px 0 80px;
+		padding: 40px 0;
 	`}
 
 	${media.lessThan('md')`

@@ -11,15 +11,16 @@ export const ModalWrapper = styled(motion.div)`
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #15120fc2;
+	background-color: #15120fcc;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	z-index: 100;
+	z-index: 99999;
 	touch-action: pan-y;
 	cursor: pointer;
+	backdrop-filter: blur(10px);
 	overflow-y: auto;
-	backdrop-filter: blur(8px);
+
 
 	${media.lessThan('sm')`
 		padding: 0;
@@ -73,21 +74,22 @@ export const ModalWindow = styled(motion.div)<ModalWindowTypes>`
 		css`
 			background: none;
 			padding: 0;
+			box-shadow: none;
 		`}
 
 	${(props) =>
 		!props.$fullscreen &&
 		!props.$gallery &&
 		media.lessThan('md')`
-	margin-top: 0;
-	` &&
+			margin-top: 0;
+		` &&
 		media.lessThan('sm')`
-		min-width: auto;
-		width: 100%;
-		min-height: 100%;
-		margin: 0;
-		padding: 52px 20px;
-		border-radius: 0;
+			min-width: auto;
+			width: 100%;
+			min-height: 100%;
+			margin: 0;
+			padding: 52px 20px;
+			border-radius: 0;
 	`}
 `;
 
@@ -116,10 +118,10 @@ export const CloseButton = styled(motion.button)`
 `;
 
 export const animationWrapper: Variants = {
-	start: { opacity: 0, transition: { delay: 0.2 } },
+	start: { opacity: 0, transition: { duration: 0.2 } },
 	end: {
 		opacity: 1,
-		transition: { duration: 0.4, staggerChildren: 1, delayChildren: 0.3 },
+		transition: { duration: 0.1, staggerChildren: 1, delayChildren: 0.1 },
 	},
 };
 
@@ -130,7 +132,7 @@ export const animationWindow: Variants = {
 	end: {
 		opacity: 1,
 		transition: {
-			duration: 0.3,
+			duration: 0.1,
 			type: 'tween',
 		},
 	},

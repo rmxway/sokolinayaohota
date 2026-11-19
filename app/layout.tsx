@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { StyledComponentsRegistry } from '@/lib';
 
 export const metadata: Metadata = {
-	title: 'Sokolinaya ohota',
+	title: 'Соколиная охота',
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" data-scroll-behavior="smooth">
 			<body>
 				<StyledComponentsRegistry>{children}</StyledComponentsRegistry>
 			</body>

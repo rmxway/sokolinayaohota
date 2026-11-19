@@ -55,7 +55,7 @@ export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 						</Grid>
 
 						<Link href="/gallery">
-							<ButtonUI $secondary $mobile>
+							<ButtonUI $brown $mobile>
 								Больше фото
 							</ButtonUI>
 						</Link>

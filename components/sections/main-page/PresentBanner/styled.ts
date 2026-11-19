@@ -10,11 +10,12 @@ export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 
-	background-size: cover;
-	background-position: center;
-	color: ${theme.colors.solid.white};
+	font-family: ${theme.layout.fonts.old};
+
+	color: ${theme.colors.solid.primary};
 	text-align: center;
-	padding: 80px 0;
+	padding: 180px 0;
+	background-color: ${theme.colors.solid.brown}cc;
 
 	& > div {
 		font-size: 1.5rem;
@@ -34,12 +35,6 @@ export const Wrapper = styled.div`
 export const TextBlock = styled(Grid)`
 	width: 100%;
 	height: 100%;
-	background-image: ${theme.colors.gradients.black('190deg')};
-	filter: opacity(0.95);
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
-	border-radius: ${theme.radius.blockRadius};
-	padding: 40px;
 	justify-items: center;
 
 	${media.lessThan('lg')`
@@ -48,7 +43,6 @@ export const TextBlock = styled(Grid)`
 `;
 
 export const MainText = styled.div`
-	font-family: ${theme.layout.fonts.header};
 	font-size: 2rem;
 	line-height: 1.3;
 

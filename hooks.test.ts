@@ -4,49 +4,49 @@ import { useScrollLock } from './hooks';
 
 describe('useScrollLock', () => {
 	beforeEach(() => {
-		document.body.classList.remove('scroll-locked');
+		document.body.classList.remove('scroll-lock');
 	});
 
-	it('добавляет класс scroll-locked к body когда isLocked=true', () => {
+	it('добавляет класс scroll-lock к body когда locked=true', () => {
 		renderHook(() => useScrollLock(true));
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 	});
 
-	it('удаляет класс scroll-locked когда isLocked=false', () => {
+	it('удаляет класс scroll-lock когда locked=false', () => {
 		const { rerender } = renderHook(
-			({ isLocked }) => useScrollLock(isLocked),
+			({ locked }) => useScrollLock(locked),
 			{
-				initialProps: { isLocked: true },
+				initialProps: { locked: true },
 			},
 		);
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
-		rerender({ isLocked: false });
-		expect(document.body.classList.contains('scroll-locked')).toBe(false);
+		rerender({ locked: false });
+		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 	});
 
-	it('удаляет класс scroll-locked при размонтировании компонента', () => {
+	it('удаляет класс scroll-lock при размонтировании компонента', () => {
 		const { unmount } = renderHook(() => useScrollLock(true));
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
 		unmount();
-		expect(document.body.classList.contains('scroll-locked')).toBe(false);
+		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 	});
 
-	it('обновляет класс при изменении isLocked', () => {
+	it('обновляет класс при изменении locked', () => {
 		const { rerender } = renderHook(
-			({ isLocked }) => useScrollLock(isLocked),
+			({ locked }) => useScrollLock(locked),
 			{
-				initialProps: { isLocked: false },
+				initialProps: { locked: false },
 			},
 		);
-		expect(document.body.classList.contains('scroll-locked')).toBe(false);
+		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 
-		rerender({ isLocked: true });
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		rerender({ locked: true });
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
-		rerender({ isLocked: false });
-		expect(document.body.classList.contains('scroll-locked')).toBe(false);
+		rerender({ locked: false });
+		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 	});
 
 	it('не падает когда document undefined (SSR)', () => {
@@ -61,20 +61,20 @@ describe('useScrollLock', () => {
 		global.document = originalDocument;
 	});
 
-	it('не добавляет класс несколько раз при повторных вызовах с isLocked=true', () => {
+	it('не добавляет класс несколько раз при повторных вызовах с locked=true', () => {
 		const { rerender } = renderHook(
-			({ isLocked }) => useScrollLock(isLocked),
+			({ locked }) => useScrollLock(locked),
 			{
-				initialProps: { isLocked: true },
+				initialProps: { locked: true },
 			},
 		);
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
-		rerender({ isLocked: true });
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		rerender({ locked: true });
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 		expect(
 			Array.from(document.body.classList).filter(
-				(c) => c === 'scroll-locked',
+				(c) => c === 'scroll-lock',
 			).length,
 		).toBe(1);
 	});

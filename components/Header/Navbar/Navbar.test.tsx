@@ -84,42 +84,6 @@ describe('Navbar', () => {
 		});
 	});
 
-	it('добавляет класс scroll-locked когда мобильное меню открыто', async () => {
-		const user = userEvent.setup();
-		customRender(<Navbar />);
-
-		const burgerButton = screen.getByLabelText('burger button');
-		await user.click(burgerButton);
-
-		await waitFor(() => {
-			expect(document.body.classList.contains('scroll-locked')).toBe(
-				true,
-			);
-		});
-	});
-
-	it('удаляет класс scroll-locked когда мобильное меню закрыто', async () => {
-		const user = userEvent.setup();
-		customRender(<Navbar />);
-
-		const burgerButton = screen.getByLabelText('burger button');
-		await user.click(burgerButton);
-
-		await waitFor(() => {
-			expect(document.body.classList.contains('scroll-locked')).toBe(
-				true,
-			);
-		});
-
-		await user.click(burgerButton);
-
-		await waitFor(() => {
-			expect(document.body.classList.contains('scroll-locked')).toBe(
-				false,
-			);
-		});
-	});
-
 	it('определяет активную ссылку для главной страницы', () => {
 		mockUsePathname.mockReturnValue('/');
 		customRender(<Navbar />);

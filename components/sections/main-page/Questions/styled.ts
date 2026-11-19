@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 	&:before {
 		content: '';
 		position: absolute;
-		background-color: #ffffffbf;
+		background-color: #ffffffaa;
 		width: 100%;
 		height: 100%;
 		top: 0;

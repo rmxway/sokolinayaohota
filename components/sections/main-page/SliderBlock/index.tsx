@@ -1,9 +1,10 @@
 'use client';
 
+import 'swiper/css/pagination';
+
 import { LayoutGroup, motion } from 'framer-motion';
 import Link from 'next/link';
-import { FC, memo, useState } from 'react';
-import { Swiper as TypeSwiper } from 'swiper';
+import { FC, memo, useMemo, useState } from 'react';
 import { Navigation, Pagination, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
@@ -17,6 +18,7 @@ import { ButtonUI, Preloader } from '@/components/ui';
 import {
 	animateText,
 	animateTitle,
+	ContainerForSlider,
 	Controllers,
 	Info,
 	SlideContainer,
@@ -29,7 +31,6 @@ type SliderBlockProps = {
 };
 
 export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
-	const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
 	const [slideIndex, setSlideIndex] = useState<number>(0);
 	const [isLoaded, setLoaded] = useState(false);
 
@@ -38,6 +39,11 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 		? `/halls/${typesPath[slideIndex]}`
 		: '/halls/big-hall';
 
+	const currentImages = useMemo(
+		() => (data ? data[slideIndex].images : []),
+		[data, slideIndex],
+	);
+
 	const mainSwiperConfig: SwiperProps = {
 		speed: 300,
 		spaceBetween: 20,
@@ -45,9 +51,6 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 		autoHeight: true,
 		loop: true,
 		modules: [Thumbs, Pagination, Navigation],
-		thumbs: {
-			swiper: thumbSwiper && !thumbSwiper.destroyed ? thumbSwiper : null,
-		},
 		pagination: {
 			clickable: true,
 			el: '.slider-pagination',
@@ -65,17 +68,6 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 		},
 		onInit: () => {
 			setLoaded(true);
-		},
-	};
-
-	const imagesSwiperConfig: SwiperProps = {
-		modules: [Thumbs],
-		speed: 600,
-		allowTouchMove: false,
-		spaceBetween: 20,
-		slidesPerView: 1,
-		onSwiper: (swiper) => {
-			setThumbSwiper(swiper);
 		},
 	};
 
@@ -149,25 +141,22 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 								<div className="slider-pagination" />
 							</div>
 							<Link href={currentPath}>
-								<ButtonUI $secondary $icon="arrow">
+								<ButtonUI $brown $icon="arrow">
 									Подробнее
 								</ButtonUI>
 							</Link>
 						</Controllers>
 					</Info>
+
 					{isLoaded && (
-						<Swiper {...imagesSwiperConfig}>
-							{data?.map(({ tag, images }) => (
-								<SwiperSlide key={tag}>
-									<Slider
-										images={images}
-										controls
-										thumbs
-										countThumbsPerView={5}
-									/>
-								</SwiperSlide>
-							))}
-						</Swiper>
+						<ContainerForSlider>
+							<Slider
+								images={currentImages}
+								controls
+								thumbs
+								countThumbsPerView={5}
+							/>
+						</ContainerForSlider>
 					)}
 				</SlideContainer>
 			</Container>

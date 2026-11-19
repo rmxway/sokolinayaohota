@@ -1,7 +1,7 @@
 import { ImageBackground } from '@/components';
 import { FormOrder } from '@/components/FormOrder';
 import { Container, Grid, Title } from '@/components/Layout';
-import imageBack from '@/public/assets/img/discount-2.webp';
+import imageBack from '@/public/assets/img/discount.jpg';
 import { apiUrl } from '@/services/variable';
 
 import { Discount, Wrapper } from './styled';
@@ -13,7 +13,7 @@ export const DiscountBlock = () => (
 				<Title color="white">
 					Оставьте заявку
 					<br />
-					и получите
+					прямо сейчас и получите
 					<br />
 					<span>дополнительную скидку</span>
 				</Title>

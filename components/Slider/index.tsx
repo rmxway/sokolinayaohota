@@ -15,6 +15,7 @@ import { jsBreakpoints } from '@/theme/media';
 import { Controls } from './Controls';
 import {
 	LoadingWrapper,
+	SliderShadow,
 	SliderStyle,
 	SliderWrapper,
 	ThumbnailsStyle,
@@ -25,6 +26,7 @@ type SliderProps = {
 	initialSlide?: number;
 	controls?: boolean;
 	thumbs?: boolean;
+	isModal?: boolean;
 	countThumbsPerView?: number;
 };
 
@@ -34,6 +36,7 @@ export const Slider: FC<SliderProps> = memo(
 		initialSlide = 0,
 		controls,
 		thumbs,
+		isModal,
 		countThumbsPerView = 7,
 	}) => {
 		const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
@@ -98,61 +101,39 @@ export const Slider: FC<SliderProps> = memo(
 		}, [images]);
 
 		return (
-			<SliderWrapper>
-				{images.length === 0 && (
-					<Flexbox
-						$align="center"
-						$justify="center"
-						$direction="column"
-						$w100
-						$h100
-						className="error-message"
-					>
-						<Icon icon="no-photo" size={55} color="disabled" />
-						<br />
-						<Title color="disabled" size="24px">
-							Фотографии временно не доступны
-						</Title>
-					</Flexbox>
-				)}
-				{!isLoaded && <Preloader light />}
-				<LoadingWrapper $loaded={isLoaded}>
-					{images.length !== 0 && (
-						<>
-							<SliderStyle>
-								<Swiper {...mainSwiperConfig}>
-									{images.map((image, idx) => (
-										<SwiperSlide
-											key={image.id || image.alt}
-										>
-											<FetchedImage
-												width={1000}
-												height={1000}
-												sizes="100vw"
-												priority={idx === 0}
-												quality={50}
-												light
-												src={`${prefixImages}${image.url}`}
-												alt={image.alt}
-											/>
-										</SwiperSlide>
-									))}
-									{controls ? (
-										<Controls name="slider" />
-									) : null}
-								</Swiper>
-							</SliderStyle>
-							{thumbs && images.length !== 0 && (
-								<ThumbnailsStyle>
-									<Swiper {...thumbsSwiperConfig}>
+			<SliderShadow $isModal={isModal}>
+				<SliderWrapper>
+					{images.length === 0 && (
+						<Flexbox
+							$align="center"
+							$justify="center"
+							$direction="column"
+							$w100
+							$h100
+							className="error-message"
+						>
+							<Icon icon="no-photo" size={55} color="disabled" />
+							<br />
+							<Title color="disabled" size="24px">
+								Фотографии временно не доступны
+							</Title>
+						</Flexbox>
+					)}
+					{!isLoaded && <Preloader light />}
+					<LoadingWrapper $loaded={isLoaded}>
+						{images.length !== 0 && (
+							<>
+								<SliderStyle $isModal={isModal}>
+									<Swiper {...mainSwiperConfig}>
 										{images.map((image) => (
 											<SwiperSlide
 												key={image.id || image.alt}
 											>
 												<FetchedImage
-													width={200}
-													height={200}
-													quality={10}
+													width={1000}
+													height={1000}
+													sizes="100vw"													
+													quality={50}
 													light
 													src={`${prefixImages}${image.url}`}
 													alt={image.alt}
@@ -163,12 +144,35 @@ export const Slider: FC<SliderProps> = memo(
 											<Controls name="slider" />
 										) : null}
 									</Swiper>
-								</ThumbnailsStyle>
-							)}
-						</>
-					)}
-				</LoadingWrapper>
-			</SliderWrapper>
+								</SliderStyle>
+								{thumbs && images.length !== 0 && (
+									<ThumbnailsStyle>
+										<Swiper {...thumbsSwiperConfig}>
+											{images.map((image) => (
+												<SwiperSlide
+													key={image.id || image.alt}
+												>
+													<FetchedImage
+														width={200}
+														height={200}
+														quality={10}
+														light
+														src={`${prefixImages}${image.url}`}
+														alt={image.alt}
+													/>
+												</SwiperSlide>
+											))}
+											{controls ? (
+												<Controls name="slider" />
+											) : null}
+										</Swiper>
+									</ThumbnailsStyle>
+								)}
+							</>
+						)}
+					</LoadingWrapper>
+				</SliderWrapper>
+			</SliderShadow>
 		);
 	},
 );

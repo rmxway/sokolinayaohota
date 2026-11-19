@@ -1,5 +1,3 @@
-import 'swiper/css/pagination';
-
 import { Variants } from 'framer-motion';
 import styled from 'styled-components';
 
@@ -11,6 +9,7 @@ import { media } from '@/theme/media';
 
 export const Wrapper = styled.div`
 	position: relative;
+	background-image: ${theme.colors.gradients.golden()};
 	background-color: ${theme.colors.solid.primary};
 	padding: 80px 0;
 	width: 100%;
@@ -39,34 +38,49 @@ export const Wrapper = styled.div`
 	`}
 `;
 
+export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
+	position: relative;
+	display: grid;
+	bottom: -4px;
+	width: 100%;
+	gap: 80px;
+	grid-auto-flow: column;
+	grid-template-columns: 500px 1fr;
+	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
+	transition: opacity 0.5s;
+
+	${media.lessThan('xl')`
+		grid-template-columns: 500px 1fr;
+		gap: 40px;
+	`}
+
+	${media.lessThan('lg')`
+		grid-template-columns: 400px 1fr;
+	`}
+
+	${media.lessThan('md')`
+		grid-template-columns: 1fr;
+		grid-auto-flow: row;
+	`}
+`;
+
 export const Info = styled.div`
 	position: relative;
-	display: flex;
-	width: 500px;
-	color: ${theme.colors.solid.secondary};
+	display: block;
+	color: ${theme.colors.solid.brown};
 	padding-bottom: 72px;
-
-	.swiper {
-		width: 100%;
-	}
-
-	${Title} {
-		font-size: 3.5rem;
-		margin: 0;
-	}
+	min-width: 1%;
 
 	p {
 		display: -webkit-box;
 
 		font-size: 1.35rem;
-		-webkit-line-clamp: 12;
+		line-clamp: 12;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 	}
 
 	${media.lessThan('lg')`
-		width: 350px;
-
 		${Grid} {
 			gap: 10px;
 		}
@@ -83,7 +97,6 @@ export const Info = styled.div`
 
 	${media.lessThan('md')`
 		margin-bottom: 20px;
-		width: 100%;
 	`}
 
 	${media.lessThan('sm')`
@@ -92,34 +105,21 @@ export const Info = styled.div`
 	`}
 `;
 
-export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
-	position: relative;
-	display: flex;
-	flex-wrap: nowrap;
-	bottom: -4px;
-	width: 100%;
-	gap: 80px;
-	opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
-	transition: opacity 0.5s;
+export const ContainerForSlider = styled.div`
+	display: block;
+	min-width: 1%;
 
 	${SliderStyle} {
 		height: 350px;
 	}
 
+	.swiper {
+		width: 100%;
+	}
+
 	.swiper-slide {
 		height: auto;
 	}
-
-	${media.lessThan('xl')`
-		gap: 40px;
-	`}
-
-	${media.lessThan('md')`
-		flex-direction: column;
-		${SliderStyle} {
-			height: 400px;
-		}
-	`}
 
 	${media.lessThan('sm')`
 		${SliderStyle} {
@@ -130,9 +130,11 @@ export const SlideContainer = styled.div<{ $isLoaded: boolean }>`
 		}
 	`}
 
-	.swiper {
-		width: 100%;
-	}
+	${media.lessThan('md')`	
+		${SliderStyle} {
+			height: 400px;
+		}
+	`}
 `;
 
 export const Controllers = styled.div`

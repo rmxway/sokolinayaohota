@@ -12,17 +12,17 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 	text-align: center;
 	padding: 80px 0;
-	background-color: ${theme.colors.solid.base}55;
+	background-color: ${theme.colors.solid.brown}22;
 	min-height: fit-content;
 
 	${Title} {
-		font-size: 4rem;
+		font-size: 3.5rem;
 
 		span {
 			display: block;
 			margin-top: 20px;
 			text-transform: uppercase;
-			font-size: 3.875rem;
+			font-size: 3.3rem;
 			color: ${theme.colors.solid.primary};
 		}
 	}
@@ -74,16 +74,16 @@ export const Discount = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 128px;
-	height: 128px;
+	width: 145px;
+	height: 145px;
 	border-radius: 200px;
 	margin: auto;
-	background-image: ${theme.colors.gradients.disabled()};
+	background-image: ${theme.colors.gradients.brown()};
 
 	& > div {
 		font-size: 3.5rem;
 		font-family: ${theme.layout.fonts.header};
-		color: ${theme.colors.solid.disabled};
+		color: ${theme.colors.solid.primary};
 	}
 
 	${media.lessThan('lg')`

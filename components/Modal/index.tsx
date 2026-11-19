@@ -1,5 +1,12 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { FC, ReactNode, useEffect, useRef } from 'react';
+import React, {
+	FC,
+	ReactNode,
+	useEffect,
+	useRef,
+	useSyncExternalStore,
+} from 'react';
+import { createPortal } from 'react-dom';
 
 import { Icon } from '@/components';
 import { Title } from '@/components/Layout';
@@ -22,6 +29,16 @@ export interface ModalProps {
 	children?: ReactNode;
 }
 
+const emptySubscribe = () => () => {};
+
+function useMounted() {
+	return useSyncExternalStore(
+		emptySubscribe, // нет внешнего хранилища — пустая подписка
+		() => true, // снапшот на клиенте
+		() => false, // снапшот на сервере (и во время гидратации)
+	);
+}
+
 export const Modal: FC<ModalProps> = ({
 	header,
 	show,
@@ -32,6 +49,7 @@ export const Modal: FC<ModalProps> = ({
 }) => {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
+	const mounted = useMounted();
 
 	useScrollLock(show);
 
@@ -57,7 +75,9 @@ export const Modal: FC<ModalProps> = ({
 		return null;
 	};
 
-	return (
+	if (!mounted) return null;
+
+	return createPortal(
 		<AnimatePresence>
 			{show && (
 				<ModalWrapper
@@ -91,7 +111,8 @@ export const Modal: FC<ModalProps> = ({
 					</ModalWindow>
 				</ModalWrapper>
 			)}
-		</AnimatePresence>
+		</AnimatePresence>,
+		document.body,
 	);
 };
 

@@ -21,13 +21,14 @@ export const Template = ({ children }: TemplateProps) => {
 		<AppProvider>
 			<ThemeProvider theme={defaultTheme}>
 				<GlobalStyles />
+				<HeaderBlock />
 				<Flexbox
 					$direction="column"
 					$w100
 					$noWrap
 					$h100vh={isContactsPage}
+					className="main"
 				>
-					<HeaderBlock />
 					{children}
 				</Flexbox>
 			</ThemeProvider>

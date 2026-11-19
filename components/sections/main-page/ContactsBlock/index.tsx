@@ -64,7 +64,7 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 				</MapWrapper>
 
 				<Logo />
-				<Copyright>{state?.year}</Copyright>
+				<Copyright>sokolinayaohota | {state?.year}</Copyright>
 			</Container>
 		</Wrapper>
 	);
