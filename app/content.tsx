@@ -10,9 +10,6 @@ import {
 } from '@/@types/types';
 import { PageLoader } from '@/components/ui';
 
-const InfoBlock = lazy(
-	() => import('@/components/sections/main-page/InfoBlock'),
-);
 const SliderBlock = lazy(
 	() => import('@/components/sections/main-page/SliderBlock'),
 );
@@ -49,7 +46,6 @@ export const ContentLayout = (props: MainPageProps) => {
 
 	return (
 		<Suspense fallback={<PageLoader />}>
-			<InfoBlock />
 			<SliderBlock data={data?.mainSlides} {...{ error }} />
 			<PresentBanner />
 			<WhyAreWe data={data?.advantages} {...{ error }} />

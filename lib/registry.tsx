@@ -19,25 +19,19 @@ export function StyledComponentsRegistry({
 
 	const Tag = isJest ? React.Fragment : Template;
 
-	try {
-		useServerInsertedHTML(() => {
-			const styles = sheet.getStyleElement();
-			sheet.instance.clearTag();
-
-			// eslint-disable-next-line react/jsx-no-useless-fragment
-			return <>{styles}</>;
-		});
-
-		if (typeof window !== 'undefined') return <Tag>{children}</Tag>;
-
-		return (
-			<StyleSheetManager sheet={sheet.instance}>
-				<Tag>{children}</Tag>
-			</StyleSheetManager>
-		);
-	} catch (error) {
-		throw new Error((error as Error).message);
-	} finally {
+	useServerInsertedHTML(() => {
+		const styles = sheet.getStyleElement();
 		sheet.instance.clearTag();
-	}
+
+		// eslint-disable-next-line react/jsx-no-useless-fragment
+		return <>{styles}</>;
+	});
+
+	if (typeof window !== 'undefined') return <Tag>{children}</Tag>;
+
+	return (
+		<StyleSheetManager sheet={sheet.instance}>
+			<Tag>{children}</Tag>
+		</StyleSheetManager>
+	);
 }

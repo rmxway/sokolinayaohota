@@ -2,7 +2,6 @@ import '../public/assets/fonts/icofont/icofont.scss';
 import './fonts.scss';
 
 import type { Preview } from '@storybook/react';
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { defaultTheme, GlobalStyles } from '../theme';

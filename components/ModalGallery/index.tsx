@@ -18,13 +18,14 @@ export const ModalGallery: FC<ModalGalleryProps> = ({
 	gallery,
 	onClose,
 }) => (
-	<Modal show={show} onClose={onClose} fullscreen gallery>
+	<Modal show={show} onClose={onClose} gallery>
 		{gallery?.length ? (
 			<Slider
 				key={currentId}
 				initialSlide={currentId}
 				images={gallery}
 				controls
+				isModal
 			/>
 		) : (
 			<ErrorMessage message="Gallery not found" flat />

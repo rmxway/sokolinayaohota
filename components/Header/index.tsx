@@ -4,7 +4,6 @@ import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { FC, useRef, useState } from 'react';
 
-import { SvgIcon } from '@/components';
 import { Container, Grid, Title } from '@/components/Layout';
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
@@ -17,7 +16,6 @@ import { jsBreakpoints } from '@/theme';
 import { Logo } from './Logo';
 import { Navbar } from './Navbar';
 import { Banner, BannerImage, Header, Wrapper } from './styled';
-import { TopPanelBlock } from './TopPanel';
 
 const HeaderBlock: FC = () => {
 	const [showHeader, setShowHeader] = useState(true);
@@ -42,7 +40,6 @@ const HeaderBlock: FC = () => {
 	return (
 		<>
 			<Wrapper id="header" $isMainPage={isMainPage(path)}>
-				<TopPanelBlock show={showHeader} />
 				<Header
 					initial={{ top: 0 }}
 					animate={{
@@ -82,11 +79,6 @@ const HeaderBlock: FC = () => {
 								<Title color="primary">
 									в самом зеленом парке Москвы
 								</Title>
-								<SvgIcon
-									name="BarDecor2"
-									color="white"
-									width="450px"
-								/>
 							</Container>
 						</Banner>
 						<BannerImage
@@ -95,6 +87,7 @@ const HeaderBlock: FC = () => {
 							quality={20}
 							placeholder="blur"
 							blurDataURL={bannerImage.blurDataURL}
+							className='scroll-lock-compensate'
 							priority
 							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 						/>

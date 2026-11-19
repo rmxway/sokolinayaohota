@@ -50,11 +50,11 @@ export const Wrapper = styled.div`
 `;
 
 export const ItemDescription = styled.div`
-	color: ${theme.colors.gray.$7};
-	font-size: 1.125rem;
-	line-height: 1.2;
+	color: ${theme.colors.solid.brown}cc;
+	font-size: 1.25rem;
+	line-height: 1.3;
 	font-weight: 400;
-	text-align: left;
+	text-align: center;
 
 	p {
 		display: block;
@@ -76,9 +76,10 @@ export const ItemDescription = styled.div`
 export const Item = styled.div`
 	min-height: 200px;
 	width: 100%;
+	background-image: ${theme.colors.gradients.light('180deg')};
 	background-color: #fff;
 	border-radius: ${theme.radius.blockRadius};
-	border: 1px solid ${theme.colors.gray.$3};
+	// border: 1px solid ${theme.colors.gray.$2};
 	padding: 40px 24px;
 	display: grid;
 	justify-items: center;
@@ -88,16 +89,12 @@ export const Item = styled.div`
 
 	& > div:not([class]) {
 		font-family: ${theme.layout.fonts.header};
-		font-size: 1.6rem;
+		font-size: 1.5rem;
 		font-weight: 600;
 		height: max-content;
 		line-height: 0.9;
-		text-transform: lowercase;
-		color: ${theme.colors.solid.secondary};
-
-		&::first-letter {
-			text-transform: uppercase;
-		}
+		text-transform: uppercase;
+		color: ${theme.colors.solid.brown};
 	}
 
 	&:hover {
@@ -118,10 +115,10 @@ export const IconWrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	background-image: ${theme.colors.gradients.golden()};
+	background-color: ${theme.colors.gray.$2};
 
 	.icofont {
-		color: ${theme.colors.solid.secondary}cc;
+		color: ${theme.colors.solid.brown};
 		font-size: 2.5rem;
 	}
 

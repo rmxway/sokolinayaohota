@@ -1,14 +1,26 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout';
 import { Ellipsis } from '@/components/ui/Preloader/styled';
 import { defaultTheme as theme, media } from '@/theme';
 
+export const SliderShadow = styled.div<{ $isModal?: boolean }>`
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	${({ $isModal }) =>
+		!$isModal &&
+		css`
+			box-shadow: ${theme.layout.shadow.basic};
+			border-radius: 20px;
+		`}
+`;
+
 export const SliderWrapper = styled.div`
 	position: relative;
 	height: 100%;
 	text-align: center;
-	background-image: ${theme.colors.gradients.black()};
 	border-radius: 20px;
 	overflow: hidden;
 
@@ -17,40 +29,40 @@ export const SliderWrapper = styled.div`
 	}
 `;
 
-export const SliderStyle = styled.div`
-	position: relative;
-	width: 100%;
-	display: flex;
-	min-height: 1px;
-	flex-grow: 1;
-
-	.swiper {
+export const SliderStyle = styled.div<{ $isModal?: boolean }>`
+	${({ $isModal }) => css`
+		position: relative;
 		width: 100%;
-	}
-
-	${WrapperFetchedImage} {
-		height: 100%;
-
-		img {
-			height: 100%;
-			max-height: 100%;
-			object-fit: cover;
-			object-position: center;
-		}
-	}
-
-	${media.lessThan('md')`
-		min-height: 0;
-		
-		.swiper-slide,
-		.swiper,
-		.swiper-wrapper {			
-			max-height: 100%;
-		}
+		display: flex;
+		min-height: 1px;
+		max-height: 80vh;
+		object-fit: contain;
+		flex-grow: 1;
 
 		${WrapperFetchedImage} {
-			width: 100%;
+			height: 100%;
+
+			img {
+				height: 100%;
+				max-height: 100%;
+				object-fit: ${$isModal ? 'contain' : 'cover'};
+				object-position: center;
+			}
 		}
+
+		${media.lessThan('md')`
+			min-height: 0;
+			
+			.swiper-slide,
+			.swiper,
+			.swiper-wrapper {			
+				max-height: 100%;
+			}
+
+			${WrapperFetchedImage} {
+				width: 100%;
+			}
+		`}
 	`}
 `;
 
@@ -71,7 +83,7 @@ export const ThumbnailsStyle = styled.div`
 
 	.swiper-slide {
 		opacity: 0.6;
-		transition: all 0.2s;
+		transition: opacity 0.2s;
 		cursor: pointer;
 		border: 2px solid transparent;
 		border-radius: 8px;

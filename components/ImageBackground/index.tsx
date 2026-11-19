@@ -17,7 +17,6 @@ export const ImageBackground = ({
 		quality={quality}
 		placeholder="blur"
 		alt="image background"
-		fill
 		{...props}
 	/>
 );

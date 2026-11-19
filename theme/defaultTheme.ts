@@ -1,3 +1,4 @@
+import { desaturate } from 'polished';
 import { DefaultTheme } from 'styled-components';
 
 import {
@@ -32,17 +33,19 @@ export const defaultTheme: DefaultTheme = {
 		},
 		gradients: {
 			golden: (deg = '180deg') =>
-				`linear-gradient(${deg}, #FFDE7D, #FDC087)`,
+				`linear-gradient(${deg}, ${defaultTheme.colors.solid.primary}, #FDC087)`,
 			brown: (deg = '180deg') =>
-				`linear-gradient(${deg}, #42210B, #5E361B)`,
+				`linear-gradient(${deg}, ${defaultTheme.colors.solid.brown}, ${desaturate(0.35, defaultTheme.colors.solid.brown)})`,
 			rubin: (deg = '180deg') =>
-				`linear-gradient(${deg}, #FF4773 0%, #F22E13 100%)`,
+				`linear-gradient(${deg}, ${defaultTheme.colors.solid.danger} 0%, #F22E13 100%)`,
 			disabled: (deg = '180deg') =>
 				`linear-gradient(${deg}, #E8E8E8 0%, #CBC8C8 100%)`,
 			black: (deg = '180deg') =>
-				`linear-gradient(${deg}, #1B1913 0%, #433F38 100%)`,
+				`linear-gradient(${deg}, ${defaultTheme.colors.solid.secondary} 0%, #362418 100%)`,
 			black2: (deg = '180deg') =>
 				`linear-gradient(${deg}, #34302D, #615E5C)`,
+			light: (deg = '180deg') =>
+				`linear-gradient(${deg}, #f6f6f6, #fbfbfb)`,
 		},
 	},
 	layout: {

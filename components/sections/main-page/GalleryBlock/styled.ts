@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	padding: 80px 0;
+	z-index: 1;
 
 	${media.lessThan('lg')`
 		padding: 40px 0;

@@ -11,11 +11,9 @@ export const Wrapper = styled.div<{ $isMainPage: boolean }>`
 	display: flex;
 	width: 100%;
 	flex-direction: column;
-	overflow: ${(props) => (props.$isMainPage ? 'hidden' : 'visible')};
-	background-image: ${theme.colors.gradients.black()};
-
+	overflow: hidden;
+	
 	${media.lessThan('md')`
-		background: #fff;
 		padding-top: 88px;
 	`}
 `;
@@ -37,7 +35,7 @@ export const Header = styled(motion.header)`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	z-index: 100;
+	z-index: 200;
 
 	${media.lessThan('md')`
 		position: fixed;
@@ -52,14 +50,14 @@ export const Header = styled(motion.header)`
 `;
 
 export const BannerImage = styled(Image)`
-	position: absolute;
+	position: fixed;
 	top: 0;
-	left: 0;
-	width: 100%;
+	left: -10px;
+	width: 110%;
 	height: 100%;
+	object-position: center -400px;
 	object-fit: cover;
-	object-position: bottom;
-	z-index: 0;
+	z-index: -10;
 	filter: blur(4px);
 `;
 
@@ -71,12 +69,12 @@ export const Banner = styled.div`
 	text-align: center;
 	gap: 40px;
 	flex-wrap: nowrap;
-	min-height: 500px;
-	z-index: 1;
+	min-height: 600px;
+	z-index: 2;
 	padding: 40px 0;
 
 	${media.lessThan('lg')`
-		min-height: auto;
+		min-height: 400px;
 	`}
 
 	h1,

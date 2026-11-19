@@ -4,9 +4,6 @@ import { YanoneKaffeesatzFont, ZenKakuFont } from '@/services/fonts';
 
 const base = css`
 	html {
-		scroll-snap-align: inherit;
-		scroll-snap-type: mandatory;
-		scroll-behavior: smooth;
 		font-size: 16px;
 	}
 
@@ -16,6 +13,15 @@ const base = css`
 		box-sizing: border-box;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body.scroll-lock {
+		overflow: hidden;
+		padding-right: var(--scrollbar-width, 0);
+	}
+
+	body.scroll-lock .scroll-lock-compensate {
+		padding-right: var(--scrollbar-width, 0);
 	}
 
 	body {
@@ -28,10 +34,12 @@ const base = css`
 		overflow-y: scroll;
 	}
 
-	body.scroll-locked {
-		overflow: hidden;
-		overscroll-behavior: contain;
+	.main {
+		position: relative;
+		background-color: #fff;
+		z-index: 100;
 	}
+
 	code {
 		font-family:
 			'source-code-pro', 'Menlo', 'Monaco', 'Consolas', 'Courier New',

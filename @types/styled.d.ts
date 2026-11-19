@@ -31,6 +31,7 @@ interface Colors {
 		disabled: Gradient;
 		black: Gradient;
 		black2: Gradient;
+		light: Gradient;
 	};
 }
 

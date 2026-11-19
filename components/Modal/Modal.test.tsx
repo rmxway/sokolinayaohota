@@ -91,41 +91,41 @@ describe('Modal', () => {
 		expect(handleClose).not.toHaveBeenCalled();
 	});
 
-	it('добавляет класс scroll-locked к body когда show=true', () => {
+	it('добавляет класс scroll-lock к body когда show=true', () => {
 		customRender(
 			<Modal show onClose={jest.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 	});
 
-	it('удаляет класс scroll-locked когда show=false', () => {
+	it('удаляет класс scroll-lock когда show=false', () => {
 		const { rerender } = customRender(
 			<Modal show onClose={jest.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
 		rerender(
 			<Modal show={false} onClose={jest.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
-		expect(document.body.classList.contains('scroll-locked')).toBe(false);
+		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 	});
 
-	it('удаляет класс scroll-locked при размонтировании', () => {
+	it('удаляет класс scroll-lock при размонтировании', () => {
 		const { unmount } = customRender(
 			<Modal show onClose={jest.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
-		expect(document.body.classList.contains('scroll-locked')).toBe(true);
+		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
 		unmount();
-		expect(document.body.classList.contains('scroll-locked')).toBe(false);
+		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 	});
 
 	it('отображает children корректно', () => {

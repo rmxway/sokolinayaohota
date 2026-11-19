@@ -18,6 +18,7 @@ const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
 				quality={70}
 				alt="Logo"
 				placeholder="empty"
+				loading="eager"
 			/>
 			<LogoText>
 				Соколиная охота
