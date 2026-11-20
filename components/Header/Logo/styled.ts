@@ -11,7 +11,7 @@ export const LogoWrapper = styled(Link)`
 		height: auto;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		img {
 			width: 64px;
 		}
@@ -30,7 +30,7 @@ export const LogoText = styled.div`
 		font-family: ${theme.layout.fonts.header};
 	}
 
-	${media.lessThan('sm')`
+	${media.lessThan('lg')`
 		font-size: 1rem;
 	`}
 `;

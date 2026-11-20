@@ -45,7 +45,7 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 	);
 
 	const mainSwiperConfig: SwiperProps = {
-		speed: 300,
+		speed: 200,
 		spaceBetween: 20,
 		slidesPerView: 1,
 		autoHeight: true,

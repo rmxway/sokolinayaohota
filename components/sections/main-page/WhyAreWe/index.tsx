@@ -18,7 +18,13 @@ export const WhyAreWe: FC<WhyAreWeProps> = ({ data, error }) => (
 		<Container $grid $direction="row" $gap={40}>
 			<Title color="disabled">Почему мы?</Title>
 			{data?.length ? (
-				<Grid $gap={20} $w100 $justify="center" className="grid">
+				<Grid
+					$gap={20}
+					$w100
+					$justify="center"
+					$align="stretch"
+					className="grid"
+				>
 					{data.map(({ title, icon, description }) => (
 						<Item key={title}>
 							<IconWrapper>

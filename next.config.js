@@ -16,7 +16,7 @@ const nextConfig = {
 		styledComponents: true,
 	},
 	experimental: {
-		turbopackFileSystemCacheForDev: false,
+		turbopackFileSystemCacheForDev: true,
 	},
 	turbopack: {
 		rules: {

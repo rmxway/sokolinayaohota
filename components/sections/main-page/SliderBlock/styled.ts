@@ -198,15 +198,13 @@ export const Controllers = styled.div`
 
 export const animateTitle: Variants = {
 	hidden: {
-		y: -20,
 		opacity: 0,
 	},
 	visible: {
-		y: 0,
 		opacity: 1,
 		transition: {
-			delay: 0.35,
-			duration: 0.5,
+			duration: 0.2,
+			delay: 0.2,
 			type: 'tween',
 		},
 	},
@@ -214,15 +212,13 @@ export const animateTitle: Variants = {
 
 export const animateText: Variants = {
 	hidden: {
-		y: 20,
 		opacity: 0,
 	},
 	visible: {
-		y: 0,
 		opacity: 1,
 		transition: {
-			delay: 0.3,
-			duration: 0.6,
+			delay: 0.25,
+			duration: 0.25,
 			type: 'tween',
 			ease: 'easeOut',
 		},

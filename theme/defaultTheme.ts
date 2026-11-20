@@ -63,7 +63,7 @@ export const defaultTheme: DefaultTheme = {
 	},
 	radius: {
 		borderRadius: '8px',
-		blockRadius: '20px',
+		blockRadius: '12px',
 	},
 };
 

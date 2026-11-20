@@ -55,7 +55,7 @@ export const BannerImage = styled(Image)`
 	left: -10px;
 	width: 110%;
 	height: 100%;
-	object-position: center -400px;
+	object-position: center;
 	object-fit: cover;
 	z-index: -10;
 	filter: blur(4px);
@@ -76,15 +76,6 @@ export const Banner = styled.div`
 	${media.lessThan('lg')`
 		min-height: 400px;
 	`}
-
-	h1,
-	h2 {
-		margin: 0;
-	}
-
-	h2 {
-		font-size: 72px;
-	}
 `;
 
 export default Wrapper;

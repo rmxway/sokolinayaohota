@@ -33,9 +33,8 @@ export const Wrapper = styled.div`
 `;
 
 export const TextBlock = styled(Grid)`
-	width: 100%;
-	height: 100%;
 	justify-items: center;
+	grid-template-columns: 1fr;
 
 	${media.lessThan('lg')`
 		padding: 40px 20px;
@@ -43,18 +42,20 @@ export const TextBlock = styled(Grid)`
 `;
 
 export const MainText = styled.div`
-	font-size: 2rem;
+	font-size: 1.6rem;
 	line-height: 1.3;
+	text-align: center;
+	width: 100%;
 
 	div {
-		font-size: 2.7rem;
+		font-size: 2.2rem;
 	}
 
 	${media.lessThan('lg')`
-		font-size: 1.8rem;
+		font-size: 1.2rem;
 
 		div {
-			font-size: 2.2rem;
+			font-size: 2rem;
 		}
 	`}
 `;
