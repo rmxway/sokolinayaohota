@@ -49,15 +49,15 @@ export const Header = styled(motion.header)`
 	`}
 `;
 
-export const BannerImage = styled(Image)`
+export const BannerImage = styled(Image)<{$height: string}>`
 	position: fixed;
 	top: 0;
 	left: -10px;
 	width: 110%;
-	height: 100%;
+	height: ${({ $height }) => `calc(${$height} + 120px)` || '100%' };
 	object-position: center;
 	object-fit: cover;
-	z-index: -10;
+	z-index: -10;	
 	filter: blur(4px);
 `;
 

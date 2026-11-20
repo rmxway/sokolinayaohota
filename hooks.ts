@@ -1,6 +1,8 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { AppContext, DispatchType, InitialStateType } from '@/store/reducers';
+
+import { BreakpointName, jsBreakpoints } from './theme';
 
 export const useStore = (): {
 	state: InitialStateType;
@@ -57,4 +59,22 @@ export const useScrollLock = (locked: boolean) => {
 	}, [locked]);
 };
 
-export default useStore;
+export const useBreakpointChange = () => {
+	const [breakpoint, setBreakpoint] = useState<BreakpointName>('lg');
+	useEffect(() => {
+		const resize = () => {
+			const width = window.innerWidth;
+			Object.entries(jsBreakpoints).forEach(
+				([key, val]) => {
+					if (+val >= width) {
+						setBreakpoint(key as BreakpointName);
+					}
+				},
+			);
+		};
+		window.addEventListener('resize', resize);
+
+		return () => window.removeEventListener('resize', resize);
+	}, []);
+	return breakpoint;
+};
