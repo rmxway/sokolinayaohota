@@ -16,7 +16,7 @@ export const Title = styled(motion.div)<TitleType>`
 	font-family: ${theme.layout.fonts.header};
 	font-weight: 600;
 	line-height: 1;
-	font-size: ${(props) => props.size || '3.3rem'};
+	font-size: ${(props) => props.size || '3rem'};
 	color: ${(props) => theme.colors.solid[props.color || 'brown']};
 	margin: 0;
 
@@ -25,7 +25,7 @@ export const Title = styled(motion.div)<TitleType>`
 	}
 
 	${(props) => media.lessThan('lg')`
-		font-size: ${props.size || '2.5rem'};
+		font-size: ${props.size || '2rem'};
 	`}
 `;
 

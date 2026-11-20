@@ -2,12 +2,12 @@
 
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { FC, useRef, useState } from 'react';
+import { FC, useLayoutEffect, useRef, useState } from 'react';
 
 import { Container, Grid, Title } from '@/components/Layout';
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
-import { useStore } from '@/hooks';
+import { useBreakpointChange, useStore } from '@/hooks';
 import bannerImage from '@/public/assets/img/main.jpg';
 import { isMainPage } from '@/services/variable';
 import { actionChangeModal } from '@/store/actions';
@@ -24,6 +24,11 @@ const HeaderBlock: FC = () => {
 	const { scrollY } = useScroll();
 	const { state, dispatch } = useStore();
 
+	const bannerRef = useRef<HTMLDivElement>(null);
+	const [bannerHeight, setBannerHeight] = useState(0);
+
+	const bp = useBreakpointChange();
+
 	useMotionValueEvent(scrollY, 'change', (latest) => {
 		if (
 			prevScrollY.current > 300 &&
@@ -36,6 +41,12 @@ const HeaderBlock: FC = () => {
 
 		prevScrollY.current = latest;
 	});
+
+	useLayoutEffect(() => {
+		if (bannerRef.current) {
+			setBannerHeight(bannerRef.current.clientHeight);
+		}
+	}, [bp]);
 
 	return (
 		<>
@@ -70,7 +81,7 @@ const HeaderBlock: FC = () => {
 
 				{isMainPage(path) ? (
 					<>
-						<Banner>
+						<Banner ref={bannerRef}>
 							<Container $grid $gap={40} $direction="row" $center>
 								<Title color="white">
 									Роскошные банкетные залы <br />
@@ -81,15 +92,17 @@ const HeaderBlock: FC = () => {
 								</Title>
 							</Container>
 						</Banner>
+
 						<BannerImage
 							src={bannerImage}
 							alt="banner-image"
 							quality={20}
 							placeholder="blur"
 							blurDataURL={bannerImage.blurDataURL}
-							className='scroll-lock-compensate'
+							className="scroll-lock-compensate"
 							priority
 							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+							$height={`${bannerHeight}px`}
 						/>
 					</>
 				) : null}

@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
 	padding-top: 80px;
 
 	.grid {
-		align-items: stretch;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
 
@@ -27,18 +26,13 @@ export const Wrapper = styled.div`
 		.grid {
 			grid-auto-flow: row;
 			gap: 12px;
+			grid-template-columns: 1fr 1fr;
 		}
 	`}
 
 	${media.lessThan('md')`
 		img {
 			min-height: 100%;
-		}
-
-		.grid {
-			gap: 12px;
-			grid-auto-flow: row;
-			grid-template-columns: 1fr 1fr;
 		}
 	`}
 
@@ -79,7 +73,7 @@ export const Item = styled.div`
 	background-image: ${theme.colors.gradients.light('180deg')};
 	background-color: #fff;
 	border-radius: ${theme.radius.blockRadius};
-	// border: 1px solid ${theme.colors.gray.$2};
+	border: 1px solid ${theme.colors.gray.$2};
 	padding: 40px 24px;
 	display: grid;
 	justify-items: center;

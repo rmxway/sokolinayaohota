@@ -29,6 +29,7 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 					$justify="space-between"
 					$w100
 					$gap={20}
+					$direction="column"
 					className="info-grid"
 				>
 					<InfoBlock>

@@ -40,7 +40,7 @@ export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 							{data.map((image, idx) => (
 								<GalleryImage
 									key={image.alt}
-									className={idx === 0 ? 'big' : ''}
+									className={idx === 6 ? 'big' : ''}
 									onClick={() => handleShowImageInModal(idx)}
 								>
 									<FetchedImage

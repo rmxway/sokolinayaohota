@@ -13,7 +13,7 @@ export const SliderShadow = styled.div<{ $isModal?: boolean }>`
 		!$isModal &&
 		css`
 			box-shadow: ${theme.layout.shadow.basic};
-			border-radius: 20px;
+			border-radius: ${theme.radius.blockRadius};
 		`}
 `;
 
@@ -21,9 +21,8 @@ export const SliderWrapper = styled.div`
 	position: relative;
 	height: 100%;
 	text-align: center;
-	border-radius: 20px;
+	border-radius: ${theme.radius.blockRadius};
 	overflow: hidden;
-
 	${Ellipsis} {
 		margin: auto;
 	}
@@ -37,6 +36,7 @@ export const SliderStyle = styled.div<{ $isModal?: boolean }>`
 		min-height: 1px;
 		max-height: 80vh;
 		object-fit: contain;
+		background-color: ${!$isModal ? theme.colors.solid.secondary : 'none'};
 		flex-grow: 1;
 
 		${WrapperFetchedImage} {

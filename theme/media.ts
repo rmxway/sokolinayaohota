@@ -1,13 +1,8 @@
 import { generateMedia } from 'styled-media-query';
 
-interface BreakpointsType {
-	xl: string | number;
-	lg: string | number;
-	md: string | number;
-	sm: string | number;
-	xs: string | number;
-	xxs: string | number;
-}
+export type BreakpointName = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
+
+export type BreakpointsType = Record<BreakpointName, string | number>;
 
 const jsBreakpoints: BreakpointsType = {
 	xl: 1440,

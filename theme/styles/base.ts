@@ -26,6 +26,7 @@ const base = css`
 
 	body {
 		font-family: ${ZenKakuFont.style.fontFamily};
+		font-size: 16px;
 		font-weight: 500;
 		display: block;
 		line-height: 1.25;

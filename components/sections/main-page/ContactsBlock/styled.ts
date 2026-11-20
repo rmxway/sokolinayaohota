@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 import { LogoText } from '@/components/Header/Logo/styled';
+import { Container } from '@/components/Layout';
 import { defaultTheme as theme, media } from '@/theme';
 
 export const Wrapper = styled.div`
@@ -20,22 +21,29 @@ export const Wrapper = styled.div`
 		color: ${theme.colors.solid.primary};
 	}
 
+	.info-grid {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
 	${media.lessThan('lg')`
-		padding: 40px 0;
+		padding: 40px 0;		
 	`}
 
 	${media.lessThan('md')`
 		.info-grid {			
-			grid-template-column: 1fr 1fr;
-			grid-template-rows: auto auto;			
+			grid-template-columns: 1fr 1fr;
+			grid-auto-flow: row;
 		}
+		
+		${Container} {
+			gap: 20px;
+		}}
 	`}
 
 	${media.lessThan('sm')`
-		.info-grid {		
-			justify-content: center;	
-			grid-auto-flow: row;
-			grid-template-column: 1fr;			
+		.info-grid {
+			justify-items: center;
+			grid-template-columns: 1fr;			
 		}
 	`}
 `;
@@ -52,32 +60,39 @@ export const InfoBlock = styled.div`
 		align-items: center;
 		color: #fff;
 		font-family: ${theme.layout.fonts.header};
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		margin-bottom: 8px;
 	}
 
 	& > span,
 	a {
 		color: ${theme.colors.solid.primary};
-		font-size: 1.25rem;
+		font-size: 1.2rem;
 		line-height: 1.5;
 		display: block;
 	}
 
-	${media.lessThan('md')`
+	${media.lessThan('lg')`
 		& > div {
-			font-size: 1.25rem;
+			font-size: 1.2rem;
 		}
 
 		& > span, a {
-			font-size: 1.125rem;
+			font-size: 1.1rem;
 		};
+	`}
+
+	${media.lessThan('sm')`	
+		& > div {			
+			display: inline-grid;
+		}	
+		text-align: center;
 	`}
 `;
 
 export const Copyright = styled.div`
 	font-size: 1rem;
-	color: ${theme.colors.solid.disabled};
+	color: ${theme.colors.solid.primary}55;
 
 	${media.lessThan('md')`
 		font-size: 1rem;

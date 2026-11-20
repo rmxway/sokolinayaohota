@@ -22,7 +22,7 @@ interface FlexboxTypes {
 }
 
 const getHeight = ($h100?: boolean, $h100vh?: boolean) => {
-	if ($h100vh) return '100vh';
+	if ($h100vh) return 'calc(100vh - 100px)';
 	if ($h100) return '100%';
 	return 'auto';
 };

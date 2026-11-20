@@ -36,11 +36,17 @@ export const PlusMinus = styled.div`
 		content: '+';
 		position: absolute;
 	}
+
+	${media.lessThan('lg')`
+		font-size: 1.6rem;
+		width: 26px;
+		height: 26px;
+	`};
 `;
 
 export const Wrapper = styled(motion.label)`
 	position: relative;
-	padding: 20px;
+	padding: 20px 20px 16px;
 	width: 100%;
 	background-color: #fff;
 	border-radius: ${theme.radius.blockRadius};
@@ -52,9 +58,9 @@ export const Wrapper = styled(motion.label)`
 	transition: box-shadow 0.2s;
 
 	${Title} {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		text-transform: uppercase;
-		padding-top: 4px;
+		line-height: 40px;
 	}
 
 	${Grid} {
@@ -77,8 +83,11 @@ export const Wrapper = styled(motion.label)`
 	}
 
 	${media.lessThan('lg')`
-		${Title} {
-			padding-top: 8px;
+		padding: 12px 20px 6px;
+
+		${Title} {			
+			font-size: 1.2rem;
+			line-height: 30px;
 		}
 	`}
 `;

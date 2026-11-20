@@ -16,13 +16,11 @@ export const Wrapper = styled.div`
 	min-height: fit-content;
 
 	${Title} {
-		font-size: 3.5rem;
-
 		span {
 			display: block;
 			margin-top: 20px;
 			text-transform: uppercase;
-			font-size: 3.3rem;
+			font-size: 2.9rem;
 			color: ${theme.colors.solid.primary};
 		}
 	}
@@ -49,23 +47,14 @@ export const Wrapper = styled.div`
 		}
 
 		${Title} {
-			font-size: 3.25rem;	
-
 			span {
-				font-size: 3rem;
+				font-size: 1.8rem;
 				letter-spacing: 0.5px;
 			}
 		}
 
 		${FormStyled} {
 			max-width: 320px;
-		}
-	`}
-
-	${media.lessThan('md')`
-		${FormStyled} {
-			max-width: 100%;
-			width: 100%;
 		}
 	`}
 `;
@@ -87,11 +76,11 @@ export const Discount = styled.div`
 	}
 
 	${media.lessThan('lg')`
-		width: 100px;
-		height: 100px;
+		width: 120px;
+		height: 120px;
 
 		& > div {
-			font-size: 3rem;
+			font-size: 2.6rem;
 		}
 	`}
 `;
