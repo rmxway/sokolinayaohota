@@ -1,13 +1,6 @@
+import { protocol } from './constants';
 import { getHost } from './domainData';
 import { regexpPath } from './regexp';
-
-export const isDev = process.env.NODE_ENV === 'development';
-
-export const isProd = !isDev;
-
-export const prefixImages = '';
-
-export const protocol = isDev ? 'http' : 'https';
 
 export const isMainPage = (path: string) => path.search(regexpPath) === -1;
 

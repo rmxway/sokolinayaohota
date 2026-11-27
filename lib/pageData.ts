@@ -1,4 +1,4 @@
-import { GalleryImageType, ImageCategory } from '@/@types/types';
+import { GalleryImageType, ImageCategory } from '@/types/types';
 import { ResponseData } from '@/app/content';
 import {
 	advantages,

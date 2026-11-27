@@ -1,4 +1,4 @@
-import icomoon from '@/public/assets/fonts/icofont/icofont.json';
+import icomoon from '@/src/assets/fonts/icofont/icofont.json';
 
 export type HallsTypes = 'falcon-yard' | 'big-hall' | 'small-hall';
 
@@ -38,7 +38,6 @@ export type HallType = {
 	images?: GalleryImageType[];
 	video?: string[] | null;
 	tag: HallsTypes;
-	isLoaded?: boolean;
 };
 
 // Advantage

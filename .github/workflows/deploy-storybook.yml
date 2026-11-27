@@ -1,4 +1,4 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy SokolinayaOhota to GitHub Pages
 
 on:
   push:
@@ -28,21 +28,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "23"
           cache: yarn
 
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Build Storybook
-        run: yarn build-storybook
+      - name: Build Project
+        run: yarn build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: storybook-static
+          path: build
 
       - name: Deploy to GitHub Pages
         id: deployment
