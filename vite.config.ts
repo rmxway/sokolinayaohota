@@ -17,6 +17,9 @@ export default defineConfig(({ mode }) => ({
 	base,
 	server: {
 		host: true,
+		// proxy: {
+		// 	'/api': 'https://your-api-server.com',
+		// },
 	},
 	test: {
 		environment: 'jsdom',
@@ -40,9 +43,4 @@ export default defineConfig(({ mode }) => ({
 			},
 		},
 	},
-	// server: {
-	// 	proxy: {
-	// 		'/api': 'https://your-api-server.com',
-	// 	},
-	// },
 }));

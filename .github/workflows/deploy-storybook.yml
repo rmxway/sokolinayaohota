@@ -1,49 +1,55 @@
 name: Deploy SokolinayaOhota to GitHub Pages
 
 on:
-  push:
-    branches: [main, master]
-  workflow_dispatch:
+    push:
+        branches: [main, master]
+    workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+    contents: read
+    pages: write
+    id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+    group: pages
+    cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "23"
-          cache: yarn
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+                  cache: yarn
 
-      - name: Install dependencies
-        run: yarn install --immutable
+            - name: Install dependencies
+              run: yarn install --immutable
 
-      - name: Build Project
-        run: yarn build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+            - name: Build Project
+              run: yarn build
+              env:
+                  BASE_PATH: /sokolinayaohota/
+            - name: Prepare SPA
+              run: |
+                  if [-f build/client/__spa-fallback.html ]; then
+                    cp build/client/__spa-fallback.html build/client/404.html
+                  else
+                    cp build/client/index.html build/client/404.html
+                  fi
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: build/client
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
