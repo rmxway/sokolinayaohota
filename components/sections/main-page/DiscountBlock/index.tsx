@@ -1,7 +1,7 @@
 import { ImageBackground } from '@/components';
 import { FormOrder } from '@/components/FormOrder';
 import { Container, Grid, Title } from '@/components/Layout';
-import imageBack from '@/public/assets/img/discount.jpg';
+import imageBack from '/assets/img/discount.jpg';
 import { apiUrl } from '@/services/variable';
 
 import { Discount, Wrapper } from './styled';

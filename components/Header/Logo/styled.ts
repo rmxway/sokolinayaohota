@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { defaultTheme as theme, media } from '@/theme';
+import { Link } from 'react-router';
 
 export const LogoWrapper = styled(Link)`
 	position: relative;

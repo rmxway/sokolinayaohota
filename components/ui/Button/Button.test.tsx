@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { render as customRender } from '../../../__tests__/test-utils';
-import { ButtonUI } from './index';
+import { customRender } from '@/services/test-utils';
+import { ButtonUI } from '@/components/ui';
 
 describe('ButtonUI', () => {
 	it('рендерится с текстом', () => {
@@ -11,7 +11,7 @@ describe('ButtonUI', () => {
 	});
 
 	it('вызывает onClick при клике', async () => {
-		const handleClick = jest.fn();
+		const handleClick = vi.fn();
 		const user = userEvent.setup();
 		customRender(<ButtonUI onClick={handleClick}>Клик</ButtonUI>);
 
@@ -63,8 +63,12 @@ describe('ButtonUI', () => {
 	});
 
 	it('передает ref корректно', () => {
-		const ref = jest.fn();
+		const ref = vi.fn();
 		customRender(<ButtonUI ref={ref}>С ref</ButtonUI>);
 		expect(ref).toHaveBeenCalled();
+	});
+	it('snapshot', () => {
+		customRender(<ButtonUI>Button</ButtonUI>);
+		expect(screen.getByText('Button')).toMatchSnapshot();
 	});
 });

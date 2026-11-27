@@ -1,12 +1,6 @@
 import { desaturate } from 'polished';
 import { DefaultTheme } from 'styled-components';
 
-import {
-	LedgerFont,
-	YanoneKaffeesatzFont,
-	ZenKakuFont,
-} from '@/services/fonts';
-
 export const defaultTheme: DefaultTheme = {
 	name: 'default',
 	colors: {
@@ -50,9 +44,10 @@ export const defaultTheme: DefaultTheme = {
 	},
 	layout: {
 		fonts: {
-			header: `${YanoneKaffeesatzFont.style.fontFamily}, serif`,
-			old: `${LedgerFont.style.fontFamily}, serif`,
-			body: `${ZenKakuFont.style.fontFamily}, sans-serif`,
+			header: '"Yanone Kaffeesatz", sans-serif',
+			inter: '"Inter", sans-serif',
+			old: '"Ledger", serif',
+			body: '"Zen Kaku Gothic Antique", sans-serif',
 		},
 		containerWidth: '1024px',
 		shadow: {
@@ -62,8 +57,8 @@ export const defaultTheme: DefaultTheme = {
 		},
 	},
 	radius: {
-		borderRadius: '8px',
-		blockRadius: '12px',
+		border: '8px',
+		block: '12px',
 	},
 };
 

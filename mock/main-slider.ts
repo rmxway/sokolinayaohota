@@ -1,4 +1,4 @@
-import { MainSliderType } from '@/@types/types';
+import { MainSliderType } from '@/types/types';
 
 export const mainSlider: MainSliderType[] = [
 	{

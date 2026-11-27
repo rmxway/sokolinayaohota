@@ -12,10 +12,12 @@
 
 # next.js
 /.next/
+/.react-router/
 /out/
 
 # storybook
 /storybook-static
+debug-storybook.log
 
 # production
 /build

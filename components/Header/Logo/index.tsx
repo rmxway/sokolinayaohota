@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import { FC } from 'react';
 
 import { Grid } from '@/components/Layout';
-import logoImage2x from '@/public/assets/img/logo-2x.png';
+import logoImage2x from '/assets/img/logo-2x.png';
 
 import { LogoText, LogoWrapper } from './styled';
 
@@ -11,15 +10,9 @@ interface LogoTypeProps {
 }
 
 const Logo: FC<LogoTypeProps> = ({ href = '/' }) => (
-	<LogoWrapper href={href}>
+	<LogoWrapper to={href}>
 		<Grid $align="center" $gap={12}>
-			<Image
-				src={logoImage2x}
-				quality={70}
-				alt="Logo"
-				placeholder="empty"
-				loading="eager"
-			/>
+			<img src={logoImage2x} alt="Logo" />
 			<LogoText>
 				Соколиная охота
 				<span>Банкетный зал</span>

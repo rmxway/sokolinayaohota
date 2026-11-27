@@ -1,152 +1,55 @@
-import path from 'node:path';
-
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import type { StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig } from 'vite';
+import type { RolldownOptions } from 'vite/types/internal/rollupTypeCompat.js';
 
 const config: StorybookConfig = {
-	stories: ['../components/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
-	addons: [
-		'@storybook/addon-links',
-		'@storybook/addon-essentials',
-		'@storybook/addon-interactions',
-	],
-	staticDirs: ['../public'],
-	typescript: {
-		check: true,
-		reactDocgen: 'react-docgen-typescript',
-	},
-	framework: {
-		name: '@storybook/react-webpack5',
-		options: {},
-	},
-	webpackFinal: async (webpackConfig) => {
-		const basePath = process.env.BASE_PATH ?? '/';
-		const isDeployBuild =
-			process.env.NODE_ENV !== 'development' && basePath !== '/';
-		if (isDeployBuild) {
-			webpackConfig.output = webpackConfig.output ?? {};
-			webpackConfig.output.publicPath = './';
-		}
+	stories: ['../**/*.stories.@(ts|tsx)'],
+	framework: '@storybook/react-vite',
+	viteFinal: async (config) => {
+		const merged = mergeConfig(config, {
+			build: {
+				chunkSizeWarningLimit: 1500,
+				rolldownOptions: {
+					output: {
+						codeSplitting: {
+							groups: [
+								{
+									name: 'framer',
+									test: /node_modules[\\/]framer-motion/,
+									priority: 30,
+								},
+								{
+									name: 'react',
+									test: /node_modules[\\/](react|react-dom|react-router|scheduler)[\\/]/,
+									priority: 25,
+								},
+								{
+									name: 'storybook-runtime',
+									test: /node_modules[\\/]@?storybook|@?mdx-js|@?acorn/,
+									priority: 20,
+								},
+								{
+									name: 'vendor',
+									test: /node_modules/,
+									priority: 10,
+								},
+							],
+						},
+					},
+					onLog(level, log, handler) {
+						if (log.code === 'MODULE_LEVEL_DIRECTIVE') return;
+						handler(level, log);
 
-		// Меньшие чанки — укладываемся в лимит 244 KiB и улучшаем кэширование
-		webpackConfig.optimization = {
-			...webpackConfig.optimization,
-			splitChunks: {
-				...webpackConfig.optimization?.splitChunks,
-				chunks: 'all',
-				maxSize: 244 * 1024, // 244 KiB — рекомендуемый лимит Storybook
-				cacheGroups: {
-					...(
-						webpackConfig.optimization?.splitChunks as {
-							cacheGroups?: object;
+						if (level === 'warn') {
+							handler('error', log);
+						} else {
+							handler(level, log);
 						}
-					)?.cacheGroups,
-					vendor: {
-						test: /[\\/]node_modules[\\/]/,
-						name: 'vendor',
 					},
-				},
-			},
-		};
-
-		// Отключаем предупреждения о размере: отдельные библиотеки не делятся, gzip на сервере уменьшает трафик
-		webpackConfig.performance = { hints: false };
-
-		if (!webpackConfig.module) {
-			webpackConfig.module = { rules: [] };
-		}
-
-		webpackConfig.module.rules = webpackConfig.module.rules || [];
-
-		// Отключаем дефолтную обработку SVG в Storybook
-		const fileLoaderRule = webpackConfig.module.rules.find((rule) => {
-			if (typeof rule !== 'object' || !rule) return false;
-			if ('test' in rule && rule.test instanceof RegExp) {
-				return rule.test.test('.svg');
-			}
-			return false;
-		});
-
-		if (fileLoaderRule && typeof fileLoaderRule === 'object') {
-			if ('exclude' in fileLoaderRule && fileLoaderRule.exclude) {
-				if (Array.isArray(fileLoaderRule.exclude)) {
-					fileLoaderRule.exclude.push(/\.svg$/);
-				} else {
-					fileLoaderRule.exclude = [fileLoaderRule.exclude, /\.svg$/];
-				}
-			} else {
-				fileLoaderRule.exclude = /\.svg$/;
-			}
-		}
-
-		// SVG как React-компоненты (как в Next.js с @svgr/webpack)
-		webpackConfig.module.rules.push({
-			test: /\.svg$/,
-			use: [require.resolve('@svgr/webpack')],
-		});
-
-		// TS/JS
-		webpackConfig.module.rules.push({
-			test: /\.[jt]sx?$/,
-			exclude: /node_modules/,
-			use: {
-				loader: require.resolve('babel-loader'),
-				options: {
-					compact: true,
-					presets: [
-						require.resolve('@babel/preset-env'),
-						[
-							require.resolve('@babel/preset-react'),
-							{ runtime: 'automatic' },
-						],
-						require.resolve('@babel/preset-typescript'),
-					],
-				},
+				} as RolldownOptions,
 			},
 		});
-
-		// SCSS (глобальные шрифты и иконочный шрифт)
-		webpackConfig.module.rules.push({
-			test: /\.s[ac]ss$/i,
-			use: [
-				require.resolve('style-loader'),
-				{
-					loader: require.resolve('css-loader'),
-					options: {
-						importLoaders: 1,
-					},
-				},
-				{
-					loader: require.resolve('sass-loader'),
-					options: {
-						implementation: require.resolve('sass'),
-					},
-				},
-			],
-		});
-
-		return {
-			...webpackConfig,
-			resolve: {
-				...webpackConfig.resolve,
-				alias: {
-					...webpackConfig.resolve?.alias,
-					'next/font/google': path.resolve(
-						__dirname,
-						'next-font-google-mock.ts',
-					),
-					'@': path.resolve(__dirname, '..'),
-					'@/app': path.resolve(__dirname, '../app'),
-					'@/public': path.resolve(__dirname, '../public'),
-					'@/components': path.resolve(__dirname, '../components'),
-					'@/theme': path.resolve(__dirname, '../theme'),
-					'@/lib': path.resolve(__dirname, '../lib'),
-					'@/mock': path.resolve(__dirname, '../mock'),
-				},
-			},
-		};
-	},
-	core: {
-		disableTelemetry: true,
+		return merged;
 	},
 };
 

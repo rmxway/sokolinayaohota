@@ -1,7 +1,7 @@
-import type { ArgTypes, Meta, StoryObj } from '@storybook/react';
+import type { ArgTypes, Meta, StoryObj } from '@storybook/react-vite';
 
 import { Flexbox } from '@/components/Layout/Flexbox';
-import icons from '@/public/assets/fonts/icofont/icofont.json';
+import icons from '@/src/assets/fonts/icofont/icofont.json';
 
 import { Icon } from '.';
 

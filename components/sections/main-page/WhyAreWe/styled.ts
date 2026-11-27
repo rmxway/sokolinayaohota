@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
 import { media } from '@/theme/media';
@@ -72,7 +72,7 @@ export const Item = styled.div`
 	width: 100%;
 	background-image: ${theme.colors.gradients.light('180deg')};
 	background-color: #fff;
-	border-radius: ${theme.radius.blockRadius};
+	border-radius: ${theme.radius.block};
 	border: 1px solid ${theme.colors.gray.$2};
 	padding: 40px 24px;
 	display: grid;

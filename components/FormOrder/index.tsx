@@ -1,5 +1,3 @@
-'use client';
-
 import { Formik } from 'formik';
 import { FC, useState } from 'react';
 
@@ -57,6 +55,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 			validationSchema={validationSchema}
 			onSubmit={(values) => onSubmit(values)}
 			validateOnMount
+			validateOnChange	
 		>
 			{({
 				errors,

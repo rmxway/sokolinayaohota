@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { GalleryImage } from '@/components/sections/main-page/GalleryBlock/styled';
 import { defaultTheme as theme, media } from '@/theme';

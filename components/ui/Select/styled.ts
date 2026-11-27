@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled , css } from 'styled-components';
 
 import { InputWrapper } from '@/components/ui/Input/styled';
 import { defaultTheme as theme, media } from '@/theme';
@@ -41,8 +41,8 @@ export const SelectWrapper = styled.div<{ $opened: boolean }>`
 		overflow: auto;
 		background-color: ${theme.colors.gray.$1};
 		box-shadow: ${theme.layout.shadow.basic};
-		border-bottom-left-radius: ${theme.radius.borderRadius};
-		border-bottom-right-radius: ${theme.radius.borderRadius};
+		border-bottom-left-radius: ${theme.radius.border};
+		border-bottom-right-radius: ${theme.radius.border};
 
 		li {
 			border-bottom: 1px solid ${theme.colors.gray.$3};

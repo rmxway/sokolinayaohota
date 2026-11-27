@@ -1,14 +1,12 @@
-'use client';
-
 import { useMotionValueEvent, useScroll } from 'framer-motion';
-import { usePathname } from 'next/navigation';
+import { useLocation } from 'react-router';
 import { FC, useLayoutEffect, useRef, useState } from 'react';
 
 import { Container, Grid, Title } from '@/components/Layout';
 import { ModalFormOrder } from '@/components/ModalFormOrder';
 import { ButtonUI } from '@/components/ui';
 import { useBreakpointChange, useStore } from '@/hooks';
-import bannerImage from '@/public/assets/img/main.jpg';
+import bannerImage from '/assets/img/main.jpg';
 import { isMainPage } from '@/services/variable';
 import { actionChangeModal } from '@/store/actions';
 import { jsBreakpoints } from '@/theme';
@@ -20,7 +18,8 @@ import { Banner, BannerImage, Header, Wrapper } from './styled';
 const HeaderBlock: FC = () => {
 	const [showHeader, setShowHeader] = useState(true);
 	const prevScrollY = useRef<number>(0);
-	const path = usePathname() || '';
+	const { pathname } = useLocation();
+	const path = pathname || '';
 	const { scrollY } = useScroll();
 	const { state, dispatch } = useStore();
 
@@ -46,7 +45,7 @@ const HeaderBlock: FC = () => {
 		if (bannerRef.current) {
 			setBannerHeight(bannerRef.current.clientHeight);
 		}
-	}, [bp]);
+	}, [bp, path]);
 
 	return (
 		<>
@@ -96,12 +95,7 @@ const HeaderBlock: FC = () => {
 						<BannerImage
 							src={bannerImage}
 							alt="banner-image"
-							quality={20}
-							placeholder="blur"
-							blurDataURL={bannerImage.blurDataURL}
 							className="scroll-lock-compensate"
-							priority
-							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 							$height={`${bannerHeight}px`}
 						/>
 					</>

@@ -1,10 +1,11 @@
-import '../public/assets/fonts/icofont/icofont.scss';
+import '../src/assets/fonts/icofont/icofont.scss';
 import './fonts.scss';
 
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import { ThemeProvider } from 'styled-components';
 
 import { defaultTheme, GlobalStyles } from '../theme';
+import { MemoryRouter } from 'storybook/internal/router';
 
 const preview: Preview = {
 	tags: ['autodocs'],
@@ -21,7 +22,9 @@ const preview: Preview = {
 		(Story) => (
 			<ThemeProvider theme={defaultTheme}>
 				<GlobalStyles />
-				<Story />
+				<MemoryRouter initialEntries={['/']}>
+					<Story />
+				</MemoryRouter>
 			</ThemeProvider>
 		),
 	],

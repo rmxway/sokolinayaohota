@@ -4,23 +4,21 @@
 
 ## 🛠 Стек
 
-- **Next.js** 16 (App Router)
 - **React** 19
+- **React Router (framework mode)** 8
 - **TypeScript**
 - **styled-components**, **Sass** — стилизация
 - **Formik**, **Yup** — формы и валидация
 - **Swiper** — слайдеры
 - **Framer Motion** — анимации
-- **Storybook** 8 — разработка и документация компонентов
-- **Jest**, **Testing Library** — тестирование
+- **Storybook** 10 — разработка и документация компонентов
+- **Vitest**, **Testing Library** — тестирование
 - **ESLint**, **Prettier** — линтинг и форматирование
-- **Docker** — контейнеризация
 
 ## 📋 Требования
 
-- Node.js 20+
+- Node.js 23+
 - Yarn 4 (указан в `packageManager`)
-- Docker (опционально, для контейнеризации)
 
 ## 🚀 Установка
 
@@ -30,29 +28,28 @@ yarn
 
 ## 📜 Скрипты
 
-| Команда                | Описание                                                                      |
-| ---------------------- | ----------------------------------------------------------------------------- |
-| `yarn dev`             | 🛠 Режим разработки — [http://localhost:3000](http://localhost:3000)          |
-| `yarn build`           | 🔨 Линт + сборка проекта                                                      |
-| `yarn start`           | 🚀 Запуск production-сборки локально                                          |
-| `yarn lint`            | 🔍 Проверка кода (ESLint)                                                     |
-| `yarn lint:fix`        | 🔧 Автоисправление по правилам ESLint                                         |
-| `yarn lint:next`       | 🔍 Проверка Next.js (next lint)                                               |
-| `yarn pretty`          | ✨ Форматирование кода (Prettier)                                             |
-| `yarn icofont`         | 🎨 Сборка шрифта иконок (Fantasticon)                                         |
-| `yarn storybook`       | 📚 Запуск Storybook локально — [http://localhost:4006](http://localhost:4006) |
-| `yarn build-storybook` | 📦 Сборка Storybook для деплоя                                                |
-| `yarn test`            | 🧪 Запуск тестов (Jest)                                                       |
-| `yarn test:watch`      | 👀 Запуск тестов в watch-режиме                                               |
-| `yarn test:coverage`   | 📊 Запуск тестов с отчетом о покрытии                                         |
+| Команда                | Описание                              |
+| ---------------------- | ------------------------------------- |
+| `yarn dev`             | 🛠 Режим разработки                    |
+| `yarn build`           | 🔨 Тест + сборка проекта              |
+| `yarn start`           | 🚀 Запуск production-сборки локально  |
+| `yarn lint`            | 🔍 Проверка кода (ESLint)             |
+| `yarn lint:fix`        | 🔧 Автоисправление по правилам ESLint |
+| `yarn typecheck`       | 🔍 Проверка кода (TS)                 |
+| `yarn pretty`          | ✨ Форматирование кода (Prettier)     |
+| `yarn icofont`         | 🎨 Сборка шрифта иконок (Fantasticon) |
+| `yarn storybook`       | 📚 Запуск Storybook локально          |
+| `yarn build-storybook` | 📦 Сборка Storybook для деплоя        |
+| `yarn test`            | 🧪 Запуск тестов (Jest)               |
+| `yarn test:watch`      | 👀 Запуск тестов в watch-режиме       |
 
 ## 🧪 Тестирование
 
-Проект использует **Jest** и **React Testing Library** для тестирования компонентов и утилит.
+Проект использует **Vitest** и **React Testing Library** для тестирования компонентов и утилит.
 
 - Тесты находятся рядом с исходными файлами: `*.test.ts`, `*.test.tsx`
-- Утилиты для тестов: `__tests__/test-utils.tsx`
-- Конфигурация: `jest.config.js`, `jest.setup.js`
+- Утилиты для тестов: `services/test-utils.tsx`
+- Конфигурация: `vite.config.ts (test)`, `vitest.setup.ts`
 
 ### Примеры использования
 
@@ -62,35 +59,11 @@ yarn test
 
 # Запуск тестов в watch-режиме
 yarn test:watch
-
-# Генерация отчета о покрытии
-yarn test:coverage
 ```
 
 ## 📚 Storybook
 
 - **Локально:** `yarn storybook` — доступен по [http://localhost:4006](http://localhost:4006).
-- **Деплой:** Storybook публикуется на **GitHub Pages** при пуше в ветки `master` (workflow: `.github/workflows/deploy-storybook.yml`).  
-  После настройки Pages в репозитории (Settings → Pages → Source: GitHub Actions) сборка будет доступна по адресу: [https://rmxway.github.io/sokolinayaohota/](https://rmxway.github.io/sokolinayaohota/)
-
-## 🐳 Docker
-
-Проект включает Docker-конфигурацию для контейнеризации приложения.
-
-### Использование
-
-```bash
-# Сборка образа
-docker build -t sokolinayaohota .
-
-# Запуск контейнера
-docker run -p 3000:3000 sokolinayaohota
-```
-
-Или используйте скрипты из директории `docker/`:
-
-- `docker/create-image.sh` — создание образа
-- `docker/start-docker.sh` — запуск контейнера
 
 ## 📁 Структура проекта
 
@@ -100,7 +73,6 @@ docker run -p 3000:3000 sokolinayaohota
 - `services/`, `store/`, `lib/` — утилиты и общая логика
 - `mock/` — мок-данные для разработки
 - `fantasticon/` — исходники иконок для шрифта Icofont
-- `public/assets/` — статика (шрифты, изображения, SVG)
+- `public/assets/` — статика (изображения)
+- `src/assets/` — для импортов в компоненты(svg, fonts)
 - `.storybook/` — конфигурация Storybook
-- `__tests__/` — утилиты для тестирования
-- `docker/` — Docker-скрипты и конфигурация

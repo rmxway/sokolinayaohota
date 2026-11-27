@@ -1,6 +1,6 @@
 import { ElementType, FC } from 'react';
 
-import icofont from '@/public/assets/fonts/icofont/icofont.json';
+import icofont from '@/src/assets/fonts/icofont/icofont.json';
 import { defaultTheme as theme } from '@/theme';
 
 interface IconType {

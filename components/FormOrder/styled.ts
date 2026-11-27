@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 export const FormStyled = styled.form<{ $fetching?: boolean }>`
 	position: relative;

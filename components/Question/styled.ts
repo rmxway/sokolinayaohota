@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Grid, Title } from '@/components/Layout';
 import { defaultTheme as theme, media } from '@/theme';
@@ -46,21 +46,23 @@ export const PlusMinus = styled.div`
 
 export const Wrapper = styled(motion.label)`
 	position: relative;
-	padding: 20px 20px 16px;
+	padding: 20px 30px 10px;
 	width: 100%;
 	background-color: #fff;
-	border-radius: ${theme.radius.blockRadius};
+	border-radius: ${theme.radius.block};
 	border: 1px solid ${theme.colors.gray.$3};
 	text-align: left;
-	gap: 20px;
 	cursor: pointer;
 	margin-bottom: 20px;
 	transition: box-shadow 0.2s;
 
 	${Title} {
-		font-size: 1.4rem;
+		font-size: 0.9rem;
 		text-transform: uppercase;
-		line-height: 40px;
+		line-height: 30px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 	}
 
 	${Grid} {
@@ -83,12 +85,7 @@ export const Wrapper = styled(motion.label)`
 	}
 
 	${media.lessThan('lg')`
-		padding: 12px 20px 6px;
-
-		${Title} {			
-			font-size: 1.2rem;
-			line-height: 30px;
-		}
+		padding: 10px 20px 10px;
 	`}
 `;
 

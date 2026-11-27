@@ -2,7 +2,7 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Formik } from 'formik';
 
-import { render as customRender } from '../../../__tests__/test-utils';
+import { customRender } from '@/services/test-utils';
 import { SelectUI } from './index';
 
 const TestWrapper = ({
@@ -12,7 +12,7 @@ const TestWrapper = ({
 	children: React.ReactNode;
 	initialValues?: Record<string, string>;
 }) => (
-	<Formik initialValues={initialValues} onSubmit={jest.fn()}>
+	<Formik initialValues={initialValues} onSubmit={vi.fn()}>
 		{children}
 	</Formik>
 );

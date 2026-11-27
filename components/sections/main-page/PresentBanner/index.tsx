@@ -4,7 +4,7 @@ import { ImageBackground } from '@/components';
 import { Container } from '@/components/Layout';
 import { ButtonUI } from '@/components/ui';
 import { useStore } from '@/hooks';
-import imageBack from '@/public/assets/img/wrapper-text.jpg';
+import imageBack from '/assets/img/wrapper-text.jpg';
 import { actionChangeModal } from '@/store/actions';
 
 import { MainText, TextBlock, Wrapper } from './styled';

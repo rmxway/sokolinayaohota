@@ -1,23 +1,11 @@
-import { StaticImageData } from 'next/image';
-
 import { ImageStyled } from './styled';
 
 type ImageBackgroundType = {
-	image: StaticImageData | string;
+	image: string;
 	quality?: number;
 };
 
-export const ImageBackground = ({
-	image,
-	quality = 70,
-	...props
-}: ImageBackgroundType) => (
-	<ImageStyled
-		src={image}
-		quality={quality}
-		placeholder="blur"
-		alt="image background"
-		{...props}
-	/>
+export const ImageBackground = ({ image, ...props }: ImageBackgroundType) => (
+	<ImageStyled src={image} alt="image background" {...props} />
 );
 export default ImageBackground;

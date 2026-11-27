@@ -1,5 +1,5 @@
 import { Icon } from '@/components';
-import icofont from '@/public/assets/fonts/icofont/icofont.json';
+import icofont from '@/src/assets/fonts/icofont/icofont.json';
 
 import {
 	animateError,
@@ -7,6 +7,7 @@ import {
 	InputError,
 	InputWrapper,
 } from './styled';
+import { memo } from 'react';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	/** Uniq name for field */
@@ -39,53 +40,56 @@ const mask = () => {
  * @example <InputUI icon='phone' placeholder="Enter your phone" value="" success/>
  * @returns
  */
-const InputUI = ({
-	name,
-	icon,
-	success,
-	danger,
-	disabled,
-	error,
-	// maskType,
-	className,
-	value,
-	onChange,
-	onBlur,
-	...props
-}: InputProps) => (
-	<InputBlockWrapper>
-		<InputWrapper
-			className={className}
-			$disabled={disabled}
-			$success={success}
-			$danger={!!error || danger}
-			htmlFor={name}
-		>
-			<input
-				// mask={mask()}
-				name={name}
-				value={value}
-				onChange={onChange}
-				onBlur={onBlur}
-				id={name}
-				disabled={disabled}
-				autoComplete="off"
-				{...props}
-			/>
-			{icon ? <Icon icon={icon} /> : null}
-			<div />
-		</InputWrapper>
-		{error ? (
-			<InputError
-				variants={animateError}
-				initial="start"
-				animate="end"
-				exit="end"
+const InputUI = memo(
+	({
+		name,
+		icon,
+		success,
+		danger,
+		disabled,
+		error,
+		// maskType,
+		className,
+		value,
+		onChange,
+		onBlur,
+		...props
+	}: InputProps) => (
+		<InputBlockWrapper>
+			<InputWrapper
+				className={className}
+				$disabled={disabled}
+				$success={success}
+				$danger={!!error || danger}
+				htmlFor={name}
 			>
-				{error}
-			</InputError>
-		) : null}
-	</InputBlockWrapper>
+				<input
+					// mask={mask()}
+					name={name}
+					value={value}
+					onChange={onChange}
+					onBlur={onBlur}
+					id={name}
+					disabled={disabled}
+					autoComplete="off"
+					{...props}
+				/>
+				{icon ? <Icon icon={icon} /> : null}
+				<div />
+			</InputWrapper>
+			{error ? (
+				<InputError
+					variants={animateError}
+					initial="start"
+					animate="end"
+					exit="end"
+				>
+					{error}
+				</InputError>
+			) : null}
+		</InputBlockWrapper>
+	),
+	(prev, next) => prev.value == next.value,
 );
 
 export { InputUI };

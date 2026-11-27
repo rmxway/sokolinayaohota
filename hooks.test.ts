@@ -4,7 +4,7 @@ import { useScrollLock } from './hooks';
 
 describe('useScrollLock', () => {
 	beforeEach(() => {
-		document.body.classList.remove('scroll-lock');
+		document?.body?.classList.remove('scroll-lock');
 	});
 
 	it('добавляет класс scroll-lock к body когда locked=true', () => {
@@ -13,12 +13,9 @@ describe('useScrollLock', () => {
 	});
 
 	it('удаляет класс scroll-lock когда locked=false', () => {
-		const { rerender } = renderHook(
-			({ locked }) => useScrollLock(locked),
-			{
-				initialProps: { locked: true },
-			},
-		);
+		const { rerender } = renderHook(({ locked }) => useScrollLock(locked), {
+			initialProps: { locked: true },
+		});
 		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
 		rerender({ locked: false });
@@ -34,12 +31,9 @@ describe('useScrollLock', () => {
 	});
 
 	it('обновляет класс при изменении locked', () => {
-		const { rerender } = renderHook(
-			({ locked }) => useScrollLock(locked),
-			{
-				initialProps: { locked: false },
-			},
-		);
+		const { rerender } = renderHook(({ locked }) => useScrollLock(locked), {
+			initialProps: { locked: false },
+		});
 		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 
 		rerender({ locked: true });
@@ -49,25 +43,10 @@ describe('useScrollLock', () => {
 		expect(document.body.classList.contains('scroll-lock')).toBe(false);
 	});
 
-	it('не падает когда document undefined (SSR)', () => {
-		const originalDocument = global.document;
-		// @ts-expect-error - временно удаляем document для теста SSR
-		delete global.document;
-
-		expect(() => {
-			renderHook(() => useScrollLock(true));
-		}).not.toThrow();
-
-		global.document = originalDocument;
-	});
-
 	it('не добавляет класс несколько раз при повторных вызовах с locked=true', () => {
-		const { rerender } = renderHook(
-			({ locked }) => useScrollLock(locked),
-			{
-				initialProps: { locked: true },
-			},
-		);
+		const { rerender } = renderHook(({ locked }) => useScrollLock(locked), {
+			initialProps: { locked: true },
+		});
 		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
 		rerender({ locked: true });

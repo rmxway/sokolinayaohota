@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
-import { AdvantageType } from '@/@types/types';
+import { AdvantageType } from '@/types/types';
 import { Icon, ImageBackground } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { Container, Grid, Title } from '@/components/Layout';
-import image from '@/public/assets/img/why-we-are.jpg';
+import image from '/assets/img/why-we-are.jpg';
 
 import { IconWrapper, Item, ItemDescription, Wrapper } from './styled';
 

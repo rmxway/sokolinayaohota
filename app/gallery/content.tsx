@@ -1,9 +1,7 @@
-'use client';
-
 import { LayoutGroup } from 'framer-motion';
 import { lazy, Suspense, useCallback, useState } from 'react';
 
-import { GalleryImageType, ImageCategory } from '@/@types/types';
+import { GalleryImageType, ImageCategory } from '@/types/types';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import {
 	Container,
@@ -21,7 +19,10 @@ import {
 	galleryImageAnimation,
 } from '@/components/sections/main-page/GalleryBlock/styled';
 import { PageLoader } from '@/components/ui';
-import { prefixImages } from '@/services/variable';
+import { prefixImages } from '@/services/constants';
+import { getImages } from './getImages';
+
+import type { Route } from '../gallery/+types/content';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
@@ -36,11 +37,14 @@ export interface GalleryPageProps {
 	error: string;
 }
 
-export const GalleryContent = ({
-	categories,
-	images,
-	error,
-}: GalleryPageProps) => {
+export async function clientLoader(): Promise<GalleryPageProps> {
+	const data = await getImages();
+	return data;
+}
+
+export function GalleryContent({ loaderData }: Route.ComponentProps) {
+	const { categories, error, images } = loaderData;
+
 	const [selectedId, setSelectedId] = useState<number>(0);
 	const [open, setOpen] = useState(false);
 	const [suspended, setSuspended] = useState(false);
@@ -123,7 +127,6 @@ export const GalleryContent = ({
 											alt={image.alt}
 											width={400}
 											height={400}
-											quality={10}
 											loading="eager"
 										/>
 									</GalleryImage>
@@ -148,4 +151,6 @@ export const GalleryContent = ({
 			)}
 		</>
 	);
-};
+}
+
+export default GalleryContent;

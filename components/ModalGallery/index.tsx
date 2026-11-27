@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { GalleryImageType } from '@/@types/types';
+import { GalleryImageType } from '@/types/types';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { Modal } from '@/components/Modal';
 import { Slider } from '@/components/Slider';

@@ -13,7 +13,7 @@ import { Button, ButtonProps } from './styled';
 
  * @example <ButtonUI mobile icon="phone">Телефон</ButtonUI>
  */
-const ButtonUI = forwardRef<HTMLButtonElement, ButtonProps>(
+export const ButtonUI = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ children, $icon, ...props }, ref) => {
 		const itemIcon = $icon ? <Icon icon={$icon} /> : null;
 
@@ -25,8 +25,3 @@ const ButtonUI = forwardRef<HTMLButtonElement, ButtonProps>(
 		);
 	},
 );
-
-ButtonUI.displayName = 'ButtonUI';
-
-export { ButtonUI };
-export default ButtonUI;

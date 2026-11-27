@@ -1,15 +1,13 @@
-'use client';
-
-import Link from 'next/link';
 import { FC, lazy, Suspense, useState } from 'react';
 
-import { GalleryImageType } from '@/@types/types';
+import { GalleryImageType } from '@/types/types';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { Container, FetchedImage, Title } from '@/components/Layout';
 import { ButtonUI, PageLoader } from '@/components/ui';
-import { prefixImages } from '@/services/variable';
+import { prefixImages } from '@/services/constants';
 
 import { GalleryImage, Grid, Wrapper } from './styled';
+import { Link } from 'react-router';
 
 const ModalGallery = lazy(() => import('@/components/ModalGallery'));
 
@@ -48,13 +46,12 @@ export const GalleryBlock: FC<GalleryBlockProps> = ({ data, error }) => {
 										alt={image.alt}
 										width={400}
 										height={400}
-										quality={20}
 									/>
 								</GalleryImage>
 							))}
 						</Grid>
 
-						<Link href="/gallery">
+						<Link to="/gallery">
 							<ButtonUI $brown $mobile>
 								Больше фото
 							</ButtonUI>

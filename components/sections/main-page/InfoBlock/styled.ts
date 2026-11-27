@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { Container } from '@/components/Layout';
 import { defaultTheme as theme, media } from '@/theme';

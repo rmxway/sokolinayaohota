@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
-
-import { YanoneKaffeesatzFont, ZenKakuFont } from '@/services/fonts';
+import theme from '@/theme/defaultTheme';
 
 const base = css`
 	html {
@@ -25,7 +24,7 @@ const base = css`
 	}
 
 	body {
-		font-family: ${ZenKakuFont.style.fontFamily};
+		font-family: ${theme.layout.fonts.body};
 		font-size: 16px;
 		font-weight: 500;
 		display: block;
@@ -52,7 +51,8 @@ const base = css`
 	h3,
 	h4,
 	h5 {
-		font-family: ${YanoneKaffeesatzFont.style.fontFamily};
+		font-family: ${theme.layout.fonts.inter};
+		font-weight: 900;
 		line-height: 1;
 	}
 

@@ -52,7 +52,6 @@ export const useScrollLock = (locked: boolean) => {
 			document.body.classList.remove('scroll-lock');
 		}
 
-		// eslint-disable-next-line consistent-return
 		return () => {
 			document.body.classList.remove('scroll-lock');
 		};
@@ -64,13 +63,11 @@ export const useBreakpointChange = () => {
 	useEffect(() => {
 		const resize = () => {
 			const width = window.innerWidth;
-			Object.entries(jsBreakpoints).forEach(
-				([key, val]) => {
-					if (+val >= width) {
-						setBreakpoint(key as BreakpointName);
-					}
-				},
-			);
+			Object.entries(jsBreakpoints).forEach(([key, val]) => {
+				if (+val >= width) {
+					setBreakpoint(key as BreakpointName);
+				}
+			});
 		};
 		window.addEventListener('resize', resize);
 

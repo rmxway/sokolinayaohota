@@ -1,14 +1,12 @@
-'use client';
-
 import 'swiper/css/pagination';
 
 import { LayoutGroup, motion } from 'framer-motion';
-import Link from 'next/link';
 import { FC, memo, useMemo, useState } from 'react';
+import { Link } from 'react-router';
 import { Navigation, Pagination, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
-import { MainSliderType } from '@/@types/types';
+import { MainSliderType } from '@/types/types';
 import { Icon } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { Container, Flexbox, Grid, Title } from '@/components/Layout';
@@ -140,7 +138,7 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 							<div>
 								<div className="slider-pagination" />
 							</div>
-							<Link href={currentPath}>
+							<Link to={currentPath}>
 								<ButtonUI $brown $icon="arrow">
 									Подробнее
 								</ButtonUI>
@@ -151,6 +149,7 @@ export const SliderBlock: FC<SliderBlockProps> = memo(({ data, error }) => {
 					{isLoaded && (
 						<ContainerForSlider>
 							<Slider
+								key={currentPath}
 								images={currentImages}
 								controls
 								thumbs

@@ -1,7 +1,7 @@
 import 'swiper/css';
 
 import { motion, Variants } from 'framer-motion';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout/FetchedImage';
 import { defaultTheme as theme } from '@/theme/defaultTheme';
@@ -44,7 +44,7 @@ export const GalleryImage = styled(motion.div)`
 	position: relative;
 	top: 0;
 
-	border-radius: ${theme.radius.borderRadius};
+	border-radius: ${theme.radius.border};
 	overflow: hidden;
 	box-shadow: none;
 

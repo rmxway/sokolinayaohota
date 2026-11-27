@@ -1,5 +1,5 @@
 import { Variants } from 'framer-motion';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Container, Grid, Title } from '@/components/Layout';
 import { SliderStyle, SliderWrapper } from '@/components/Slider/styled';
