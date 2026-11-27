@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { Container, Flexbox } from '@/components/Layout';
 import { SliderStyle, SliderWrapper } from '@/components/Slider/styled';
@@ -62,7 +62,7 @@ export const FormBlock = styled.div`
 	min-height: 40vh;
 	padding: 80px 0;
 	width: 100%;
-	background-image: ${theme.colors.gradients.black('-160deg')};
+	background-image: ${theme.colors.gradients.black2('0deg')};
 	color: ${theme.colors.solid.primary};
 
 	${Container} {
@@ -176,7 +176,7 @@ export const HallAdvantages = styled.div`
 	padding: 40px;
 	width: 100%;
 	background-image: ${theme.colors.gradients.golden('-45deg')};
-	border-radius: ${theme.radius.blockRadius};
+	border-radius: ${theme.radius.block};
 	color: ${theme.colors.solid.secondary};
 	overflow: hidden;
 
@@ -216,7 +216,7 @@ export const PhoneBlock = styled.div`
 	position: relative;
 	padding: 40px;
 	margin-top: 20px;
-	border-radius: ${theme.radius.blockRadius};
+	border-radius: ${theme.radius.block};
 	background-image: ${theme.colors.gradients.black('180deg')};
 	color: #fff;
 	overflow: hidden;

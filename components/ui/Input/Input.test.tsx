@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { render as customRender } from '../../../__tests__/test-utils';
+import { customRender } from '@/services/test-utils';
 import { InputUI } from './index';
 
 describe('InputUI', () => {
@@ -72,7 +72,7 @@ describe('InputUI', () => {
 	});
 
 	it('вызывает onChange при изменении значения', async () => {
-		const handleChange = jest.fn();
+		const handleChange = vi.fn();
 		const user = userEvent.setup();
 		customRender(
 			<InputUI
@@ -89,7 +89,7 @@ describe('InputUI', () => {
 	});
 
 	it('вызывает onBlur при потере фокуса', async () => {
-		const handleBlur = jest.fn();
+		const handleBlur = vi.fn();
 		const user = userEvent.setup();
 		customRender(
 			<InputUI

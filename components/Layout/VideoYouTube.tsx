@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { defaultTheme as theme } from '@/theme';
 
@@ -16,7 +16,7 @@ export const VideoYouTubeWrapper = styled.div`
 		left: 0;
 		background-color: ${theme.colors.gray.$3};
 		aspect-ratio: 16/9;
-		border-radius: ${theme.radius.blockRadius};
+		border-radius: ${theme.radius.block};
 	}
 `;
 

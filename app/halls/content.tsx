@@ -1,9 +1,4 @@
-'use client';
-
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-
-import { HallsTypes, HallType } from '@/@types/types';
+import { HallsTypes, HallType } from '@/types/types';
 import { Icon } from '@/components';
 import { ErrorMessage } from '@/components/ErrorMessage';
 import { FormOrderHall } from '@/components/FormOrderHall';
@@ -14,34 +9,44 @@ import {
 	MainBlock,
 	Sidebar,
 } from '@/components/sections/halls/styled';
-import { apiUrl } from '@/services/variable';
+import { Link } from 'react-router';
+import type { Route } from '../halls/+types/content';
+import { getHalls } from './getHalls';
 
 export interface PathType {
 	type: HallsTypes | undefined;
 }
 
 export interface HallsProps {
-	params: PathType;
-	titles: {
-		title: string;
-		tag: HallsTypes;
-	}[];
+	titles:
+		| {
+				title: string;
+				tag: HallsTypes;
+		  }[]
+		| null;
 	currentHall: HallType | null;
 	error: string;
 }
 
-export function ContentHalls({
+export async function clientLoader({
 	params,
-	titles,
-	currentHall,
-	error,
-}: HallsProps) {
-	const [isLoaded, setLoaded] = useState(false);
+}: Route.ClientLoaderArgs): Promise<HallsProps> {
+	const { type } = params;
 
-	useEffect(() => {
-		const t = setTimeout(() => setLoaded(false), 0);
-		return () => clearTimeout(t);
-	}, [params]);
+	const resp = await getHalls(type as HallsTypes);
+	if (resp.currentHall === null)
+		return {
+			currentHall: null,
+			error: 'Данной страницы не существует',
+			titles: null,
+		};
+
+	return { ...resp };
+}
+
+export function ContentHalls({ loaderData, params }: Route.ComponentProps) {
+	const { currentHall, error, titles } = loaderData;
+	const { type } = params;
 
 	if (error)
 		return (
@@ -60,19 +65,16 @@ export function ContentHalls({
 						<Grid $direction="row" $gap={12}>
 							{titles?.map(({ title, tag }) => (
 								<Link
-									href={`/halls/${tag}`}
-									className={
-										params.type === tag ? 'active' : ''
-									}
+									to={`/halls/${tag}`}
+									className={type === tag ? 'active' : ''}
 									key={title}
-									onClick={() => setLoaded(true)}
 								>
 									{title}
 								</Link>
 							))}
 						</Grid>
 					</Sidebar>
-					<HallsPage {...currentHall} {...{ isLoaded }} />
+					<HallsPage {...currentHall} />
 				</MainBlock>
 				<FormBlock>
 					<Container $grid $direction="column" $gap={40}>
@@ -95,8 +97,9 @@ export function ContentHalls({
 							</Grid>
 						</Grid>
 						<FormOrderHall
-							name={String(currentHall.name)}
-							fetchUrl={apiUrl('send-hall-request')}
+							key={type}
+							name={String(type)}
+							fetchUrl="send-hall-request"
 						/>
 					</Container>
 				</FormBlock>

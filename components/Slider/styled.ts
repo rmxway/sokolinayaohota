@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled , css } from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout';
 import { Ellipsis } from '@/components/ui/Preloader/styled';
@@ -13,7 +13,7 @@ export const SliderShadow = styled.div<{ $isModal?: boolean }>`
 		!$isModal &&
 		css`
 			box-shadow: ${theme.layout.shadow.basic};
-			border-radius: ${theme.radius.blockRadius};
+			border-radius: ${theme.radius.block};
 		`}
 `;
 
@@ -21,7 +21,7 @@ export const SliderWrapper = styled.div`
 	position: relative;
 	height: 100%;
 	text-align: center;
-	border-radius: ${theme.radius.blockRadius};
+	border-radius: ${theme.radius.block};
 	overflow: hidden;
 	${Ellipsis} {
 		margin: auto;

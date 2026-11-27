@@ -1,8 +1,6 @@
-'use client';
-
 import { FC, useState } from 'react';
 
-import { QuestionType } from '@/@types/types';
+import { QuestionType } from '@/types/types';
 import { Grid, Title } from '@/components/Layout';
 
 import { Answer, PlusMinus, Wrapper } from './styled';
@@ -27,7 +25,7 @@ export const Question: FC<QuestionType> = ({ answer, question, id }) => {
 				animate={{
 					height: checked ? 'auto' : 0,
 					opacity: checked ? 1 : 0,
-					marginTop: checked ? 20 : 0,
+					marginBottom: checked ? 10 : 0,
 					transition: {
 						duration: 0.2,
 						type: 'spring',

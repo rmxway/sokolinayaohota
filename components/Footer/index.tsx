@@ -2,9 +2,8 @@ import { Icon } from '@/components';
 import { Logo } from '@/components/Header/Logo';
 import { Container, Grid, Title } from '@/components/Layout';
 import { useStore } from '@/hooks';
-import map from '@/public/assets/img/map.jpg';
 
-import { Copyright, InfoBlock, Map, MapWrapper, Wrapper } from './styled';
+import { Copyright, InfoBlock, MapWrapper, Wrapper } from './styled';
 
 type ContactsProps = {
 	additionalLayer?: React.ReactNode;
@@ -15,7 +14,7 @@ type ContactsProps = {
  * @param additionalLayer - добавить любой контент или компонент в область под заголовком
  * @returns
  */
-export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
+export const FooterBlock = ({ additionalLayer }: ContactsProps) => {
 	const { state } = useStore();
 
 	return (
@@ -55,12 +54,13 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 				</Grid>
 
 				<MapWrapper>
-					<Map
-						src={map}
-						placeholder="blur"
-						fill
-						alt="map"
-						quality={50}
+					<iframe
+						src="https://yandex.ru/map-widget/v1/?indoorLevel=2&ll=37.678340%2C55.793123&mode=poi&oid=1005873256&ol=biz&z=17.47"
+						width="100%"
+						height="500"
+						title="yandexMaps"
+						allowFullScreen
+						style={{ position: 'relative', borderRadius: '20px' }}
 					/>
 				</MapWrapper>
 
@@ -70,5 +70,3 @@ export const ContactsBlock = ({ additionalLayer }: ContactsProps) => {
 		</Wrapper>
 	);
 };
-
-export default ContactsBlock;

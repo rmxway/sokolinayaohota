@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Button } from '@/components/ui/Button/styled';
 import { defaultTheme as theme, media } from '@/theme';
+import { Title } from '../Layout';
 
 export const Wrapper = styled.div<{ $isMainPage: boolean }>`
 	position: relative;
@@ -49,7 +49,7 @@ export const Header = styled(motion.header)`
 	`}
 `;
 
-export const BannerImage = styled(Image)<{$height: string}>`
+export const BannerImage = styled.img<{$height: string}>`
 	position: fixed;
 	top: 0;
 	left: -10px;
@@ -72,6 +72,10 @@ export const Banner = styled.div`
 	min-height: 600px;
 	z-index: 2;
 	padding: 40px 0;
+
+	${Title} {
+		font-family: ${theme.layout.fonts.header};
+	}
 
 	${media.lessThan('lg')`
 		min-height: 400px;

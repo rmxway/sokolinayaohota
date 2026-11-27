@@ -1,15 +1,14 @@
 import 'swiper/css';
 
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { Swiper as TypeSwiper } from 'swiper';
 import { Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
-import { GalleryImageType } from '@/@types/types';
+import { GalleryImageType } from '@/types/types';
 import { Icon } from '@/components';
 import { FetchedImage, Flexbox, Title } from '@/components/Layout';
-import { Preloader } from '@/components/ui';
-import { prefixImages } from '@/services/variable';
+import { prefixImages } from '@/services/constants';
 import { jsBreakpoints } from '@/theme/media';
 
 import { Controls } from './Controls';
@@ -40,7 +39,8 @@ export const Slider: FC<SliderProps> = memo(
 		countThumbsPerView = 7,
 	}) => {
 		const [thumbSwiper, setThumbSwiper] = useState<TypeSwiper>();
-		const [isLoaded, setLoaded] = useState(false);
+
+		const isImages = images.length !== 0;
 
 		const mainSwiperConfig: SwiperProps = {
 			modules: [Thumbs, Navigation],
@@ -63,9 +63,6 @@ export const Slider: FC<SliderProps> = memo(
 				swiper.update();
 				swiper.slideTo(initialSlide, 0);
 			},
-			onInit() {
-				setLoaded(true);
-			},
 		};
 
 		const thumbsSwiperConfig: SwiperProps = {
@@ -84,26 +81,18 @@ export const Slider: FC<SliderProps> = memo(
 				nextEl: '.btn-slider.btn-next',
 				prevEl: '.btn-slider.btn-prev',
 			},
-			onInit: (swiper) => {
+			onSwiper: (swiper) => {
 				swiper.navigation.update();
 			},
-			onSwiper: (swiper) => {
+			onInit: (swiper) => {
 				setThumbSwiper(swiper);
 			},
 		};
 
-		useEffect(() => {
-			if (images.length === 0) {
-				const t = setTimeout(() => setLoaded(true), 0);
-				return () => clearTimeout(t);
-			}
-			return undefined;
-		}, [images]);
-
 		return (
 			<SliderShadow $isModal={isModal}>
 				<SliderWrapper>
-					{images.length === 0 && (
+					{!isImages && (
 						<Flexbox
 							$align="center"
 							$justify="center"
@@ -119,9 +108,9 @@ export const Slider: FC<SliderProps> = memo(
 							</Title>
 						</Flexbox>
 					)}
-					{!isLoaded && <Preloader light />}
-					<LoadingWrapper $loaded={isLoaded}>
-						{images.length !== 0 && (
+
+					<LoadingWrapper $loaded>
+						{isImages && (
 							<>
 								<SliderStyle $isModal={isModal}>
 									<Swiper {...mainSwiperConfig}>
@@ -132,8 +121,7 @@ export const Slider: FC<SliderProps> = memo(
 												<FetchedImage
 													width={1000}
 													height={1000}
-													sizes="100vw"													
-													quality={50}
+													sizes="100vw"
 													light
 													src={`${prefixImages}${image.url}`}
 													alt={image.alt}
@@ -145,7 +133,7 @@ export const Slider: FC<SliderProps> = memo(
 										) : null}
 									</Swiper>
 								</SliderStyle>
-								{thumbs && images.length !== 0 && (
+								{thumbs && (
 									<ThumbnailsStyle>
 										<Swiper {...thumbsSwiperConfig}>
 											{images.map((image) => (
@@ -155,7 +143,6 @@ export const Slider: FC<SliderProps> = memo(
 													<FetchedImage
 														width={200}
 														height={200}
-														quality={10}
 														light
 														src={`${prefixImages}${image.url}`}
 														alt={image.alt}

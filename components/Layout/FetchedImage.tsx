@@ -1,8 +1,5 @@
-'use client';
-
-import Image, { ImageProps } from 'next/image';
-import { FC, UIEvent, useState } from 'react';
-import styled from 'styled-components';
+import { JSX, FC, UIEvent, useState } from 'react';
+import { styled } from 'styled-components';
 
 import { Preloader } from '@/components/ui/Preloader';
 import { Ellipsis } from '@/components/ui/Preloader/styled';
@@ -18,7 +15,7 @@ export const WrapperFetchedImage = styled.div`
 	}
 `;
 
-const ImageStyled = styled(Image)`
+const ImageStyled = styled.img`
 	opacity: 0;
 	transition: all 0.4s;
 	object-fit: cover;
@@ -33,7 +30,7 @@ const ImageStyled = styled(Image)`
 	}
 `;
 
-export const FetchedImage: FC<ImageProps & { light?: boolean }> = ({
+export const FetchedImage: FC<JSX.IntrinsicElements['img'] & { light?: boolean }> = ({
 	className,
 	light,
 	...props

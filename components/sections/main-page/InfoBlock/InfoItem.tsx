@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Icon } from '@/components/Icon';
-import IcofontNames from '@/public/assets/fonts/icofont/icofont.json';
+import IcofontNames from '@/src/assets/fonts/icofont/icofont.json';
 
 import { Item } from './styled';
 

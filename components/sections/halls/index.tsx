@@ -1,10 +1,8 @@
-import { NextPage } from 'next';
-
-import { HallType } from '@/@types/types';
+import { FC } from 'react';
+import { HallType } from '@/types/types';
 import { Icon } from '@/components/Icon';
 import { Title, VideoYouTube } from '@/components/Layout';
 import { Slider } from '@/components/Slider';
-import { PageLoader } from '@/components/ui';
 
 import {
 	BlockContent,
@@ -14,16 +12,14 @@ import {
 	RightBlock,
 } from './styled';
 
-const HallsPage: NextPage<HallType> = ({
+export const HallsPage: FC<HallType> = ({
 	advantages = [],
 	description = [],
 	name,
 	video = [],
 	images = [],
-	isLoaded,
 }) => (
 	<HallsPageWrapper $gap={40} $w100>
-		{isLoaded && <PageLoader absolute noDelay />}
 		<BlockContent>
 			<Title as="h1">{name}</Title>
 			<br />
@@ -37,6 +33,7 @@ const HallsPage: NextPage<HallType> = ({
 				video.map((item) => <VideoYouTube key={item} src={item} />)}
 			{images && (
 				<Slider
+					key={name}
 					images={images}
 					countThumbsPerView={5}
 					controls
@@ -71,6 +68,3 @@ const HallsPage: NextPage<HallType> = ({
 		</RightBlock>
 	</HallsPageWrapper>
 );
-
-export { HallsPage };
-export default HallsPage;

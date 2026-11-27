@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { LogoText } from '@/components/Header/Logo/styled';
 import { Container } from '@/components/Layout';
@@ -104,12 +103,16 @@ export const MapWrapper = styled.div`
 	min-height: 500px;
 	width: 100%;
 	margin: 20px 0;
+
+	iframe {
+		filter: grayscale(1);
+	}
 `;
 
-export const Map = styled(Image)`
+export const Map = styled.img`
 	object-fit: cover;
 	object-position: center;
-	border-radius: ${theme.radius.blockRadius};
+	border-radius: ${theme.radius.block};
 	box-shadow:
 		${theme.layout.shadow.basic}, ${theme.layout.shadow.big},
 		${theme.layout.shadow.big};

@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
+import { styled , css } from 'styled-components';
 
-import icofont from '@/public/assets/fonts/icofont/icofont.json';
+import icofont from '@/src/assets/fonts/icofont/icofont.json';
 import { media } from '@/theme';
 
 interface CommonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -71,7 +71,7 @@ const Button = styled.button<ButtonProps>`
 	}) => css`
 		appearance: none;
 		background: none;
-		border-radius: ${theme.radius.borderRadius};
+		border-radius: ${theme.radius.border};
 
 		padding: 2px 16px 0px;
 		height: 52px;

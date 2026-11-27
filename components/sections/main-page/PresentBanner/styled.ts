@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 import { Grid } from '@/components/Layout';
 import { defaultTheme as theme } from '@/theme';

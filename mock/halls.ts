@@ -1,4 +1,4 @@
-import { HallType } from '@/@types/types';
+import { HallType } from '@/types/types';
 
 export const halls: HallType[] = [
 	{

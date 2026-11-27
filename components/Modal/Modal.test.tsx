@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { render as customRender } from '../../__tests__/test-utils';
+import { customRender } from '@/services/test-utils';
 import { Modal } from './index';
 
 describe('Modal', () => {
@@ -11,7 +11,7 @@ describe('Modal', () => {
 
 	it('не рендерится когда show=false', () => {
 		customRender(
-			<Modal show={false} onClose={jest.fn()}>
+			<Modal show={false} onClose={vi.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
@@ -20,7 +20,7 @@ describe('Modal', () => {
 
 	it('рендерится когда show=true', () => {
 		customRender(
-			<Modal show onClose={jest.fn()}>
+			<Modal show onClose={vi.fn()}>
 				<div>Контент модального окна</div>
 			</Modal>,
 		);
@@ -29,7 +29,7 @@ describe('Modal', () => {
 
 	it('отображает заголовок когда передан header', () => {
 		customRender(
-			<Modal show header="Заголовок модального окна" onClose={jest.fn()}>
+			<Modal show header="Заголовок модального окна" onClose={vi.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
@@ -40,7 +40,7 @@ describe('Modal', () => {
 
 	it('не отображает заголовок когда header не передан', () => {
 		customRender(
-			<Modal show onClose={jest.fn()}>
+			<Modal show onClose={vi.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
@@ -50,7 +50,7 @@ describe('Modal', () => {
 	});
 
 	it('вызывает onClose при клике на overlay', async () => {
-		const handleClose = jest.fn();
+		const handleClose = vi.fn();
 		const user = userEvent.setup();
 		customRender(
 			<Modal show onClose={handleClose}>
@@ -64,7 +64,7 @@ describe('Modal', () => {
 	});
 
 	it('вызывает onClose при клике на кнопку закрытия', async () => {
-		const handleClose = jest.fn();
+		const handleClose = vi.fn();
 		const user = userEvent.setup();
 		customRender(
 			<Modal show onClose={handleClose}>
@@ -78,7 +78,7 @@ describe('Modal', () => {
 	});
 
 	it('не вызывает onClose при клике на содержимое модального окна', async () => {
-		const handleClose = jest.fn();
+		const handleClose = vi.fn();
 		const user = userEvent.setup();
 		customRender(
 			<Modal show onClose={handleClose}>
@@ -93,7 +93,7 @@ describe('Modal', () => {
 
 	it('добавляет класс scroll-lock к body когда show=true', () => {
 		customRender(
-			<Modal show onClose={jest.fn()}>
+			<Modal show onClose={vi.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
@@ -102,14 +102,14 @@ describe('Modal', () => {
 
 	it('удаляет класс scroll-lock когда show=false', () => {
 		const { rerender } = customRender(
-			<Modal show onClose={jest.fn()}>
+			<Modal show onClose={vi.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
 		expect(document.body.classList.contains('scroll-lock')).toBe(true);
 
 		rerender(
-			<Modal show={false} onClose={jest.fn()}>
+			<Modal show={false} onClose={vi.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
@@ -118,7 +118,7 @@ describe('Modal', () => {
 
 	it('удаляет класс scroll-lock при размонтировании', () => {
 		const { unmount } = customRender(
-			<Modal show onClose={jest.fn()}>
+			<Modal show onClose={vi.fn()}>
 				<div>Контент</div>
 			</Modal>,
 		);
@@ -130,7 +130,7 @@ describe('Modal', () => {
 
 	it('отображает children корректно', () => {
 		customRender(
-			<Modal show onClose={jest.fn()}>
+			<Modal show onClose={vi.fn()}>
 				<div>
 					<h1>Заголовок</h1>
 					<p>Текст контента</p>

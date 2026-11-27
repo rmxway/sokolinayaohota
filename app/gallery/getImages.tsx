@@ -1,4 +1,4 @@
-import { GalleryImageType } from '@/@types/types';
+import { GalleryImageType } from '@/types/types';
 import { getGalleryPageData } from '@/lib/pageData';
 
 import { CategoryItem, GalleryPageProps } from './content';

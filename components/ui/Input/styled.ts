@@ -1,5 +1,5 @@
 import { motion, Variants } from 'framer-motion';
-import styled, { css } from 'styled-components';
+import { styled , css } from 'styled-components';
 
 import { defaultTheme as theme, media } from '@/theme';
 
@@ -37,7 +37,7 @@ export const InputWrapper = styled(motion.label)<Partial<InputTypes>>`
 		bottom: 0;
 		content: '';
 		background-color: #fff;
-		border-radius: ${theme.radius.borderRadius};
+		border-radius: ${theme.radius.border};
 		border: 1px solid #aaa;
 		z-index: 1;
 		transition: border-color box-shadow 0.2s;

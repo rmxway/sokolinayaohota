@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { render as customRender } from '../../__tests__/test-utils';
+import { customRender } from '@/services/test-utils';
 import { Question } from './index';
 
 describe('Question', () => {

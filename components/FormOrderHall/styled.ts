@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import styled, { css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { Grid } from '@/components/Layout';
 import { media } from '@/theme';

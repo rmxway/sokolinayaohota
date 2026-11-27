@@ -1,4 +1,4 @@
-import { AdvantageType } from '@/@types/types';
+import { AdvantageType } from '@/types/types';
 
 export const advantages: AdvantageType[] = [
 	{

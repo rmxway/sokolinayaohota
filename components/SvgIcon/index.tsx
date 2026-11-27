@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import BarDecor from '@/public/assets/svg/bardecor-line.svg';
-import BarDecor2 from '@/public/assets/svg/bardecor-line-2.svg';
-import LogoDecor from '@/public/assets/svg/logo-decor.svg';
+import BarDecor from '@/src/assets/svg/bardecor-line.svg?react';
+import BarDecor2 from '@/src/assets/svg/bardecor-line-2.svg?react';
+import LogoDecor from '@/src/assets/svg/logo-decor.svg?react';
 import { defaultTheme as theme } from '@/theme';
 
 interface SVGType {

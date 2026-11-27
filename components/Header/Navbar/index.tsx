@@ -1,13 +1,10 @@
 import { AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { FC, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router';
 
 import { Space } from '@/components/Layout';
 import { useScrollLock } from '@/hooks';
 import { navbarItems } from '@/mock/navbar';
-import oldLogo from '@/public/assets/img/old-logo.png';
 
 import {
 	BurgerButton,
@@ -20,8 +17,9 @@ import {
 	wrapperVariant,
 } from './styled';
 
-export const Navbar: FC = () => {
-	const path = usePathname() || '';
+export const Navbar = () => {
+	const { pathname } = useLocation();
+	const path = pathname || '';
 	const [show, setShow] = useState(false);
 	const containerRef = useRef(null);
 
@@ -51,10 +49,10 @@ export const Navbar: FC = () => {
 				{navbarItems.map((item) => (
 					<NavbarItem
 						key={item.title}
-						data-testid={`navbar-item-${item.title.toLowerCase()}`}
+						data-testid={`desktop-navbar-item-${item.name.toLowerCase()}`}
 						$active={activeLink(item.url)}
 					>
-						<Link href={item.url} aria-label={item.title} />
+						<Link to={item.url} aria-label={item.title} />
 						{item.title}
 					</NavbarItem>
 				))}
@@ -79,20 +77,15 @@ export const Navbar: FC = () => {
 								<NavbarItem
 									variants={navbarItemVariant}
 									key={item.title}
-									data-testid={`navbar-item-${item.title.toLowerCase()}`}
+									data-testid={`mobile-navbar-item-${item.name.toLowerCase()}`}
 									$active={activeLink(item.url)}
 								>
-									<Link href={item.url} />
+									<Link to={item.url} />
 									{item.title}
 								</NavbarItem>
 							))}
 							<Space />
-							<Image
-								src={oldLogo}
-								alt="Logo navbar"
-								width={200}
-								quality={60}
-							/>
+							<img src="/assets/img/old-logo.png" alt="Logo navbar" width={200} />
 						</MobileNav>
 					)}
 				</AnimatePresence>
