@@ -1,7 +1,5 @@
 # 🦅 Sokolinaya Ohota
 
-Фронтенд сайта «Соколиная охота» на React / Typescript , React Router (framework mode).
-
 ## 🛠 Стек
 
 - **React** 19
@@ -30,18 +28,18 @@ yarn
 
 | Команда                | Описание                              |
 | ---------------------- | ------------------------------------- |
-| `yarn dev`             | 🛠 Режим разработки                    |
+| `yarn dev`             | 🛠 Режим разработки                   |
 | `yarn build`           | 🔨 Тест + сборка проекта              |
-| `yarn start`           | 🚀 Запуск production-сборки локально  |
-| `yarn lint`            | 🔍 Проверка кода (ESLint)             |
+| `yarn start`           | 🚀 Запуск production сборки локально  |
+| `yarn lint`            | 🔍 Проверка (ESLint)                  |
 | `yarn lint:fix`        | 🔧 Автоисправление по правилам ESLint |
-| `yarn typecheck`       | 🔍 Проверка кода (TS)                 |
-| `yarn pretty`          | ✨ Форматирование кода (Prettier)     |
+| `yarn typecheck`       | 🔍 Проверка (TypeScript)              |
+| `yarn pretty`          | ✨ Форматирование (Prettier)          |
 | `yarn icofont`         | 🎨 Сборка шрифта иконок (Fantasticon) |
 | `yarn storybook`       | 📚 Запуск Storybook локально          |
 | `yarn build-storybook` | 📦 Сборка Storybook для деплоя        |
 | `yarn test`            | 🧪 Запуск тестов (Jest)               |
-| `yarn test:watch`      | 👀 Запуск тестов в watch-режиме       |
+| `yarn test:watch`      | 👀 Запуск тестов в watch режиме       |
 
 ## 🧪 Тестирование
 
@@ -49,7 +47,7 @@ yarn
 
 - Тесты находятся рядом с исходными файлами: `*.test.ts`, `*.test.tsx`
 - Утилиты для тестов: `services/test-utils.tsx`
-- Конфигурация: `vite.config.ts (test)`, `vitest.setup.ts`
+- Конфигурация: `vite.config.ts (в разделе test)`, `vitest.setup.ts`
 
 ### Примеры использования
 
