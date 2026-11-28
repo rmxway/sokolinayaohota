@@ -16,7 +16,6 @@ import { Flexbox } from '@/components/Layout';
 import { FooterBlock } from '@/components/Footer';
 
 import '@/src/assets/fonts/icofont/icofont.scss';
-import { baseName } from '@/services/constants';
 
 export function meta() {
 	return [
@@ -39,7 +38,7 @@ export const links: Route.LinksFunction = () => [
 	},
 	{
 		rel: 'icon',
-		href: baseName + 'assets/favicon.ico',
+		href: '/assets/favicon.ico',
 	},
 ];
 

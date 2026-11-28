@@ -1,4 +1,4 @@
-import '../src/assets/fonts/icofont/icofont.scss';
+import '@/src/assets/fonts/icofont/icofont.scss';
 import './fonts.scss';
 
 import type { Preview } from '@storybook/react-vite';

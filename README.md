@@ -1,6 +1,6 @@
 # 🦅 Sokolinaya Ohota
 
-Фронтенд сайта «Соколиная охота» на Next.js (App Router).
+Фронтенд сайта «Соколиная охота» на React / Typescript , React Router (framework mode).
 
 ## 🛠 Стек
 
@@ -64,6 +64,7 @@ yarn test:watch
 ## 📚 Storybook
 
 - **Локально:** `yarn storybook` — доступен по [http://localhost:4006](http://localhost:4006).
+- **Деплой:** Сборка доступна по адресу: [https://rmxway.github.io/sokolinayaohota/](https://rmxway.github.io/sokolinayaohota/)
 
 ## 📁 Структура проекта
 

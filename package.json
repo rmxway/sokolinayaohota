@@ -19,6 +19,7 @@
 		"test:watch": "vitest"
 	},
 	"dependencies": {
+		"@netlify/vite-plugin-react-router": "^4.0.0",
 		"@react-router/node": "^8.5.3",
 		"@react-router/serve": "^8.5.3",
 		"@storybook/test": "^8.6.19",

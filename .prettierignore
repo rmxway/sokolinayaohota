@@ -17,4 +17,5 @@ package-lock.json
 *.hbs
 
 # Generated / assets (optional — remove if you want to format these)
-# public/assets/
+public/assets/
+src/assets/

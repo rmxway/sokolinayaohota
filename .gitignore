@@ -19,6 +19,9 @@
 /storybook-static
 debug-storybook.log
 
+# netlify
+.netlify
+
 # production
 /build
 
