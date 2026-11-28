@@ -31,9 +31,6 @@ jobs:
                   node-version: '22'
                   cache: yarn
 
-            - name: Change node version
-              run: nvm use
-
             - name: Install dependencies
               run: yarn install --immutable
 
