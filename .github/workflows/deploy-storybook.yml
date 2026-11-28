@@ -2,7 +2,7 @@ name: Deploy Storybook to GitHub Pages
 
 on:
     push:
-        branches: [main, master]
+        branches: [master]
     workflow_dispatch:
 
 permissions:
@@ -30,6 +30,9 @@ jobs:
               with:
                   node-version: '22'
                   cache: yarn
+
+            - name: Change node version
+              run: nvm use
 
             - name: Install dependencies
               run: yarn install --immutable

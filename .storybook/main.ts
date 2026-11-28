@@ -16,22 +16,19 @@ const config: StorybookConfig = {
 								{
 									name: 'framer',
 									test: /node_modules[\\/]framer-motion/,
-									priority: 30,
 								},
 								{
 									name: 'react',
 									test: /node_modules[\\/](react|react-dom|react-router|scheduler)[\\/]/,
-									priority: 25,
 								},
 								{
-									name: 'storybook-runtime',
-									test: /node_modules[\\/]@?storybook|@?mdx-js|@?acorn/,
-									priority: 20,
+									name: 'styled-components',
+									test: /node_modules[\\/](styled-components)/,
 								},
 								{
 									name: 'vendor',
 									test: /node_modules/,
-									priority: 10,
+									maxSize: 400000,
 								},
 							],
 						},
