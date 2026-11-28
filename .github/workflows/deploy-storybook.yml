@@ -1,4 +1,4 @@
-name: Deploy SokolinayaOhota to GitHub Pages
+name: Deploy Storybook to GitHub Pages
 
 on:
     push:
@@ -28,27 +28,21 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                  node-version: '22'
+                  node-version: '23'
                   cache: yarn
 
             - name: Install dependencies
               run: yarn install --immutable
 
-            - name: Build Project
-              run: yarn build
+            - name: Build Storybook
+              run: yarn build-storybook
               env:
-                  BASE_PATH: /sokolinayaohota/
-            - name: Prepare SPA
-              run: |
-                  if [-f build/client/__spa-fallback.html ]; then
-                    cp build/client/__spa-fallback.html build/client/404.html
-                  else
-                    cp build/client/index.html build/client/404.html
-                  fi
+                  BASE_PATH: /${{ github.event.repository.name }}/
+
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: build/client
+                  path: storybook-static
 
             - name: Deploy to GitHub Pages
               id: deployment

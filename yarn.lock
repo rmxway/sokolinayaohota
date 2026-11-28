@@ -3507,6 +3507,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@netlify/edge-functions@npm:^3.0.6":
+  version: 3.0.8
+  resolution: "@netlify/edge-functions@npm:3.0.8"
+  dependencies:
+    "@netlify/types": "npm:2.8.0"
+  checksum: 10c0/d1944f1e3382e75f52eae54684caacf12dcf842f3a6e372302a845aea8ee5112d7ba2e1fa375f3be822b90625917b6dcafbec9e17903970b29ae2f2860992d08
+  languageName: node
+  linkType: hard
+
+"@netlify/functions@npm:^5.2.0":
+  version: 5.3.0
+  resolution: "@netlify/functions@npm:5.3.0"
+  dependencies:
+    "@netlify/types": "npm:2.8.0"
+  checksum: 10c0/0e78098581b92f4b37ad5f0ab2b2f9a07d8f03275fec07039a103e256ed1b3e32b7b60fecba9bd657d8af57aca1c7ad77491929e93908e7048b4224e411f1212
+  languageName: node
+  linkType: hard
+
+"@netlify/types@npm:2.8.0":
+  version: 2.8.0
+  resolution: "@netlify/types@npm:2.8.0"
+  checksum: 10c0/f6d75de6786652890f811853cc34fa094af4fb1ac02e4e300d4aa432989d55824b7aeb4fb8bd57a92037948963080ad4bbc4c66eb32db38768c747fbeb8d9143
+  languageName: node
+  linkType: hard
+
+"@netlify/vite-plugin-react-router@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@netlify/vite-plugin-react-router@npm:4.0.0"
+  dependencies:
+    "@netlify/edge-functions": "npm:^3.0.6"
+    "@netlify/functions": "npm:^5.2.0"
+    "@remix-run/node-fetch-server": "npm:^0.13.0"
+    isbot: "npm:^5.1.25"
+    tinyglobby: "npm:^0.2.10"
+  peerDependencies:
+    react-router: ">=7.9.0"
+    vite: ">=6.0.0"
+  checksum: 10c0/85fa6d66aedbfbb16221c590b38dc926db891e5736d7f71e9946d97f8886895632f2ba5448071c689e552deff8f1513201595874146cf7cf3b8d9e045c514176
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -4124,6 +4165,13 @@ __metadata:
   bin:
     react-router-serve: bin.cjs
   checksum: 10c0/c69950dc23f1ca11d6b6c2d8042e2761d20a3866be5a1c5bdf86812019f00d78dff55b2d94a4baa64cc683c4b785aff59ed925c7ba9a4c8d531260cbcb7474a3
+  languageName: node
+  linkType: hard
+
+"@remix-run/node-fetch-server@npm:^0.13.0":
+  version: 0.13.3
+  resolution: "@remix-run/node-fetch-server@npm:0.13.3"
+  checksum: 10c0/a3a9bc35e18e76883c7f40a23e8321d6627e2fea10e399524c2a53d12a6bf62f4ba301c5ad8414018f1a75f25183f3fe1f8bf13283c13a004a8ed47fd65d2139
   languageName: node
   linkType: hard
 
@@ -8957,7 +9005,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbot@npm:5.2.4":
+"isbot@npm:5.2.4, isbot@npm:^5.1.25":
   version: 5.2.4
   resolution: "isbot@npm:5.2.4"
   checksum: 10c0/b117f48d3260c722e39477060004e71f452963fc03a37b94ba49d07e1bd87a0e33d3fb43ff2ca12d05c0aa347fd3ac7ab08a75a79da87558462d8da1393ee6c5
@@ -11680,6 +11728,7 @@ __metadata:
     "@babel/preset-react": "npm:^7.29.7"
     "@babel/preset-typescript": "npm:^7.29.7"
     "@eslint/eslintrc": "npm:^3.3.7"
+    "@netlify/vite-plugin-react-router": "npm:^4.0.0"
     "@react-router/dev": "npm:^8.5.3"
     "@react-router/node": "npm:^8.5.3"
     "@react-router/serve": "npm:^8.5.3"
@@ -12247,6 +12296,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tinyglobby@npm:^0.2.10, tinyglobby@npm:^0.2.16, tinyglobby@npm:^0.2.17":
+  version: 0.2.17
+  resolution: "tinyglobby@npm:0.2.17"
+  dependencies:
+    fdir: "npm:^6.5.0"
+    picomatch: "npm:^4.0.4"
+  checksum: 10c0/7f7bb0f197c88bc4b20c231e0deca4240ca3bf313a88f5a7fee93a872b84966a4d50220947c0455ad07a60b3b360961c5b7fd979222aeb716a9f99b412002e4c
+  languageName: node
+  linkType: hard
+
 "tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.15":
   version: 0.2.15
   resolution: "tinyglobby@npm:0.2.15"
@@ -12254,16 +12313,6 @@ __metadata:
     fdir: "npm:^6.5.0"
     picomatch: "npm:^4.0.3"
   checksum: 10c0/869c31490d0d88eedb8305d178d4c75e7463e820df5a9b9d388291daf93e8b1eb5de1dad1c1e139767e4269fe75f3b10d5009b2cc14db96ff98986920a186844
-  languageName: node
-  linkType: hard
-
-"tinyglobby@npm:^0.2.16, tinyglobby@npm:^0.2.17":
-  version: 0.2.17
-  resolution: "tinyglobby@npm:0.2.17"
-  dependencies:
-    fdir: "npm:^6.5.0"
-    picomatch: "npm:^4.0.4"
-  checksum: 10c0/7f7bb0f197c88bc4b20c231e0deca4240ca3bf313a88f5a7fee93a872b84966a4d50220947c0455ad07a60b3b360961c5b7fd979222aeb716a9f99b412002e4c
   languageName: node
   linkType: hard
 
