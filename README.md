@@ -37,7 +37,7 @@ yarn
 | `yarn pretty`          | ✨ Форматирование (Prettier)             |
 | `yarn icofont`         | 🎨 Сборка шрифта иконок (Fantasticon)    |
 | `yarn storybook`       | 📚 Запуск Storybook локально             |
-| `yarn build-storybook` | 📦 Сборка Storybook для деплоя           |
+| `yarn bs`              | 📦 Сборка Storybook для деплоя           |
 | `yarn test`            | 🧪 Запуск тестов (Jest)                  |
 | `yarn test:watch`      | 👀 Запуск тестов в watch режиме          |
 

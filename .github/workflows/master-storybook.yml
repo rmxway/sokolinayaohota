@@ -2,7 +2,7 @@ name: Deploy Storybook to GitHub Pages
 
 on:
     push:
-        branches: [main, master]
+        branches: [master]
     workflow_dispatch:
 
 permissions:
@@ -31,11 +31,14 @@ jobs:
                   node-version: '22'
                   cache: yarn
 
+            - name: Change node version
+              run: nvm use
+
             - name: Install dependencies
               run: yarn install --immutable
 
             - name: Build Storybook
-              run: yarn build-storybook
+              run: yarn bs
               env:
                   BASE_PATH: /${{ github.event.repository.name }}/
 
