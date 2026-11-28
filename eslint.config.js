@@ -12,10 +12,9 @@ import eslintPluginStorybook from 'eslint-plugin-storybook';
 
 export default [{
     ignores: [
-        '**/node_modules/**',
-        '**/build/**',
-        '**/.react-router/**',
-        './storybook-static',
+        'build',
+        '.react-router',
+        'storybook-static',
     ],
 }, {
     files: ['**/*.{js,cjs,mjs}'],
