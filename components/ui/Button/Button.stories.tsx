@@ -2,23 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { ButtonUI } from '@/components/ui/Button';
 
-//👇 This default export determines where your story goes in the story list
-// const meta = {
-//   component: YourComponent,
-// } satisfies Meta<typeof YourComponent>;
- 
-// export default meta;
-// type Story = StoryObj<typeof meta>;
- 
-// export const Basic: Story = {
-//   args: {
-//     //👇 The args you need here will depend on your component
-//   },
-// };
-
-// type Button = StoryObj<typeof ButtonUI>;
-
-
 const meta: Meta<typeof ButtonUI> = {
 	title: 'Button',
 	component: ButtonUI,

@@ -1,4 +1,4 @@
-import { styled , css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { InputWrapper } from '@/components/ui/Input/styled';
 import { defaultTheme as theme, media } from '@/theme';

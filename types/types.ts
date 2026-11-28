@@ -5,11 +5,7 @@ export type HallsTypes = 'falcon-yard' | 'big-hall' | 'small-hall';
 // Gallery
 
 export type ImageCategory =
-	| 'falcon-yard'
-	| 'big-hall'
-	| 'small-hall'
-	| 'eat'
-	| 'all';
+	'falcon-yard' | 'big-hall' | 'small-hall' | 'eat' | 'all';
 
 export type GalleryImageType = {
 	id?: number;

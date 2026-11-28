@@ -1,4 +1,4 @@
-import { styled , css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { WrapperFetchedImage } from '@/components/Layout';
 import { Ellipsis } from '@/components/ui/Preloader/styled';

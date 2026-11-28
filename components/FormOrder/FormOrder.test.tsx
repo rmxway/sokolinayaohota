@@ -182,9 +182,7 @@ describe('FormOrder', () => {
 	it('показывает сообщение об ошибке при неудачной отправке', async () => {
 		const user = userEvent.setup();
 		const errorMessage = 'Ошибка сети';
-		(global.fetch as Mock).mockRejectedValueOnce(
-			new Error(errorMessage),
-		);
+		(global.fetch as Mock).mockRejectedValueOnce(new Error(errorMessage));
 
 		customRender(<FormOrder name="test-form" fetchUrl="/api/test" />);
 

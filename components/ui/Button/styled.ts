@@ -1,4 +1,4 @@
-import { styled , css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import icofont from '@/src/assets/fonts/icofont/icofont.json';
 import { media } from '@/theme';
@@ -93,11 +93,13 @@ const Button = styled.button<ButtonProps>`
 			margin-top: -4px;
 		}
 
-		${$margins &&
-		css`
-			margin-bottom: 10px;
-			margin-right: 10px;
-		`}
+		${
+			$margins &&
+			css`
+				margin-bottom: 10px;
+				margin-right: 10px;
+			`
+		}
 
 		cursor: pointer;
 		transition: 0.1s all;

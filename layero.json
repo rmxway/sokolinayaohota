@@ -1,4 +1,4 @@
 {
-  "$schema": "https://layero.ru/schema/layero-v2.json",
-  "installCommand": "yarn install --immutable"
+	"$schema": "https://layero.ru/schema/layero-v2.json",
+	"installCommand": "yarn install --immutable"
 }

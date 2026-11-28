@@ -22,10 +22,7 @@
 		"sourceMap": true,
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
-		"typeRoots": [
-			"types/declarations.d.ts",
-			"node_modules",
-		],
+		"typeRoots": ["types/declarations.d.ts", "node_modules"],
 		"rootDirs": [".", "./.react-router/types"],
 		"types": ["vitest/globals"],
 		"moduleResolution": "bundler",

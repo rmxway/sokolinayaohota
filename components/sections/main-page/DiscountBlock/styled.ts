@@ -30,9 +30,11 @@ export const Wrapper = styled.div`
 	}
 
 	${FinalText} {
-		color: ${!FinalText.defaultProps?.$valid
-			? theme.colors.solid.white
-			: theme.colors.solid.danger};
+		color: ${
+			!FinalText.defaultProps?.$valid
+				? theme.colors.solid.white
+				: theme.colors.solid.danger
+		};
 	}
 
 	${media.lessThan('lg')`

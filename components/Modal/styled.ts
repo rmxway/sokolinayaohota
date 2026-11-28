@@ -21,7 +21,6 @@ export const ModalWrapper = styled(motion.div)`
 	backdrop-filter: blur(10px);
 	overflow-y: auto;
 
-
 	${media.lessThan('sm')`
 		padding: 0;
 	`}

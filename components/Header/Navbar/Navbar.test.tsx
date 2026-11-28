@@ -24,7 +24,9 @@ describe('Navbar', () => {
 
 	it('рендерит десктопное меню', () => {
 		renderNavbar('/');
-		expect(screen.getByTestId('desktop-navbar-item-home')).toBeInTheDocument();
+		expect(
+			screen.getByTestId('desktop-navbar-item-home'),
+		).toBeInTheDocument();
 	});
 
 	it('рендерится с десктопной навигацией', () => {

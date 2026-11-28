@@ -30,11 +30,9 @@ const ImageStyled = styled.img`
 	}
 `;
 
-export const FetchedImage: FC<JSX.IntrinsicElements['img'] & { light?: boolean }> = ({
-	className,
-	light,
-	...props
-}) => {
+export const FetchedImage: FC<
+	JSX.IntrinsicElements['img'] & { light?: boolean }
+> = ({ className, light, ...props }) => {
 	const [loaded, setLoaded] = useState(false);
 
 	const eventLoaded = (e: UIEvent<HTMLImageElement>) => {
