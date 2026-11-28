@@ -26,20 +26,20 @@ yarn
 
 ## 📜 Скрипты
 
-| Команда                | Описание                              |
-| ---------------------- | ------------------------------------- |
-| `yarn dev`             | 🛠 Режим разработки                   |
-| `yarn build`           | 🔨 Тест + сборка проекта              |
-| `yarn start`           | 🚀 Запуск production сборки локально  |
-| `yarn lint`            | 🔍 Проверка (ESLint)                  |
-| `yarn lint:fix`        | 🔧 Автоисправление по правилам ESLint |
-| `yarn typecheck`       | 🔍 Проверка (TypeScript)              |
-| `yarn pretty`          | ✨ Форматирование (Prettier)          |
-| `yarn icofont`         | 🎨 Сборка шрифта иконок (Fantasticon) |
-| `yarn storybook`       | 📚 Запуск Storybook локально          |
-| `yarn build-storybook` | 📦 Сборка Storybook для деплоя        |
-| `yarn test`            | 🧪 Запуск тестов (Jest)               |
-| `yarn test:watch`      | 👀 Запуск тестов в watch режиме       |
+| Команда                | Описание                                 |
+| ---------------------- | ---------------------------------------- |
+| `yarn dev`             | 🛠 Режим разработки                      |
+| `yarn build`           | 🔨 ESLint + Typecheck + сборка проекта   |
+| `yarn start`           | 🚀 Запуск production сборки локально     |
+| `yarn lint`            | 🔍 Проверка (ESLint)                     |
+| `yarn lint:fix`        | 🔧 Автоисправление по правилам ESLint    |
+| `yarn typecheck`       | 🔍 Проверка (TypeScript)                 |
+| `yarn pretty`          | ✨ Форматирование (Prettier)             |
+| `yarn icofont`         | 🎨 Сборка шрифта иконок (Fantasticon)    |
+| `yarn storybook`       | 📚 Запуск Storybook локально             |
+| `yarn build-storybook` | 📦 Сборка Storybook для деплоя           |
+| `yarn test`            | 🧪 Запуск тестов (Jest)                  |
+| `yarn test:watch`      | 👀 Запуск тестов в watch режиме          |
 
 ## 🧪 Тестирование
 

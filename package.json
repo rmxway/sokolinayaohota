@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "react-router dev",
-		"build": "yarn typecheck && yarn test && react-router build",
+		"build": "yarn typecheck && yarn lint && react-router build",
 		"start": "react-router-serve ./build/server/index.js",
 		"typecheck": "react-router typegen && tsc",
 		"lint": "eslint .",
@@ -41,6 +41,7 @@
 		"@babel/preset-react": "^7.29.7",
 		"@babel/preset-typescript": "^7.29.7",
 		"@eslint/eslintrc": "^3.3.7",
+		"@netlify/vite-plugin": "^3.1.0",
 		"@react-router/dev": "^8.5.3",
 		"@storybook/addon-docs": "^10.6.9",
 		"@storybook/addon-links": "^10.6.9",

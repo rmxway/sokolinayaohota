@@ -25,11 +25,9 @@
 		"typeRoots": [
 			"types/declarations.d.ts",
 			"node_modules",
-			"node_modules/@types",
-			"./vite.env.d.ts"
 		],
 		"rootDirs": [".", "./.react-router/types"],
-		"types": ["vitest/globals", "node"],
+		"types": ["vitest/globals"],
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,

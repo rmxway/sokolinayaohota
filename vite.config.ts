@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { reactRouter } from '@react-router/dev/vite';
 import svgr from 'vite-plugin-svgr';
 import netlifyReactRouter from '@netlify/vite-plugin-react-router';
+import netlify from '@netlify/vite-plugin';
 import path from 'path';
 
 const isStorybook = process.argv[1]?.includes('storybook');
@@ -10,7 +11,12 @@ export default defineConfig(({ mode }) => ({
 	plugins: [
 		mode === 'test' || isStorybook ? [] : reactRouter(),
 		svgr(),
-		netlifyReactRouter(),
+		netlifyReactRouter({
+			edge: false,
+		}),
+		netlify({
+			edgeFunctions: { enabled: false },
+		}),
 	],
 	resolve: {
 		tsconfigPaths: true,
@@ -20,9 +26,6 @@ export default defineConfig(({ mode }) => ({
 	},
 	server: {
 		host: true,
-		// proxy: {
-		// 	'/api': 'https://your-api-server.com',
-		// },
 	},
 	test: {
 		environment: 'jsdom',
@@ -31,19 +34,34 @@ export default defineConfig(({ mode }) => ({
 		include: ['**/*.(test|spec).[jt]s?(x)'],
 		css: true,
 	},
-	// build: {
-	// 	rolldownOptions: {
-	// 		output: {
-	// 			codeSplitting: {
-	// 				maxSize: 1000000,
-	// 				groups: [
-	// 					{
-	// 						name: 'vendor',
-	// 						test: '/node_modules/',
-	// 					},
-	// 				],
-	// 			},
-	// 		},
-	// 	},
-	// },
+	build: {
+		rolldownOptions: {
+			output: {
+				codeSplitting: {
+					groups: [
+						{
+							name: 'framer',
+							test: /node_modules[\\/]framer-motion/,
+							priority: 30,
+						},
+						{
+							name: 'react',
+							test: /node_modules[\\/](react|react-dom)[\\/]/,
+							priority: 25,
+						},
+						{
+							name: 'react-router',
+							test: /node_modules[\\/](react-router)[\\/]/,
+							priority: 25,
+						},
+						{
+							name: 'vendor',
+							test: /node_modules/,
+							priority: 10,
+						},
+					],
+				},
+			},
+		},
+	},
 }));
