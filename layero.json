@@ -1,4 +1,5 @@
 {
 	"$schema": "https://layero.ru/schema/layero-v2.json",
-	"installCommand": "yarn install --immutable"
+	"runtime": "node_web",
+	"startCommand": "yarn start"
 }
