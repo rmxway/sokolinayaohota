@@ -1,0 +1,23 @@
+{
+	"id": "sokolinayaohota",
+	"title": "Соколиная охота",
+	"subtitle": "Сайта ресторана",
+	"description": "Вариант сайта ресторана на React Router. Главная страница в виде лендинга, галерея, залы с описанием и бронированием, контакты.",
+	"stack": [
+		"React 19",
+		"React Router 7 (framework mode)",
+		"TypeScript",
+		"styled-components",
+		"Storybook",
+		"React Testing Library",
+		"Framer Motion",
+		"Vitest",
+		"ESLint",
+		"Prettier"
+	],
+	"kind": "pet",
+	"githubUrl": "https://github.com/rmxway/sokolinayaohota",
+	"demoUrl": "https://sokolinayaohota.layero.app/",
+	"accent": "amber",
+	"previewImage": "assets/img/preview.jpg"
+}
