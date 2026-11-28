@@ -55,7 +55,7 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 			validationSchema={validationSchema}
 			onSubmit={(values) => onSubmit(values)}
 			validateOnMount
-			validateOnChange	
+			validateOnChange
 		>
 			{({
 				errors,
@@ -141,9 +141,8 @@ export const FormOrder: FC<FormOrderProps> = ({ fetchUrl, name }) => {
 						{error || (
 							<>
 								Спасибо!
-								<br />
-								В ближайшее время <br />с вами свяжется наш
-								менеджер.
+								<br />В ближайшее время <br />с вами свяжется
+								наш менеджер.
 							</>
 						)}
 					</FinalText>

@@ -12,7 +12,7 @@ export const Wrapper = styled.div<{ $isMainPage: boolean }>`
 	width: 100%;
 	flex-direction: column;
 	overflow: hidden;
-	
+
 	${media.lessThan('md')`
 		padding-top: 88px;
 	`}
@@ -49,15 +49,15 @@ export const Header = styled(motion.header)`
 	`}
 `;
 
-export const BannerImage = styled.img<{$height: string}>`
+export const BannerImage = styled.img<{ $height: string }>`
 	position: fixed;
 	top: 0;
 	left: -10px;
 	width: 110%;
-	height: ${({ $height }) => `calc(${$height} + 120px)` || '100%' };
+	height: ${({ $height }) => `calc(${$height} + 120px)` || '100%'};
 	object-position: center;
 	object-fit: cover;
-	z-index: -10;	
+	z-index: -10;
 	filter: blur(4px);
 `;
 

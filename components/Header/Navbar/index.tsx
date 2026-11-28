@@ -85,7 +85,11 @@ export const Navbar = () => {
 								</NavbarItem>
 							))}
 							<Space />
-							<img src="/assets/img/old-logo.png" alt="Logo navbar" width={200} />
+							<img
+								src="/assets/img/old-logo.png"
+								alt="Logo navbar"
+								width={200}
+							/>
 						</MobileNav>
 					)}
 				</AnimatePresence>

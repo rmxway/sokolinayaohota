@@ -1,5 +1,5 @@
 import { motion, Variants } from 'framer-motion';
-import { styled , css } from 'styled-components';
+import { styled, css } from 'styled-components';
 
 import { defaultTheme as theme, media } from '@/theme';
 
