@@ -16,7 +16,7 @@
 ## 📋 Требования
 
 - Node.js 23+
-- Yarn 4 (указан в `packageManager`)
+- Yarn 1.22
 
 ## 🚀 Установка
 
