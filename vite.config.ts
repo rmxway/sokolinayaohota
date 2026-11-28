@@ -1,23 +1,12 @@
 import { defineConfig } from 'vitest/config';
 import { reactRouter } from '@react-router/dev/vite';
 import svgr from 'vite-plugin-svgr';
-import netlifyReactRouter from '@netlify/vite-plugin-react-router';
-import netlify from '@netlify/vite-plugin';
 import path from 'path';
 
 const isStorybook = process.argv[1]?.includes('storybook');
 
 export default defineConfig(({ mode }) => ({
-	plugins: [
-		mode === 'test' || isStorybook ? [] : reactRouter(),
-		svgr(),
-		netlifyReactRouter({
-			edge: false,
-		}),
-		netlify({
-			edgeFunctions: { enabled: false },
-		}),
-	],
+	plugins: [mode === 'test' || isStorybook ? [] : reactRouter(), svgr()],
 	resolve: {
 		tsconfigPaths: true,
 		alias: {
