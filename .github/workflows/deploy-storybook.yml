@@ -2,7 +2,7 @@ name: Deploy Storybook to GitHub Pages
 
 on:
     push:
-        branches: [master]
+        branches: [master, frontend]
     workflow_dispatch:
 
 permissions:
